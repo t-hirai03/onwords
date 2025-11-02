@@ -26,6 +26,77 @@
 - JavaScriptはVue.jsのリアクティビティパターンを含む可能性（バニラJSまたは標準的なWordPressパターンに変換が必要）
 - HTMLはWordPressテンプレート階層とPHPテンプレートタグに適応させる必要あり
 
+## 実装時の重要ルール
+
+### 必ずSTUDIOサイトから情報を取得する
+
+**CRITICAL**: すべての実装において、必ず移行元のSTUDIOサイト（https://www.onwords.co.jp/）から情報を取得してください。
+
+#### Chrome DevTools MCP と Playwright MCP の使用
+
+実装前に以下の手順を踏むこと：
+
+1. **Chrome DevTools MCP または Playwright MCP で該当ページを開く**
+   ```
+   - mcp__chrome-devtools__navigate_page または
+   - mcp__playwright__browser_navigate
+   ```
+
+2. **HTML構造、CSS、JavaScript、テキストコンテンツを確認**
+   ```
+   - mcp__chrome-devtools__take_snapshot (アクセシビリティツリー)
+   - mcp__chrome-devtools__evaluate_script (計算済みスタイル取得)
+   - mcp__playwright__browser_hover (ホバー状態の確認)
+   ```
+
+3. **取得した情報を元に実装**
+   - 推測や仮実装は禁止
+   - 実際のサイトの値を正確に反映
+
+#### 禁止事項
+
+❌ **やってはいけないこと：**
+- STUDIOサイトを確認せずに推測で実装する
+- 「おそらくこうだろう」という仮定で進める
+- ダミーデータやプレースホルダーを使う
+- 過去の記憶や一般的な実装パターンだけで作業する
+
+✅ **必ずやること：**
+- 実装するコンポーネント・機能がSTUDIOサイトのどの部分に該当するか確認
+- Chrome DevTools MCP または Playwright MCP で実際の構造・スタイル・内容を取得
+- 取得したデータを元に正確に実装
+
+### 画像ファイル名の命名規則
+
+**重要**: STUDIOサイトから画像をダウンロードする際は、必ず以下のルールに従うこと：
+
+#### ルール
+
+1. **元のファイル名を保持する**
+   - サイトで使用されている画像のファイル名をそのまま使用
+   - リネームや変更は禁止
+
+2. **具体例**
+   ```
+   ❌ 悪い例:
+   元サイト: s-300x91_222424ad-5eb2-43c8-8327-98b3cd560f8f.svg
+   保存名: logo.svg (変更している)
+
+   ✅ 良い例:
+   元サイト: s-300x91_222424ad-5eb2-43c8-8327-98b3cd560f8f.svg
+   保存名: s-300x91_222424ad-5eb2-43c8-8327-98b3cd560f8f.svg (同じ)
+   ```
+
+3. **確認方法**
+   - Chrome DevTools MCP の `list_network_requests` で画像URLを確認
+   - URLからファイル名を抽出してそのまま使用
+
+#### 理由
+
+- 元サイトとの対応関係を明確にする
+- デバッグやメンテナンスを容易にする
+- 将来的な差分確認を可能にする
+
 ## 開発環境
 
 - **ローカル環境**: Local by Flywheel

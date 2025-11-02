@@ -25,6 +25,19 @@
 				)
 			);
 			?>
+
+			<!-- Recruitment & Contact (Static - from STUDIO site) -->
+			<a href="https://hrmos.co/pages/changeholdings/jobs?category=2166892462807429120"
+			   class="header__nav-link header__nav-link--external"
+			   target="_blank"
+			   rel="noopener">
+				採用情報
+			</a>
+
+			<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>"
+			   class="header__nav-link header__nav-link--contact">
+				お問い合わせ
+			</a>
 		</nav>
 
 		<!-- Hamburger Menu Button (Mobile) -->
@@ -50,5 +63,22 @@
 				)
 			);
 			?>
+
+			<!-- Recruitment & Contact (Static - from STUDIO site) -->
+			<ul class="header__mobile-menu-list header__mobile-menu-list--static">
+				<li>
+					<a href="https://hrmos.co/pages/changeholdings/jobs?category=2166892462807429120"
+					   target="_blank"
+					   rel="noopener">
+						採用情報 ↗
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>"
+					   class="header__mobile-menu-contact">
+						お問い合わせ
+					</a>
+				</li>
+			</ul>
 		</nav>
 	</header>

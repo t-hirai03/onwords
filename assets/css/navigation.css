@@ -106,26 +106,39 @@
   opacity: var(--nav-link-hover-opacity);
 }
 
-/* External link icon (for 採用情報) */
-.header__menu a[target="_blank"]::after {
+/* Static navigation links (採用情報 & お問い合わせ) */
+.header__nav-link {
+  color: var(--nav-link-color);
+  text-decoration: none;
+  font-size: 16px;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header__nav-link:hover {
+  opacity: var(--nav-link-hover-opacity);
+}
+
+/* External link icon (採用情報) */
+.header__nav-link--external::after {
   content: "↗";
   font-size: 14px;
-  margin-left: 4px;
   line-height: 1;
 }
 
 /* Contact button (お問い合わせ) */
-.header__menu .contact-button > a {
-  position: relative;
+.header__nav-link--contact {
   padding: 10px 16px;
   color: #ffffff;
   background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%);
   border-radius: 4px;
-  overflow: hidden;
   transition: opacity var(--transition-fast);
 }
 
-.header__menu .contact-button > a:hover {
+.header__nav-link--contact:hover {
   opacity: 0.9;
 }
 
@@ -306,6 +319,22 @@
 .header__mobile-menu-list .sub-menu a {
   font-size: 14px;
   padding: 10px 0;
+}
+
+/* Static mobile menu items */
+.header__mobile-menu-list--static {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.header__mobile-menu-contact {
+  display: inline-block;
+  padding: 10px 16px;
+  color: #ffffff !important;
+  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%);
+  border-radius: 4px;
+  margin-top: 5px;
 }
 
 /* ========================================
