@@ -369,7 +369,7 @@
 
 .header__mobile-menu-list a::after {
   content: "›";
-  font-size: 20px;
+  font-size: 28px; /* Material Icons keyboard_arrow_right - matches STUDIO site */
   line-height: 1;
   color: var(--nav-link-color);
 }

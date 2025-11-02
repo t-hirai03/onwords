@@ -248,6 +248,161 @@ wp_enqueue_style(
 - Font Familyとユニコード値を正確に取得
 - CSSで同じFont Familyとユニコードを使用
 
+## CSSレイアウトのベストプラクティス
+
+### width/heightの固定を避ける
+
+**CRITICAL**: `width`と`height`を固定値で指定すると、コンテンツが切れたり、レスポンシブ対応が困難になります。
+
+#### 推奨する方針
+
+```css
+/* ❌ 避けるべき - 固定値 */
+.element {
+  width: 500px;
+  height: 300px;
+}
+
+/* ✅ 推奨 - 制約を使う */
+.element {
+  max-width: 500px;
+  min-height: 300px;
+}
+
+/* ✅ 推奨 - Flexbox/Gridで自然なサイズ調整 */
+.container {
+  display: flex;
+  flex-direction: column;
+  /* widthは指定しない - 親要素に従う */
+}
+
+/* ✅ 推奨 - フルスクリーンの場合 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* heightは指定しない - 自動的に画面全体をカバー */
+}
+```
+
+#### 例外（固定値OK）
+
+以下の場合は固定値を使用してもOK：
+- ロゴ画像: `width: 180px`
+- アイコン: `width: 24px; height: 24px`
+- 明確なデザイン仕様があるボタンサイズ
+- アスペクト比を保つ必要がある画像
+
+#### 実例：モバイルメニューの問題（教訓）
+
+**問題が発生したコード**:
+```html
+<!-- ❌ モバイルメニューが<header>内にネストされていた -->
+<header class="header">
+  <!-- header の高さが68pxに制限 -->
+  <nav class="header__mobile-menu">
+    <!-- メニュー項目 -->
+  </nav>
+</header>
+```
+
+**問題点**:
+- `<header>`の高さが約68pxで固定
+- モバイルメニューが親要素の高さに制限され、「事業内容」しか表示されない
+- スクロール不可
+
+**修正後のコード**:
+```html
+<!-- ✅ モバイルメニューを<header>の外に配置 -->
+<header class="header">
+  <!-- ヘッダーコンテンツ -->
+</header>
+
+<nav class="header__mobile-menu">
+  <!-- メニュー項目 - 全て表示される -->
+</nav>
+```
+
+```css
+/* ✅ 正しいモバイルメニューのスタイル */
+.header__mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* heightは指定しない - 画面全体をカバー */
+  overflow-y: auto; /* コンテンツが多い場合はスクロール */
+}
+```
+
+### アイコンのフォントサイズを全ブレークポイントで統一
+
+**CRITICAL**: アイコンのフォントサイズは、デスクトップ・タブレット・モバイル全てで統一してください。
+
+#### 推奨する実装
+
+```css
+/* ✅ 正しい実装 - 全ブレークポイントで同じサイズ */
+.header__nav-link--external::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f08e";
+  font-size: 14px; /* デスクトップ・タブレット・モバイル共通 */
+  line-height: 1;
+}
+
+/* ❌ 間違った実装 - ブレークポイントごとに異なるサイズ */
+.icon {
+  font-size: 16px; /* デスクトップ */
+}
+
+@media (max-width: 540px) {
+  .icon {
+    font-size: 14px; /* モバイル - 統一感がない */
+  }
+}
+```
+
+#### 理由
+
+- **視覚的一貫性**: アイコンサイズが変わると、ユーザー体験が不統一になる
+- **ブランド統一**: デザインシステムの一貫性を保つ
+- **保守性**: 一箇所で管理できる
+
+#### 確認方法
+
+STUDIOサイトから実装する際は、必ず全ブレークポイントでアイコンサイズを確認：
+
+```javascript
+// Chrome DevTools MCPで各ブレークポイントを確認
+// 1. デスクトップ (1920px)
+// 2. タブレット (768px)
+// 3. モバイル (375px)
+
+const icon = document.querySelector('.icon');
+const styles = window.getComputedStyle(icon);
+return {
+  fontSize: styles.fontSize,
+  fontWeight: styles.fontWeight,
+  fontFamily: styles.fontFamily
+};
+```
+
+#### 禁止事項
+
+❌ **やってはいけないこと：**
+- アイコンサイズをブレークポイントごとに変える（特別な理由がない限り）
+- テキストサイズに合わせてアイコンサイズを変更する（アイコンは固定サイズ）
+- 確認せずに「モバイルは小さくしたほうがいい」と推測する
+
+✅ **必ずやること：**
+- STUDIOサイトの全ブレークポイントでアイコンサイズを確認
+- 取得した値を全ブレークポイントで統一して使用
+- メディアクエリ内でアイコンサイズを上書きしない
+
 ### 完全コピーのアプローチ（公式要求）
 
 **CRITICAL**: このプロジェクトは本番サイト（https://www.onwords.co.jp/）を運用している株式会社Onwordsからの正式な依頼です。
