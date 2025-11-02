@@ -6,7 +6,8 @@
 
 株式会社OnwordsのコーポレートサイトをSTUDIOからWordPressに移行するためのカスタムテーマプロジェクトです。現在、移行作業のフェーズ1-2の初期段階にあります。
 
-**移行元サイト**: https://www.onwords.co.jp/ (STUDIOで構築)
+**本番サイト（移行元）**: https://www.onwords.co.jp/ (STUDIOで構築)
+**ローカル環境**: http://localhost:10018/
 **元の技術**: STUDIO (Nuxt.jsベース)
 **移行先プラットフォーム**: WordPress (カスタムテーマ)
 **目標**: ピクセル単位で完全に同じ見た目を再現する
@@ -89,6 +90,99 @@ onwords/
     ├── enqueue-scripts.php    # CSS/JS読み込み
     └── menus.php              # メニュー登録
 ```
+
+### assetsディレクトリの管理
+
+**重要**: すべての静的アセット（画像、CSS、JavaScript）は `assets/` ディレクトリに集約して管理します。
+
+#### ディレクトリ構成
+
+```
+assets/
+├── css/          # すべてのCSSファイル
+├── js/           # すべてのJavaScriptファイル
+├── images/       # すべての画像ファイル
+└── fonts/        # Webフォントファイル
+```
+
+#### 各ディレクトリの役割
+
+**assets/css/**
+- STUDIOサイトから抽出したすべてのCSSを整理して配置
+- Nuxt.jsのインライン `<style>` タグから抽出したスタイルもここに統合
+- モジュール化された複数のCSSファイルに分割（reset.css, variables.css, base.css等）
+- `wp_enqueue_style()` で読み込み順序を管理
+
+**assets/js/**
+- STUDIOサイトから抽出したJavaScriptを配置
+- Vue.js/Nuxt.jsのパターンをバニラJavaScriptに変換したファイル
+- 機能ごとにファイルを分割（navigation.js, animations.js等）
+- `wp_enqueue_script()` でフッターに読み込み
+
+**assets/images/**
+- ロゴ、アイコン、背景画像、コンテンツ画像などすべての画像を配置
+- サブディレクトリで整理することも可能：
+  ```
+  images/
+  ├── logo/          # ロゴファイル
+  ├── icons/         # アイコン類
+  ├── backgrounds/   # 背景画像
+  └── content/       # コンテンツ用画像
+  ```
+- 本番環境では最適化（WebP変換、圧縮）を行う
+
+**assets/fonts/**
+- カスタムWebフォントファイルを配置
+- ライセンス確認済みのフォントのみ配置
+- `@font-face` でCSSから読み込み
+
+#### アセットのパス取得方法
+
+WordPressテンプレート内でアセットを参照する際は、必ず `get_template_directory_uri()` を使用：
+
+```php
+<!-- CSS読み込み（functions.phpで） -->
+<?php
+wp_enqueue_style('onwords-main', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.0');
+?>
+
+<!-- 画像表示（テンプレートファイルで） -->
+<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo.svg" alt="Onwords">
+
+<!-- JavaScript読み込み（functions.phpで） -->
+<?php
+wp_enqueue_script('onwords-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true);
+?>
+```
+
+#### ファイル命名規則
+
+- **ケバブケース**を使用: `smooth-scroll.js`, `hero-section.css`
+- **説明的な名前**を付ける: `header-logo.svg`, `business-card-bg.jpg`
+- **バージョン番号**は付けない（Gitで管理）
+- **最小化ファイル**は `.min.css`, `.min.js` のサフィックスを付ける（本番環境用）
+
+#### 画像の最適化
+
+開発時の注意点：
+- 元画像は高解像度で保存（後で最適化）
+- SVGは可能な限り使用（ロゴ、アイコン）
+- JPG/PNGは本番環境でWebP変換を検討
+- レスポンシブ画像は `srcset` 属性を使用
+
+#### 画像ダウンロード時の命名規則
+
+**重要**: STUDIOサイトから画像をダウンロードする際は、必ず以下のルールに従うこと：
+
+- **元のファイル名を保持**: サイトで表示されている画像のファイル名をそのまま使用する
+- **例**:
+  - 元サイトのURL: `https://storage.googleapis.com/studio-design-asset-files/projects/1pqDrBZNWj/s-300x91_222424ad-5eb2-43c8-8327-98b3cd560f8f.svg`
+  - 保存先: `assets/images/logo/s-300x91_222424ad-5eb2-43c8-8327-98b3cd560f8f.svg`
+- **理由**:
+  - 元サイトとの対応関係を明確にする
+  - デバッグ時に元画像を簡単に特定できる
+  - バージョン管理時に変更履歴を追跡しやすい
+- **例外**: 明確な理由があり、チーム内で合意がある場合のみリネーム可能
 
 ### カスタム投稿タイプ
 
@@ -322,9 +416,26 @@ Chrome DevTools MCPと手動抽出を使用:
 
 **必ずToDoリストを作成してから作業を開始してください。**
 
-TodoWriteツールを使用して:
+### ToDoリスト作成方法
+
+プロジェクトには以下のツールが利用可能です：
+
+#### 1. TodoWriteツール（標準）
+基本的なタスク管理に使用：
 1. これから行う作業のタスクリストを作成
 2. 各タスクを順番に進め、完了したらステータスを更新
 3. 複数の作業がある場合は、すべてToDoに記載してから開始
 
-これにより、作業の進捗が明確になり、抜け漏れを防ぐことができます。
+#### 2. spec-workflow MCP（大規模な機能開発向け）
+spec-workflow MCPがインストールされています。以下の場合に使用を依頼することがあります：
+- 大規模な機能開発や実装を行う場合
+- 要件定義からタスク分割まで体系的に管理する必要がある場合
+- 複数フェーズにまたがる作業を計画する場合
+
+spec-workflowを使用する場合は、以下のワークフローに従います：
+1. 要件定義（Requirements）の作成
+2. 設計ドキュメント（Design）の作成
+3. タスク一覧（Tasks）の作成
+4. 実装（Implementation）の実行
+
+**注意**: どちらのツールを使用する場合でも、必ずタスクリストを作成してから作業を開始してください。これにより、作業の進捗が明確になり、抜け漏れを防ぐことができます。

@@ -1,0 +1,344 @@
+/**
+ * Navigation Styles
+ *
+ * Header and navigation menu styles for the Onwords theme.
+ * Uses BEM naming convention and CSS variables from variables.css.
+ */
+
+/* ========================================
+   Header Container
+   ======================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  background: var(--header-bg-color);
+  padding: var(--header-padding-desktop);
+  z-index: var(--header-z-index);
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  /* Fade-in animation on page load */
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: fadeInFromTop var(--transition-standard) forwards;
+  animation-delay: 800ms;
+}
+
+@keyframes fadeInFromTop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   Logo
+   ======================================== */
+
+.header__logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  text-decoration: none;
+}
+
+.header__logo {
+  width: var(--logo-width-desktop);
+  height: auto;
+  max-width: 100%;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   Desktop Navigation
+   ======================================== */
+
+.header__nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 25px;
+  flex-shrink: 1;
+}
+
+.header__nav--desktop {
+  display: flex;
+}
+
+.header__menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__menu li {
+  position: relative;
+}
+
+.header__menu > li > a {
+  color: var(--nav-link-color);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+.header__menu > li > a:hover {
+  opacity: var(--nav-link-hover-opacity);
+}
+
+/* External link icon (for 採用情報) */
+.header__menu a[target="_blank"]::after {
+  content: "↗";
+  font-size: 14px;
+  margin-left: 4px;
+  line-height: 1;
+}
+
+/* Contact button (お問い合わせ) */
+.header__menu .contact-button > a {
+  position: relative;
+  padding: 10px 16px;
+  color: #ffffff;
+  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: opacity var(--transition-fast);
+}
+
+.header__menu .contact-button > a:hover {
+  opacity: 0.9;
+}
+
+/* Dropdown arrow icon for parent menu items */
+.header__menu .menu-item-has-children > a::after {
+  content: "▾";
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Submenu (dropdown) */
+.header__menu .sub-menu {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  min-width: 200px;
+  background: var(--header-bg-color);
+  border: none;
+  border-radius: 16px;
+  box-shadow: none;
+  list-style: none;
+  margin: 0;
+  padding: 16px 20px;
+
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity var(--transition-fast),
+              visibility var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+/* Show submenu on parent hover */
+.header__menu .menu-item-has-children:hover > .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Submenu items */
+.header__menu .sub-menu li {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.header__menu .sub-menu li:last-child {
+  margin-bottom: 0;
+}
+
+.header__menu .sub-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  color: var(--nav-link-color);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast);
+}
+
+/* Submenu arrow icon */
+.header__menu .sub-menu a::before {
+  content: "›";
+  font-size: 18px;
+  line-height: 1;
+  color: var(--nav-link-color);
+}
+
+.header__menu .sub-menu a:hover {
+  opacity: var(--nav-link-hover-opacity);
+}
+
+/* ========================================
+   Hamburger Menu Button (Mobile)
+   ======================================== */
+
+.header__hamburger-btn {
+  display: none; /* Hidden by default, shown on mobile */
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--hamburger-line-spacing);
+  width: auto;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.header__hamburger-btn:hover {
+  opacity: 0.3;
+}
+
+.header__hamburger-line {
+  height: var(--hamburger-line-height);
+  background: var(--hamburger-line-color);
+  border-radius: 100px;
+  transition: all var(--transition-fast);
+}
+
+.header__hamburger-line--1 {
+  width: 30px;
+}
+
+.header__hamburger-line--2 {
+  width: 20px;
+}
+
+.header__hamburger-line--3 {
+  width: 10px;
+}
+
+/* ========================================
+   Mobile Menu
+   ======================================== */
+
+.header__mobile-menu {
+  position: fixed;
+  top: 67.7734px; /* Height of header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--header-bg-color);
+  padding: 20px;
+  overflow-y: auto;
+
+  /* Hidden by default */
+  display: none;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity var(--transition-standard), transform var(--transition-standard);
+}
+
+.header__mobile-menu.is-open {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.header__mobile-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__mobile-menu-list li {
+  border-bottom: 1px solid #eee;
+}
+
+.header__mobile-menu-list a {
+  display: block;
+  padding: 15px 0;
+  color: var(--nav-link-color);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.header__mobile-menu-list a:hover {
+  opacity: var(--nav-link-hover-opacity);
+}
+
+/* Sub-menu items (children) */
+.header__mobile-menu-list .sub-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.header__mobile-menu-list .sub-menu li {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.header__mobile-menu-list .sub-menu a {
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+/* Tablet and below (< 1140px) */
+@media screen and (max-width: 1140px) {
+  .header__logo {
+    width: var(--logo-width-tablet);
+  }
+}
+
+/* Mobile and below (< 540px) */
+@media screen and (max-width: 540px) {
+  .header {
+    padding: var(--header-padding-mobile-lg);
+  }
+
+  /* Hide desktop navigation */
+  .header__nav--desktop {
+    display: none;
+  }
+
+  /* Show hamburger menu button */
+  .header__hamburger-btn {
+    display: flex;
+  }
+}
+
+/* Small mobile (< 320px) */
+@media screen and (max-width: 320px) {
+  .header {
+    padding: var(--header-padding-mobile-sm);
+  }
+}

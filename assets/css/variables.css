@@ -1,0 +1,36 @@
+/**
+ * CSS Variables (Custom Properties)
+ *
+ * This file defines CSS custom properties for the Onwords theme.
+ * Variables are organized by component and usage.
+ */
+
+:root {
+  /* ========================================
+     Header Variables
+     ======================================== */
+
+  /* Header Layout */
+  --header-bg-color: rgb(255, 255, 255);
+  --header-padding-desktop: 16px 32px;
+  --header-padding-mobile-lg: 12px 20px;
+  --header-padding-mobile-sm: 12px 15px;
+  --header-z-index: 1;
+
+  /* Logo Sizing */
+  --logo-width-desktop: 160px;
+  --logo-width-tablet: 144px;
+
+  /* Hamburger Menu */
+  --hamburger-line-color: #424242;
+  --hamburger-line-height: 2px;
+  --hamburger-line-spacing: 6px;
+
+  /* Navigation */
+  --nav-link-color: #333333;
+  --nav-link-hover-opacity: 0.7;
+
+  /* Transitions */
+  --transition-standard: 500ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  --transition-fast: 160ms ease-in-out;
+}
