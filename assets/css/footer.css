@@ -1,0 +1,188 @@
+/**
+ * Footer Styles
+ *
+ * Footer styles for the Onwords theme extracted from STUDIO site.
+ * Uses BEM naming convention and CSS variables from variables.css.
+ */
+
+/* ========================================
+   Footer Container
+   ======================================== */
+
+.footer {
+  background: #f6f6f6;
+  padding: 80px 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.footer__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ========================================
+   Branding (Logo & Tagline)
+   ======================================== */
+
+.footer__branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer__logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.footer__logo {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+.footer__tagline {
+  font-size: 14px;
+  font-weight: 500;
+  color: #222222;
+  line-height: 1.75;
+  margin: 0;
+  text-align: center;
+}
+
+/* ========================================
+   Footer Navigation
+   ======================================== */
+
+.footer__nav {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  width: 100%;
+  max-width: 800px;
+  justify-content: center;
+}
+
+.footer__nav-main,
+.footer__nav-policy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__menu li {
+  margin: 0;
+  padding: 0;
+}
+
+.footer__menu a,
+.footer__menu-item {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer__menu a:hover,
+.footer__menu-item:hover {
+  opacity: 0.7;
+}
+
+/* External link items with arrow */
+.footer__menu-item--external {
+  color: #333333;
+}
+
+/* ========================================
+   Copyright
+   ======================================== */
+
+.footer__copyright {
+  font-size: 12px;
+  font-weight: 500;
+  color: #424242;
+  line-height: 2;
+  margin: 0;
+  text-align: center;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+/* Tablet and below (< 768px) */
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 60px 0 30px;
+  }
+
+  .footer__nav {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .footer__nav-main,
+  .footer__nav-policy {
+    align-items: center;
+  }
+
+  .footer__menu {
+    align-items: center;
+  }
+}
+
+/* Mobile and below (< 540px) */
+@media screen and (max-width: 540px) {
+  .footer {
+    padding: 40px 0 20px;
+    gap: 30px;
+  }
+
+  .footer__container {
+    gap: 30px;
+  }
+
+  .footer__logo {
+    width: 150px;
+  }
+
+  .footer__nav {
+    gap: 30px;
+  }
+
+  .footer__menu {
+    gap: 12px;
+  }
+
+  .footer__menu a,
+  .footer__menu-item {
+    font-size: 14px;
+  }
+}

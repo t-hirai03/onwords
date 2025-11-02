@@ -38,6 +38,14 @@ function onwords_enqueue_assets() {
 		'1.0.0'
 	);
 
+	// Enqueue Footer CSS (depends on variables.css)
+	wp_enqueue_style(
+		'onwords-footer',
+		get_template_directory_uri() . '/assets/css/footer.css',
+		array( 'onwords-variables' ),
+		'1.0.0'
+	);
+
 	// Enqueue Navigation JavaScript (load in footer)
 	wp_enqueue_script(
 		'onwords-navigation',
