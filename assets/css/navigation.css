@@ -131,18 +131,29 @@
   line-height: 1;
 }
 
-/* Contact button (お問い合わせ) - from STUDIO site */
+/* Contact button (お問い合わせ) - from STUDIO site (完全コピー) */
 .header__nav-link--contact {
   padding: 10px 16px;
-  color: #333333;
-  background: #e74a4a; /* Solid red in normal state */
+  margin: 0;
+  color: #ffffff; /* rgb(255, 255, 255) - White text in normal state */
+  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%); /* Gradient in normal state */
   border-radius: 4px;
-  transition: background 0.3s cubic-bezier(0.4, 0.4, 0, 1), color 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0.4, 0, 1);
 }
 
 .header__nav-link--contact:hover {
-  color: #ffffff;
-  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%); /* Gradient on hover */
+  opacity: 1;
+  color: #ffffff; /* rgb(255, 255, 255) - White text on hover */
+  background: linear-gradient(75deg, rgb(230, 1, 18) 0%, rgb(238, 175, 15) 37%, rgb(248, 82, 30) 100%); /* Gradient angle changes to 75deg, yellow shifts */
+  transition-duration: 400ms; /* 0.4s */
+  transition-timing-function: ease-in-out;
 }
 
 /* Dropdown arrow icon for parent menu items */
@@ -342,19 +353,29 @@
 }
 
 .header__mobile-menu-contact {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 16px;
-  color: #333333 !important;
-  background: #e74a4a; /* Solid red in normal state */
-  border-radius: 4px;
   margin-top: 5px;
-  transition: background 0.3s cubic-bezier(0.4, 0.4, 0, 1), color 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+  margin-bottom: 0;
+  color: #ffffff !important; /* rgb(255, 255, 255) - White text in normal state */
+  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%) !important; /* Gradient in normal state */
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0.4, 0, 1);
 }
 
 .header__mobile-menu-contact:hover,
 .header__mobile-menu-contact:active {
-  color: #ffffff !important;
-  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%) !important; /* Gradient on hover */
+  opacity: 1;
+  color: #ffffff !important; /* rgb(255, 255, 255) - White text on hover */
+  background: linear-gradient(75deg, rgb(230, 1, 18) 0%, rgb(238, 175, 15) 37%, rgb(248, 82, 30) 100%) !important; /* Gradient angle changes to 75deg, yellow shifts */
+  transition-duration: 400ms !important; /* 0.4s */
+  transition-timing-function: ease-in-out !important;
 }
 
 /* ========================================
