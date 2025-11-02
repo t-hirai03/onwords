@@ -302,13 +302,14 @@
 
 .header__mobile-menu {
   position: fixed;
-  top: 67.7734px; /* Height of header */
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--mobile-menu-bg-color);
-  padding: 20px;
+  background: rgb(255, 255, 255);
+  padding: 62px 20px 40px;
   overflow-y: auto;
+  z-index: 1000;
 
   /* Hidden by default */
   display: none;

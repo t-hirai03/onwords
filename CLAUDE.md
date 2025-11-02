@@ -66,6 +66,82 @@
 - Chrome DevTools MCP または Playwright MCP で実際の構造・スタイル・内容を取得
 - 取得したデータを元に正確に実装
 
+### 実装後の動作確認（必須）
+
+**CRITICAL**: 実装完了後、必ずローカル環境で動作確認を行い、STUDIOサイトと完全に一致していることを確認してください。
+
+#### 動作確認手順
+
+1. **ローカル環境にアクセス**
+   ```
+   - mcp__chrome-devtools__navigate_page で http://localhost:10018/ を開く
+   - または mcp__playwright__browser_navigate でローカル環境にアクセス
+   ```
+
+2. **実装した機能の動作確認**
+   - 実装した機能が正しく動作するか確認
+   - JavaScript機能（クリック、ホバー、アニメーション）をテスト
+   - エラーがコンソールに出ていないか確認（`mcp__chrome-devtools__list_console_messages`）
+
+3. **見た目の完全一致を確認**
+   - **デスクトップ表示**: 1920px, 1140pxで確認
+   - **タブレット表示**: 768px, 540pxで確認
+   - **モバイル表示**: 375px, 320pxで確認
+   - 各ブレークポイントでSTUDIOサイトと並べて比較
+
+4. **細かい差異の確認（重要）**
+
+   **文字の配置（左寄せ/中央寄せ）**:
+   - デスクトップとモバイルで配置が変わる場合がある
+   - `text-align`, `align-items`, `justify-content` を確認
+   - 例: フッターはデスクトップで中央寄せ、モバイルで左寄せの可能性
+
+   **フォントサイズ**:
+   - デスクトップとモバイルで font-size が異なる場合がある
+   - 1px単位で正確に確認（`mcp__chrome-devtools__evaluate_script` で計算済みスタイル取得）
+   - 例: デスクトップ 16px → モバイル 14px
+
+   **余白（padding/margin）**:
+   - ブレークポイントごとに余白が変わる
+   - 上下左右すべての余白を確認
+
+   **要素の表示/非表示**:
+   - デスクトップとモバイルで表示される要素が変わる
+   - 例: デスクトップナビ（デスクトップのみ）、ハンバーガーメニュー（モバイルのみ）
+
+5. **比較確認スクリプト例**
+   ```javascript
+   // STUDIOサイトとローカルで同じ要素のスタイルを比較
+   () => {
+     const element = document.querySelector('.footer__menu a');
+     const styles = window.getComputedStyle(element);
+     return {
+       fontSize: styles.fontSize,
+       fontWeight: styles.fontWeight,
+       textAlign: styles.textAlign,
+       display: styles.display,
+       alignItems: styles.alignItems,
+       justifyContent: styles.justifyContent
+     };
+   }
+   ```
+
+#### 禁止事項
+
+❌ **絶対にやってはいけないこと：**
+- 実装後、ローカル環境を確認せずに作業完了とする
+- 「動くからOK」で見た目の確認を省略する
+- デスクトップだけ確認してモバイルを確認しない
+- 1つのブレークポイントだけ確認して他を省略する
+- 「だいたい同じ」で妥協する
+
+✅ **必ずやること：**
+- 実装したすべての機能をローカル環境で動作確認
+- すべてのブレークポイント（デスクトップ、タブレット、モバイル）で確認
+- STUDIOサイトとローカル環境を並べて目視で比較
+- 文字サイズ、配置、余白が1px単位で一致しているか確認
+- 問題があれば即座に修正してから次のタスクに進む
+
 ### 画像ファイル名の命名規則
 
 **重要**: STUDIOサイトから画像をダウンロードする際は、必ず以下のルールに従うこと：

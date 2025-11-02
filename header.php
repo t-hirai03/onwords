@@ -51,48 +51,48 @@
 			<div class="header__hamburger-line header__hamburger-line--2"></div>
 			<div class="header__hamburger-line header__hamburger-line--3"></div>
 		</button>
-
-		<!-- Mobile Menu -->
-		<nav class="header__mobile-menu"
-			 id="mobile-menu"
-			 role="dialog"
-			 aria-modal="true"
-			 aria-label="モバイルメニュー">
-			<!-- Close Button -->
-			<button type="button"
-					class="header__mobile-menu-close"
-					aria-label="メニューを閉じる">
-				<span aria-hidden="true">×</span>
-			</button>
-
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'header-menu',
-					'container'      => false,
-					'menu_class'     => 'header__mobile-menu-list',
-					'fallback_cb'    => false,
-				)
-			);
-			?>
-
-			<!-- Recruitment & Contact (Static - from STUDIO site) -->
-			<ul class="header__mobile-menu-list header__mobile-menu-list--static">
-				<li>
-					<a href="https://hrmos.co/pages/changeholdings/jobs?category=2166892462807429120"
-					   class="header__mobile-menu-external"
-					   target="_blank"
-					   rel="noopener">
-						採用情報
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>"
-					   class="header__mobile-menu-contact">
-						<span class="header__mobile-menu-contact-bg"></span>
-						<span class="header__mobile-menu-contact-text">お問い合わせ</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
 	</header>
+
+	<!-- Mobile Menu (outside of header for proper positioning) -->
+	<nav class="header__mobile-menu"
+		 id="mobile-menu"
+		 role="dialog"
+		 aria-modal="true"
+		 aria-label="モバイルメニュー">
+		<!-- Close Button -->
+		<button type="button"
+				class="header__mobile-menu-close"
+				aria-label="メニューを閉じる">
+			<span aria-hidden="true">×</span>
+		</button>
+
+		<?php
+		wp_nav_menu(
+			array(
+				'theme_location' => 'header-menu',
+				'container'      => false,
+				'menu_class'     => 'header__mobile-menu-list',
+				'fallback_cb'    => false,
+			)
+		);
+		?>
+
+		<!-- Recruitment & Contact (Static - from STUDIO site) -->
+		<ul class="header__mobile-menu-list header__mobile-menu-list--static">
+			<li>
+				<a href="https://hrmos.co/pages/changeholdings/jobs?category=2166892462807429120"
+				   class="header__mobile-menu-external"
+				   target="_blank"
+				   rel="noopener">
+					採用情報
+				</a>
+			</li>
+			<li>
+				<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>"
+				   class="header__mobile-menu-contact">
+					<span class="header__mobile-menu-contact-bg"></span>
+					<span class="header__mobile-menu-contact-text">お問い合わせ</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
