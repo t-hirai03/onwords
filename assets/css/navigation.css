@@ -131,11 +131,12 @@
   line-height: 1;
 }
 
-/* Contact button (お問い合わせ) - from STUDIO site (完全コピー) */
+/* Contact button (お問い合わせ) - from STUDIO site (完全コピー - 2層構造) */
 .header__nav-link--contact {
+  position: relative;
   padding: 10px 16px;
   margin: 0;
-  color: #ffffff; /* rgb(255, 255, 255) - White text in normal state */
+  color: #ffffff; /* rgb(255, 255, 255) - White text */
   background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%); /* Gradient in normal state */
   border-radius: 4px;
   font-size: 16px;
@@ -144,14 +145,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 1;
+  overflow: hidden; /* Hide overflowing background layer */
   transition: all 0.3s cubic-bezier(0.4, 0.4, 0, 1);
 }
 
-.header__nav-link--contact:hover {
-  opacity: 1;
-  color: #ffffff; /* rgb(255, 255, 255) - White text on hover */
-  background: linear-gradient(75deg, rgb(230, 1, 18) 0%, rgb(238, 175, 15) 37%, rgb(248, 82, 30) 100%); /* Gradient angle changes to 75deg, yellow shifts */
+/* Background layer - slides in from left on hover */
+.header__nav-link-bg {
+  position: absolute;
+  top: 0;
+  left: -260px; /* Start off-screen to the left */
+  right: 86px;
+  bottom: 0;
+  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%);
+  opacity: 0;
+  z-index: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+/* Text layer - ensure it's above background */
+.header__nav-link-text {
+  position: relative;
+  z-index: 1;
+}
+
+.header__nav-link--contact:hover .header__nav-link-bg {
+  left: 0px; /* Slide in from left */
+  right: -174px; /* Extend to the right */
+  opacity: 1; /* Fade in */
+  background: linear-gradient(75deg, rgb(230, 1, 18) 0%, rgb(238, 175, 15) 37%, rgb(248, 82, 30) 100%); /* Gradient angle changes to 75deg */
   transition-duration: 400ms; /* 0.4s */
   transition-timing-function: ease-in-out;
 }
@@ -353,27 +374,48 @@
 }
 
 .header__mobile-menu-contact {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 10px 16px;
   margin-top: 5px;
   margin-bottom: 0;
-  color: #ffffff !important; /* rgb(255, 255, 255) - White text in normal state */
+  color: #ffffff !important; /* rgb(255, 255, 255) - White text */
   background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%) !important; /* Gradient in normal state */
   border-radius: 4px;
   font-size: 16px;
   font-weight: 400;
   line-height: 16px;
-  opacity: 1;
+  overflow: hidden; /* Hide overflowing background layer */
   transition: all 0.3s cubic-bezier(0.4, 0.4, 0, 1);
 }
 
-.header__mobile-menu-contact:hover,
-.header__mobile-menu-contact:active {
-  opacity: 1;
-  color: #ffffff !important; /* rgb(255, 255, 255) - White text on hover */
-  background: linear-gradient(75deg, rgb(230, 1, 18) 0%, rgb(238, 175, 15) 37%, rgb(248, 82, 30) 100%) !important; /* Gradient angle changes to 75deg, yellow shifts */
+/* Background layer - slides in from left on hover */
+.header__mobile-menu-contact-bg {
+  position: absolute;
+  top: 0;
+  left: -260px; /* Start off-screen to the left */
+  right: 86px;
+  bottom: 0;
+  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%);
+  opacity: 0;
+  z-index: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+/* Text layer - ensure it's above background */
+.header__mobile-menu-contact-text {
+  position: relative;
+  z-index: 1;
+}
+
+.header__mobile-menu-contact:hover .header__mobile-menu-contact-bg,
+.header__mobile-menu-contact:active .header__mobile-menu-contact-bg {
+  left: 0px; /* Slide in from left */
+  right: -174px; /* Extend to the right */
+  opacity: 1; /* Fade in */
+  background: linear-gradient(75deg, rgb(230, 1, 18) 0%, rgb(238, 175, 15) 37%, rgb(248, 82, 30) 100%); /* Gradient angle changes to 75deg */
   transition-duration: 400ms !important; /* 0.4s */
   transition-timing-function: ease-in-out !important;
 }

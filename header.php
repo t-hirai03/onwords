@@ -36,7 +36,8 @@
 
 			<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>"
 			   class="header__nav-link header__nav-link--contact">
-				お問い合わせ
+				<span class="header__nav-link-bg"></span>
+				<span class="header__nav-link-text">お問い合わせ</span>
 			</a>
 		</nav>
 
@@ -77,7 +78,8 @@
 				<li>
 					<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>"
 					   class="header__mobile-menu-contact">
-						お問い合わせ
+						<span class="header__mobile-menu-contact-bg"></span>
+						<span class="header__mobile-menu-contact-text">お問い合わせ</span>
 					</a>
 				</li>
 			</ul>
