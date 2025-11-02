@@ -334,6 +334,180 @@ wp_enqueue_style(
 - アニメーション・トランジションを完全に再現
 - 実装後、ローカル環境でSTUDIOサイトと並べて比較検証
 
+### HTML階層構造とCSS確認の完全ワークフロー
+
+**CRITICAL**: 要素を実装する際は、必ずHTML階層構造を確認し、各階層に当たっているCSSを正確に抽出してください。
+
+#### 確認手順（必須）
+
+**Step 1: HTML構造の確認**
+
+```javascript
+// Chrome DevTools MCPでevaluate_scriptを使用
+() => {
+  const element = document.querySelector('セレクタ');
+
+  return {
+    // 要素自体の情報
+    tagName: element.tagName,
+    className: element.className,
+
+    // HTML構造（outerHTML）
+    outerHTML: element.outerHTML,
+
+    // 子要素の階層構造
+    children: Array.from(element.children).map(child => ({
+      tagName: child.tagName,
+      className: child.className,
+      children: Array.from(child.children).map(grandchild => ({
+        tagName: grandchild.tagName,
+        className: grandchild.className
+      }))
+    })),
+
+    // 子要素の数
+    childrenCount: element.children.length
+  };
+}
+```
+
+**Step 2: 各階層の通常状態CSSを確認**
+
+```javascript
+// 親要素のCSS
+() => {
+  const parent = document.querySelector('親セレクタ');
+  const styles = window.getComputedStyle(parent);
+
+  return {
+    // すべての重要なプロパティを取得
+    position: styles.position,
+    display: styles.display,
+    flexDirection: styles.flexDirection,
+    alignItems: styles.alignItems,
+    justifyContent: styles.justifyContent,
+    padding: styles.padding,
+    margin: styles.margin,
+    background: styles.background,
+    color: styles.color,
+    fontSize: styles.fontSize,
+    fontWeight: styles.fontWeight,
+    lineHeight: styles.lineHeight,
+    borderRadius: styles.borderRadius,
+    overflow: styles.overflow,
+    zIndex: styles.zIndex,
+    transition: styles.transition
+  };
+}
+
+// 子要素のCSS（各階層ごとに実行）
+() => {
+  const child = document.querySelector('子セレクタ');
+  const styles = window.getComputedStyle(child);
+
+  return {
+    position: styles.position,
+    top: styles.top,
+    left: styles.left,
+    right: styles.right,
+    bottom: styles.bottom,
+    width: styles.width,
+    height: styles.height,
+    background: styles.background,
+    opacity: styles.opacity,
+    zIndex: styles.zIndex,
+    transition: styles.transition
+  };
+}
+```
+
+**Step 3: ホバー時の各階層のCSSを確認**
+
+```javascript
+// ホバー後に実行
+// 親要素のホバー状態
+() => {
+  const parent = document.querySelector('親セレクタ');
+  const styles = window.getComputedStyle(parent);
+
+  return {
+    // ホバー時に変化するプロパティを確認
+    background: styles.background,
+    color: styles.color,
+    transform: styles.transform,
+    opacity: styles.opacity,
+    transitionDuration: styles.transitionDuration,
+    transitionTimingFunction: styles.transitionTimingFunction
+  };
+}
+
+// 子要素のホバー状態（親のホバーで子がどう変わるか）
+() => {
+  const child = document.querySelector('子セレクタ');
+  const styles = window.getComputedStyle(child);
+
+  return {
+    position: styles.position,
+    left: styles.left,
+    right: styles.right,
+    background: styles.background,
+    opacity: styles.opacity,
+    transform: styles.transform,
+    transitionDuration: styles.transitionDuration,
+    transitionTimingFunction: styles.transitionTimingFunction
+  };
+}
+```
+
+#### 実装例：お問い合わせボタン（完全な階層確認）
+
+**HTML構造確認結果**:
+```html
+<a class="ボタン親要素">
+  <div class="背景レイヤー"></div>  <!-- 絶対配置の背景 -->
+  <p class="テキスト">お問い合わせ</p>
+</a>
+```
+
+**親要素（`<a>`）の CSS**:
+- 通常状態: `position: relative`, `overflow: hidden`, `background: linear-gradient(90deg, ...)`
+- ホバー状態: 背景は変わらない（子要素の背景が表示される）
+
+**子要素1（`<div>` 背景レイヤー）の CSS**:
+- 通常状態: `position: absolute`, `left: -260px`, `opacity: 0` - 画面外
+- ホバー状態: `left: 0px`, `right: -174px`, `opacity: 1`, `background: linear-gradient(75deg, ...)` - スライドイン
+
+**子要素2（`<p>` テキスト）の CSS**:
+- 通常状態: `position: relative`, `z-index: 1` - 前面に表示
+- ホバー状態: 変化なし
+
+#### チェックリスト
+
+実装前に必ず確認：
+
+- [ ] HTML階層構造を確認（`outerHTML`, `children` を取得）
+- [ ] 親要素の通常状態CSSを取得
+- [ ] すべての子要素の通常状態CSSを取得（階層ごと）
+- [ ] ホバー後、親要素のCSSを確認
+- [ ] ホバー後、すべての子要素のCSSを確認（階層ごと）
+- [ ] `position`, `z-index` の関係を理解
+- [ ] `overflow: hidden` などのレイアウト制御を確認
+- [ ] トランジションプロパティを各階層で確認
+
+#### 禁止事項
+
+❌ **絶対にやってはいけないこと：**
+- 親要素だけ確認して子要素を確認しない
+- 通常状態だけ確認してホバー状態を確認しない
+- HTML構造を確認せずに推測で実装する
+- 「だいたい同じ構造だろう」と仮定する
+
+✅ **必ずやること：**
+- すべての階層のHTML構造を正確に把握
+- 各階層の通常状態とホバー状態のCSSを完全に取得
+- 親子関係（`position: relative/absolute`, `z-index`）を正確に再現
+- `overflow`, `clip-path` などのレイアウト制御を見落とさない
+
 ## 開発環境
 
 - **ローカル環境**: Local by Flywheel
