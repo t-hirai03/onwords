@@ -97,6 +97,81 @@
 - デバッグやメンテナンスを容易にする
 - 将来的な差分確認を可能にする
 
+### アイコンの実装方法
+
+**重要**: STUDIOサイトで使用されているアイコンは必ず正確に確認して実装してください。
+
+#### Font Awesome アイコンの確認方法
+
+1. **Chrome DevTools MCP で要素を検査**
+   ```javascript
+   // アイコン要素を検査するスクリプト例
+   const icon = element.querySelector('i, .icon, [class*="fa-"]');
+   const styles = window.getComputedStyle(icon);
+   return {
+     classes: icon.className,
+     fontFamily: styles.fontFamily,
+     content: window.getComputedStyle(icon, '::before').content
+   };
+   ```
+
+2. **確認すべき項目**
+   - Font Awesome のバージョン（例: "Font Awesome 6 Free"）
+   - アイコンのクラス名（例: `fa-solid fa-arrow-up-right-from-square`）
+   - スタイル（Solid: `font-weight: 900`, Regular: `font-weight: 400`, etc.）
+   - ユニコード値（例: `\f08e`）
+
+#### STUDIOサイトで使用中のアイコン
+
+**外部リンクアイコン（採用情報、ポリシーリンクなど）:**
+- Font Awesome 6 Free
+- クラス: `fa-solid fa-arrow-up-right-from-square`
+- ユニコード: `\f08e`
+- フォントウェイト: `900` (Solid)
+- フォントサイズ: `14px`
+
+#### 実装例
+
+```css
+/* 正しい実装 - Font Awesome 6 */
+.header__nav-link--external::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* Solid style */
+  content: "\f08e"; /* fa-arrow-up-right-from-square */
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* 間違った実装 - テキストの矢印 */
+.header__nav-link--external::after {
+  content: "↗"; /* ❌ これは使わない */
+}
+```
+
+#### Font Awesome の読み込み
+
+```php
+// inc/enqueue-scripts.php
+wp_enqueue_style(
+  'font-awesome',
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
+  array(),
+  '6.5.1'
+);
+```
+
+#### 禁止事項
+
+❌ **やってはいけないこと：**
+- STUDIOサイトでFont Awesomeを使っているのに、テキスト記号（"↗"など）で代用する
+- アイコンのユニコード値を確認せずに推測する
+- Font Awesomeのバージョンを確認せずに実装する
+
+✅ **必ずやること：**
+- Chrome DevTools MCPでアイコンの実装を確認
+- Font Familyとユニコード値を正確に取得
+- CSSで同じFont Familyとユニコードを使用
+
 ## 開発環境
 
 - **ローカル環境**: Local by Flywheel

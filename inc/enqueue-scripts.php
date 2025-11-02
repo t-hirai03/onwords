@@ -14,6 +14,14 @@
  * @return void
  */
 function onwords_enqueue_assets() {
+	// Enqueue Font Awesome 6 Free (from CDN - used in STUDIO site)
+	wp_enqueue_style(
+		'font-awesome',
+		'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
+		array(),
+		'6.5.1'
+	);
+
 	// Enqueue Base Styles (CSS reset and global styles)
 	wp_enqueue_style(
 		'onwords-base',

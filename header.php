@@ -68,9 +68,10 @@
 			<ul class="header__mobile-menu-list header__mobile-menu-list--static">
 				<li>
 					<a href="https://hrmos.co/pages/changeholdings/jobs?category=2166892462807429120"
+					   class="header__mobile-menu-external"
 					   target="_blank"
 					   rel="noopener">
-						採用情報 ↗
+						採用情報
 					</a>
 				</li>
 				<li>

@@ -122,9 +122,11 @@
   opacity: var(--nav-link-hover-opacity);
 }
 
-/* External link icon (採用情報) */
+/* External link icon (採用情報) - Font Awesome 6 */
 .header__nav-link--external::after {
-  content: "↗";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* Solid style */
+  content: "\f08e"; /* fa-arrow-up-right-from-square */
   font-size: 14px;
   line-height: 1;
 }
@@ -326,6 +328,16 @@
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid #eee;
+}
+
+/* External link icon in mobile menu - Font Awesome 6 */
+.header__mobile-menu-external::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* Solid style */
+  content: "\f08e"; /* fa-arrow-up-right-from-square */
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 4px;
 }
 
 .header__mobile-menu-contact {

@@ -114,9 +114,15 @@
   opacity: 0.7;
 }
 
-/* External link items with arrow */
-.footer__menu-item--external {
-  color: #333333;
+/* External link items with Font Awesome 6 icon */
+.footer__menu-item--external::after,
+.footer__link--external::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* Solid style */
+  content: "\f08e"; /* fa-arrow-up-right-from-square */
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 4px;
 }
 
 /* ========================================

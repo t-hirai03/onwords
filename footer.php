@@ -30,7 +30,7 @@
 					   class="footer__menu-item footer__menu-item--external"
 					   target="_blank"
 					   rel="noopener">
-						採用情報 ↗
+						採用情報
 					</a>
 				</nav>
 
@@ -44,23 +44,26 @@
 						</li>
 						<li>
 							<a href="https://www.changeholdings.co.jp/isms/"
+							   class="footer__link--external"
 							   target="_blank"
 							   rel="noopener">
-								情報セキュリティ基本方針 ↗
+								情報セキュリティ基本方針
 							</a>
 						</li>
 						<li>
 							<a href="https://www.changeholdings.co.jp/anti_social/"
+							   class="footer__link--external"
 							   target="_blank"
 							   rel="noopener">
-								反社会的勢力に対する基本方針 ↗
+								反社会的勢力に対する基本方針
 							</a>
 						</li>
 						<li>
 							<a href="https://www.changeholdings.co.jp/compliance_risk/"
+							   class="footer__link--external"
 							   target="_blank"
 							   rel="noopener">
-								コンプライアンス・リスク管理基本方針 ↗
+								コンプライアンス・リスク管理基本方針
 							</a>
 						</li>
 					</ul>
