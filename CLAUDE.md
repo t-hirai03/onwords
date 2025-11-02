@@ -199,10 +199,11 @@ wp_enqueue_style(
    - `padding` (上下左右すべて)
    - `border`, `border-radius`
 
-3. **タイポグラフィ**
-   - `font-size`, `font-weight`, `font-family`
-   - `line-height`, `letter-spacing`
+3. **タイポグラフィ（最重要）**
+   - `font-size`, `font-weight`, `font-family` - **絶対に正確に合わせる**
+   - `line-height`, `letter-spacing` - **1px単位で正確に合わせる**
    - `text-align`, `text-decoration`
+   - **注意**: 見た目が似ていても、font-size/font-weight/line-heightが1pxでも違えば必ず修正すること
 
 4. **色とビジュアル**
    - `color`, `background`, `background-color`
@@ -320,6 +321,12 @@ wp_enqueue_style(
    - 通常状態とホバー状態を明記
    - STUDIOサイトから取得したことを記載（例: `/* from STUDIO site (完全コピー) */`）
 
+5. **タイポグラフィは1px単位で正確に合わせる（最重要）**
+   - `font-size`, `font-weight`, `line-height` は絶対に正確に合わせる
+   - 見た目が似ていても、1pxでも違えば必ず修正すること
+   - 特に `line-height` は見落としやすいので注意
+   - 例: 16px/400/16px と 14px/500/24.5px は見た目が似ていても全く違う
+
 #### 禁止事項
 
 ❌ **絶対にやってはいけないこと：**
@@ -327,11 +334,14 @@ wp_enqueue_style(
 - トランジションタイミングを適当に設定する（例: 400ms → 500ms）
 - グラデーションの色やストップ位置を変更する
 - レイアウトプロパティを省略する
+- **font-size, font-weight, line-heightを目視だけで判断して推測する**
+- **「見た目が似てるからこれでいいだろう」と妥協する**
 
 ✅ **必ずやること：**
 - Chrome DevTools MCPで**すべての**計算済みスタイルを抽出
 - 通常状態とホバー状態の両方を確認
 - アニメーション・トランジションを完全に再現
+- **font-size, font-weight, line-heightを必ず計算済みスタイルから正確に取得**
 - 実装後、ローカル環境でSTUDIOサイトと並べて比較検証
 
 ### HTML階層構造とCSS確認の完全ワークフロー
