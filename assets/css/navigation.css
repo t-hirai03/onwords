@@ -131,17 +131,18 @@
   line-height: 1;
 }
 
-/* Contact button (お問い合わせ) */
+/* Contact button (お問い合わせ) - from STUDIO site */
 .header__nav-link--contact {
   padding: 10px 16px;
-  color: #ffffff;
-  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%);
+  color: #333333;
+  background: #e74a4a; /* Solid red in normal state */
   border-radius: 4px;
-  transition: opacity var(--transition-fast);
+  transition: background 0.3s cubic-bezier(0.4, 0.4, 0, 1), color 0.3s cubic-bezier(0.4, 0.4, 0, 1);
 }
 
 .header__nav-link--contact:hover {
-  opacity: 0.9;
+  color: #ffffff;
+  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%); /* Gradient on hover */
 }
 
 /* Dropdown arrow icon for parent menu items */
@@ -343,10 +344,17 @@
 .header__mobile-menu-contact {
   display: inline-block;
   padding: 10px 16px;
-  color: #ffffff !important;
-  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%);
+  color: #333333 !important;
+  background: #e74a4a; /* Solid red in normal state */
   border-radius: 4px;
   margin-top: 5px;
+  transition: background 0.3s cubic-bezier(0.4, 0.4, 0, 1), color 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+.header__mobile-menu-contact:hover,
+.header__mobile-menu-contact:active {
+  color: #ffffff !important;
+  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%) !important; /* Gradient on hover */
 }
 
 /* ========================================
