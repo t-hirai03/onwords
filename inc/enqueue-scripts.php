@@ -22,6 +22,14 @@ function onwords_enqueue_assets() {
 		'6.5.1'
 	);
 
+	// Enqueue Google Fonts (from STUDIO site)
+	wp_enqueue_style(
+		'google-fonts',
+		'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap',
+		array(),
+		null
+	);
+
 	// Enqueue Base Styles (CSS reset and global styles)
 	wp_enqueue_style(
 		'onwords-base',
