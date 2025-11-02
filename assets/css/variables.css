@@ -26,6 +26,14 @@
   --hamburger-line-height: 2px;
   --hamburger-line-spacing: 6px;
 
+  /* Mobile Menu */
+  --mobile-menu-bg-color: rgb(255, 255, 255);
+  --mobile-menu-item-padding: 15px 0;
+  --mobile-menu-border-color: #eeeeee;
+  --mobile-menu-font-size: 16px;
+  --mobile-menu-font-weight: 400;
+  --mobile-menu-line-height: 16px;
+
   /* Navigation */
   --nav-link-color: #333333;
   --nav-link-hover-opacity: 0.7;
@@ -48,6 +56,11 @@
   --footer-margin-top: 120px;
   --footer-padding: 80px 0 40px;
   --footer-gap: 40px;
+
+  /* Footer Mobile Spacing */
+  --footer-mobile-margin-top: 100px;
+  --footer-mobile-padding: 40px 0 28px;
+  --footer-mobile-logo-width: 180px;
 
   /* Footer Sizing */
   --footer-width: 1062px;

@@ -53,7 +53,18 @@
 		</button>
 
 		<!-- Mobile Menu -->
-		<nav class="header__mobile-menu" id="mobile-menu">
+		<nav class="header__mobile-menu"
+			 id="mobile-menu"
+			 role="dialog"
+			 aria-modal="true"
+			 aria-label="モバイルメニュー">
+			<!-- Close Button -->
+			<button type="button"
+					class="header__mobile-menu-close"
+					aria-label="メニューを閉じる">
+				<span aria-hidden="true">×</span>
+			</button>
+
 			<?php
 			wp_nav_menu(
 				array(

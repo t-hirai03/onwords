@@ -306,7 +306,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--header-bg-color);
+  background: var(--mobile-menu-bg-color);
   padding: 20px;
   overflow-y: auto;
 
@@ -314,13 +314,34 @@
   display: none;
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--transition-standard), transform var(--transition-standard);
+  transition: opacity 0.3s cubic-bezier(0.4, 0.4, 0, 1), transform 0.3s cubic-bezier(0.4, 0.4, 0, 1);
 }
 
 .header__mobile-menu.is-open {
   display: block;
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Close Button */
+.header__mobile-menu-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--nav-link-color);
+  transition: opacity var(--transition-fast);
+}
+
+.header__mobile-menu-close:hover {
+  opacity: 0.7;
 }
 
 .header__mobile-menu-list {
@@ -330,15 +351,26 @@
 }
 
 .header__mobile-menu-list li {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--mobile-menu-border-color);
 }
 
 .header__mobile-menu-list a {
-  display: block;
-  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--mobile-menu-item-padding);
   color: var(--nav-link-color);
   text-decoration: none;
-  font-size: 16px;
+  font-size: var(--mobile-menu-font-size);
+  font-weight: var(--mobile-menu-font-weight);
+  line-height: var(--mobile-menu-line-height);
+}
+
+.header__mobile-menu-list a::after {
+  content: "›";
+  font-size: 20px;
+  line-height: 1;
+  color: var(--nav-link-color);
 }
 
 .header__mobile-menu-list a:hover {
@@ -358,6 +390,8 @@
 
 .header__mobile-menu-list .sub-menu a {
   font-size: 14px;
+  font-weight: var(--mobile-menu-font-weight);
+  line-height: var(--mobile-menu-line-height);
   padding: 10px 0;
 }
 
@@ -365,7 +399,7 @@
 .header__mobile-menu-list--static {
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--mobile-menu-border-color);
 }
 
 /* External link icon in mobile menu - Font Awesome 6 */
@@ -441,6 +475,10 @@
 @media screen and (max-width: 540px) {
   .header {
     padding: var(--header-padding-mobile-lg);
+  }
+
+  .header__logo {
+    width: var(--logo-width-tablet);
   }
 
   /* Hide desktop navigation */

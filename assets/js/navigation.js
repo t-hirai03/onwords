@@ -11,6 +11,7 @@
   // DOM elements
   const hamburgerBtn = document.querySelector('.header__hamburger-btn');
   const mobileMenu = document.querySelector('.header__mobile-menu');
+  const closeBtn = document.querySelector('.header__mobile-menu-close');
   const body = document.body;
 
   // Menu state
@@ -44,6 +45,13 @@
 
     // Lock body scroll
     body.style.overflow = 'hidden';
+
+    // Move focus to the menu for accessibility
+    // Find the first focusable element (close button or first link)
+    const firstFocusable = closeBtn || mobileMenu.querySelector('a');
+    if (firstFocusable) {
+      setTimeout(() => firstFocusable.focus(), 100);
+    }
   }
 
   /**
@@ -57,10 +65,23 @@
     if (hamburgerBtn) {
       hamburgerBtn.setAttribute('aria-expanded', 'false');
       hamburgerBtn.setAttribute('aria-label', 'メニューを開く');
+
+      // Return focus to hamburger button for accessibility
+      hamburgerBtn.focus();
     }
 
     // Restore body scroll
     body.style.overflow = '';
+  }
+
+  /**
+   * Handle Escape key press
+   */
+  function handleEscapeKey(event) {
+    if (event.key === 'Escape' && isMenuOpen) {
+      closeMenu();
+      isMenuOpen = false;
+    }
   }
 
   /**
@@ -74,6 +95,17 @@
 
     // Add click event listener to hamburger button
     hamburgerBtn.addEventListener('click', toggleMobileMenu);
+
+    // Add click event listener to close button
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        closeMenu();
+        isMenuOpen = false;
+      });
+    }
+
+    // Add Escape key listener
+    document.addEventListener('keydown', handleEscapeKey);
 
     // Set initial aria-expanded state
     hamburgerBtn.setAttribute('aria-expanded', 'false');

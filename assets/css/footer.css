@@ -221,8 +221,8 @@
    Responsive Design
    ======================================== */
 
-/* Tablet and below (< 768px) */
-@media screen and (max-width: 768px) {
+/* Tablet and below (< 1140px) */
+@media screen and (max-width: 1140px) {
   .footer {
     padding: 60px 0 30px;
     width: 100%;
@@ -254,27 +254,27 @@
 /* Mobile and below (< 540px) */
 @media screen and (max-width: 540px) {
   .footer {
-    padding: 40px 0 20px;
-    gap: 30px;
-    margin: 80px 0 0;
+    padding: var(--footer-mobile-padding);
+    gap: var(--footer-gap);
+    margin: var(--footer-mobile-margin-top) 0 0;
   }
 
   .footer__branding {
-    gap: 30px;
+    gap: var(--footer-gap);
   }
 
   .footer__logo-link,
   .footer__logo {
-    width: 150px;
+    width: var(--footer-mobile-logo-width);
     height: auto;
   }
 
   .footer__nav {
-    gap: 30px;
+    gap: var(--footer-gap);
   }
 
   .footer__menu {
-    gap: 12px;
+    gap: 14px;
   }
 
   .footer__menu a {
