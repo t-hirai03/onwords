@@ -136,8 +136,8 @@
   position: relative;
   padding: 10px 16px;
   margin: 0;
-  color: #ffffff; /* rgb(255, 255, 255) - White text */
-  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%); /* Gradient in normal state */
+  color: rgb(51, 51, 51); /* Dark gray text in normal state */
+  background: rgb(231, 74, 74); /* Solid red in normal state */
   border-radius: 4px;
   font-size: 16px;
   font-weight: 400;
@@ -156,7 +156,7 @@
   left: -260px; /* Start off-screen to the left */
   right: 86px;
   bottom: 0;
-  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%);
+  background: rgb(231, 74, 74); /* Solid red in normal state */
   opacity: 0;
   z-index: 0;
   transition: all 0.3s cubic-bezier(0.4, 0.4, 0, 1);
@@ -166,6 +166,7 @@
 .header__nav-link-text {
   position: relative;
   z-index: 1;
+  color: rgb(255, 255, 255); /* White text - explicitly set on text element */
 }
 
 .header__nav-link--contact:hover .header__nav-link-bg {
@@ -381,8 +382,8 @@
   padding: 10px 16px;
   margin-top: 5px;
   margin-bottom: 0;
-  color: #ffffff !important; /* rgb(255, 255, 255) - White text */
-  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%) !important; /* Gradient in normal state */
+  color: rgb(51, 51, 51) !important; /* Dark gray text on parent */
+  background: rgb(231, 74, 74) !important; /* Solid red in normal state */
   border-radius: 4px;
   font-size: 16px;
   font-weight: 400;
@@ -408,6 +409,7 @@
 .header__mobile-menu-contact-text {
   position: relative;
   z-index: 1;
+  color: rgb(255, 255, 255) !important; /* White text - explicitly set on text element */
 }
 
 .header__mobile-menu-contact:hover .header__mobile-menu-contact-bg,
