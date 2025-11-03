@@ -53,3 +53,15 @@ a {
 a:hover {
   opacity: 0.7;
 }
+
+/* ========================================
+   Mobile Typography (767px以下)
+   ======================================== */
+
+@media (max-width: 767px) {
+  /* モバイル表示では全体的にfont-weight: 500 */
+  body,
+  a, abbr, address, article, aside, audio, b, blockquote, button, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, i, iframe, img, input, ins, kbd, label, legend, li, main, mark, menu, nav, object, ol, p, pre, q, samp, section, select, small, span, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
+    font-weight: 500;
+  }
+}

@@ -142,6 +142,7 @@
 
   .about__body {
     font-size: 14px;
+    font-weight: 500;
     line-height: 25.2px;
   }
 
@@ -156,6 +157,7 @@
 
   .message__text {
     font-size: 14px;
+    font-weight: 500;
     line-height: 25.2px;
   }
 
@@ -182,6 +184,7 @@
 
   .card__description {
     font-size: 14px;
+    font-weight: 500;
     line-height: 25.2px;
   }
 
@@ -216,6 +219,7 @@
 
   .news-item__title {
     font-size: 14px;
+    font-weight: 500;
     line-height: 25.2px;
   }
 
