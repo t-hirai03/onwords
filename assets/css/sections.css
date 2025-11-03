@@ -124,6 +124,7 @@ section {
 .about {
   position: relative; /* 絶対配置背景の基準点 */
   padding: 0;
+  margin-top: 50px; /* MVとの余白 */
   background-color: rgb(255, 255, 255);
 }
 
