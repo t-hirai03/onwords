@@ -131,7 +131,8 @@ section {
 .about__container {
   position: relative;
   padding: 80px 0; /* 上下80px（MVとの余白含む）、左右0 */
-  margin: 0 32px; /* 左右32pxの余白 */
+  margin: 0 auto; /* 中央寄せ */
+  width: 1280px; /* 本番サイト: 1280px固定 */
   max-width: calc(100% - 64px); /* 本番サイト: calc(100% - 64px) */
   z-index: 1; /* 背景より前面に */
 
@@ -139,7 +140,7 @@ section {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* 本番サイト: space-between */
   gap: 0;
 }
 
@@ -149,10 +150,16 @@ section {
   top: 0; /* コンテナの最上部（padding-topの内側も含む）から開始 */
   left: 0;
   bottom: 0;
-  width: 75%; /* 左側75%を灰色背景に */
+  width: 0; /* 初期状態: 幅0 */
   background-color: rgb(246, 246, 246); /* 本番サイト: rgb(246, 246, 246) */
   border-radius: 0 20px 20px 0; /* 本番サイト: 右上・右下に20pxの丸み */
   z-index: 0;
+  transition: width 0.7s ease-in-out 0.4s; /* 本番サイト: 0.7s, 0.4s delay */
+}
+
+/* ビューポートに入った時のアニメーション */
+.about.is-visible .about__background {
+  width: 75%; /* アニメーション後: 左側75%を灰色背景に */
 }
 
 /* テキストエリア（左側） */
@@ -162,7 +169,7 @@ section {
   align-items: flex-start;
   justify-content: flex-start;
   flex: 0 0 auto;
-  width: 504.445px;
+  width: 576px; /* 本番サイト: 576px */
   max-width: 45%; /* 本番サイト: 45% */
 }
 
@@ -179,7 +186,7 @@ section {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: 560.5px;
+  width: 640px; /* 本番サイト: 640px */
   max-width: 50%; /* 本番サイト: 50% */
 }
 

@@ -111,5 +111,14 @@ function onwords_enqueue_assets() {
 		'1.0.0',
 		true
 	);
+
+	// Enqueue Animations JavaScript (load in footer)
+	wp_enqueue_script(
+		'onwords-animations',
+		get_template_directory_uri() . '/assets/js/animations.js',
+		array(),
+		'1.0.0',
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'onwords_enqueue_assets' );
