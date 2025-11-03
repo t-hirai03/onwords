@@ -77,6 +77,42 @@
 - Chrome DevTools MCP または Playwright MCP で実際の構造・スタイル・内容を取得
 - 取得したデータを元に正確に実装
 
+#### Playwright MCP のトラブルシューティング
+
+**問題**: Playwright MCPで `about:blank` エラーや `Browser is already in use` エラーが発生する場合
+
+**原因**: ブラウザプロセスが異常終了し、バックグラウンドで残っている
+
+**解決方法**:
+
+1. **ブラウザプロセスをクリアする**
+   ```bash
+   pkill -f "mcp-chrome"
+   ```
+
+2. **Playwrightブラウザを閉じる**
+   ```
+   mcp__playwright__browser_close
+   ```
+
+3. **再度ナビゲートする**
+   ```
+   mcp__playwright__browser_navigate (url: "https://www.onwords.co.jp/")
+   ```
+
+**手順例**:
+```bash
+# 1. プロセスをクリア
+pkill -f "mcp-chrome"
+
+# 2. 新しいページに移動
+mcp__playwright__browser_navigate (url: "https://www.onwords.co.jp/")
+```
+
+**注意**:
+- `about:blank` エラーが出たら、必ずプロセスをクリアしてから再試行
+- Chrome DevTools MCP でも同様の問題が発生する場合は、同じ手順で対処可能
+
 ### 実装後の動作確認（必須）
 
 **CRITICAL**: 実装完了後、必ずローカル環境で動作確認を行い、STUDIOサイトと完全に一致していることを確認してください。
