@@ -1,5 +1,8 @@
 <!-- About Section -->
 <section class="about">
+  <!-- Background (灰色の背景 - 絶対配置) -->
+  <div class="about__background"></div>
+
   <div class="about__container">
     <p class="about__label">ABOUT</p>
     <h2 class="about__heading">Onwordsとは？</h2>
@@ -10,5 +13,10 @@
       インバウンド旅行者を迎える地域も企業も様々な課題を抱えています。<br>
       わたしたちは、「訪れる人も、住む人も、心から楽しめる日本を。その楽しさを、地域の発展と活力に」を実現したいと考えています。
     </p>
+  </div>
+
+  <!-- Image Container (右側の画像) -->
+  <div class="about__image-container">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/about/s-1224x800_v-fms_webp_01071bf2-7516-42f6-8153-f7e7b68cf9f2_middle.webp" alt="Onwords" class="about__image">
   </div>
 </section>

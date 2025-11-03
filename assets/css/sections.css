@@ -121,14 +121,28 @@ section {
    =================================================================== */
 
 .about {
+  position: relative; /* 絶対配置要素の基準点 */
   padding: 80px 0;
   background-color: rgb(255, 255, 255);
 }
 
+/* 灰色の背景（本番サイトと同じ） */
+.about__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 75%; /* 左側75%を灰色背景に */
+  background-color: rgb(246, 246, 246); /* 本番サイト: rgb(246, 246, 246) */
+  z-index: 0;
+}
+
 .about__container {
+  position: relative;
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 20px;
+  z-index: 1; /* 背景より前面に */
 }
 
 .about__body {
@@ -136,6 +150,26 @@ section {
   font-weight: 400;
   line-height: 28.8px;
   color: rgb(34, 34, 34);
+}
+
+/* 画像コンテナ（右側） */
+.about__image-container {
+  position: absolute;
+  right: calc((100% - 1140px) / 2); /* コンテナと同じ余白を右側に確保 */
+  top: 50%;
+  transform: translateY(-50%); /* 垂直中央揃え */
+  width: 640px; /* 本番サイト: 640px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* 画像 */
+.about__image {
+  width: 100%;
+  height: auto;
+  object-fit: fill;
 }
 
 /* ===================================================================
