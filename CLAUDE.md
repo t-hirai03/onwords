@@ -607,6 +607,59 @@ wp_enqueue_style(
 - Material Iconsフォントを読み込む
 - font-sizeを28pxに設定（STUDIOサイトと同じ）
 
+### モバイル時のインナー余白ルール
+
+**CRITICAL**: モバイル表示（767px以下）では、すべてのセクションの内側コンテナに16pxの左右余白を設定してください。
+
+#### 推奨する実装
+
+```css
+/* ✅ 正しい実装 - モバイルでインナー余白16px */
+@media (max-width: 767px) {
+  /* セクションコンテナに左右16pxの余白 */
+  .about__container,
+  .message__container,
+  .business__container,
+  .news__container,
+  .inquiry__container {
+    padding: 0 16px;
+  }
+
+  /* セクション独自のpadding設定がある場合 */
+  .about__container {
+    padding: 56px 16px 0; /* 上56px、左右16px、下0 */
+  }
+}
+```
+
+#### 理由
+
+- **視覚的一貫性**: すべてのセクションで統一された左右余白を保つ
+- **モバイルユーザビリティ**: 画面端に適切な余白を確保し、テキストの可読性を向上
+- **保守性**: 統一ルールにより、一貫したレイアウトを維持しやすい
+
+#### 適用箇所
+
+**モバイル表示で左右16px余白が必要なコンテナ:**
+- `.about__container`
+- `.message__container`
+- `.business__container`
+- `.news__container`
+- `.inquiry__container`
+- その他、メインコンテンツを含むセクションコンテナすべて
+
+#### 禁止事項
+
+❌ **やってはいけないこと：**
+- モバイルでインナー余白を省略する
+- セクションごとに異なる余白値を使う（特別な理由がない限り）
+- 本番サイトを確認せずに余白値を推測する
+
+✅ **必ずやること：**
+- すべてのセクションコンテナに`padding: 0 16px`を設定
+- セクション独自のpadding（上下）がある場合は組み合わせる（例: `padding: 56px 16px 0`）
+- 本番サイトで実際の余白を確認してから実装
+
 ### 完全コピーのアプローチ（公式要求）
 
 **CRITICAL**: このプロジェクトは本番サイト（https://www.onwords.co.jp/）を運用している株式会社Onwordsからの正式な依頼です。

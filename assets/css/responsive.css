@@ -80,8 +80,9 @@
   .business__label,
   .news__label,
   .inquiry__label {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 26.25px;
     margin-bottom: 8px;
   }
 
@@ -91,8 +92,9 @@
   .business__heading,
   .news__heading,
   .inquiry__heading {
-    font-size: 28px;
-    line-height: 44.8px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 51.2px;
     margin-bottom: 24px;
   }
 
@@ -110,9 +112,9 @@
   .about__container {
     flex-wrap: wrap; /* 横並びから折り返しで縦並びに */
     gap: 40px 0; /* 縦方向のギャップ40px */
-    padding: 56px 0 0; /* 上のみ56px */
-    margin: 0; /* marginはなし */
-    max-width: 90%; /* 幅は90% */
+    padding: 56px 16px 0; /* 上56px、左右16px */
+    margin: 0 auto; /* 中央寄せ */
+    max-width: 100%; /* 幅は100% */
     width: auto; /* 固定幅を解除 */
   }
 
@@ -269,14 +271,15 @@
     padding: 40px 0;
   }
 
-  /* Further reduce heading sizes */
+  /* Section headings - same as 767px breakpoint */
   .about__heading,
   .message__heading,
   .business__heading,
   .news__heading,
   .inquiry__heading {
-    font-size: 24px;
-    line-height: 38.4px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 51.2px;
   }
 }
 
