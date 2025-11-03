@@ -141,9 +141,9 @@ section {
 /* Flexコンテナ（横並びレイアウト） */
 .about__container {
   position: relative;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 80px 32px; /* 上80px（MVとの余白）、左右32px */
+  max-width: 1280px; /* 最大幅1280px */
+  margin: 0 32px; /* 左右32pxの余白 */
+  padding: 80px 32px; /* 上80px（MVとの余白）、左右32px（内側余白） */
   z-index: 1; /* 背景より前面に */
 
   /* Flexbox for horizontal layout */
