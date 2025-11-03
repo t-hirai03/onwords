@@ -41,6 +41,14 @@
     flex-direction: column;
     gap: 32px;
   }
+
+  /* ===================================================================
+     Hero Section - Tablet (768px ~ 1023px)
+     =================================================================== */
+
+  .hero__content {
+    padding: 0 80px 88px; /* 左右80px、下88px（本番サイトと同じ） */
+  }
 }
 
 /* ===================================================================
@@ -89,27 +97,10 @@
   }
 
   /* ===================================================================
-     Hero Section - Mobile
+     Hero Section - Mobile (767px以下はタブレットのスタイルを継承)
      =================================================================== */
 
-  .hero {
-    height: 480px; /* Shorter height on mobile */
-  }
-
-  .hero__title {
-    font-size: 32px;
-    line-height: 44.8px;
-    margin-bottom: 12px;
-  }
-
-  .hero__subtitle {
-    font-size: 16px;
-    line-height: 25.6px;
-  }
-
-  .hero__content {
-    padding: 0 16px;
-  }
+  /* Hero sectionは540px以下で変更するため、ここでは定義しない */
 
   /* ===================================================================
      About Section - Mobile
@@ -215,19 +206,26 @@
    =================================================================== */
 
 @media (max-width: 540px) {
-  /* Further reduce hero height */
+  /* ===================================================================
+     Hero Section - Small Mobile (~ 540px)
+     本番サイト（375px）の正確な値を使用
+     =================================================================== */
+
   .hero {
-    height: 400px;
+    height: 500px; /* 本番サイト: 500px */
   }
 
   .hero__title {
-    font-size: 28px;
-    line-height: 39.2px;
+    font-size: 28px; /* 本番サイト: 28px */
+    font-weight: 600;
+    line-height: 33.6px; /* 本番サイト: 33.6px */
+    margin-bottom: 11px; /* 本番サイト: 11px */
   }
 
   .hero__subtitle {
-    font-size: 14px;
-    line-height: 22.4px;
+    font-size: 20px; /* 本番サイト: 20px（デスクトップと同じ） */
+    font-weight: 500;
+    line-height: 30px; /* 本番サイト: 30px（デスクトップと同じ） */
   }
 
   /* Reduce section padding */
