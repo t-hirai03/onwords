@@ -106,6 +106,38 @@
      About Section - Mobile
      =================================================================== */
 
+  /* ABOUTコンテナ: 縦並びレイアウト */
+  .about__container {
+    flex-wrap: wrap; /* 横並びから折り返しで縦並びに */
+    gap: 40px 0; /* 縦方向のギャップ40px */
+    padding: 56px 0 0; /* 上のみ56px */
+    margin: 0; /* marginはなし */
+    max-width: 90%; /* 幅は90% */
+    width: auto; /* 固定幅を解除 */
+  }
+
+  /* テキストエリア: 幅100% */
+  .about__text {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* 画像エリア: 幅100% */
+  .about__image-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* 灰色背景: モバイルでは固定幅270px */
+  .about__background {
+    width: 270px; /* モバイル: 固定幅270px */
+  }
+
+  /* ビューポートに入った時も270px */
+  .about.is-visible .about__background {
+    width: 270px; /* モバイル: 固定幅270px */
+  }
+
   .about__body {
     font-size: 14px;
     line-height: 25.2px;
