@@ -1,0 +1,82 @@
+/**
+ * CSS Variables (Custom Properties)
+ *
+ * This file defines CSS custom properties for the Onwords theme.
+ * Variables are organized by component and usage.
+ */
+
+:root {
+  /* ========================================
+     Typography Variables
+     ======================================== */
+
+  /* Font Family (from STUDIO site) */
+  --font-family-base: "Open Sans", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* ========================================
+     Header Variables
+     ======================================== */
+
+  /* Header Layout */
+  --header-bg-color: rgb(255, 255, 255);
+  --header-padding-desktop: 16px 32px;
+  --header-padding-mobile-lg: 12px 20px;
+  --header-padding-mobile-sm: 12px 15px;
+  --header-z-index: 1;
+
+  /* Logo Sizing */
+  --logo-width-desktop: 160px;
+  --logo-width-tablet: 144px;
+
+  /* Hamburger Menu */
+  --hamburger-line-color: #424242;
+  --hamburger-line-height: 2px;
+  --hamburger-line-spacing: 6px;
+
+  /* Mobile Menu */
+  --mobile-menu-bg-color: rgb(255, 255, 255);
+  --mobile-menu-item-padding: 15px 0;
+  --mobile-menu-border-color: #eeeeee;
+  --mobile-menu-font-size: 16px;
+  --mobile-menu-font-weight: 500; /* STUDIO site */
+  --mobile-menu-line-height: 16px;
+
+  /* Navigation */
+  --nav-link-color: #333333;
+  --nav-link-hover-opacity: 0.7;
+
+  /* Transitions */
+  --transition-standard: 500ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  --transition-fast: 160ms ease-in-out;
+
+  /* ========================================
+     Footer Variables
+     ======================================== */
+
+  /* Footer Colors */
+  --footer-bg-color: rgb(246, 246, 246);
+  --footer-text-color: rgb(51, 51, 51);
+  --footer-text-secondary: rgb(34, 34, 34);
+  --footer-text-tertiary: rgb(66, 66, 66);
+
+  /* Footer Spacing */
+  --footer-margin-top: 120px;
+  --footer-padding: 80px 0 40px;
+  --footer-gap: 40px;
+
+  /* Footer Mobile Spacing */
+  --footer-mobile-margin-top: 100px;
+  --footer-mobile-padding: 40px 0 28px;
+  --footer-mobile-logo-width: 180px;
+
+  /* Footer Sizing */
+  --footer-width: 1062px;
+  --footer-container-width: 955.797px;
+  --footer-container-max-width: 90%;
+  --footer-branding-width: 180px;
+  --footer-nav-gap: 80px;
+  --footer-list-gap: 14px;
+
+  /* Footer Transitions */
+  --footer-transition: 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+}
