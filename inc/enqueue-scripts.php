@@ -30,6 +30,14 @@ function onwords_enqueue_assets() {
 		null
 	);
 
+	// Enqueue Material Icons (from STUDIO site - used for navigation arrows)
+	wp_enqueue_style(
+		'material-icons',
+		'https://fonts.googleapis.com/icon?family=Material+Icons',
+		array(),
+		null
+	);
+
 	// Enqueue Base Styles (CSS reset and global styles)
 	wp_enqueue_style(
 		'onwords-base',

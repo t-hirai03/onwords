@@ -8,7 +8,7 @@
 <body <?php body_class(); ?>>
 	<header class="header">
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__logo-link">
-			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo/s-300x91_222424ad-5eb2-43c8-8327-98b3cd560f8f.svg' ); ?>"
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo/logo.svg' ); ?>"
 				 alt="<?php bloginfo( 'name' ); ?>"
 				 class="header__logo">
 		</a>
@@ -59,12 +59,27 @@
 		 role="dialog"
 		 aria-modal="true"
 		 aria-label="モバイルメニュー">
+		<!-- Logo (top left) -->
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__mobile-menu-logo-link">
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo/logo.svg' ); ?>"
+				 alt="<?php bloginfo( 'name' ); ?>"
+				 class="header__mobile-menu-logo">
+		</a>
+
 		<!-- Close Button -->
 		<button type="button"
 				class="header__mobile-menu-close"
 				aria-label="メニューを閉じる">
-			<span aria-hidden="true">×</span>
+			<div class="header__mobile-menu-close-line header__mobile-menu-close-line--1"></div>
+			<div class="header__mobile-menu-close-line header__mobile-menu-close-line--2"></div>
 		</button>
+
+		<!-- TOP (Static - Mobile only) -->
+		<ul class="header__mobile-menu-list">
+			<li>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">TOP</a>
+			</li>
+		</ul>
 
 		<?php
 		wp_nav_menu(
@@ -81,10 +96,10 @@
 		<ul class="header__mobile-menu-list header__mobile-menu-list--static">
 			<li>
 				<a href="https://hrmos.co/pages/changeholdings/jobs?category=2166892462807429120"
-				   class="header__mobile-menu-external"
+				   class="header__mobile-menu-recruitment"
 				   target="_blank"
 				   rel="noopener">
-					採用情報
+					<span class="header__mobile-menu-recruitment-text">採用情報</span>
 				</a>
 			</li>
 			<li>

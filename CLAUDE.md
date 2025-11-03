@@ -403,6 +403,163 @@ return {
 - 取得した値を全ブレークポイントで統一して使用
 - メディアクエリ内でアイコンサイズを上書きしない
 
+### 外部リンクアイコンの実装（::before疑似要素）
+
+**CRITICAL**: 外部リンクアイコンは`::before`疑似要素でFont Awesomeを使用します。
+
+#### 正しい実装方法
+
+```css
+/* ✅ 正しい実装 - ::before with Font Awesome */
+.link-external::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* Solid style */
+  content: "\f08e"; /* fa-arrow-up-right-from-square */
+  font-size: 18px; /* アイコンサイズ */
+  line-height: 1;
+  margin-left: 4px; /* テキストとの距離 */
+}
+
+/* ❌ 間違った実装 - テキスト記号 */
+.link-external::before {
+  content: "↗"; /* 使わない */
+}
+
+/* ❌ 間違った実装 - ::after */
+.link-external::after {
+  content: "\f08e"; /* ::afterではなく::beforeを使う */
+}
+```
+
+#### 実装例：モバイルメニューの採用情報
+
+STUDIOサイトでは、採用情報リンクに外部リンクアイコン（Font Awesome）とarrowアイコン（Material Icons）の両方が表示されます。
+
+```html
+<!-- HTML構造 -->
+<a href="https://example.com" class="header__mobile-menu-recruitment" target="_blank">
+  採用情報
+</a>
+```
+
+```css
+/* CSS - 2つのアイコンを持つリンク */
+.header__mobile-menu-recruitment {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ::before - 外部リンクアイコン（小さい） */
+.header__mobile-menu-recruitment::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f08e"; /* fa-arrow-up-right-from-square */
+  font-size: 18px; /* 小さめ */
+  line-height: 1;
+  margin-left: 4px;
+  order: 1; /* テキストの後 */
+}
+
+/* ::after - arrowアイコン（大きい） */
+.header__mobile-menu-recruitment::after {
+  content: "›";
+  font-size: 32px; /* 大きめ */
+  line-height: 1;
+  order: 2; /* 外部リンクアイコンの後 */
+}
+```
+
+#### 禁止事項
+
+❌ **やってはいけないこと：**
+- テキスト記号（"↗"）で代用する
+- `::after`を使う（`::before`を使うこと）
+- Font Familyを省略する
+- ユニコード値を推測する
+
+✅ **必ずやること：**
+- `::before`疑似要素を使用
+- Font Awesome 6のユニコード`\f08e`を使用
+- フォントファミリーとウェイトを正確に指定
+
+### ナビゲーションArrowアイコンの実装（Material Icons + `<i>`タグ）
+
+**CRITICAL**: ナビゲーションのarrow rightアイコンは、CSS疑似要素ではなく、HTMLに`<i>`タグを追加してMaterial Iconsで実装します。
+
+#### STUDIOサイトの実装
+
+```html
+<i class="icon material-icons">keyboard_arrow_right</i>
+```
+
+#### 正しい実装方法
+
+**HTML構造**:
+```html
+<!-- ✅ 正しい実装 - <i>タグでMaterial Icons -->
+<a href="/page" class="header__mobile-menu-item">
+  ページ名
+  <i class="icon material-icons">keyboard_arrow_right</i>
+</a>
+
+<!-- ❌ 間違った実装 - CSS疑似要素 -->
+<a href="/page" class="header__mobile-menu-item">
+  ページ名
+  <!-- ::after { content: "›"; } は使わない -->
+</a>
+```
+
+**CSS**:
+```css
+/* Material Iconsのスタイル調整 */
+.header__mobile-menu-item .material-icons {
+  font-size: 28px; /* STUDIOサイトと同じサイズ */
+  line-height: 1;
+  color: var(--nav-link-color);
+}
+
+/* デスクトップメニューのサブメニューarrowは疑似要素でOK */
+.header__menu .sub-menu a::before {
+  content: "›";
+  font-size: 18px;
+}
+```
+
+#### Material Iconsの読み込み
+
+```php
+// inc/enqueue-scripts.php
+wp_enqueue_style(
+  'material-icons',
+  'https://fonts.googleapis.com/icon?family=Material+Icons',
+  array(),
+  null
+);
+```
+
+#### 適用箇所
+
+**モバイルメニュー:**
+- 通常のメニューアイテム → `<i class="material-icons">keyboard_arrow_right</i>`
+- 採用情報 → Font Awesome外部リンクアイコン + Material Icons arrow（両方）
+- お問い合わせボタン → Material Icons arrow
+
+**デスクトップメニュー:**
+- サブメニューのarrow → CSS疑似要素でOK（既存のまま）
+
+#### 禁止事項
+
+❌ **やってはいけないこと：**
+- CSS疑似要素（`::after { content: "›"; }`）で代用する
+- テキスト記号を使う
+- Material Iconsを使わない
+
+✅ **必ずやること：**
+- HTMLに`<i class="icon material-icons">keyboard_arrow_right</i>`を追加
+- Material Iconsフォントを読み込む
+- font-sizeを28pxに設定（STUDIOサイトと同じ）
+
 ### 完全コピーのアプローチ（公式要求）
 
 **CRITICAL**: このプロジェクトは本番サイト（https://www.onwords.co.jp/）を運用している株式会社Onwordsからの正式な依頼です。

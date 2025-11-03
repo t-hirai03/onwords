@@ -85,6 +85,47 @@
   }
 
   /**
+   * Add Material Icons to mobile menu items
+   */
+  function addMaterialIcons() {
+    if (!mobileMenu) return;
+
+    // Find all menu links including sub-menu (exclude recruitment and contact which have custom styling)
+    const menuLinks = mobileMenu.querySelectorAll('.header__mobile-menu-list a:not(.header__mobile-menu-recruitment):not(.header__mobile-menu-contact)');
+
+    menuLinks.forEach(link => {
+      // Check if icon already exists
+      if (link.querySelector('.material-icons')) return;
+
+      // Create Material Icons element
+      const icon = document.createElement('i');
+      icon.className = 'icon material-icons';
+      icon.textContent = 'keyboard_arrow_right';
+
+      // Append to link
+      link.appendChild(icon);
+    });
+
+    // Add icon to recruitment link (if exists)
+    const recruitmentLink = mobileMenu.querySelector('.header__mobile-menu-recruitment');
+    if (recruitmentLink && !recruitmentLink.querySelector('.material-icons')) {
+      const icon = document.createElement('i');
+      icon.className = 'icon material-icons';
+      icon.textContent = 'keyboard_arrow_right';
+      recruitmentLink.appendChild(icon);
+    }
+
+    // Add icon to contact button
+    const contactLink = mobileMenu.querySelector('.header__mobile-menu-contact');
+    if (contactLink && !contactLink.querySelector('.material-icons')) {
+      const icon = document.createElement('i');
+      icon.className = 'icon material-icons';
+      icon.textContent = 'keyboard_arrow_right';
+      contactLink.appendChild(icon);
+    }
+  }
+
+  /**
    * Initialize mobile menu
    */
   function initMobileMenu() {
@@ -92,6 +133,9 @@
       // Hamburger button not found, likely on desktop or not on a page with header
       return;
     }
+
+    // Add Material Icons to menu items
+    addMaterialIcons();
 
     // Add click event listener to hamburger button
     hamburgerBtn.addEventListener('click', toggleMobileMenu);

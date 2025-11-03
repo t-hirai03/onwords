@@ -311,38 +311,86 @@
   overflow-y: auto;
   z-index: 1000;
 
-  /* Hidden by default */
-  display: none;
+  /* Hidden by default - use visibility for smooth animation */
+  visibility: hidden;
   opacity: 0;
-  transform: translateX(-100%);
-  transition: opacity 0.3s cubic-bezier(0.4, 0.4, 0, 1), transform 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+  transform: translateX(100%); /* 右から左へスライドイン */
+  transition: opacity 0.3s cubic-bezier(0.4, 0.4, 0, 1),
+              transform 0.3s cubic-bezier(0.4, 0.4, 0, 1),
+              visibility 0s 0.3s; /* visibility changes after animation ends */
 }
 
 .header__mobile-menu.is-open {
-  display: block;
+  visibility: visible;
   opacity: 1;
   transform: translateX(0);
+  transition: opacity 0.3s cubic-bezier(0.4, 0.4, 0, 1),
+              transform 0.3s cubic-bezier(0.4, 0.4, 0, 1),
+              visibility 0s 0s; /* visibility changes immediately when opening */
 }
 
-/* Close Button */
+/* Logo in mobile menu (top left) */
+.header__mobile-menu-logo-link {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.header__mobile-menu-logo {
+  width: 120px; /* Smaller than header logo */
+  height: auto;
+  display: block;
+}
+
+/* Close Button - matches STUDIO site (complete copy) */
 .header__mobile-menu-close {
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 28px;
   padding: 0;
+  margin: 0;
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 32px;
-  line-height: 1;
-  color: var(--nav-link-color);
+  z-index: 2;
   transition: opacity var(--transition-fast);
 }
 
 .header__mobile-menu-close:hover {
   opacity: 0.7;
+}
+
+/* Close button line 1 (×の1本目の線) */
+.header__mobile-menu-close-line--1 {
+  position: absolute;
+  top: 13px;
+  left: 1px;
+  width: 28px;
+  height: 2px;
+  background-color: rgb(34, 34, 34);
+  border-radius: 100px;
+  transform: rotate(45deg);
+  transform-origin: 14px 1px;
+}
+
+/* Close button line 2 (×の2本目の線) */
+.header__mobile-menu-close-line--2 {
+  position: absolute;
+  top: 14px;
+  left: 1px;
+  width: 28px;
+  height: 2px;
+  background-color: rgb(34, 34, 34);
+  border-radius: 100px;
+  transform: rotate(-45deg);
+  transform-origin: 14px 1px;
 }
 
 .header__mobile-menu-list {
@@ -352,10 +400,10 @@
 }
 
 .header__mobile-menu-list li {
-  border-bottom: 1px solid var(--mobile-menu-border-color);
+  /* border moved to <a> elements */
 }
 
-.header__mobile-menu-list a {
+.header__mobile-menu-list a:not(.header__mobile-menu-contact) {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -365,70 +413,110 @@
   font-size: var(--mobile-menu-font-size);
   font-weight: var(--mobile-menu-font-weight);
   line-height: var(--mobile-menu-line-height);
+  border-bottom: 1px solid var(--mobile-menu-border-color);
 }
 
-.header__mobile-menu-list a::after {
-  content: "›";
-  font-size: 28px; /* Material Icons keyboard_arrow_right - matches STUDIO site */
+/* Material Icons keyboard_arrow_right - added via JavaScript */
+.header__mobile-menu-list a:not(.header__mobile-menu-contact) .material-icons {
+  font-size: 28px; /* Matches STUDIO site */
   line-height: 1;
   color: var(--nav-link-color);
 }
 
-.header__mobile-menu-list a:hover {
+.header__mobile-menu-list a:not(.header__mobile-menu-contact):hover {
   opacity: var(--nav-link-hover-opacity);
 }
 
-/* Sub-menu items (children) */
+/* Sub-menu items (children) - 親と同じ見た目で左に余白 */
 .header__mobile-menu-list .sub-menu {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 20px;
+  padding: 0;
 }
 
 .header__mobile-menu-list .sub-menu li {
-  border-bottom: 1px solid #f5f5f5;
+  /* border inherited from parent .header__mobile-menu-list a rule */
 }
 
 .header__mobile-menu-list .sub-menu a {
-  font-size: 14px;
+  /* 親と同じフォントサイズと太さ */
+  font-size: var(--mobile-menu-font-size);
   font-weight: var(--mobile-menu-font-weight);
   line-height: var(--mobile-menu-line-height);
-  padding: 10px 0;
+
+  /* 左に余白を追加（インデント）、上下は親と同じ */
+  padding: 15px 0 15px 32px; /* 上 右 下 左 */
 }
 
-/* Static mobile menu items */
+/* Sub-menu arrow icons (same size as parent) */
+.header__mobile-menu-list .sub-menu a .material-icons {
+  font-size: 28px; /* 親と同じサイズ */
+  line-height: 1;
+  color: var(--nav-link-color);
+}
+
+/* Static mobile menu items (採用情報・お問い合わせ) */
 .header__mobile-menu-list--static {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--mobile-menu-border-color);
+  margin-top: 0;
+  padding-top: 0;
+  /* border-topを削除 - 前のメニューのborder-bottomで境界線が表示される */
 }
 
-/* External link icon in mobile menu - Font Awesome 6 */
-.header__mobile-menu-external::after {
+/* 採用情報の最初のliにmargin-topを追加して余白を確保 */
+.header__mobile-menu-list--static > li:first-child {
+  margin-top: 10px;
+}
+
+/* Recruitment link with external icon and arrow - matches STUDIO site */
+.header__mobile-menu-recruitment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* テキストグループと arrow を両端に配置 */
+}
+
+/* Text group (採用情報 + external icon) */
+.header__mobile-menu-recruitment-text {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* 採用情報と外部リンクアイコンの距離 */
+}
+
+/* External link icon (small) - right after text */
+.header__mobile-menu-recruitment-text::after {
   font-family: "Font Awesome 6 Free";
   font-weight: 900; /* Solid style */
   content: "\f08e"; /* fa-arrow-up-right-from-square */
-  font-size: 14px;
+  font-size: 18px; /* Smaller than arrow */
   line-height: 1;
-  margin-left: 4px;
+}
+
+/* Arrow icon (larger) - Material Icons added via JavaScript */
+.header__mobile-menu-recruitment .material-icons {
+  font-size: 32px; /* Larger than other arrows - matches STUDIO */
+  line-height: 1;
+  color: var(--nav-link-color);
 }
 
 .header__mobile-menu-contact {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 16px;
-  margin-top: 5px;
+  gap: 10px;
+  padding: 16px 10px 16px 42px; /* STUDIO site: 上右下左 */
+  margin-top: 20px;
   margin-bottom: 0;
-  color: rgb(51, 51, 51) !important; /* Dark gray text on parent */
-  background: rgb(231, 74, 74) !important; /* Solid red in normal state */
+  width: 320px; /* STUDIO site: fixed width */
+  height: 56.5px; /* STUDIO site */
+  color: rgb(255, 255, 255); /* STUDIO site: white text */
+  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(248, 82, 30) 100%); /* STUDIO site: 2-color gradient */
   border-radius: 4px;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 16px; /* Parent font size */
+  font-weight: 400; /* Parent font weight */
   line-height: 16px;
-  overflow: hidden; /* Hide overflowing background layer */
+  overflow: hidden; /* STUDIO site */
   transition: all 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+  text-decoration: none;
 }
 
 /* Background layer - slides in from left on hover */
@@ -438,7 +526,7 @@
   left: -260px; /* Start off-screen to the left */
   right: 86px;
   bottom: 0;
-  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(238, 156, 23) 51%, rgb(248, 82, 30) 100%);
+  background: linear-gradient(75deg, rgb(230, 1, 18) 0%, rgb(238, 175, 15) 37%, rgb(248, 82, 30) 100%);
   opacity: 0;
   z-index: 0;
   transition: all 0.3s cubic-bezier(0.4, 0.4, 0, 1);
@@ -448,7 +536,19 @@
 .header__mobile-menu-contact-text {
   position: relative;
   z-index: 1;
-  color: rgb(255, 255, 255) !important; /* White text - explicitly set on text element */
+  font-size: 14px; /* STUDIO site */
+  font-weight: 700; /* STUDIO site */
+  line-height: 24.5px; /* STUDIO site */
+  color: rgb(255, 255, 255); /* STUDIO site: white */
+}
+
+/* Arrow icon for contact button - Material Icons added via JavaScript */
+.header__mobile-menu-contact .material-icons {
+  font-size: 24px; /* STUDIO site: 24px (not 28px) */
+  line-height: 1;
+  color: rgb(255, 255, 255); /* STUDIO site: white */
+  position: relative;
+  z-index: 1;
 }
 
 .header__mobile-menu-contact:hover .header__mobile-menu-contact-bg,
@@ -457,8 +557,8 @@
   right: -174px; /* Extend to the right */
   opacity: 1; /* Fade in */
   background: linear-gradient(75deg, rgb(230, 1, 18) 0%, rgb(238, 175, 15) 37%, rgb(248, 82, 30) 100%); /* Gradient angle changes to 75deg */
-  transition-duration: 400ms !important; /* 0.4s */
-  transition-timing-function: ease-in-out !important;
+  transition-duration: 400ms; /* 0.4s */
+  transition-timing-function: ease-in-out;
 }
 
 /* ========================================
