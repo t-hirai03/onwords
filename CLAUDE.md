@@ -49,7 +49,18 @@
    - mcp__playwright__browser_hover (ホバー状態の確認)
    ```
 
-3. **取得した情報を元に実装**
+3. **スクリーンショットの撮影と格納**
+   ```
+   - mcp__chrome-devtools__take_screenshot (スクリーンショット撮影)
+   - mcp__playwright__browser_take_screenshot (スクリーンショット撮影)
+   ```
+
+   **CRITICAL**: スクリーンショットは必ず `chrome-devtools-mcp/` ディレクトリに格納すること
+   - 本番サイトとローカル環境の比較検証用
+   - ファイル名は用途が分かるように命名（例: `local-hero-final.png`, `production-hero.png`）
+   - このディレクトリはコミットに含めない（開発中の一時ファイル）
+
+4. **取得した情報を元に実装**
    - 推測や仮実装は禁止
    - 実際のサイトの値を正確に反映
 
