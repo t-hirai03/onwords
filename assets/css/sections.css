@@ -151,6 +151,7 @@ section {
   bottom: 0;
   width: 75%; /* 左側75%を灰色背景に */
   background-color: rgb(246, 246, 246); /* 本番サイト: rgb(246, 246, 246) */
+  border-radius: 0 20px 20px 0; /* 本番サイト: 右上・右下に20pxの丸み */
   z-index: 0;
 }
 
