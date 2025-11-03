@@ -1,8 +1,5 @@
 <!-- About Section -->
 <section class="about">
-  <!-- Background (灰色の背景 - 絶対配置) -->
-  <div class="about__background"></div>
-
   <!-- Flexコンテナ（横並びレイアウト） -->
   <div class="about__container">
     <!-- テキストエリア（左側） -->
@@ -23,4 +20,7 @@
       <img src="<?php echo get_template_directory_uri(); ?>/assets/images/about/s-1224x800_v-fms_webp_01071bf2-7516-42f6-8153-f7e7b68cf9f2_middle.webp" alt="Onwords" class="about__image">
     </div>
   </div>
+
+  <!-- Background (灰色の背景 - 絶対配置、z-index: 0で背面) -->
+  <div class="about__background"></div>
 </section>

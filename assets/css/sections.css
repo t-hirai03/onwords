@@ -123,27 +123,16 @@ section {
 
 .about {
   position: relative; /* 絶対配置背景の基準点 */
-  padding: 0; /* paddingは使わない（背景が伸びるため） */
+  padding: 0;
   background-color: rgb(255, 255, 255);
 }
 
-/* 灰色の背景（本番サイトと同じ） */
-.about__background {
-  position: absolute;
-  top: 80px; /* MVセクションとの余白（コンテンツと同じ位置から開始） */
-  left: 0;
-  bottom: 0;
-  width: 75%; /* 左側75%を灰色背景に */
-  background-color: rgb(246, 246, 246); /* 本番サイト: rgb(246, 246, 246) */
-  z-index: 0;
-}
-
-/* Flexコンテナ（横並びレイアウト） */
+/* Flexコンテナ（横並びレイアウト） - 本番サイトと完全一致 */
 .about__container {
   position: relative;
-  max-width: 1280px; /* 最大幅1280px */
+  padding: 80px 0; /* 上下80px（MVとの余白含む）、左右0 */
   margin: 0 32px; /* 左右32pxの余白 */
-  padding: 80px 32px; /* 上80px（MVとの余白）、左右32px（内側余白） */
+  max-width: calc(100% - 64px); /* 本番サイト: calc(100% - 64px) */
   z-index: 1; /* 背景より前面に */
 
   /* Flexbox for horizontal layout */
@@ -152,6 +141,17 @@ section {
   align-items: center;
   justify-content: space-between;
   gap: 0;
+}
+
+/* 灰色の背景（本番サイトと同じ） - コンテナの最上部から開始 */
+.about__background {
+  position: absolute;
+  top: 0; /* コンテナの最上部（padding-topの内側も含む）から開始 */
+  left: 0;
+  bottom: 0;
+  width: 75%; /* 左側75%を灰色背景に */
+  background-color: rgb(246, 246, 246); /* 本番サイト: rgb(246, 246, 246) */
+  z-index: 0;
 }
 
 /* テキストエリア（左側） */
