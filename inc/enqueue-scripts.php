@@ -70,10 +70,43 @@ function onwords_enqueue_assets() {
 		'1.0.0'
 	);
 
+	// Enqueue Sections CSS (depends on variables.css)
+	wp_enqueue_style(
+		'onwords-sections',
+		get_template_directory_uri() . '/assets/css/sections.css',
+		array( 'onwords-variables' ),
+		'1.0.0'
+	);
+
+	// Enqueue Components CSS (depends on variables.css)
+	wp_enqueue_style(
+		'onwords-components',
+		get_template_directory_uri() . '/assets/css/components.css',
+		array( 'onwords-variables' ),
+		'1.0.0'
+	);
+
+	// Enqueue Responsive CSS (load last - depends on all other CSS)
+	wp_enqueue_style(
+		'onwords-responsive',
+		get_template_directory_uri() . '/assets/css/responsive.css',
+		array( 'onwords-navigation', 'onwords-footer', 'onwords-sections', 'onwords-components' ),
+		'1.0.0'
+	);
+
 	// Enqueue Navigation JavaScript (load in footer)
 	wp_enqueue_script(
 		'onwords-navigation',
 		get_template_directory_uri() . '/assets/js/navigation.js',
+		array(),
+		'1.0.0',
+		true
+	);
+
+	// Enqueue Carousel JavaScript (load in footer)
+	wp_enqueue_script(
+		'onwords-carousel',
+		get_template_directory_uri() . '/assets/js/carousel.js',
 		array(),
 		'1.0.0',
 		true

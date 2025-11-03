@@ -1,0 +1,119 @@
+/* ===================================================================
+   Components CSS - Reusable Components
+   Extracted from https://www.onwords.co.jp/ (STUDIO site)
+   =================================================================== */
+
+/* ===================================================================
+   Business Card Component
+   =================================================================== */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card--business {
+  width: 476px;
+  min-height: 320px;
+  padding: 32px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a semi-transparent overlay for better text readability */
+.card--business::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+  z-index: 1;
+}
+
+.card--business * {
+  position: relative;
+  z-index: 2;
+}
+
+.card__title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  color: rgb(255, 255, 255); /* Changed to white for better contrast on background images */
+  margin-bottom: 16px;
+}
+
+.card__description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: rgb(255, 255, 255); /* Changed to white for better contrast on background images */
+}
+
+/* ===================================================================
+   News Item Component
+   =================================================================== */
+
+.news-item {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding: 24px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  transition: background-color 0.3s ease;
+}
+
+.news-item:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+.news-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.news-item__date {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24.5px;
+  color: rgb(66, 66, 66);
+  white-space: nowrap;
+}
+
+.news-item__category {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 21px;
+  color: rgb(66, 66, 66);
+  background-color: rgb(238, 238, 238);
+  padding: 4px 12px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.news-item__title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  color: rgb(34, 34, 34);
+  flex: 1;
+}
+
+.news-item:hover .news-item__title {
+  color: rgb(230, 1, 18);
+}

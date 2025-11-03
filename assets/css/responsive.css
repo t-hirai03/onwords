@@ -1,0 +1,276 @@
+/* ===================================================================
+   Responsive CSS - Mobile & Tablet Styles
+   Mobile-first approach with breakpoints
+   =================================================================== */
+
+/* ===================================================================
+   Tablet Styles (768px ~ 1023px)
+   =================================================================== */
+
+@media (max-width: 1023px) {
+  /* Section padding adjustment */
+  .about,
+  .message,
+  .business,
+  .news,
+  .inquiry {
+    padding: 60px 0;
+  }
+
+  /* Container padding */
+  .about__container,
+  .message__container,
+  .business__container,
+  .news__container,
+  .inquiry__container {
+    padding: 0 24px;
+  }
+
+  /* Business cards - stack on smaller screens */
+  .business__cards {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card--business {
+    width: 100%;
+  }
+
+  /* Message items - stack on tablet */
+  .message__items {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+/* ===================================================================
+   Mobile Styles (~ 767px)
+   =================================================================== */
+
+@media (max-width: 767px) {
+  /* Section padding for mobile */
+  .about,
+  .message,
+  .business,
+  .news,
+  .inquiry {
+    padding: 48px 0;
+  }
+
+  /* Container padding */
+  .about__container,
+  .message__container,
+  .business__container,
+  .news__container,
+  .inquiry__container {
+    padding: 0 16px;
+  }
+
+  /* Section labels */
+  .about__label,
+  .message__label,
+  .business__label,
+  .news__label,
+  .inquiry__label {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+
+  /* Section headings */
+  .about__heading,
+  .message__heading,
+  .business__heading,
+  .news__heading,
+  .inquiry__heading {
+    font-size: 28px;
+    line-height: 44.8px;
+    margin-bottom: 24px;
+  }
+
+  /* ===================================================================
+     Hero Section - Mobile
+     =================================================================== */
+
+  .hero {
+    height: 480px; /* Shorter height on mobile */
+  }
+
+  .hero__title {
+    font-size: 32px;
+    line-height: 44.8px;
+    margin-bottom: 12px;
+  }
+
+  .hero__subtitle {
+    font-size: 16px;
+    line-height: 25.6px;
+  }
+
+  .hero__content {
+    padding: 0 16px;
+  }
+
+  /* ===================================================================
+     About Section - Mobile
+     =================================================================== */
+
+  .about__body {
+    font-size: 14px;
+    line-height: 25.2px;
+  }
+
+  /* ===================================================================
+     Message Section - Mobile
+     =================================================================== */
+
+  .message__items {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .message__text {
+    font-size: 14px;
+    line-height: 25.2px;
+  }
+
+  /* ===================================================================
+     Business Section - Mobile
+     =================================================================== */
+
+  .business__cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card--business {
+    width: 100%;
+    min-height: 280px;
+    padding: 24px;
+  }
+
+  .card__title {
+    font-size: 18px;
+    line-height: 27px;
+    margin-bottom: 12px;
+  }
+
+  .card__description {
+    font-size: 14px;
+    line-height: 25.2px;
+  }
+
+  /* ===================================================================
+     News Section - Mobile
+     =================================================================== */
+
+  .news__item {
+    margin-bottom: 16px;
+  }
+
+  .news-item {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 0;
+  }
+
+  .news-item__meta {
+    gap: 8px;
+  }
+
+  .news-item__date {
+    font-size: 12px;
+    line-height: 21px;
+  }
+
+  .news-item__category {
+    font-size: 11px;
+    line-height: 19.25px;
+    padding: 3px 10px;
+  }
+
+  .news-item__title {
+    font-size: 14px;
+    line-height: 25.2px;
+  }
+
+  .news__view-all {
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  /* ===================================================================
+     Inquiry Section - Mobile
+     =================================================================== */
+
+  .inquiry__container {
+    text-align: center;
+  }
+}
+
+/* ===================================================================
+   Extra Small Mobile (~ 540px)
+   =================================================================== */
+
+@media (max-width: 540px) {
+  /* Further reduce hero height */
+  .hero {
+    height: 400px;
+  }
+
+  .hero__title {
+    font-size: 28px;
+    line-height: 39.2px;
+  }
+
+  .hero__subtitle {
+    font-size: 14px;
+    line-height: 22.4px;
+  }
+
+  /* Reduce section padding */
+  .about,
+  .message,
+  .business,
+  .news,
+  .inquiry {
+    padding: 40px 0;
+  }
+
+  /* Further reduce heading sizes */
+  .about__heading,
+  .message__heading,
+  .business__heading,
+  .news__heading,
+  .inquiry__heading {
+    font-size: 24px;
+    line-height: 38.4px;
+  }
+}
+
+/* ===================================================================
+   Extra Small Mobile (~ 320px)
+   =================================================================== */
+
+@media (max-width: 320px) {
+  .hero {
+    height: 360px;
+  }
+
+  .hero__title {
+    font-size: 24px;
+    line-height: 33.6px;
+  }
+
+  .hero__subtitle {
+    font-size: 12px;
+    line-height: 19.2px;
+  }
+
+  .card--business {
+    min-height: 240px;
+    padding: 20px;
+  }
+}
