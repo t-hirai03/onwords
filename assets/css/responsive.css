@@ -197,13 +197,11 @@
   .card--business {
     width: 100%;
     min-height: 280px;
-    padding: 24px;
   }
 
   .card__title {
     font-size: 18px;
     line-height: 27px;
-    margin-bottom: 12px;
   }
 
   .card__description {

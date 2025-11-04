@@ -232,22 +232,43 @@ section {
 
 /* ===================================================================
    Business Section
+   Extracted from https://www.onwords.co.jp/
    =================================================================== */
 
 .business {
-  padding: 80px 0;
+  padding: 0; /* From production site: no padding */
   background-color: rgb(255, 255, 255);
 }
 
 .business__container {
-  max-width: 1140px;
+  display: flex;
+  flex-direction: column; /* Fixed: flexDirection -> flex-direction */
+  align-items: center; /* Center-align all content */
+  max-width: 1280px; /* Match content width */
   margin: 0 auto;
   padding: 0 20px;
 }
 
+/* Title center alignment - from production site */
+.business__label,
+.business__heading {
+  text-align: center;
+}
+
+.business__heading {
+  margin-bottom: 20px; /* From production site: 20px space between title and cards */
+}
+
 .business__cards {
   display: flex;
-  gap: 32px;
+  flex-direction: row; /* Horizontal layout */
+  justify-content: center; /* Center cards horizontally */
+  gap: 60px; /* From production site: 60px between cards */
+  width: 100%;
+  max-width: 1280px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* ===================================================================
@@ -391,12 +412,12 @@ section {
 
 /* Narisawa image (CEO) */
 .message__image--narisawa::before {
-  background-image: url('../images/s-2732x4096_v-frms_webp_b3d0f58b-7f4a-48fe-bfe2-618be2a0bc51_regular.webp');
+  background-image: url('../images/top/message/s-2732x4096_v-frms_webp_b3d0f58b-7f4a-48fe-bfe2-618be2a0bc51_regular.webp');
 }
 
 /* Kato image (Vice President) */
 .message__image--kato::before {
-  background-image: url('../images/s-2732x4096_v-frms_webp_f012f79f-629b-4c77-a0b5-53b2030f1bf6_regular.webp');
+  background-image: url('../images/top/message/s-2732x4096_v-frms_webp_f012f79f-629b-4c77-a0b5-53b2030f1bf6_regular.webp');
 }
 
 /* Text container */
@@ -418,3 +439,26 @@ section {
    - タイトル: .fade-in-up--slower + .fade-in-up--delay-md (1.0s + 0.3s delay)
    - メッセージブロック: .fade-in-up--slow (0.8s)
 */
+
+/* ===================================================================
+   BUSINESS Section Responsive
+   From production site: https://www.onwords.co.jp/
+   =================================================================== */
+
+/* Mobile (767px以下) */
+@media (max-width: 767px) {
+  .business__container {
+    padding: 0 16px; /* Mobile padding */
+  }
+
+  .business__cards {
+    gap: 50px; /* From production site: モバイルでは50px */
+  }
+}
+
+/* Tablet (768px以上) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .business__cards {
+    gap: 32px; /* From production site: タブレットでは32px */
+  }
+}
