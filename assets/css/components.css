@@ -117,3 +117,55 @@
 .news-item:hover .news-item__title {
   color: rgb(230, 1, 18);
 }
+
+/* ===================================================================
+   Common Scroll-in Animations
+   フェードイン・スライドアップアニメーション（共通クラス）
+   =================================================================== */
+
+/* 初期状態: 非表示 + 下から20px */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* アニメーション発動時: 表示 + 元の位置 */
+.fade-in-up.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* アニメーション速度バリエーション */
+
+/* Fast: 0.3s - 小さい要素、カードなど */
+.fade-in-up--fast.appear {
+  transition: opacity 0.3s cubic-bezier(0.4, 0.4, 0, 1), transform 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+/* Normal: 0.6s - 中程度の要素、テキストブロックなど */
+.fade-in-up--normal.appear {
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+/* Slow: 0.8s - 大きい要素、メッセージブロックなど */
+.fade-in-up--slow.appear {
+  transition: opacity 0.8s cubic-bezier(0.4, 0.4, 0, 1), transform 0.8s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+/* Slower: 1.0s - 最も遅い、タイトルなど */
+.fade-in-up--slower.appear {
+  transition: opacity 1.0s ease-in-out, transform 1.0s ease-in-out;
+}
+
+/* Delayバリエーション（必要に応じて使用） */
+.fade-in-up--delay-sm.appear {
+  transition-delay: 0.1s;
+}
+
+.fade-in-up--delay-md.appear {
+  transition-delay: 0.3s;
+}
+
+.fade-in-up--delay-lg.appear {
+  transition-delay: 0.5s;
+}

@@ -150,15 +150,39 @@
      Message Section - Mobile
      =================================================================== */
 
-  .message__items {
+  .message__container {
+    padding: 0 16px; /* モバイル時のインナー余白 16px */
+  }
+
+  .message__block {
     flex-direction: column;
+    width: 100%;
+    margin: 0 0 40px 0;
     gap: 24px;
+  }
+
+  .message__image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 488 / 550;
+  }
+
+  .message__image::before {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .message__text-container {
+    width: 100%;
   }
 
   .message__text {
     font-size: 14px;
     font-weight: 500;
-    line-height: 25.2px;
+    line-height: 24.5px;
+    text-align: left; /* モバイル: 左寄せ */
   }
 
   /* ===================================================================
@@ -285,6 +309,7 @@
     font-weight: 700;
     line-height: 51.2px;
   }
+
 }
 
 /* ===================================================================

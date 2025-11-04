@@ -318,3 +318,103 @@ section {
   padding: 0 20px;
   text-align: center;
 }
+
+/* ===================================================================
+   Message Section (代表メッセージ)
+   Extracted from https://www.onwords.co.jp/
+   =================================================================== */
+
+.message {
+  padding: 80px 0;
+  background-color: rgb(255, 255, 255);
+}
+
+.message__container {
+  max-width: 1360px; /* 1280px content + 40px * 2 margins */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title container - centered */
+.message__label,
+.message__heading {
+  text-align: center;
+}
+
+.message__label {
+  margin-bottom: 0;
+}
+
+.message__heading {
+  margin-bottom: 20px; /* From production site */
+}
+
+/* Message blocks */
+.message__block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px; /* From production site */
+  width: 1280px; /* From production site */
+  margin: 0 40px 80px; /* From production site */
+}
+
+.message__block:last-child {
+  margin-bottom: 0;
+}
+
+/* Image container */
+.message__image {
+  width: 488px; /* From production site */
+  height: 550px; /* From production site */
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 8px; /* From production site */
+  overflow: hidden;
+}
+
+/* Image using ::before pseudo-element */
+.message__image::before {
+  content: '';
+  display: block;
+  width: 488px; /* From production site */
+  height: 550px; /* From production site */
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* Narisawa image (CEO) */
+.message__image--narisawa::before {
+  background-image: url('../images/s-2732x4096_v-frms_webp_b3d0f58b-7f4a-48fe-bfe2-618be2a0bc51_regular.webp');
+}
+
+/* Kato image (Vice President) */
+.message__image--kato::before {
+  background-image: url('../images/s-2732x4096_v-frms_webp_f012f79f-629b-4c77-a0b5-53b2030f1bf6_regular.webp');
+}
+
+/* Text container */
+.message__text-container {
+  flex-shrink: 0;
+  width: 752px; /* From production site */
+}
+
+.message__text {
+  font-size: 16px; /* From production site */
+  font-weight: 500; /* From production site */
+  line-height: 28px; /* From production site */
+  color: rgb(34, 34, 34); /* From production site */
+  margin: 0; /* From production site */
+}
+
+/* Scroll-in animations for message section
+   共通クラス .fade-in-up を使用
+   - タイトル: .fade-in-up--slower + .fade-in-up--delay-md (1.0s + 0.3s delay)
+   - メッセージブロック: .fade-in-up--slow (0.8s)
+*/

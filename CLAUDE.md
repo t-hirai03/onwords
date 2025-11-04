@@ -49,6 +49,14 @@
    - mcp__playwright__browser_hover (ホバー状態の確認)
    ```
 
+   **画像の確認方法（重要）**:
+   - **ネットワークリクエストで画像URLを確認**: `mcp__chrome-devtools__list_network_requests` でresourceTypes=["image"]を指定
+   - **CSS疑似要素（::before, ::after）で画像が表示されている可能性**:
+     - HTMLに`<img>`タグがなく、ネットワークリクエストにも画像が見つからない場合、CSS疑似要素で背景画像として表示されている可能性が高い
+     - `window.getComputedStyle(element, '::before')` で疑似要素のスタイルを確認
+     - 特に`backgroundImage`プロパティを確認すること
+   - **画像の遅延読み込み**: ページをスクロールしてから再度ネットワークリクエストを確認
+
 3. **スクリーンショットの撮影と格納**
    ```
    - mcp__chrome-devtools__take_screenshot (スクリーンショット撮影)
@@ -155,6 +163,61 @@ mcp__playwright__browser_navigate (url: "https://www.onwords.co.jp/")
    **要素の表示/非表示**:
    - デスクトップとモバイルで表示される要素が変わる
    - 例: デスクトップナビ（デスクトップのみ）、ハンバーガーメニュー（モバイルのみ）
+
+   **ホバー・初期表示アニメーションの確認（重要）**:
+   - **ボタン・リンクのホバーアニメーション**: すべてのボタン、リンク、クリッカブル要素で必ずホバー状態を確認
+     - 色の変化、背景のグラデーション、不透明度の変化
+     - トランジションのタイミング（duration, timing-function, delay）
+     - スライドイン背景、シャドウ、スケール変化など
+     - `mcp__chrome-devtools__hover` または `mcp__playwright__browser_hover` でホバー状態を確認
+   - **コンテンツの初期表示アニメーション**: すべてのセクション、カード、画像で初期表示アニメーションを確認
+     - スクロールして要素がビューポートに入った時のアニメーション（フェードイン、スライドイン）
+     - Intersection Observerの動作確認
+     - **アニメーションのタイミングと遅延時間を正確に合わせる（CRITICAL）**:
+       - `transitionDuration` (例: `0.3s`, `0.6s`, `0.8s`, `1.0s`)
+       - `transitionTimingFunction` (例: `cubic-bezier(0.4, 0.4, 0, 1)`, `ease-in-out`)
+       - `transitionDelay` (例: `0s`, `0.3s`)
+       - **必ず本番サイトから正確な値を取得してミリ秒単位で合わせること**
+       - **アニメーション速度が「速すぎる」「遅すぎる」場合は本番サイトと比較して調整**
+       - 推測や「だいたい同じ」は禁止
+     - 通常状態: `opacity: 0, transform: translateY(20px)` など
+     - アニメーション後: `opacity: 1, transform: translateY(0)` など
+     - **共通アニメーションクラスの使用**: 繰り返し使うアニメーション（フェードイン等）は共通CSSクラスで定義すること
+   - **確認方法**:
+     ```javascript
+     // ホバー前の状態を確認
+     () => {
+       const element = document.querySelector('.button');
+       const styles = window.getComputedStyle(element);
+       return {
+         background: styles.background,
+         opacity: styles.opacity,
+         transition: styles.transition
+       };
+     }
+
+     // ホバー後（mcp__chrome-devtools__hoverを使用後）
+     () => {
+       const element = document.querySelector('.button');
+       const styles = window.getComputedStyle(element);
+       return {
+         background: styles.background,
+         opacity: styles.opacity,
+         transitionDuration: styles.transitionDuration
+       };
+     }
+
+     // 初期表示アニメーション確認（スクロール前）
+     () => {
+       const element = document.querySelector('.section .sd');
+       return {
+         classes: element.className,
+         hasAppear: element.classList.contains('appear'),
+         opacity: window.getComputedStyle(element).opacity,
+         transform: window.getComputedStyle(element).transform
+       };
+     }
+     ```
 
 5. **比較確認スクリプト例**
    ```javascript

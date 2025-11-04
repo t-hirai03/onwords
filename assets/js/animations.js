@@ -35,9 +35,31 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(aboutSection);
   }
 
-  // 将来的に他のセクションも追加可能
-  // const messageSection = document.querySelector('.message');
-  // if (messageSection) {
-  //   observer.observe(messageSection);
-  // }
+  // 共通フェードインアニメーション（.fade-in-up要素用）
+  const fadeInObserverOptions = {
+    root: null,
+    rootMargin: '0px 0px -100px 0px',
+    threshold: 0.1
+  };
+
+  const fadeInObserverCallback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // ビューポートに入ったら.appearクラスを追加
+        entry.target.classList.add('appear');
+
+        // 一度アニメーションしたら監視を解除
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  // .fade-in-up要素用のObserverを作成
+  const fadeInObserver = new IntersectionObserver(fadeInObserverCallback, fadeInObserverOptions);
+
+  // すべての.fade-in-up要素を監視
+  const fadeInElements = document.querySelectorAll('.fade-in-up');
+  fadeInElements.forEach(element => {
+    fadeInObserver.observe(element);
+  });
 });
