@@ -3,12 +3,13 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="<?php bloginfo( 'description' ); ?>">
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 	<header class="header">
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__logo-link">
-			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo/logo.svg' ); ?>"
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/logo/logo.svg' ); ?>"
 				 alt="<?php bloginfo( 'name' ); ?>"
 				 class="header__logo">
 		</a>
@@ -61,7 +62,7 @@
 		 aria-label="モバイルメニュー">
 		<!-- Logo (top left) -->
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__mobile-menu-logo-link">
-			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo/logo.svg' ); ?>"
+			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/logo/logo.svg' ); ?>"
 				 alt="<?php bloginfo( 'name' ); ?>"
 				 class="header__mobile-menu-logo">
 		</a>

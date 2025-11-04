@@ -14,6 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Theme Setup
+ */
+function onwords_theme_setup() {
+	// Add support for dynamic title tag
+	add_theme_support( 'title-tag' );
+}
+add_action( 'after_setup_theme', 'onwords_theme_setup' );
+
+/**
  * Load theme modules
  */
 
