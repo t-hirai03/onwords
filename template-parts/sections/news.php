@@ -7,7 +7,7 @@
     <ul class="news__list">
       <?php
       $news_query = new WP_Query(array(
-        'post_type' => 'news',
+        'post_type' => 'post', // Changed from 'news' to 'post'
         'posts_per_page' => 2,
         'orderby' => 'date',
         'order' => 'DESC'
@@ -15,7 +15,7 @@
 
       if ($news_query->have_posts()) :
         while ($news_query->have_posts()) : $news_query->the_post();
-          $categories = get_the_terms(get_the_ID(), 'news_category');
+          $categories = get_the_category();
           $category_name = !empty($categories) ? $categories[0]->name : 'お知らせ';
       ?>
         <li class="news__item">

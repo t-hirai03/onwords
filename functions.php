@@ -26,6 +26,9 @@ add_action( 'after_setup_theme', 'onwords_theme_setup' );
  * Load theme modules
  */
 
+// Custom post types
+require_once get_template_directory() . '/inc/custom-post-types.php';
+
 // Menu registration
 require_once get_template_directory() . '/inc/menus.php';
 

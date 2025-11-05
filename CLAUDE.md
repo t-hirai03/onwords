@@ -85,6 +85,58 @@
 - Chrome DevTools MCP または Playwright MCP で実際の構造・スタイル・内容を取得
 - 取得したデータを元に正確に実装
 
+#### HTML構造とCSSを正確に対応させる
+
+**CRITICAL**: 実装時は、必ずHTML構造とCSSを完全に一致させてください。
+
+**重要な原則**:
+- **HTML階層構造を正確に再現**: 親子関係、兄弟関係、ネストの深さを完全に一致させる
+- **CSSセレクタを正確に対応**: 各階層に当たっているCSSを漏れなく抽出して適用
+- **クラス名の対応**: BEM規則に従い、階層構造が分かるクラス名を使用
+- **疑似要素の確認**: `::before`, `::after` で実装されている要素を見落とさない
+
+**よくある間違い（絶対に避ける）**:
+
+❌ **HTML構造が違う**:
+```html
+<!-- 本番: 画像が上、テキストが下 -->
+<a class="card">
+  <div class="card__image"></div>
+  <div class="card__text">テキスト</div>
+</a>
+
+<!-- ❌ 間違い: 画像がテキストの中 -->
+<a class="card">
+  <div class="card__text">
+    <img class="card__image">
+    テキスト
+  </div>
+</a>
+```
+
+❌ **CSSが階層構造と合っていない**:
+```css
+/* 本番: 画像は独立した要素 */
+.card__image {
+  width: 476px;
+  height: 300px;
+}
+
+/* ❌ 間違い: カード全体に背景画像 */
+.card {
+  background-image: url(...);
+}
+```
+
+✅ **正しい実装手順**:
+1. `outerHTML` でHTML構造全体を確認
+2. 各階層の要素に `getComputedStyle` でCSSを確認
+3. HTML構造を完全に再現
+4. 各階層にCSSを正確に適用
+5. ホバー状態、アニメーションも階層ごとに確認
+
+**参考**: 詳細な確認手順は「HTML階層構造とCSS確認の完全ワークフロー」セクションを参照
+
 #### Playwright MCP のトラブルシューティング
 
 **問題**: Playwright MCPで `about:blank` エラーや `Browser is already in use` エラーが発生する場合
@@ -1164,14 +1216,21 @@ assets/
 
 **assets/images/**
 - ロゴ、アイコン、背景画像、コンテンツ画像などすべての画像を配置
-- サブディレクトリで整理することも可能：
+- **ディレクトリ構成ルール（CRITICAL）**:
   ```
   images/
-  ├── logo/          # ロゴファイル
-  ├── icons/         # アイコン類
-  ├── backgrounds/   # 背景画像
-  └── content/       # コンテンツ用画像
+  ├── top/           # トップページで使用する画像（ページ固有）
+  │   ├── hero/      # HEROセクション画像
+  │   ├── about/     # ABOUTセクション画像
+  │   ├── message/   # MESSAGEセクション画像
+  │   └── business/  # BUSINESSセクション画像
+  └── common/        # 複数ページで共通使用する画像
+      └── logo/      # ロゴファイル（ヘッダー、フッター）
   ```
+- **画像格納ルール**:
+  - トップページで使用する画像 → `images/top/セクション名/`
+  - 複数ページで共通使用する画像 → `images/common/`
+  - 下層ページ固有の画像 → 今後追加（例: `images/company/`, `images/news/`）
 - 本番環境では最適化（WebP変換、圧縮）を行う
 
 **assets/fonts/**

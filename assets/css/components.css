@@ -103,7 +103,7 @@
 }
 
 .news-item:hover {
-  background-color: rgb(250, 250, 250);
+  background-color: #fff1ef; /* rgb(255, 241, 239) - From production site */
 }
 
 .news-item__meta {
@@ -124,8 +124,8 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 21px;
-  color: rgb(66, 66, 66);
-  background-color: rgb(238, 238, 238);
+  color: rgb(255, 255, 255); /* White text */
+  background-color: rgb(230, 1, 18); /* Red background */
   padding: 4px 12px;
   border-radius: 2px;
   white-space: nowrap;

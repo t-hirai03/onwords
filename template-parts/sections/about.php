@@ -17,7 +17,7 @@
 
     <!-- 画像エリア（右側） -->
     <div class="about__image-container">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/about/s-1224x800_v-fms_webp_01071bf2-7516-42f6-8153-f7e7b68cf9f2_middle.webp" alt="Onwords" class="about__image">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/top/about/s-1224x800_v-fms_webp_01071bf2-7516-42f6-8153-f7e7b68cf9f2_middle.webp" alt="Onwords" class="about__image">
     </div>
   </div>
 
