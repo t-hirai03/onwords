@@ -74,7 +74,7 @@ function onwords_register_news_category() {
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'news-category' ),
+		'rewrite'           => array( 'slug' => 'news/category' ),
 	);
 
 	register_taxonomy( 'news_category', array( 'news' ), $args );

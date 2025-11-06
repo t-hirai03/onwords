@@ -125,7 +125,7 @@
   font-weight: 500;
   line-height: 21px;
   color: rgb(255, 255, 255); /* White text */
-  background-color: rgb(230, 1, 18); /* Red background */
+  background: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74)); /* Red background - matches production */
   padding: 4px 12px;
   border-radius: 2px;
   white-space: nowrap;

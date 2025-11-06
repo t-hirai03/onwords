@@ -34,3 +34,15 @@ require_once get_template_directory() . '/inc/menus.php';
 
 // Asset enqueue
 require_once get_template_directory() . '/inc/enqueue-scripts.php';
+
+/**
+ * Flush rewrite rules on theme activation (one-time)
+ * This ensures the news archive URL works properly
+ */
+function onwords_flush_rewrite_rules() {
+	if ( ! get_transient( 'onwords_flush_rewrite_rules' ) ) {
+		flush_rewrite_rules();
+		set_transient( 'onwords_flush_rewrite_rules', 1, DAY_IN_SECONDS );
+	}
+}
+add_action( 'init', 'onwords_flush_rewrite_rules' );
