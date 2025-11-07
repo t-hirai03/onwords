@@ -201,30 +201,53 @@ onwords/
 
 ### 余白とwidth設定の重要ルール
 
-**CRITICAL: paddingを設定すればwidth計算は不要**
+**🚨 CRITICAL: 絶対に忘れないこと 🚨**
+
+**必ず `max-width: 1312px` + `margin: 0 auto` + `padding: 0 16px` のパターンを使用する**
+
+このパターンにより、PC・タブレット・モバイル全てで自動的に適切な余白が確保されます。
+
+**❌ 絶対に使用禁止のパターン:**
 
 ```css
-/* ❌ 冗長 - width計算は不要 */
+/* ❌ calc()とmarginの組み合わせ - 絶対に使わない */
+.container {
+  max-width: calc(100% - 64px);
+  margin: 0 32px;
+}
+
+/* ❌ calc()とpaddingの組み合わせ - 絶対に使わない */
+.container {
+  max-width: calc(100% - 32px);
+  margin: 0 16px;
+}
+
+/* ❌ widthにcalc()を使う - 冗長で不要 */
 .container {
   width: calc(100% - 64px);
   padding: 0 32px;
 }
-
-/* ✅ シンプル - paddingだけで十分 */
-.container {
-  padding: 0 32px;
-}
 ```
 
-**標準パターン: コンテンツ幅1280px + 左右余白16px**
+**✅ 正しいパターン（必ずこれを使う）:**
 
 ```css
+/* ✅ 標準パターン: コンテンツ幅1280px + 左右余白16px */
 .container {
   max-width: 1312px;  /* 1280px + 16px × 2 */
   margin: 0 auto;      /* 中央寄せ */
   padding: 0 16px;     /* 左右の余白 */
 }
+
+/* ✅ これだけでPC・タブレット・モバイル全て対応 */
+/* ✅ レスポンシブでmax-width/margin/paddingの上書き不要 */
 ```
+
+**このパターンを使う理由:**
+- PC・タブレット・モバイル全デバイスで自動対応
+- メディアクエリでの余白調整が不要
+- コードがシンプルで保守しやすい
+- calc()の複雑な計算が不要
 
 **親要素で余白を管理する - 子要素に重複設定しない**
 
@@ -278,24 +301,40 @@ footer {
 }
 ```
 
-**レスポンシブでの重複設定を避ける**
+**レスポンシブでの余白設定は不要**
+
+**🚨 CRITICAL: `max-width: 1312px` + `margin: 0 auto` + `padding: 0 16px` パターンを使えば、メディアクエリでの余白調整は一切不要**
 
 ```css
-/* ベース - 親要素で設定 */
+/* ✅ ベーススタイルだけで全デバイス対応 */
 .container {
+  max-width: 1312px;
+  margin: 0 auto;
   padding: 0 16px;
 }
 
-/* タブレット */
-@media (min-width: 768px) and (max-width: 1023px) {
-  /* ❌ 親要素で既に設定されているので不要 */
+/* ✅ レスポンシブでは余白を上書きしない */
+@media (max-width: 768px) {
+  /* ❌ max-width/margin/paddingの上書き不要 */
   /* .container {
-    padding: 0 24px;
+    max-width: calc(100% - 32px);
+    margin: 0 16px;
   } */
 
-  /* ✅ 必要な場合のみ上書き */
-  .container {
-    padding: 0 24px;  /* タブレットでは24pxに変更 */
+  /* ✅ フォントサイズなど、必要なプロパティのみ調整 */
+  .container h1 {
+    font-size: 24px;
+  }
+}
+```
+
+**例外: 特定のブレークポイントで異なる余白が必要な場合のみ上書き**
+
+```css
+/* タブレットでのみ異なる余白が必要な場合 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .special-container {
+    padding: 0 24px;  /* タブレットだけ24px */
   }
 }
 ```

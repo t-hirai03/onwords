@@ -36,6 +36,7 @@ function onwords_register_news_post_type() {
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
+		'show_in_rest'       => true,
 		'query_var'          => true,
 		'rewrite'            => array( 'slug' => 'news' ),
 		'capability_type'    => 'post',
@@ -73,6 +74,7 @@ function onwords_register_news_category() {
 		'labels'            => $labels,
 		'show_ui'           => true,
 		'show_admin_column' => true,
+		'show_in_rest'      => true,
 		'query_var'         => true,
 		'rewrite'           => array( 'slug' => 'news/category' ),
 	);
