@@ -73,13 +73,9 @@ get_header();
 			</div>
 
 			<!-- お知らせ一覧へリンク -->
-			<nav class="pagination-wrapper">
-				<ul class="pagination">
-					<li class="pagination__item">
-						<a href="<?php echo esc_url( get_post_type_archive_link( 'news' ) ); ?>">お知らせ一覧へ</a>
-					</li>
-				</ul>
-			</nav>
+			<div style="text-align: center; margin-top: 48px;">
+				<a href="<?php echo esc_url( get_post_type_archive_link( 'news' ) ); ?>" class="btn-primary">お知らせ一覧へ</a>
+			</div>
 		</div>
 	</div>
 </main>

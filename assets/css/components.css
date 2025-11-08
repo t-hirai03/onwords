@@ -89,6 +89,31 @@
 }
 
 /* ===================================================================
+   Button Component
+   =================================================================== */
+
+/* Primary Button - Red gradient button */
+.btn-primary,
+.news__view-all {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  background: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74));
+  border: none;
+  border-radius: 24px;
+  transition: opacity 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+.btn-primary:hover,
+.news__view-all:hover {
+  opacity: 0.8;
+}
+
+/* ===================================================================
    News Item Component
    =================================================================== */
 

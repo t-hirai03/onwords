@@ -307,24 +307,6 @@ section {
   margin-bottom: 0;
 }
 
-.news__view-all {
-  display: inline-block;
-  padding: 10px 16px; /* From production site */
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 28px; /* From production site: makes height 48px (10px + 28px + 10px) */
-  color: rgb(255, 255, 255); /* White text */
-  text-decoration: none;
-  background: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74)); /* Red gradient from production site */
-  border: none;
-  border-radius: 24px; /* From production site */
-  transition: opacity 0.3s cubic-bezier(0.4, 0.4, 0, 1); /* From production site */
-}
-
-.news__view-all:hover {
-  opacity: 0.8; /* Slight opacity change on hover */
-}
-
 .news__no-posts {
   font-size: 16px;
   color: rgb(102, 102, 102);
