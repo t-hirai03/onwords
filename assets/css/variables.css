@@ -7,6 +7,14 @@
 
 :root {
   /* ========================================
+     Color Variables
+     ======================================== */
+
+  /* Primary Brand Color (Onwords Red) */
+  --color-primary: #E53935;
+  --color-primary-hover: #D32F2F;
+
+  /* ========================================
      Typography Variables
      ======================================== */
 
