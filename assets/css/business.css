@@ -135,8 +135,8 @@
 .business-card {
 	display: flex;
 	flex-direction: column;
-	width: 368px;
-	max-width: calc(50% - 20px);
+	width: 100%;
+	max-width: 480px;
 	text-decoration: none;
 	color: inherit;
 }
@@ -146,15 +146,16 @@
 	height: 300px;
 	background-size: cover;
 	background-position: center;
+	background-color: #f0f0f0;
 	margin-bottom: 16px;
 }
 
 .business-card__image--local {
-	background-image: url('../images/business/local-dx.webp');
+	background-image: url('https://storage.googleapis.com/studio-design-asset-files/projects/1pqDrBZNWj/s-1200x800_v-fms_webp_df73450b-6e71-4610-bb68-1da0e6550d51_small.webp');
 }
 
 .business-card__image--inbound {
-	background-image: url('../images/business/inbound-marketing.webp');
+	background-image: url('https://storage.googleapis.com/studio-design-asset-files/projects/1pqDrBZNWj/s-1152x648_v-fs_webp_0e1fc66c-d727-4f51-97eb-b378e3cb4581_small.webp');
 }
 
 .business-card__titles {
