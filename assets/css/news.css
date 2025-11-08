@@ -7,14 +7,14 @@
    NEWS ARCHIVE PAGE
    =================================================================== */
 
-/* News Archive Hero Section */
-.news-archive-hero-wrapper {
+/* Archive Hero Section */
+.archive-hero-wrapper {
   max-width: 1312px;
   margin: 0 auto 40px;
   padding: 0 16px;
 }
 
-.news-archive-hero {
+.archive-hero {
   width: 100%;
   height: 320px;
   border-radius: 20px;
@@ -29,7 +29,7 @@
   background-repeat: no-repeat;
 }
 
-.news-archive-hero__overlay {
+.archive-hero__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -39,7 +39,7 @@
   z-index: 1;
 }
 
-.news-archive-hero__container {
+.archive-hero__container {
   position: relative;
   z-index: 2;
   display: flex;
@@ -49,7 +49,7 @@
   text-align: center;
 }
 
-.news-archive-hero__label {
+.archive-hero__label {
   font-size: 20px;
   font-weight: 500;
   color: rgb(255, 255, 255);
@@ -57,7 +57,7 @@
   margin: 0 0 8px 0;
 }
 
-.news-archive-hero__title {
+.archive-hero__title {
   font-size: 40px;
   font-weight: 700;
   color: rgb(255, 255, 255);
@@ -65,57 +65,14 @@
   margin: 0;
 }
 
-/* News Archive Filter Section */
-.news-archive-filter {
-  padding: 48px 0 32px;
-  background-color: #ffffff;
-}
-
-.news-archive-filter__container {
+/* Archive List Section */
+.archive-list__container {
   max-width: 1312px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
-.news-archive-filter__nav {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.news-archive-filter__button {
-  padding: 2px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 22.75px;
-  color: rgb(51, 51, 51);
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(226, 226, 226);
-  border-radius: 2px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-.news-archive-filter__button:hover {
-  opacity: 0.8;
-}
-
-.news-archive-filter__button--active {
-  color: rgb(255, 255, 255);
-  background: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74));
-  border: 1px solid rgb(231, 74, 74);
-}
-
-/* News Archive List Section */
-.news-archive-list__container {
-  max-width: 1312px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-.news-archive-list__items {
+.archive-list__items {
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -123,12 +80,12 @@
   padding: 0;
 }
 
-.news-archive-list__items .news__item {
+.archive-list__items .news__item {
   border-bottom: 1px solid rgb(226, 226, 226);
   padding: 0;
 }
 
-.news-archive-list__items .news-item {
+.archive-list__items .news-item {
   display: flex;
   flex-direction: row;
   gap: 24px;
@@ -137,24 +94,24 @@
   transition: opacity 0.3s ease;
 }
 
-.news-archive-list__items .news-item:hover {
+.archive-list__items .news-item:hover {
   opacity: 0.7;
 }
 
-.news-archive-list__items .news-item__meta {
+.archive-list__items .news-item__meta {
   display: flex;
   gap: 16px;
   align-items: center;
 }
 
-.news-archive-list__items .news-item__date {
+.archive-list__items .news-item__date {
   font-size: 14px;
   font-weight: 500;
   color: rgb(66, 66, 66);
   margin: 0;
 }
 
-.news-archive-list__items .news-item__category {
+.archive-list__items .news-item__category {
   font-size: 12px;
   font-weight: 500;
   color: rgb(255, 255, 255);
@@ -164,7 +121,7 @@
   border-radius: 2px;
 }
 
-.news-archive-list__items .news-item__title {
+.archive-list__items .news-item__title {
   font-size: 16px;
   font-weight: 500;
   color: rgb(51, 51, 51);
@@ -172,7 +129,7 @@
   margin: 0;
 }
 
-.news-archive-list__no-posts {
+.archive-list__no-posts {
   text-align: center;
   padding: 80px 0;
   font-size: 16px;
@@ -384,7 +341,7 @@
 /* タブレット・モバイル（1023px以下） */
 @media (max-width: 1023px) {
   /* ヒーロー画像を非表示 */
-  .news-archive-hero-wrapper {
+  .archive-hero-wrapper {
     display: none;
   }
 }

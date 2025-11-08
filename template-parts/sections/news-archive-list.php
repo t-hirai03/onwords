@@ -1,5 +1,5 @@
-<!-- News Archive List Section -->
-<div class="news-archive-list__container">
+<!-- Archive List Section -->
+<div class="archive-list__container">
 		<?php
 		// ページ番号を取得
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -29,7 +29,7 @@
 
 		if ($news_query->have_posts()) :
 		?>
-			<ul class="news-archive-list__items">
+			<ul class="archive-list__items">
 				<?php
 				while ($news_query->have_posts()) : $news_query->the_post();
 					// ニュース項目コンポーネントを読み込み
@@ -63,6 +63,6 @@
 			wp_reset_postdata();
 		else :
 		?>
-			<p class="news-archive-list__no-posts">お知らせはありません</p>
+			<p class="archive-list__no-posts">お知らせはありません</p>
 		<?php endif; ?>
 </div>

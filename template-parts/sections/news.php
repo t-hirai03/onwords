@@ -36,6 +36,6 @@
       <?php endif; ?>
     </ul>
 
-    <a href="/news" class="news__view-all">すべてのお知らせを見る</a>
+    <a href="/news" class="btn-primary">すべてのお知らせを見る</a>
   </div>
 </section>

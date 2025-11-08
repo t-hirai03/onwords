@@ -29,6 +29,22 @@ a, abbr, address, article, aside, audio, b, blockquote, body, button, canvas, ca
 body {
   background: #ffffff;
   transition: background 0.5s cubic-bezier(0.4, 0.4, 0, 1);
+  position: relative;
+}
+
+/* Background dot pattern - from production site */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/common/bg-dot-pattern.webp');
+  background-size: 25px;
+  background-repeat: repeat;
+  z-index: -2;
+  pointer-events: none;
 }
 
 /* ========================================

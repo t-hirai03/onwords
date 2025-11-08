@@ -129,6 +129,156 @@ onwords/
 - **テンプレートファイル**: WordPress標準（例: `archive-{post-type}.php`）
 - **アセットファイル**: ケバブケース（例: `smooth-scroll.js`, `base.css`）
 
+## 共通CSSコンポーネント
+
+複数ページで再利用可能なコンポーネントは `assets/css/components.css` に定義されています。
+
+### アーカイブページ用コンポーネント
+
+お知らせ、導入事例、ナレッジなどのアーカイブページで共通使用:
+
+```css
+/* フィルターボタン */
+.archive-filter                    /* フィルターセクション全体 */
+.archive-filter__container         /* 内側コンテナ（max-width: 1312px） */
+.archive-filter__nav               /* ボタンナビゲーション */
+.archive-filter__button            /* 各フィルターボタン */
+.archive-filter__button--active    /* アクティブ状態のボタン */
+
+/* ヒーローセクション */
+.archive-hero-wrapper              /* ヒーロー外側ラッパー */
+.archive-hero                      /* ヒーローセクション */
+.archive-hero__overlay             /* オーバーレイ（背景暗く） */
+.archive-hero__container           /* コンテンツコンテナ */
+.archive-hero__label               /* 英語ラベル（例: NEWS） */
+.archive-hero__title               /* タイトル（例: お知らせ） */
+
+/* リストセクション */
+.archive-list__container           /* リストコンテナ */
+.archive-list__items               /* リスト項目の親要素 */
+.archive-list__no-posts            /* 投稿がない場合のメッセージ */
+```
+
+**使用例（ニュースアーカイブ）:**
+```php
+<!-- フィルターボタン -->
+<div class="archive-filter">
+  <div class="archive-filter__container">
+    <nav class="archive-filter__nav">
+      <a href="/news/" class="archive-filter__button archive-filter__button--active">すべて</a>
+      <a href="/news/?news_category=press-release" class="archive-filter__button">プレスリリース</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ヒーローセクション -->
+<div class="archive-hero-wrapper">
+  <section class="archive-hero" style="background-image: url(...);">
+    <div class="archive-hero__overlay"></div>
+    <div class="archive-hero__container">
+      <p class="archive-hero__label">News</p>
+      <h1 class="archive-hero__title">お知らせ</h1>
+    </div>
+  </section>
+</div>
+
+<!-- リスト -->
+<div class="archive-list__container">
+  <ul class="archive-list__items">
+    <!-- 記事項目 -->
+  </ul>
+</div>
+```
+
+### ボタンコンポーネント
+
+```css
+/* プライマリボタン（赤いグラデーションボタン） */
+.btn-primary
+.btn-primary:hover
+```
+
+**使用例:**
+```html
+<a href="/news" class="btn-primary">すべてのお知らせを見る</a>
+```
+
+### ニュース項目コンポーネント
+
+```css
+.news-item                  /* ニュース項目全体 */
+.news-item:hover            /* ホバー時（背景色変化） */
+.news-item__meta            /* 日付とカテゴリのコンテナ */
+.news-item__date            /* 投稿日 */
+.news-item__category        /* カテゴリラベル（赤背景） */
+.news-item__title           /* タイトル */
+.news-item:hover .news-item__title  /* ホバー時のタイトル色 */
+```
+
+**使用例:**
+```html
+<a href="/news/post-slug/" class="news-item">
+  <div class="news-item__meta">
+    <p class="news-item__date">2025/11/07</p>
+    <p class="news-item__category">お知らせ</p>
+  </div>
+  <h3 class="news-item__title">記事タイトル</h3>
+</a>
+```
+
+### ビジネスカードコンポーネント
+
+```css
+.card                       /* カード全体 */
+.card--business             /* ビジネスカード専用スタイル */
+.card__image                /* カード画像 */
+.card__image--local-dx      /* 地域観光DX事業の画像 */
+.card__image--inbound-marketing  /* 訪日マーケティングの画像 */
+.card__text-container       /* テキストコンテナ */
+.card__title                /* カードタイトル */
+.card__description          /* カード説明文 */
+```
+
+### 共通アニメーション
+
+```css
+/* スクロールインアニメーション */
+.fade-in-up                 /* 初期状態（非表示） */
+.fade-in-up.appear          /* 表示状態 */
+
+/* 速度バリエーション */
+.fade-in-up--fast           /* 0.3s */
+.fade-in-up--normal         /* 0.6s */
+.fade-in-up--slow           /* 0.8s */
+.fade-in-up--slower         /* 1.0s */
+
+/* ディレイバリエーション */
+.fade-in-up--delay-sm       /* 0.1s */
+.fade-in-up--delay-md       /* 0.3s */
+.fade-in-up--delay-lg       /* 0.5s */
+```
+
+### クラス命名の重要ルール
+
+**特定のページ名を含めない - 汎用的な名前を使用**
+
+```css
+/* ❌ 避けるべき - 特定ページ名を含む */
+.news-archive-filter
+.news__view-all
+.case-archive-hero
+
+/* ✅ 推奨 - 汎用的な名前 */
+.archive-filter        /* すべてのアーカイブページで使用可能 */
+.btn-primary           /* すべてのページでボタンとして使用可能 */
+.archive-hero          /* すべてのアーカイブページで使用可能 */
+```
+
+**理由:**
+- 導入事例（Case）、ナレッジ（Knowledge）など他のアーカイブページでも同じスタイルを使用できる
+- コードの重複を防ぎ、保守性が向上
+- CSSファイルサイズの削減
+
 ## CSSレイアウトのベストプラクティス
 
 ### width/heightの固定を避ける
