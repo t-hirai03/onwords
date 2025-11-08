@@ -44,29 +44,35 @@ get_header();
 					訪日客と地域・企業の架け橋となる<br>Onwordsの2つの事業
 				</p>
 			</div>
-			<div class="business-cards__grid">
+			<ul class="business-cards__list">
 				<!-- 地域観光DX事業 -->
-				<a href="<?php echo esc_url(home_url('/business/business-local/')); ?>" class="card card--business">
-					<div class="card__image card__image--local-dx"></div>
-					<div class="card__text-container">
-						<h3 class="card__title">地域観光DX事業</h3>
-						<p class="card__description">
-							地域の観光資源をデジタル技術で最大化し、持続可能な観光地づくりをサポートします。
-						</p>
-					</div>
-				</a>
+				<li>
+					<a href="<?php echo esc_url(home_url('/business/business-local/')); ?>" class="business-card">
+						<div class="business-card__image business-card__image--local"></div>
+						<div class="business-card__titles">
+							<h3 class="business-card__subtitle">＜自治体・DMO様向け＞</h3>
+							<h3 class="business-card__title">地域観光DX事業</h3>
+						</div>
+						<div class="business-card__link">
+							<p>詳細を見る</p>
+						</div>
+					</a>
+				</li>
 
 				<!-- 訪日マーケティングパートナー事業 -->
-				<a href="<?php echo esc_url(home_url('/business/business-inbound/')); ?>" class="card card--business">
-					<div class="card__image card__image--inbound-marketing"></div>
-					<div class="card__text-container">
-						<h3 class="card__title">訪日マーケティングパートナー事業</h3>
-						<p class="card__description">
-							訪日旅行者のインサイトを活用し、効果的なマーケティング戦略を提供します。
-						</p>
-					</div>
-				</a>
-			</div>
+				<li>
+					<a href="<?php echo esc_url(home_url('/business/business-inbound/')); ?>" class="business-card">
+						<div class="business-card__image business-card__image--inbound"></div>
+						<div class="business-card__titles">
+							<h3 class="business-card__subtitle">＜民間企業様向け＞</h3>
+							<h3 class="business-card__title">訪日マーケティングパートナー事業</h3>
+						</div>
+						<div class="business-card__link">
+							<p>詳細を見る</p>
+						</div>
+					</a>
+				</li>
+			</ul>
 		</div>
 	</section>
 </main>
