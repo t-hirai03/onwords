@@ -4,9 +4,9 @@
 		// ページ番号を取得
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-		// クエリを設定（通常のWordPress投稿を使用）
+		// クエリを設定（カスタム投稿タイプ news を使用）
 		$args = array(
-			'post_type' => 'post',
+			'post_type' => 'news',
 			'posts_per_page' => 10,
 			'orderby' => 'date',
 			'order' => 'DESC',
@@ -14,9 +14,15 @@
 		);
 
 		// カテゴリーでフィルタリング（URLパラメータから）
-		$category_slug = get_query_var('category_name');
+		$category_slug = isset($_GET['news_category']) ? sanitize_text_field($_GET['news_category']) : '';
 		if (!empty($category_slug)) {
-			$args['category_name'] = $category_slug;
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => 'news_category',
+					'field' => 'slug',
+					'terms' => $category_slug,
+				),
+			);
 		}
 
 		$news_query = new WP_Query($args);
@@ -44,7 +50,7 @@
 
 			if ($pagination) :
 			?>
-				<nav class="news-archive-list__pagination">
+				<nav class="pagination-wrapper">
 					<ul class="pagination">
 						<?php foreach ($pagination as $page) : ?>
 							<li class="pagination__item"><?php echo $page; ?></li>

@@ -62,6 +62,14 @@ function onwords_enqueue_assets() {
 		'1.0.0'
 	);
 
+	// Enqueue Breadcrumb CSS (depends on variables.css)
+	wp_enqueue_style(
+		'onwords-breadcrumb',
+		get_template_directory_uri() . '/assets/css/breadcrumb.css',
+		array( 'onwords-variables' ),
+		'1.0.0'
+	);
+
 	// Enqueue Footer CSS (depends on variables.css)
 	wp_enqueue_style(
 		'onwords-footer',
@@ -82,6 +90,22 @@ function onwords_enqueue_assets() {
 	wp_enqueue_style(
 		'onwords-components',
 		get_template_directory_uri() . '/assets/css/components.css',
+		array( 'onwords-variables' ),
+		'1.0.0'
+	);
+
+	// Enqueue Pagination CSS (depends on variables.css)
+	wp_enqueue_style(
+		'onwords-pagination',
+		get_template_directory_uri() . '/assets/css/pagination.css',
+		array( 'onwords-variables' ),
+		'1.0.0'
+	);
+
+	// Enqueue News CSS (depends on variables.css)
+	wp_enqueue_style(
+		'onwords-news',
+		get_template_directory_uri() . '/assets/css/news.css',
 		array( 'onwords-variables' ),
 		'1.0.0'
 	);

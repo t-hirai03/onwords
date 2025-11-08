@@ -406,23 +406,6 @@
     font-size: 15px;
     line-height: 24px;
   }
-
-  /* Pagination - Mobile */
-  .news-archive-list__pagination {
-    margin-top: 40px;
-  }
-
-  .pagination {
-    gap: 4px;
-  }
-
-  .pagination__item a,
-  .pagination__item span {
-    min-width: 36px;
-    height: 36px;
-    padding: 0 8px;
-    font-size: 13px;
-  }
 }
 
 /* Tablet (768px - 1023px) */

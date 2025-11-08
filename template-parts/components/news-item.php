@@ -8,9 +8,9 @@
  * @package Onwords
  */
 
-// 通常のWordPressカテゴリーを取得
-$categories = get_the_category();
-$category_name = (!empty($categories)) ? $categories[0]->name : 'お知らせ';
+// カスタムタクソノミー news_category を取得
+$terms = get_the_terms(get_the_ID(), 'news_category');
+$category_name = (!empty($terms) && !is_wp_error($terms)) ? $terms[0]->name : 'お知らせ';
 ?>
 
 <li class="news__item">
