@@ -10,23 +10,76 @@
    Section Header (共通)
    ======================================== */
 
-.section-header {
-	text-align: center;
-	margin-bottom: 48px;
-}
-
 .section-header__label {
 	font-size: 16px;
 	font-weight: 700;
 	color: var(--color-primary);
 	letter-spacing: 0.1em;
 	margin-bottom: 16px;
+	text-align: center;
 }
 
 .section-header__title {
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 1.4;
+	color: #333;
+	text-align: center;
+	margin: 0;
+}
+
+/* ========================================
+   Business Hero Section
+   ======================================== */
+
+.business-hero {
+	padding: 80px 0;
+	background-color: #fff;
+}
+
+.business-hero__container {
+	max-width: 1312px;
+	margin: 0 auto;
+	padding: 0 16px;
+	text-align: center;
+}
+
+.business-hero__description {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.8;
+	color: #333;
+	margin: 24px auto 0;
+	max-width: 800px;
+	text-align: center;
+}
+
+/* ========================================
+   Business List Section
+   ======================================== */
+
+.business-list {
+	padding: 80px 0;
+	background-color: #fff;
+}
+
+.business-list__container {
+	max-width: 1312px;
+	margin: 0 auto;
+	padding: 0 16px;
+}
+
+.business-list__header {
+	text-align: center;
+	margin-bottom: 48px;
+}
+
+.business-list__subtitle {
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.8;
+	color: #333;
+	margin-top: 16px;
 }
 
 /* ========================================

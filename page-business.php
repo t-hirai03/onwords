@@ -24,22 +24,26 @@ get_header();
 
 <main class="main">
 	<!-- Hero Section -->
-	<div class="archive-hero-wrapper">
-		<section class="archive-hero business-hero">
-			<div class="archive-hero__overlay"></div>
-			<div class="archive-hero__container">
-				<p class="archive-hero__label">BUSINESS</p>
-				<h1 class="archive-hero__title">事業内容</h1>
-				<p class="business-hero__description">
-					Onwordsは地域観光DX事業と訪日マーケティングパートナー事業を展開しています。
+	<section class="business-hero">
+		<div class="business-hero__container">
+			<p class="section-header__label">BUSINESS</p>
+			<h1 class="section-header__title">事業内容</h1>
+			<p class="business-hero__description">
+				Onwordsに所属する観光のプロフェッショナルが、WAmazingの持つ豊富なデータと専門家の知見を融合し、お客様の課題に合わせた実効性の高いソリューションを提供します。
+			</p>
+		</div>
+	</section>
+
+	<!-- Business List Section -->
+	<section class="business-list">
+		<div class="business-list__container">
+			<div class="business-list__header">
+				<p class="section-header__label">BUSINESS</p>
+				<h2 class="section-header__title">事業一覧</h2>
+				<p class="business-list__subtitle">
+					訪日客と地域・企業の架け橋となる<br>Onwordsの2つの事業
 				</p>
 			</div>
-		</section>
-	</div>
-
-	<!-- Business Cards Section -->
-	<section class="business-cards">
-		<div class="business-cards__container">
 			<div class="business-cards__grid">
 				<!-- 地域観光DX事業 -->
 				<a href="<?php echo esc_url(home_url('/business/business-local/')); ?>" class="card card--business">
