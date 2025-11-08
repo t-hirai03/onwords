@@ -396,6 +396,12 @@
     width: 324px;
     margin-top: 14px;
   }
+
+  /* 段落フォントサイズ調整 */
+  .news-single__content p {
+    font-size: 14px;
+    line-height: 24.5px;
+  }
 }
 
 /* タブレット（768px以下） */

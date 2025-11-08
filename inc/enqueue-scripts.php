@@ -107,7 +107,7 @@ function onwords_enqueue_assets() {
 		'onwords-news',
 		get_template_directory_uri() . '/assets/css/news.css',
 		array( 'onwords-variables' ),
-		'1.0.0'
+		'1.0.1'
 	);
 
 	// Enqueue Responsive CSS (load last - depends on all other CSS)
@@ -115,7 +115,7 @@ function onwords_enqueue_assets() {
 		'onwords-responsive',
 		get_template_directory_uri() . '/assets/css/responsive.css',
 		array( 'onwords-navigation', 'onwords-footer', 'onwords-sections', 'onwords-components' ),
-		'1.0.0'
+		'1.0.1'
 	);
 
 	// Enqueue Navigation JavaScript (load in footer)
