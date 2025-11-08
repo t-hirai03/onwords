@@ -135,8 +135,9 @@
 .business-card {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	max-width: 480px;
+	align-items: center;
+	width: 368px;
+	max-width: calc(50% - 20px);
 	text-decoration: none;
 	color: inherit;
 }
@@ -147,6 +148,7 @@
 	background-size: cover;
 	background-position: center;
 	background-color: #f0f0f0;
+	border-radius: 8px;
 	margin-bottom: 16px;
 }
 
