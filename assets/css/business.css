@@ -1,7 +1,241 @@
-/* ===================================================================
-   Business Pages CSS - 事業内容ページ専用
-   Extracted from https://www.onwords.co.jp/business (STUDIO site)
-   =================================================================== */
+/**
+ * Business Pages Styles
+ *
+ * 事業内容ページ専用のスタイル
+ *
+ * @package Onwords
+ */
 
-/* 事業内容ページのスタイルはここに追加します */
-/* 現在は未実装 - spec-workflowで実装予定 */
+/* ========================================
+   Section Header (共通)
+   ======================================== */
+
+.section-header {
+	text-align: center;
+	margin-bottom: 48px;
+}
+
+.section-header__label {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--color-primary);
+	letter-spacing: 0.1em;
+	margin-bottom: 16px;
+}
+
+.section-header__title {
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+/* ========================================
+   Business Section (共通セクションスタイル)
+   ======================================== */
+
+.business-section {
+	padding: 80px 0;
+	background-color: #fff;
+}
+
+.business-section--gray {
+	background-color: #f8f8f8;
+}
+
+.business-section__container {
+	max-width: 1312px;
+	margin: 0 auto;
+	padding: 0 16px;
+}
+
+/* ========================================
+   Business Hero (トップページヒーロー)
+   ======================================== */
+
+.business-hero__description {
+	font-size: 18px;
+	line-height: 1.8;
+	color: #fff;
+	margin-top: 24px;
+	max-width: 800px;
+}
+
+/* ========================================
+   Business Cards (事業カード)
+   ======================================== */
+
+.business-cards {
+	padding: 80px 0;
+}
+
+.business-cards__container {
+	max-width: 1312px;
+	margin: 0 auto;
+	padding: 0 16px;
+}
+
+.business-cards__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 60px;
+}
+
+/* ========================================
+   Stats (支援実績)
+   ======================================== */
+
+.business-stats {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 60px;
+	text-align: center;
+}
+
+.business-stats__number {
+	font-size: 48px;
+	font-weight: 700;
+	color: var(--color-primary);
+	margin-bottom: 16px;
+}
+
+.business-stats__label {
+	font-size: 16px;
+	font-weight: 500;
+	color: #333;
+}
+
+/* ========================================
+   Strengths (強み)
+   ======================================== */
+
+.business-strengths {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+}
+
+.business-strengths__item {
+	text-align: center;
+}
+
+.business-strengths__number {
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--color-primary);
+	margin-bottom: 16px;
+}
+
+.business-strengths__title {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 16px;
+}
+
+.business-strengths__description {
+	font-size: 16px;
+	line-height: 1.8;
+	color: #666;
+}
+
+/* ========================================
+   Services (サービス一覧)
+   ======================================== */
+
+.business-services {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 40px;
+}
+
+.business-services--grid-3 {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.business-services__item {
+	padding: 32px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.business-section--gray .business-services__item {
+	background-color: #fff;
+}
+
+.business-services__title {
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 12px;
+}
+
+.business-services__description {
+	font-size: 14px;
+	line-height: 1.8;
+	color: #666;
+}
+
+/* ========================================
+   Business Logos (取引実績ロゴ)
+   ======================================== */
+
+.business-logos {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 32px;
+	align-items: center;
+}
+
+.business-logos__item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+	background-color: #fff;
+	border-radius: 8px;
+	height: 100px;
+}
+
+.business-logos__item img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+
+/* ========================================
+   Responsive (Mobile)
+   ======================================== */
+
+@media (max-width: 767px) {
+	.section-header__title {
+		font-size: 28px;
+	}
+
+	.business-cards__grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.business-stats {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.business-strengths {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.business-services {
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
+
+	.business-services--grid-3 {
+		grid-template-columns: 1fr;
+	}
+
+	.business-logos {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+	}
+}
