@@ -106,12 +106,12 @@ function onwords_enqueue_assets() {
 	}
 
 	// Business pages only
-	if ( is_page( array( 'business', 'business-local', 'business-inbound' ) ) ) {
+	if ( is_page( 'business' ) || is_page_template( array( 'page-business-local.php', 'page-business-inbound.php' ) ) ) {
 		wp_enqueue_style(
 			'onwords-business',
 			get_template_directory_uri() . '/assets/css/business.css',
 			array( 'onwords-variables' ),
-			'1.0.0'
+			'1.1.5'
 		);
 	}
 
@@ -159,5 +159,16 @@ function onwords_enqueue_assets() {
 		'1.0.0',
 		true
 	);
+
+	// Enqueue Strengths Navigation JavaScript for business pages only (load in footer)
+	if ( is_page_template( array( 'page-business-local.php', 'page-business-inbound.php' ) ) ) {
+		wp_enqueue_script(
+			'onwords-strengths-navigation',
+			get_template_directory_uri() . '/assets/js/strengths-navigation.js',
+			array(),
+			'1.0.0',
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'onwords_enqueue_assets' );
