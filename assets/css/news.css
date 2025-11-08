@@ -381,6 +381,23 @@
    RESPONSIVE
    =================================================================== */
 
+/* タブレット・モバイル（1023px以下） */
+@media (max-width: 1023px) {
+  /* ヒーロー画像を非表示 */
+  .news-archive-hero-wrapper {
+    display: none;
+  }
+}
+
+/* モバイル（767px以下） */
+@media (max-width: 767px) {
+  /* メタ情報の幅調整 */
+  .news-single__meta {
+    width: 324px;
+    margin-top: 14px;
+  }
+}
+
 /* タブレット（768px以下） */
 @media (max-width: 768px) {
   .news-single__title {
