@@ -78,14 +78,6 @@ function onwords_enqueue_assets() {
 		'1.0.0'
 	);
 
-	// Enqueue Sections CSS (depends on variables.css)
-	wp_enqueue_style(
-		'onwords-sections',
-		get_template_directory_uri() . '/assets/css/sections.css',
-		array( 'onwords-variables' ),
-		'1.0.0'
-	);
-
 	// Enqueue Components CSS (depends on variables.css)
 	wp_enqueue_style(
 		'onwords-components',
@@ -102,20 +94,43 @@ function onwords_enqueue_assets() {
 		'1.0.0'
 	);
 
-	// Enqueue News CSS (depends on variables.css)
-	wp_enqueue_style(
-		'onwords-news',
-		get_template_directory_uri() . '/assets/css/news.css',
-		array( 'onwords-variables' ),
-		'1.0.3'
-	);
+	// Conditional Page-Specific CSS
+	// Top page only
+	if ( is_front_page() ) {
+		wp_enqueue_style(
+			'onwords-top',
+			get_template_directory_uri() . '/assets/css/top.css',
+			array( 'onwords-variables' ),
+			'1.0.0'
+		);
+	}
+
+	// Business pages only
+	if ( is_page( array( 'business', 'business-local', 'business-inbound' ) ) ) {
+		wp_enqueue_style(
+			'onwords-business',
+			get_template_directory_uri() . '/assets/css/business.css',
+			array( 'onwords-variables' ),
+			'1.0.0'
+		);
+	}
+
+	// News pages only
+	if ( is_post_type_archive( 'news' ) || is_singular( 'news' ) ) {
+		wp_enqueue_style(
+			'onwords-news',
+			get_template_directory_uri() . '/assets/css/news.css',
+			array( 'onwords-variables' ),
+			'1.0.3'
+		);
+	}
 
 	// Enqueue Responsive CSS (load last - depends on all other CSS)
 	wp_enqueue_style(
 		'onwords-responsive',
 		get_template_directory_uri() . '/assets/css/responsive.css',
-		array( 'onwords-navigation', 'onwords-footer', 'onwords-sections', 'onwords-components' ),
-		'1.0.2'
+		array( 'onwords-navigation', 'onwords-footer', 'onwords-components' ),
+		'1.0.3'
 	);
 
 	// Enqueue Navigation JavaScript (load in footer)

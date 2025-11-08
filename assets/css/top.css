@@ -1,5 +1,5 @@
 /* ===================================================================
-   Sections CSS - Front Page Sections
+   Top Page CSS - Front Page Sections
    Extracted from https://www.onwords.co.jp/ (STUDIO site)
    =================================================================== */
 
@@ -200,137 +200,6 @@ section {
 }
 
 /* ===================================================================
-   Message Section
-   =================================================================== */
-
-.message {
-  padding: 80px 0;
-  background-color: rgb(255, 255, 255);
-}
-
-.message__container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.message__items {
-  display: flex;
-  gap: 40px;
-}
-
-.message__item {
-  flex: 1;
-}
-
-.message__text {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28.8px;
-  color: rgb(34, 34, 34);
-}
-
-/* ===================================================================
-   Business Section
-   Extracted from https://www.onwords.co.jp/
-   =================================================================== */
-
-.business {
-  padding: 0; /* From production site: no padding */
-  background-color: rgb(255, 255, 255);
-}
-
-.business__container {
-  display: flex;
-  flex-direction: column; /* Fixed: flexDirection -> flex-direction */
-  align-items: center; /* Center-align all content */
-  max-width: 1280px; /* Match content width */
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Title center alignment - from production site */
-.business__label,
-.business__heading {
-  text-align: center;
-}
-
-.business__heading {
-  margin-bottom: 20px; /* From production site: 20px space between title and cards */
-}
-
-.business__cards {
-  display: flex;
-  flex-direction: row; /* Horizontal layout */
-  justify-content: center; /* Center cards horizontally */
-  gap: 60px; /* From production site: 60px between cards */
-  width: 100%;
-  max-width: 1280px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* ===================================================================
-   News Section
-   =================================================================== */
-
-.news {
-  padding: 80px 0;
-  background-color: rgb(255, 255, 255);
-}
-
-.news__container {
-  max-width: 1280px; /* From production site */
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center all children horizontally */
-}
-
-/* Title center alignment */
-.news__label,
-.news__heading {
-  text-align: center;
-}
-
-.news__list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 32px 0;
-  width: 100%; /* Full width to prevent centering of list items */
-  align-self: stretch; /* Stretch to container width */
-}
-
-.news__item {
-  margin-bottom: 0;
-}
-
-.news__no-posts {
-  font-size: 16px;
-  color: rgb(102, 102, 102);
-  text-align: center;
-  padding: 40px 0;
-}
-
-/* ===================================================================
-   Inquiry Section
-   =================================================================== */
-
-.inquiry {
-  padding: 80px 0;
-  background-color: rgb(255, 255, 255);
-}
-
-.inquiry__container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 20px;
-  text-align: center;
-}
-
-/* ===================================================================
    Message Section (代表メッセージ)
    Extracted from https://www.onwords.co.jp/
    =================================================================== */
@@ -431,8 +300,107 @@ section {
 */
 
 /* ===================================================================
-   BUSINESS Section Responsive
-   From production site: https://www.onwords.co.jp/
+   Business Section
+   Extracted from https://www.onwords.co.jp/
+   =================================================================== */
+
+.business {
+  padding: 0; /* From production site: no padding */
+  background-color: rgb(255, 255, 255);
+}
+
+.business__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align all content */
+  max-width: 1280px; /* Match content width */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Title center alignment - from production site */
+.business__label,
+.business__heading {
+  text-align: center;
+}
+
+.business__heading {
+  margin-bottom: 20px; /* From production site: 20px space between title and cards */
+}
+
+.business__cards {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  justify-content: center; /* Center cards horizontally */
+  gap: 60px; /* From production site: 60px between cards */
+  width: 100%;
+  max-width: 1280px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===================================================================
+   News Section (トップページのニュース一覧)
+   =================================================================== */
+
+.news {
+  padding: 80px 0;
+  background-color: rgb(255, 255, 255);
+}
+
+.news__container {
+  max-width: 1280px; /* From production site */
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all children horizontally */
+}
+
+/* Title center alignment */
+.news__label,
+.news__heading {
+  text-align: center;
+}
+
+.news__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  width: 100%; /* Full width to prevent centering of list items */
+  align-self: stretch; /* Stretch to container width */
+}
+
+.news__item {
+  margin-bottom: 0;
+}
+
+.news__no-posts {
+  font-size: 16px;
+  color: rgb(102, 102, 102);
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* ===================================================================
+   Inquiry Section
+   =================================================================== */
+
+.inquiry {
+  padding: 80px 0;
+  background-color: rgb(255, 255, 255);
+}
+
+.inquiry__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* ===================================================================
+   Responsive Styles for Top Page
    =================================================================== */
 
 /* Mobile (767px以下) */
@@ -452,124 +420,3 @@ section {
     gap: 32px; /* From production site: タブレットでは32px */
   }
 }
-/* ===================================================================
-   News Archive Page Sections
-   Extracted from https://www.onwords.co.jp/news (STUDIO site)
-   =================================================================== */
-
-/* News Archive Hero Section */
-.news-archive-hero {
-  position: relative;
-  height: 480px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-
-.news-archive-hero__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-
-.news-archive-hero__container {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
-.news-archive-hero__label {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1;
-  color: #ffffff;
-  margin-bottom: 16px;
-  letter-spacing: normal;
-}
-
-.news-archive-hero__title {
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #ffffff;
-  margin: 0;
-}
-
-/* News Archive Filter Section */
-.news-archive-filter {
-  padding: 48px 0 32px;
-  max-width: 1312px;
-  margin: 0 auto;
-}
-
-.news-archive-filter__container {
-  width: 100%;
-}
-
-.news-archive-filter__nav {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.news-archive-filter__button {
-  padding: 12px 24px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: rgb(34, 34, 34);
-  background-color: #ffffff;
-  border: 1px solid rgb(204, 204, 204);
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.news-archive-filter__button:hover {
-  background-color: rgb(250, 250, 250);
-}
-
-.news-archive-filter__button--active {
-  background: linear-gradient(90deg, rgb(230, 1, 18) 0%, rgb(255, 79, 79) 100%);
-  color: #ffffff;
-  border-color: rgb(230, 1, 18);
-}
-
-/* News Archive List Section */
-.news-archive-list {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 0 80px;
-}
-
-.news-archive-list__container {
-  width: 100%;
-}
-
-.news-archive-list__items {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.news-archive-list__no-posts {
-  text-align: center;
-  font-size: 16px;
-  color: rgb(102, 102, 102);
-  padding: 48px 0;
-}
-
