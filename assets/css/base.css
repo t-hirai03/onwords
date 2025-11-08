@@ -29,6 +29,22 @@ a, abbr, address, article, aside, audio, b, blockquote, body, button, canvas, ca
 body {
   background: #ffffff;
   transition: background 0.5s cubic-bezier(0.4, 0.4, 0, 1);
+  position: relative;
+}
+
+/* Background dot pattern - from production site */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/common/bg-dot-pattern.webp');
+  background-size: 25px;
+  background-repeat: repeat;
+  z-index: -2;
+  pointer-events: none;
 }
 
 /* ========================================
@@ -52,4 +68,16 @@ a {
 
 a:hover {
   opacity: 0.7;
+}
+
+/* ========================================
+   Mobile Typography (767px以下)
+   ======================================== */
+
+@media (max-width: 767px) {
+  /* モバイル表示では全体的にfont-weight: 500 */
+  body,
+  a, abbr, address, article, aside, audio, b, blockquote, button, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, i, iframe, img, input, ins, kbd, label, legend, li, main, mark, menu, nav, object, ol, p, pre, q, samp, section, select, small, span, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
+    font-weight: 500;
+  }
 }

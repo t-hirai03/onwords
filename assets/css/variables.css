@@ -79,4 +79,68 @@
 
   /* Footer Transitions */
   --footer-transition: 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+
+  /* ========================================
+     Section Variables
+     ======================================== */
+
+  /* Section Spacing */
+  --section-padding-desktop: 80px 0;
+  --section-padding-mobile: 60px 0;
+  --section-margin-bottom: 120px;
+
+  /* Section Headings */
+  --heading-font-size: 36px;
+  --heading-font-weight: 700;
+  --heading-line-height: 57.6px;
+  --heading-color: rgb(34, 34, 34);
+  --heading-margin: 0;
+
+  /* Section Labels */
+  --label-font-size: 14px;
+  --label-font-weight: 600;
+  --label-color: rgb(102, 102, 102);
+  --label-letter-spacing: 0.1em;
+
+  /* ========================================
+     Hero Section Variables
+     ======================================== */
+
+  /* Hero Layout */
+  --hero-height-desktop: 640px;
+  --hero-height-mobile: 400px;
+
+  /* Hero Typography */
+  --hero-title-font-size: 64px;
+  --hero-title-font-weight: 600;
+  --hero-title-line-height: 76.8px;
+  --hero-title-margin: 0 0 11px 0;
+
+  --hero-subtitle-font-size: 20px;
+  --hero-subtitle-font-weight: 500;
+  --hero-subtitle-line-height: 30px;
+
+  /* Hero Carousel */
+  --carousel-transition-duration: 600ms;
+  --carousel-timing-function: ease-in-out;
+
+  /* ========================================
+     Card Component Variables
+     ======================================== */
+
+  /* Card Styling */
+  --card-bg-color: rgb(255, 255, 255);
+  --card-border-radius: 8px;
+  --card-padding: 40px;
+  --card-transition: all 0.3s ease;
+
+  /* ========================================
+     News Component Variables
+     ======================================== */
+
+  /* News Item */
+  --news-date-color: rgb(102, 102, 102);
+  --news-category-bg: rgb(238, 238, 238);
+  --news-category-padding: 4px 12px;
+  --news-category-border-radius: 4px;
 }

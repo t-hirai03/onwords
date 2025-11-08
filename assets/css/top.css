@@ -1,0 +1,422 @@
+/* ===================================================================
+   Top Page CSS - Front Page Sections
+   Extracted from https://www.onwords.co.jp/ (STUDIO site)
+   =================================================================== */
+
+/* Common Section Styles */
+section {
+  position: relative;
+}
+
+/* Section Labels (ABOUT, MESSAGE, BUSINESS, NEWS, INQUIRY) */
+.about__label,
+.message__label,
+.business__label,
+.news__label,
+.inquiry__label {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  color: rgb(230, 1, 18);
+  letter-spacing: normal;
+  margin-bottom: 12px;
+}
+
+.about__label {
+  letter-spacing: 1.6px; /* ABOUT section has wider letter spacing */
+}
+
+/* Section Headings (h2) */
+.about__heading,
+.message__heading,
+.business__heading,
+.news__heading,
+.inquiry__heading {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 57.6px;
+  color: rgb(34, 34, 34);
+  margin-bottom: 32px;
+}
+
+/* ===================================================================
+   Hero Section
+   Extracted from https://www.onwords.co.jp/ - Horizontal slide animation
+   =================================================================== */
+
+.hero {
+  position: relative;
+  height: 640px;
+  max-width: 1200px; /* CRITICAL: Center align on wide screens */
+  margin: 0 auto; /* CRITICAL: Center the hero section */
+  overflow: hidden;
+}
+
+.hero__carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex; /* Horizontal layout for slides */
+  transition: transform 0.8s cubic-bezier(0.58, 0.21, 0.41, 0.96); /* Slide animation */
+}
+
+.hero__slide {
+  position: relative;
+  min-width: 100%; /* Each slide takes full width */
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-shrink: 0; /* Prevent slides from shrinking */
+}
+
+/* Overlay on slide images - subtle dark overlay */
+.hero__slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2); /* Subtle dark overlay */
+  z-index: 1;
+}
+
+.hero__content {
+  /* From production site: width 1120px, left-bottom aligned */
+  width: 1120px;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Left align - CRITICAL */
+  justify-content: flex-end; /* Bottom align - CRITICAL */
+  color: rgb(255, 255, 255);
+  z-index: 2; /* Above overlay */
+  padding: 0 0 88px 0; /* CRITICAL: 88px from bottom (from production site) */
+  height: 100%;
+}
+
+.hero__title {
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 76.8px;
+  color: rgb(255, 255, 255);
+  margin-bottom: 11px; /* From production: 11px, not 16px */
+}
+
+.hero__subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  color: rgb(255, 255, 255);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ===================================================================
+   About Section
+   本番サイト: flexbox横並びレイアウト
+   =================================================================== */
+
+.about {
+  position: relative; /* 絶対配置背景の基準点 */
+  padding: 0;
+  margin-top: 50px; /* MVとの余白 */
+  background-color: rgb(255, 255, 255);
+}
+
+/* Flexコンテナ（横並びレイアウト） - 本番サイトと完全一致 */
+.about__container {
+  position: relative;
+  padding: 80px 0; /* 上下80px（MVとの余白含む）、左右0 */
+  margin: 0 auto; /* 中央寄せ */
+  width: 1280px; /* 本番サイト: 1280px固定 */
+  max-width: calc(100% - 64px); /* 本番サイト: calc(100% - 64px) */
+  z-index: 1; /* 背景より前面に */
+
+  /* Flexbox for horizontal layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; /* 本番サイト: space-between */
+  gap: 0;
+}
+
+/* 灰色の背景（本番サイトと同じ） - コンテナの最上部から開始 */
+.about__background {
+  position: absolute;
+  top: 0; /* コンテナの最上部（padding-topの内側も含む）から開始 */
+  left: 0;
+  bottom: 0;
+  width: 0; /* 初期状態: 幅0 */
+  background-color: rgb(246, 246, 246); /* 本番サイト: rgb(246, 246, 246) */
+  border-radius: 0 20px 20px 0; /* 本番サイト: 右上・右下に20pxの丸み */
+  z-index: 0;
+  transition: width 0.7s ease-in-out 0.4s; /* 本番サイト: 0.7s, 0.4s delay */
+}
+
+/* ビューポートに入った時のアニメーション */
+.about.is-visible .about__background {
+  width: 75%; /* アニメーション後: 左側75%を灰色背景に */
+}
+
+/* テキストエリア（左側） */
+.about__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+  width: 576px; /* 本番サイト: 576px */
+  max-width: 45%; /* 本番サイト: 45% */
+}
+
+.about__body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28.8px;
+  color: rgb(34, 34, 34);
+}
+
+/* 画像コンテナ（右側） */
+.about__image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 640px; /* 本番サイト: 640px */
+  max-width: 50%; /* 本番サイト: 50% */
+}
+
+/* 画像 */
+.about__image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: fill;
+}
+
+/* ===================================================================
+   Message Section (代表メッセージ)
+   Extracted from https://www.onwords.co.jp/
+   =================================================================== */
+
+.message {
+  padding: 80px 0;
+  background-color: rgb(255, 255, 255);
+}
+
+.message__container {
+  max-width: 1360px; /* 1280px content + 40px * 2 margins */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title container - centered */
+.message__label,
+.message__heading {
+  text-align: center;
+}
+
+.message__label {
+  margin-bottom: 0;
+}
+
+.message__heading {
+  margin-bottom: 20px; /* From production site */
+}
+
+/* Message blocks */
+.message__block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px; /* From production site */
+  width: 1280px; /* From production site */
+  margin: 0 40px 80px; /* From production site */
+}
+
+.message__block:last-child {
+  margin-bottom: 0;
+}
+
+/* Image container */
+.message__image {
+  width: 488px; /* From production site */
+  height: 550px; /* From production site */
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 8px; /* From production site */
+  overflow: hidden;
+}
+
+/* Image using ::before pseudo-element */
+.message__image::before {
+  content: '';
+  display: block;
+  width: 488px; /* From production site */
+  height: 550px; /* From production site */
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* Narisawa image (CEO) */
+.message__image--narisawa::before {
+  background-image: url('../images/top/message/s-2732x4096_v-frms_webp_b3d0f58b-7f4a-48fe-bfe2-618be2a0bc51_regular.webp');
+}
+
+/* Kato image (Vice President) */
+.message__image--kato::before {
+  background-image: url('../images/top/message/s-2732x4096_v-frms_webp_f012f79f-629b-4c77-a0b5-53b2030f1bf6_regular.webp');
+}
+
+/* Text container */
+.message__text-container {
+  flex-shrink: 0;
+  width: 752px; /* From production site */
+}
+
+.message__text {
+  font-size: 16px; /* From production site */
+  font-weight: 500; /* From production site */
+  line-height: 28px; /* From production site */
+  color: rgb(34, 34, 34); /* From production site */
+  margin: 0; /* From production site */
+}
+
+/* Scroll-in animations for message section
+   共通クラス .fade-in-up を使用
+   - タイトル: .fade-in-up--slower + .fade-in-up--delay-md (1.0s + 0.3s delay)
+   - メッセージブロック: .fade-in-up--slow (0.8s)
+*/
+
+/* ===================================================================
+   Business Section
+   Extracted from https://www.onwords.co.jp/
+   =================================================================== */
+
+.business {
+  padding: 0; /* From production site: no padding */
+  background-color: rgb(255, 255, 255);
+}
+
+.business__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align all content */
+  max-width: 1280px; /* Match content width */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Title center alignment - from production site */
+.business__label,
+.business__heading {
+  text-align: center;
+}
+
+.business__heading {
+  margin-bottom: 20px; /* From production site: 20px space between title and cards */
+}
+
+.business__cards {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  justify-content: center; /* Center cards horizontally */
+  gap: 60px; /* From production site: 60px between cards */
+  width: 100%;
+  max-width: 1280px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===================================================================
+   News Section (トップページのニュース一覧)
+   =================================================================== */
+
+.news {
+  padding: 80px 0;
+  background-color: rgb(255, 255, 255);
+}
+
+.news__container {
+  max-width: 1280px; /* From production site */
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all children horizontally */
+}
+
+/* Title center alignment */
+.news__label,
+.news__heading {
+  text-align: center;
+}
+
+.news__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  width: 100%; /* Full width to prevent centering of list items */
+  align-self: stretch; /* Stretch to container width */
+}
+
+.news__item {
+  margin-bottom: 0;
+}
+
+.news__no-posts {
+  font-size: 16px;
+  color: rgb(102, 102, 102);
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* ===================================================================
+   Inquiry Section
+   =================================================================== */
+
+.inquiry {
+  padding: 80px 0;
+  background-color: rgb(255, 255, 255);
+}
+
+.inquiry__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* ===================================================================
+   Responsive Styles for Top Page
+   =================================================================== */
+
+/* Mobile (767px以下) */
+@media (max-width: 767px) {
+  .business__container {
+    padding: 0 16px; /* Mobile padding */
+  }
+
+  .business__cards {
+    gap: 50px; /* From production site: モバイルでは50px */
+  }
+}
+
+/* Tablet (768px以上) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .business__cards {
+    gap: 32px; /* From production site: タブレットでは32px */
+  }
+}

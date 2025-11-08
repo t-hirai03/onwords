@@ -3,7 +3,7 @@
 			<!-- Branding: Logo and Tagline -->
 			<div class="footer__branding">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer__logo-link">
-					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo/logo.svg' ); ?>"
+					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/logo/logo.svg' ); ?>"
 						 alt="<?php bloginfo( 'name' ); ?>"
 						 class="footer__logo">
 				</a>

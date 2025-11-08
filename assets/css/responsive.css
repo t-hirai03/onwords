@@ -1,0 +1,337 @@
+/* ===================================================================
+   Responsive CSS - Mobile & Tablet Styles
+   Mobile-first approach with breakpoints
+   =================================================================== */
+
+/* ===================================================================
+   Tablet Styles (768px ~ 1023px)
+   =================================================================== */
+
+@media (max-width: 1023px) {
+  /* Section padding adjustment */
+  .about,
+  .message,
+  .business,
+  .news,
+  .inquiry {
+    padding: 60px 0;
+  }
+
+  /* Container padding */
+  .about__container,
+  .message__container,
+  .business__container,
+  .news__container,
+  .inquiry__container {
+    padding: 0 24px;
+  }
+
+  /* Business cards - stack on smaller screens */
+  .business__cards {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card--business {
+    width: 100%;
+  }
+
+  /* Message items - stack on tablet */
+  .message__items {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* ===================================================================
+     Hero Section - Tablet (768px ~ 1023px)
+     =================================================================== */
+
+  .hero__content {
+    padding: 0 80px 88px; /* 左右80px、下88px（本番サイトと同じ） */
+  }
+}
+
+/* ===================================================================
+   Mobile Styles (~ 767px)
+   =================================================================== */
+
+@media (max-width: 767px) {
+  /* Section padding for mobile */
+  .about,
+  .message,
+  .business,
+  .news,
+  .inquiry {
+    padding: 48px 0;
+  }
+
+  /* Container padding */
+  .about__container,
+  .message__container,
+  .business__container,
+  .news__container,
+  .inquiry__container {
+    padding: 0 16px;
+  }
+
+  /* Section labels */
+  .about__label,
+  .message__label,
+  .business__label,
+  .news__label,
+  .inquiry__label {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 26.25px;
+    margin-bottom: 8px;
+  }
+
+  /* Section headings */
+  .about__heading,
+  .message__heading,
+  .business__heading,
+  .news__heading,
+  .inquiry__heading {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 51.2px;
+    margin-bottom: 24px;
+  }
+
+  /* ===================================================================
+     Hero Section - Mobile (767px以下はタブレットのスタイルを継承)
+     =================================================================== */
+
+  /* Hero sectionは540px以下で変更するため、ここでは定義しない */
+
+  /* ===================================================================
+     About Section - Mobile
+     =================================================================== */
+
+  /* ABOUTコンテナ: 縦並びレイアウト */
+  .about__container {
+    flex-wrap: wrap; /* 横並びから折り返しで縦並びに */
+    gap: 40px 0; /* 縦方向のギャップ40px */
+    padding: 56px 16px 0; /* 上56px、左右16px */
+    margin: 0 auto; /* 中央寄せ */
+    max-width: 100%; /* 幅は100% */
+    width: auto; /* 固定幅を解除 */
+  }
+
+  /* テキストエリア: 幅100% */
+  .about__text {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* 画像エリア: 幅100% */
+  .about__image-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* 灰色背景: モバイルでは固定幅270px */
+  .about__background {
+    width: 270px; /* モバイル: 固定幅270px */
+  }
+
+  /* ビューポートに入った時も270px */
+  .about.is-visible .about__background {
+    width: 270px; /* モバイル: 固定幅270px */
+  }
+
+  .about__body {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 25.2px;
+  }
+
+  /* ===================================================================
+     Message Section - Mobile
+     =================================================================== */
+
+  .message__container {
+    padding: 0 16px; /* モバイル時のインナー余白 16px */
+  }
+
+  .message__block {
+    flex-direction: column;
+    width: 100%;
+    margin: 0 0 40px 0;
+    gap: 24px;
+  }
+
+  .message__image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 488 / 550;
+  }
+
+  .message__image::before {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .message__text-container {
+    width: 100%;
+  }
+
+  .message__text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24.5px;
+    text-align: left; /* モバイル: 左寄せ */
+  }
+
+  /* ===================================================================
+     Business Section - Mobile
+     =================================================================== */
+
+  .business__cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card--business {
+    width: 100%;
+    min-height: 280px;
+  }
+
+  .card__title {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .card__description {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 25.2px;
+  }
+
+  /* ===================================================================
+     News Section - Mobile
+     =================================================================== */
+
+  .news__item {
+    margin-bottom: 16px;
+  }
+
+  .news-item {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 0;
+  }
+
+  .news-item__meta {
+    gap: 8px;
+  }
+
+  .news-item__date {
+    font-size: 12px;
+    line-height: 21px;
+  }
+
+  .news-item__category {
+    font-size: 11px;
+    line-height: 19.25px;
+    padding: 3px 10px;
+  }
+
+  .news-item__title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 25.2px;
+  }
+
+  .btn-primary {
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  /* ===================================================================
+     Inquiry Section - Mobile
+     =================================================================== */
+
+  .inquiry__container {
+    text-align: center;
+  }
+}
+
+/* ===================================================================
+   Extra Small Mobile (~ 540px)
+   =================================================================== */
+
+@media (max-width: 540px) {
+  /* ===================================================================
+     Hero Section - Small Mobile (~ 540px)
+     本番サイト（375px）の正確な値を使用
+     =================================================================== */
+
+  .hero {
+    height: 500px; /* 本番サイト: 500px */
+  }
+
+  .hero__title {
+    font-size: 28px; /* 本番サイト: 28px */
+    font-weight: 600;
+    line-height: 33.6px; /* 本番サイト: 33.6px */
+    margin-bottom: 11px; /* 本番サイト: 11px */
+  }
+
+  .hero__subtitle {
+    font-size: 20px; /* 本番サイト: 20px（デスクトップと同じ） */
+    font-weight: 500;
+    line-height: 30px; /* 本番サイト: 30px（デスクトップと同じ） */
+  }
+
+  /* Reduce section padding */
+  .about,
+  .message,
+  .business,
+  .news,
+  .inquiry {
+    padding: 40px 0;
+  }
+
+  /* Section headings - same as 767px breakpoint */
+  .about__heading,
+  .message__heading,
+  .business__heading,
+  .news__heading,
+  .inquiry__heading {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 51.2px;
+  }
+
+}
+
+/* ===================================================================
+   Extra Small Mobile (~ 320px)
+   =================================================================== */
+
+@media (max-width: 320px) {
+  .hero {
+    height: 360px;
+  }
+
+  .hero__title {
+    font-size: 24px;
+    line-height: 33.6px;
+  }
+
+  .hero__subtitle {
+    font-size: 12px;
+    line-height: 19.2px;
+  }
+
+  .card--business {
+    min-height: 240px;
+    padding: 20px;
+  }
+}
+

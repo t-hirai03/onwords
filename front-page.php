@@ -12,7 +12,25 @@ get_header();
 ?>
 
 <main class="main">
-	<p>トップページコンテンツがここに入ります。</p>
+	<?php
+	// Hero Section
+	get_template_part('template-parts/sections/hero');
+
+	// About Section
+	get_template_part('template-parts/sections/about');
+
+	// Message Section
+	get_template_part('template-parts/sections/message');
+
+	// Business Section
+	get_template_part('template-parts/sections/business');
+
+	// News Section
+	get_template_part('template-parts/sections/news');
+
+	// Inquiry Section
+	get_template_part('template-parts/sections/inquiry');
+	?>
 </main>
 
 <?php get_footer(); ?>

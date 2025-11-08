@@ -1,0 +1,300 @@
+/* ===================================================================
+   Components CSS - Reusable Components
+   Extracted from https://www.onwords.co.jp/ (STUDIO site)
+   =================================================================== */
+
+/* ===================================================================
+   Business Card Component
+   Extracted from https://www.onwords.co.jp/ (STUDIO site)
+   Structure: Image on top, text below (NOT overlayed)
+   =================================================================== */
+
+.card {
+  display: flex;
+  flex-direction: column; /* Vertical layout: image on top, text below */
+  text-decoration: none;
+  /* No hover animation - matches production site */
+  opacity: 1; /* Prevent base.css a:hover opacity change */
+}
+
+.card:hover {
+  opacity: 1; /* Prevent base.css a:hover opacity change */
+}
+
+.card--business {
+  width: 476px;
+  max-width: calc(40% - 36px); /* From production site */
+  gap: 32px; /* Space between image and text - from production site */
+  margin: 0;
+  border-radius: 0; /* No border radius on card */
+  background-color: transparent;
+  overflow: visible;
+}
+
+/* Card image - using ::before pseudo-element for background */
+.card__image {
+  width: 476px;
+  height: 300px; /* From production site */
+  border-radius: 8px; /* From production site */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Image backgrounds using ::before pseudo-element */
+.card__image--local-dx::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/top/business/s-1200x800_v-fms_webp_df73450b-6e71-4610-bb68-1da0e6550d51_middle.webp');
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.card__image--inbound-marketing::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/top/business/s-1152x648_v-fs_webp_0e1fc66c-d727-4f51-97eb-b378e3cb4581.webp');
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* Text container - below image */
+.card__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Space between title and description - from production site */
+  padding: 0;
+  background-color: transparent;
+}
+
+.card__title {
+  font-size: 20px; /* From production site */
+  font-weight: 700; /* From production site */
+  line-height: 30px; /* From production site */
+  color: rgb(34, 34, 34); /* From production site */
+  margin: 0;
+}
+
+.card__description {
+  font-size: 16px; /* From production site */
+  font-weight: 400; /* From production site */
+  line-height: 28px; /* From production site */
+  color: rgb(34, 34, 34); /* From production site */
+  margin: 0;
+}
+
+/* ===================================================================
+   Button Component
+   =================================================================== */
+
+/* Primary Button - Red gradient button */
+.btn-primary {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  background: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74));
+  border: none;
+  border-radius: 24px;
+  transition: opacity 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+/* ===================================================================
+   Archive Filter Component (Category/Tag Filter Buttons)
+   Used in: News archive, Case archive, Knowledge archive, etc.
+   =================================================================== */
+
+.archive-filter {
+  padding: 48px 0 32px;
+  background-color: #ffffff;
+}
+
+.archive-filter__container {
+  max-width: 1312px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.archive-filter__nav {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.archive-filter__button {
+  padding: 2px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 22.75px;
+  color: rgb(51, 51, 51);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 2px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.archive-filter__button:hover {
+  opacity: 0.8;
+}
+
+.archive-filter__button--active {
+  color: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74));
+  border: 1px solid rgb(231, 74, 74);
+}
+
+/* ===================================================================
+   News Item Component
+   =================================================================== */
+
+.news-item {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding: 24px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  transition: background-color 0.3s ease;
+}
+
+.news-item:hover {
+  background-color: #fff1ef; /* rgb(255, 241, 239) - From production site */
+}
+
+.news-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.news-item__date {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24.5px;
+  color: rgb(66, 66, 66);
+  white-space: nowrap;
+}
+
+.news-item__category {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 21px;
+  color: rgb(255, 255, 255); /* White text */
+  background: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74)); /* Red background - matches production */
+  padding: 4px 12px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.news-item__title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  color: rgb(34, 34, 34);
+  flex: 1;
+}
+
+.news-item:hover .news-item__title {
+  color: rgb(230, 1, 18);
+}
+
+/* ===================================================================
+   Common Scroll-in Animations
+   フェードイン・スライドアップアニメーション（共通クラス）
+   =================================================================== */
+
+/* 初期状態: 非表示 + 下から20px */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* アニメーション発動時: 表示 + 元の位置 */
+.fade-in-up.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* アニメーション速度バリエーション */
+
+/* Fast: 0.3s - 小さい要素、カードなど */
+.fade-in-up--fast.appear {
+  transition: opacity 0.3s cubic-bezier(0.4, 0.4, 0, 1), transform 0.3s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+/* Normal: 0.6s - 中程度の要素、テキストブロックなど */
+.fade-in-up--normal.appear {
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+/* Slow: 0.8s - 大きい要素、メッセージブロックなど */
+.fade-in-up--slow.appear {
+  transition: opacity 0.8s cubic-bezier(0.4, 0.4, 0, 1), transform 0.8s cubic-bezier(0.4, 0.4, 0, 1);
+}
+
+/* Slower: 1.0s - 最も遅い、タイトルなど */
+.fade-in-up--slower.appear {
+  transition: opacity 1.0s ease-in-out, transform 1.0s ease-in-out;
+}
+
+/* Delayバリエーション（必要に応じて使用） */
+.fade-in-up--delay-sm.appear {
+  transition-delay: 0.1s;
+}
+
+.fade-in-up--delay-md.appear {
+  transition-delay: 0.3s;
+}
+
+.fade-in-up--delay-lg.appear {
+  transition-delay: 0.5s;
+}
+
+/* ===================================================================
+   Business Card Responsive
+   From production site: https://www.onwords.co.jp/
+   =================================================================== */
+
+/* Mobile (767px以下) */
+@media (max-width: 767px) {
+  .card--business {
+    width: 324px; /* From production site */
+    max-width: 100%;
+    gap: 24px; /* From production site: 画像とテキストの間 */
+  }
+
+  .card__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 476 / 300; /* Maintain aspect ratio */
+  }
+}
+
+/* Tablet (768px以上) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .card--business {
+    width: calc(50% - 16px); /* From production site: calc(50% - 30px) adjusted for gap */
+    max-width: calc(50% - 16px);
+    gap: 32px; /* From production site */
+  }
+
+  .card__image {
+    width: 100%;
+    height: 300px; /* From production site */
+  }
+}

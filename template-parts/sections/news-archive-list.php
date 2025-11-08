@@ -1,0 +1,68 @@
+<!-- Archive List Section -->
+<div class="archive-list__container">
+		<?php
+		// ページ番号を取得
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+		// クエリを設定（カスタム投稿タイプ news を使用）
+		$args = array(
+			'post_type' => 'news',
+			'posts_per_page' => 10,
+			'orderby' => 'date',
+			'order' => 'DESC',
+			'paged' => $paged,
+		);
+
+		// カテゴリーでフィルタリング（URLパラメータから）
+		$category_slug = isset($_GET['news_category']) ? sanitize_text_field($_GET['news_category']) : '';
+		if (!empty($category_slug)) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => 'news_category',
+					'field' => 'slug',
+					'terms' => $category_slug,
+				),
+			);
+		}
+
+		$news_query = new WP_Query($args);
+
+		if ($news_query->have_posts()) :
+		?>
+			<ul class="archive-list__items">
+				<?php
+				while ($news_query->have_posts()) : $news_query->the_post();
+					// ニュース項目コンポーネントを読み込み
+					get_template_part('template-parts/components/news-item');
+				endwhile;
+				?>
+			</ul>
+
+			<?php
+			// ページネーション
+			$pagination = paginate_links(array(
+				'total' => $news_query->max_num_pages,
+				'current' => $paged,
+				'prev_text' => '前へ',
+				'next_text' => '次へ',
+				'type' => 'array',
+			));
+
+			if ($pagination) :
+			?>
+				<nav class="pagination-wrapper">
+					<ul class="pagination">
+						<?php foreach ($pagination as $page) : ?>
+							<li class="pagination__item"><?php echo $page; ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</nav>
+			<?php
+			endif;
+
+			wp_reset_postdata();
+		else :
+		?>
+			<p class="archive-list__no-posts">お知らせはありません</p>
+		<?php endif; ?>
+</div>
