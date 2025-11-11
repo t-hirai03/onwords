@@ -26,147 +26,153 @@ get_header();
 </div>
 
 <main class="main">
-	<!-- Hero Section -->
-	<div class="archive-hero-wrapper">
-		<section class="archive-hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/knowledge/hero-webinar.webp');">
-			<div class="archive-hero__overlay"></div>
-			<div class="archive-hero__container">
-				<p class="archive-hero__label">WEBINAR</p>
-				<h1 class="archive-hero__title">ウェビナー情報</h1>
-			</div>
-		</section>
-	</div>
-
 	<!-- Upcoming Webinars -->
 	<section class="webinar-upcoming">
-		<div class="webinar-section__container">
-			<div class="section-header">
-				<p class="section-header__label">WEBINAR</p>
-				<h2 class="section-header__title">開催予定のウェビナー</h2>
-			</div>
-
-			<div class="archive-list__container">
-				<?php
-				// 開催予定のウェビナーを取得
-				$upcoming_query = new WP_Query(array(
-					'post_type' => 'webinar',
-					'posts_per_page' => -1,
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'webinar_status',
-							'field' => 'slug',
-							'terms' => 'upcoming', // 「これから開催」のスラッグ
-						),
-					),
-				));
-
-				if ($upcoming_query->have_posts()) :
-				?>
-					<ul class="archive-list__items">
-						<?php while ($upcoming_query->have_posts()) : $upcoming_query->the_post(); ?>
-							<li>
-								<a href="<?php the_permalink(); ?>" class="news-item">
-									<div class="news-item__meta">
-										<p class="news-item__date"><?php echo get_the_date('Y/m/d'); ?></p>
-										<?php
-										$targets = get_the_terms(get_the_ID(), 'webinar_target');
-										if ($targets && !is_wp_error($targets)) :
-											foreach ($targets as $target) :
-										?>
-												<p class="news-item__category"><?php echo esc_html($target->name); ?></p>
-										<?php
-											endforeach;
-										endif;
-
-										$statuses = get_the_terms(get_the_ID(), 'webinar_status');
-										if ($statuses && !is_wp_error($statuses)) :
-											foreach ($statuses as $status) :
-										?>
-												<p class="news-item__status"><?php echo esc_html($status->name); ?></p>
-										<?php
-											endforeach;
-										endif;
-										?>
-									</div>
-									<h3 class="news-item__title"><?php the_title(); ?></h3>
-								</a>
-							</li>
-						<?php endwhile; ?>
-					</ul>
-				<?php
-					wp_reset_postdata();
-				else :
-				?>
-					<p class="archive-list__no-posts">現在、開催予定のウェビナーはありません。</p>
-				<?php endif; ?>
-			</div>
+		<div class="webinar-header">
+			<p class="webinar-label">WEBINAR</p>
+			<h2 class="webinar-title">開催予定のウェビナー</h2>
 		</div>
+
+		<?php
+		// 開催予定のウェビナーを取得（「終了」以外のもの）
+		$upcoming_query = new WP_Query(array(
+			'post_type' => 'webinar',
+			'posts_per_page' => -1,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'webinar_status',
+					'field' => 'slug',
+					'terms' => 'closed', // 「終了」のスラッグ
+					'operator' => 'NOT IN', // 「終了」以外
+				),
+			),
+		));
+
+		if ($upcoming_query->have_posts()) :
+		?>
+			<div class="webinar-list">
+				<div class="webinar-list__items">
+					<?php while ($upcoming_query->have_posts()) : $upcoming_query->the_post(); ?>
+						<a href="<?php the_permalink(); ?>" class="webinar-card">
+							<?php if (has_post_thumbnail()) : ?>
+								<div class="webinar-card__image">
+									<?php the_post_thumbnail('large'); ?>
+								</div>
+							<?php endif; ?>
+							<div class="webinar-card__content">
+								<div class="webinar-card__header">
+									<p class="webinar-card__date"><?php echo get_the_date('Y/n/j'); ?></p>
+									<p class="webinar-card__title"><?php the_title(); ?></p>
+								</div>
+								<?php
+								$targets = get_the_terms(get_the_ID(), 'webinar_target');
+								$statuses = get_the_terms(get_the_ID(), 'webinar_status');
+								$all_tags = array();
+
+								if ($targets && !is_wp_error($targets)) {
+									$all_tags = array_merge($all_tags, $targets);
+								}
+								if ($statuses && !is_wp_error($statuses)) {
+									$all_tags = array_merge($all_tags, $statuses);
+								}
+
+								if (!empty($all_tags)) :
+								?>
+									<div class="webinar-card__tag-container">
+										<ul class="webinar-card__tag-list">
+											<?php foreach ($all_tags as $tag) : ?>
+												<li class="webinar-card__tag-item">
+													<p class="webinar-card__tag-text"><?php echo esc_html($tag->name); ?></p>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								<?php endif; ?>
+							</div>
+						</a>
+					<?php endwhile; ?>
+				</div>
+			</div>
+		<?php
+			wp_reset_postdata();
+		else :
+		?>
+			<p class="archive-list__no-posts">現在、開催予定のウェビナーはありません。</p>
+		<?php endif; ?>
 	</section>
 
 	<!-- Past Webinars -->
 	<section class="webinar-past">
-		<div class="webinar-section__container">
-			<div class="section-header">
-				<p class="section-header__label">WEBINAR</p>
-				<h2 class="section-header__title">過去のウェビナー</h2>
-			</div>
-
-			<div class="archive-list__container">
-				<?php
-				// 過去のウェビナーを取得
-				$past_query = new WP_Query(array(
-					'post_type' => 'webinar',
-					'posts_per_page' => -1,
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'webinar_status',
-							'field' => 'slug',
-							'terms' => 'ended', // 「終了」のスラッグ
-						),
-					),
-				));
-
-				if ($past_query->have_posts()) :
-				?>
-					<ul class="archive-list__items">
-						<?php while ($past_query->have_posts()) : $past_query->the_post(); ?>
-							<li>
-								<a href="<?php the_permalink(); ?>" class="news-item">
-									<div class="news-item__meta">
-										<p class="news-item__date"><?php echo get_the_date('Y/m/d'); ?></p>
-										<?php
-										$targets = get_the_terms(get_the_ID(), 'webinar_target');
-										if ($targets && !is_wp_error($targets)) :
-											foreach ($targets as $target) :
-										?>
-												<p class="news-item__category"><?php echo esc_html($target->name); ?></p>
-										<?php
-											endforeach;
-										endif;
-
-										$statuses = get_the_terms(get_the_ID(), 'webinar_status');
-										if ($statuses && !is_wp_error($statuses)) :
-											foreach ($statuses as $status) :
-										?>
-												<p class="news-item__status"><?php echo esc_html($status->name); ?></p>
-										<?php
-											endforeach;
-										endif;
-										?>
-									</div>
-									<h3 class="news-item__title"><?php the_title(); ?></h3>
-								</a>
-							</li>
-						<?php endwhile; ?>
-					</ul>
-				<?php
-					wp_reset_postdata();
-				else :
-				?>
-					<p class="archive-list__no-posts">現在、過去のウェビナーはありません。</p>
-				<?php endif; ?>
-			</div>
+		<div class="webinar-header">
+			<p class="webinar-label">WEBINAR</p>
+			<h2 class="webinar-title">過去のウェビナー</h2>
 		</div>
+
+		<?php
+		// 過去のウェビナーを取得（「終了」が設定されているもの）
+		$past_query = new WP_Query(array(
+			'post_type' => 'webinar',
+			'posts_per_page' => -1,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'webinar_status',
+					'field' => 'slug',
+					'terms' => 'closed', // 「終了」のスラッグ
+				),
+			),
+		));
+
+		if ($past_query->have_posts()) :
+		?>
+			<div class="webinar-list">
+				<div class="webinar-list__items">
+					<?php while ($past_query->have_posts()) : $past_query->the_post(); ?>
+						<a href="<?php the_permalink(); ?>" class="webinar-card">
+							<?php if (has_post_thumbnail()) : ?>
+								<div class="webinar-card__image">
+									<?php the_post_thumbnail('large'); ?>
+								</div>
+							<?php endif; ?>
+							<div class="webinar-card__content">
+								<div class="webinar-card__header">
+									<p class="webinar-card__date"><?php echo get_the_date('Y/n/j'); ?></p>
+									<p class="webinar-card__title"><?php the_title(); ?></p>
+								</div>
+								<?php
+								$targets = get_the_terms(get_the_ID(), 'webinar_target');
+								$statuses = get_the_terms(get_the_ID(), 'webinar_status');
+								$all_tags = array();
+
+								if ($targets && !is_wp_error($targets)) {
+									$all_tags = array_merge($all_tags, $targets);
+								}
+								if ($statuses && !is_wp_error($statuses)) {
+									$all_tags = array_merge($all_tags, $statuses);
+								}
+
+								if (!empty($all_tags)) :
+								?>
+									<div class="webinar-card__tag-container">
+										<ul class="webinar-card__tag-list">
+											<?php foreach ($all_tags as $tag) : ?>
+												<li class="webinar-card__tag-item">
+													<p class="webinar-card__tag-text"><?php echo esc_html($tag->name); ?></p>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								<?php endif; ?>
+							</div>
+						</a>
+					<?php endwhile; ?>
+				</div>
+			</div>
+		<?php
+			wp_reset_postdata();
+		else :
+		?>
+			<p class="archive-list__no-posts">現在、過去のウェビナーはありません。</p>
+		<?php endif; ?>
 	</section>
 </main>
 

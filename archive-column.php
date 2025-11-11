@@ -26,46 +26,51 @@ get_header();
 </div>
 
 <main class="main">
-	<!-- Hero Section -->
-	<div class="archive-hero-wrapper">
-		<section class="archive-hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/knowledge/hero-column.webp');">
-			<div class="archive-hero__overlay"></div>
-			<div class="archive-hero__container">
-				<p class="archive-hero__label">COLUMNS</p>
-				<h1 class="archive-hero__title">記事一覧</h1>
-			</div>
-		</section>
-	</div>
+	<!-- Columns Section -->
+	<section class="columns-section">
+		<div class="columns-header">
+			<p class="columns-label">COLUMNS</p>
+			<h1 class="columns-title">記事一覧</h1>
+		</div>
 
-	<!-- Column List -->
-	<div class="archive-list__container">
 		<?php if (have_posts()) : ?>
-			<ul class="archive-list__items">
-				<?php while (have_posts()) : the_post(); ?>
-					<li>
-						<a href="<?php the_permalink(); ?>" class="news-item">
-							<div class="news-item__meta">
-								<p class="news-item__date"><?php echo get_the_date('Y/m/d'); ?></p>
+			<div class="columns-list">
+				<div class="columns-list__items">
+					<?php while (have_posts()) : the_post(); ?>
+						<a href="<?php the_permalink(); ?>" class="columns-card">
+							<?php if (has_post_thumbnail()) : ?>
+								<div class="columns-card__image">
+									<?php the_post_thumbnail('large'); ?>
+								</div>
+							<?php endif; ?>
+							<div class="columns-card__content">
+								<div class="columns-card__header">
+									<p class="columns-card__date"><?php echo get_the_date('Y/n/j'); ?></p>
+									<p class="columns-card__title"><?php the_title(); ?></p>
+								</div>
 								<?php
 								$terms = get_the_terms(get_the_ID(), 'column_category');
 								if ($terms && !is_wp_error($terms)) :
-									foreach ($terms as $term) :
 								?>
-										<p class="news-item__category"><?php echo esc_html($term->name); ?></p>
-								<?php
-									endforeach;
-								endif;
-								?>
+									<div class="columns-card__tag-container">
+										<ul class="columns-card__tag-list">
+											<?php foreach ($terms as $term) : ?>
+												<li class="columns-card__tag-item">
+													<p class="columns-card__tag-text"><?php echo esc_html($term->name); ?></p>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								<?php endif; ?>
 							</div>
-							<h3 class="news-item__title"><?php the_title(); ?></h3>
 						</a>
-					</li>
-				<?php endwhile; ?>
-			</ul>
+					<?php endwhile; ?>
+				</div>
+			</div>
 		<?php else : ?>
 			<p class="archive-list__no-posts">現在、記事はありません。</p>
 		<?php endif; ?>
-	</div>
+	</section>
 </main>
 
 <?php get_footer(); ?>
