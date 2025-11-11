@@ -3,7 +3,7 @@
  * Enqueue Scripts and Styles
  *
  * Handles loading CSS and JavaScript assets for the Onwords theme.
- * Uses WordPress enqueue system with proper dependencies and versioning.
+ * Uses WordPress enqueue system with proper dependencies.
  *
  * @package Onwords
  */
@@ -43,7 +43,7 @@ function onwords_enqueue_assets() {
 		'onwords-base',
 		get_template_directory_uri() . '/assets/css/base.css',
 		array(),
-		'1.0.1'
+		null
 	);
 
 	// Enqueue CSS Variables (depends on base.css)
@@ -51,7 +51,7 @@ function onwords_enqueue_assets() {
 		'onwords-variables',
 		get_template_directory_uri() . '/assets/css/variables.css',
 		array( 'onwords-base' ),
-		'1.0.0'
+		null
 	);
 
 	// Enqueue Navigation CSS (depends on variables.css)
@@ -59,7 +59,7 @@ function onwords_enqueue_assets() {
 		'onwords-navigation',
 		get_template_directory_uri() . '/assets/css/navigation.css',
 		array( 'onwords-variables' ),
-		'1.0.0'
+		null
 	);
 
 	// Enqueue Breadcrumb CSS (depends on variables.css)
@@ -67,7 +67,7 @@ function onwords_enqueue_assets() {
 		'onwords-breadcrumb',
 		get_template_directory_uri() . '/assets/css/breadcrumb.css',
 		array( 'onwords-variables' ),
-		'1.0.0'
+		null
 	);
 
 	// Enqueue Footer CSS (depends on variables.css)
@@ -75,7 +75,7 @@ function onwords_enqueue_assets() {
 		'onwords-footer',
 		get_template_directory_uri() . '/assets/css/footer.css',
 		array( 'onwords-variables' ),
-		'1.0.0'
+		null
 	);
 
 	// Enqueue Components CSS (depends on variables.css)
@@ -83,7 +83,7 @@ function onwords_enqueue_assets() {
 		'onwords-components',
 		get_template_directory_uri() . '/assets/css/components.css',
 		array( 'onwords-variables' ),
-		'1.0.3'
+		null
 	);
 
 	// Enqueue Pagination CSS (depends on variables.css)
@@ -91,7 +91,7 @@ function onwords_enqueue_assets() {
 		'onwords-pagination',
 		get_template_directory_uri() . '/assets/css/pagination.css',
 		array( 'onwords-variables' ),
-		'1.0.0'
+		null
 	);
 
 	// Conditional Page-Specific CSS
@@ -101,27 +101,37 @@ function onwords_enqueue_assets() {
 			'onwords-top',
 			get_template_directory_uri() . '/assets/css/top.css',
 			array( 'onwords-variables' ),
-			'1.0.0'
+			null
 		);
 	}
 
 	// Business pages only
-	if ( is_page( array( 'business', 'business-local', 'business-inbound' ) ) ) {
+	if ( is_page( 'business' ) || is_page_template( array( 'page-business-local.php', 'page-business-inbound.php' ) ) ) {
 		wp_enqueue_style(
 			'onwords-business',
 			get_template_directory_uri() . '/assets/css/business.css',
 			array( 'onwords-variables' ),
-			'1.0.0'
+			null
 		);
 	}
 
-	// News pages only
-	if ( is_post_type_archive( 'news' ) || is_singular( 'news' ) ) {
+	// Article detail pages (news and case)
+	if ( is_singular( 'news' ) || is_singular( 'case' ) ) {
 		wp_enqueue_style(
-			'onwords-news',
-			get_template_directory_uri() . '/assets/css/news.css',
+			'onwords-article',
+			get_template_directory_uri() . '/assets/css/article.css',
 			array( 'onwords-variables' ),
-			'1.0.3'
+			null
+		);
+	}
+
+	// Case pages only
+	if ( is_post_type_archive( 'case' ) || is_tax( 'case_category' ) || is_singular( 'case' ) ) {
+		wp_enqueue_style(
+			'onwords-case',
+			get_template_directory_uri() . '/assets/css/case.css',
+			array( 'onwords-variables' ),
+			null
 		);
 	}
 
@@ -130,7 +140,7 @@ function onwords_enqueue_assets() {
 		'onwords-responsive',
 		get_template_directory_uri() . '/assets/css/responsive.css',
 		array( 'onwords-navigation', 'onwords-footer', 'onwords-components' ),
-		'1.0.3'
+		null
 	);
 
 	// Enqueue Navigation JavaScript (load in footer)
@@ -138,7 +148,7 @@ function onwords_enqueue_assets() {
 		'onwords-navigation',
 		get_template_directory_uri() . '/assets/js/navigation.js',
 		array(),
-		'1.0.0',
+		null,
 		true
 	);
 
@@ -147,7 +157,7 @@ function onwords_enqueue_assets() {
 		'onwords-carousel',
 		get_template_directory_uri() . '/assets/js/carousel.js',
 		array(),
-		'1.0.0',
+		null,
 		true
 	);
 
@@ -156,8 +166,28 @@ function onwords_enqueue_assets() {
 		'onwords-animations',
 		get_template_directory_uri() . '/assets/js/animations.js',
 		array(),
-		'1.0.0',
+		null,
 		true
 	);
+
+	// Enqueue Strengths Navigation JavaScript for business pages only (load in footer)
+	if ( is_page_template( array( 'page-business-local.php', 'page-business-inbound.php' ) ) ) {
+		wp_enqueue_script(
+			'onwords-strengths-navigation',
+			get_template_directory_uri() . '/assets/js/strengths-navigation.js',
+			array(),
+			null,
+			true
+		);
+
+		// Enqueue Smooth Scroll JavaScript for inbound marketing page
+		wp_enqueue_script(
+			'onwords-smooth-scroll',
+			get_template_directory_uri() . '/assets/js/smooth-scroll.js',
+			array(),
+			null,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'onwords_enqueue_assets' );

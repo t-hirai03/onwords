@@ -335,3 +335,167 @@
   }
 }
 
+/* ===================================================================
+   Inbound Marketing Page - Responsive Styles
+   ========================================================================== */
+
+/* Large Tablet and below (1140px) */
+@media screen and (max-width: 1140px) {
+  .inbound-hero__container {
+    margin: 0 32px;
+    max-width: calc(100% - 64px);
+    gap: 32px;
+  }
+}
+
+/* Tablet and below (840px) */
+@media screen and (max-width: 840px) {
+  .inbound-hero {
+    padding: 20px 0 0;
+  }
+
+  .inbound-hero__container {
+    flex-flow: column;
+    gap: 50px;
+  }
+
+  .inbound-hero__content {
+    place-content: center flex-start;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .inbound-hero__title {
+    text-align: center;
+  }
+
+  .inbound-hero__description {
+    text-align: center;
+  }
+
+  .inbound-hero__image {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Mobile (540px and below) */
+@media screen and (max-width: 540px) {
+  .inbound-hero {
+    padding: 30px 0 100px;
+  }
+
+  .inbound-hero__container {
+    margin: 0 20px;
+    max-width: calc(100% - 40px);
+    gap: 40px;
+  }
+
+  .inbound-hero__content {
+    gap: 24px;
+  }
+
+  .inbound-hero__title {
+    font-size: 24px;
+  }
+
+  .inbound-hero__description {
+    font-size: 14px;
+  }
+
+  .inbound-hero__image {
+    border-radius: 6px;
+  }
+}
+
+/* Extra Small Mobile (320px and below) */
+@media screen and (max-width: 320px) {
+  .inbound-hero {
+    padding: 0;
+  }
+}
+
+/* Inbound Strengths Section - Responsive */
+@media screen and (max-width: 840px) {
+  /* Hide sticky navigation on tablet/mobile */
+  .inbound-strengths__nav {
+    display: none;
+  }
+
+  /* Stack content vertically */
+  .inbound-strengths__content {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  /* Stack layout vertically */
+  .inbound-strengths__detail-layout {
+    flex-direction: column;
+  }
+
+  /* Reduce image height */
+  .inbound-strengths__detail-image {
+    height: 300px;
+  }
+
+  /* Smaller number */
+  .inbound-strengths__detail-number {
+    font-size: 36px;
+  }
+
+  /* Smaller title */
+  .inbound-strengths__detail-title {
+    font-size: 20px;
+  }
+}
+
+/* Inbound Services Section - Responsive */
+@media screen and (max-width: 840px) {
+  /* 2列グリッドに変更 */
+  .inbound-services__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 540px) {
+  /* 1列グリッドに変更 */
+  .inbound-services__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Inbound Case Study Section - Responsive */
+@media screen and (max-width: 540px) {
+  /* 1列グリッドに変更 */
+  .inbound-case-study__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Inbound Business Record Section - Responsive */
+@media screen and (max-width: 840px) {
+  /* 3列グリッドに変更 */
+  .inbound-business-record__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 540px) {
+  /* 2列グリッドに変更 */
+  .inbound-business-record__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Inbound Webinar Section - Responsive */
+@media screen and (max-width: 540px) {
+  /* 1列グリッドに変更 */
+  .inbound-webinar__list {
+    grid-template-columns: 1fr;
+  }
+}
+

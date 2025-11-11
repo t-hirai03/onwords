@@ -23,46 +23,45 @@ get_header();
 </div>
 
 <main class="main">
-	<!-- Hero Section -->
-	<div class="archive-hero-wrapper">
-		<section class="archive-hero business-hero">
-			<div class="archive-hero__overlay"></div>
-			<div class="archive-hero__container">
-				<p class="archive-hero__label">BUSINESS</p>
-				<h1 class="archive-hero__title">事業内容</h1>
-				<p class="business-hero__description">
-					Onwordsは地域観光DX事業と訪日マーケティングパートナー事業を展開しています。
+	<!-- Business List Section -->
+	<section class="business-list">
+		<div class="business-list__container">
+			<div class="business-list__header">
+				<p class="section-header__label">BUSINESS</p>
+				<h2 class="section-header__title">事業一覧</h2>
+				<p class="business-list__subtitle">
+					訪日客と地域・企業の架け橋となる<br>Onwordsの2つの事業
 				</p>
 			</div>
-		</section>
-	</div>
-
-	<!-- Business Cards Section -->
-	<section class="business-cards">
-		<div class="business-cards__container">
-			<div class="business-cards__grid">
+			<ul class="business-cards__list">
 				<!-- 地域観光DX事業 -->
-				<a href="<?php echo esc_url(home_url('/business/business-local/')); ?>" class="card card--business">
-					<div class="card__image card__image--local-dx"></div>
-					<div class="card__text-container">
-						<h3 class="card__title">地域観光DX事業</h3>
-						<p class="card__description">
-							地域の観光資源をデジタル技術で最大化し、持続可能な観光地づくりをサポートします。
-						</p>
-					</div>
-				</a>
+				<li>
+					<a href="<?php echo esc_url(home_url('/business/local-cooperation/')); ?>" class="business-card">
+						<div class="business-card__image business-card__image--local"></div>
+						<div class="business-card__titles">
+							<h3 class="business-card__subtitle">＜自治体・DMO様向け＞</h3>
+							<h3 class="business-card__title">地域観光DX事業</h3>
+						</div>
+						<div class="business-card__link">
+							<p>詳細を見る</p>
+						</div>
+					</a>
+				</li>
 
 				<!-- 訪日マーケティングパートナー事業 -->
-				<a href="<?php echo esc_url(home_url('/business/business-inbound/')); ?>" class="card card--business">
-					<div class="card__image card__image--inbound-marketing"></div>
-					<div class="card__text-container">
-						<h3 class="card__title">訪日マーケティングパートナー事業</h3>
-						<p class="card__description">
-							訪日旅行者のインサイトを活用し、効果的なマーケティング戦略を提供します。
-						</p>
-					</div>
-				</a>
-			</div>
+				<li>
+					<a href="<?php echo esc_url(home_url('/business/inboundmarketing/')); ?>" class="business-card">
+						<div class="business-card__image business-card__image--inbound"></div>
+						<div class="business-card__titles">
+							<h3 class="business-card__subtitle">＜民間企業様向け＞</h3>
+							<h3 class="business-card__title">訪日マーケティングパートナー事業</h3>
+						</div>
+						<div class="business-card__link">
+							<p>詳細を見る</p>
+						</div>
+					</a>
+				</li>
+			</ul>
 		</div>
 	</section>
 </main>

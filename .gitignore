@@ -1,4 +1,5 @@
-.claude/
+.claude/*
+!.claude/commands/
 .spec-workflow/
 .playwright-mcp
 .chrome-devtools-mcp
