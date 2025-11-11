@@ -29,6 +29,9 @@ add_action( 'after_setup_theme', 'onwords_theme_setup' );
 // Custom post types
 require_once get_template_directory() . '/inc/custom-post-types.php';
 
+// ACF field groups
+require_once get_template_directory() . '/inc/acf-fields.php';
+
 // Menu registration
 require_once get_template_directory() . '/inc/menus.php';
 

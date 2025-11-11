@@ -82,3 +82,81 @@ function onwords_register_news_category() {
 	register_taxonomy( 'news_category', array( 'news' ), $args );
 }
 add_action( 'init', 'onwords_register_news_category' );
+
+/**
+ * Register Webinar custom post type
+ */
+function onwords_register_webinar_post_type() {
+	$labels = array(
+		'name'               => 'ウェビナー',
+		'singular_name'      => 'ウェビナー',
+		'menu_name'          => 'ウェビナー',
+		'add_new'            => '新規追加',
+		'add_new_item'       => '新しいウェビナーを追加',
+		'edit_item'          => 'ウェビナーを編集',
+		'new_item'           => '新しいウェビナー',
+		'view_item'          => 'ウェビナーを表示',
+		'search_items'       => 'ウェビナーを検索',
+		'not_found'          => 'ウェビナーが見つかりません',
+		'not_found_in_trash' => 'ゴミ箱にウェビナーはありません',
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'show_in_rest'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'knowledge/webinar' ),
+		'capability_type'    => 'post',
+		'has_archive'        => 'knowledge/webinar',
+		'hierarchical'       => false,
+		'menu_position'      => 6,
+		'menu_icon'          => 'dashicons-video-alt3',
+		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+	);
+
+	register_post_type( 'webinar', $args );
+}
+add_action( 'init', 'onwords_register_webinar_post_type' );
+
+/**
+ * Register Document custom post type
+ */
+function onwords_register_document_post_type() {
+	$labels = array(
+		'name'               => '資料',
+		'singular_name'      => '資料',
+		'menu_name'          => '資料',
+		'add_new'            => '新規追加',
+		'add_new_item'       => '新しい資料を追加',
+		'edit_item'          => '資料を編集',
+		'new_item'           => '新しい資料',
+		'view_item'          => '資料を表示',
+		'search_items'       => '資料を検索',
+		'not_found'          => '資料が見つかりません',
+		'not_found_in_trash' => 'ゴミ箱に資料はありません',
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'show_in_rest'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'knowledge/document' ),
+		'capability_type'    => 'post',
+		'has_archive'        => 'knowledge/document',
+		'hierarchical'       => false,
+		'menu_position'      => 7,
+		'menu_icon'          => 'dashicons-media-document',
+		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+	);
+
+	register_post_type( 'document', $args );
+}
+add_action( 'init', 'onwords_register_document_post_type' );
