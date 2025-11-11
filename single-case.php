@@ -50,15 +50,20 @@ get_header();
 
 					<div class="news-single__meta">
 						<?php
+						$client_name = get_field('client_name');
+						if ( $client_name ) :
+						?>
+							<p class="news-single__client"><?php echo esc_html( $client_name ); ?></p>
+						<?php endif; ?>
+
+						<?php
 						$categories = get_the_terms( get_the_ID(), 'case_category' );
 						if ( $categories && ! is_wp_error( $categories ) ) :
 							$category = $categories[0];
 						?>
-							<a href="<?php echo esc_url( get_term_link( $category ) ); ?>" class="news-single__category">
+							<span class="news-single__category">
 								<?php echo esc_html( $category->name ); ?>
-							</a>
-						<?php else : ?>
-							<span class="news-single__category">導入事例</span>
+							</span>
 						<?php endif; ?>
 
 						<p class="news-single__date"><?php echo esc_html( get_the_date( 'Y/m/d' ) ); ?></p>

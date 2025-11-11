@@ -84,6 +84,77 @@ function onwords_register_news_category() {
 add_action( 'init', 'onwords_register_news_category' );
 
 /**
+ * Register Case custom post type
+ */
+function onwords_register_case_post_type() {
+	$labels = array(
+		'name'               => '導入事例',
+		'singular_name'      => '導入事例',
+		'menu_name'          => '導入事例',
+		'add_new'            => '新規追加',
+		'add_new_item'       => '新しい導入事例を追加',
+		'edit_item'          => '導入事例を編集',
+		'new_item'           => '新しい導入事例',
+		'view_item'          => '導入事例を表示',
+		'search_items'       => '導入事例を検索',
+		'not_found'          => '導入事例が見つかりません',
+		'not_found_in_trash' => 'ゴミ箱に導入事例はありません',
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'show_in_rest'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'case' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => 5.5,
+		'menu_icon'          => 'dashicons-portfolio',
+		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+	);
+
+	register_post_type( 'case', $args );
+}
+add_action( 'init', 'onwords_register_case_post_type' );
+
+/**
+ * Register Case Category taxonomy
+ */
+function onwords_register_case_category() {
+	$labels = array(
+		'name'              => 'カテゴリー',
+		'singular_name'     => 'カテゴリー',
+		'search_items'      => 'カテゴリーを検索',
+		'all_items'         => 'すべてのカテゴリー',
+		'parent_item'       => '親カテゴリー',
+		'parent_item_colon' => '親カテゴリー:',
+		'edit_item'         => 'カテゴリーを編集',
+		'update_item'       => 'カテゴリーを更新',
+		'add_new_item'      => '新しいカテゴリーを追加',
+		'new_item_name'     => '新しいカテゴリー名',
+		'menu_name'         => 'カテゴリー',
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_rest'      => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'case/category' ),
+	);
+
+	register_taxonomy( 'case_category', array( 'case' ), $args );
+}
+add_action( 'init', 'onwords_register_case_category' );
+
+/**
  * Register Webinar custom post type
  */
 function onwords_register_webinar_post_type() {

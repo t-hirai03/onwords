@@ -115,11 +115,21 @@ function onwords_enqueue_assets() {
 		);
 	}
 
-	// News pages only
-	if ( is_post_type_archive( 'news' ) || is_singular( 'news' ) ) {
+	// Article detail pages (news and case)
+	if ( is_singular( 'news' ) || is_singular( 'case' ) ) {
 		wp_enqueue_style(
-			'onwords-news',
-			get_template_directory_uri() . '/assets/css/news.css',
+			'onwords-article',
+			get_template_directory_uri() . '/assets/css/article.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
+	// Case pages only
+	if ( is_post_type_archive( 'case' ) || is_tax( 'case_category' ) || is_singular( 'case' ) ) {
+		wp_enqueue_style(
+			'onwords-case',
+			get_template_directory_uri() . '/assets/css/case.css',
 			array( 'onwords-variables' ),
 			null
 		);

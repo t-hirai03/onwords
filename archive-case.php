@@ -70,47 +70,44 @@ $is_category_archive = is_tax('case_category');
 		</div>
 	</div>
 
-	<!-- Case Studies List -->
-	<div class="case-list__container">
+	<!-- Case List -->
+	<div class="archive-list__container">
 		<?php if (have_posts()) : ?>
-			<ul class="case-list__items">
+			<ul class="archive-list__items">
 				<?php while (have_posts()) : the_post(); ?>
-					<li class="case-list__item">
-						<a href="<?php the_permalink(); ?>" class="case-card">
-							<?php if (has_post_thumbnail()) : ?>
-								<div class="case-card__image">
-									<?php the_post_thumbnail('large'); ?>
-								</div>
-							<?php endif; ?>
-							<div class="case-card__content">
-								<p class="case-card__company"><?php echo esc_html(get_post_meta(get_the_ID(), 'company_name', true) ?: '企業名'); ?></p>
-								<h3 class="case-card__title"><?php the_title(); ?></h3>
+					<li>
+						<a href="<?php the_permalink(); ?>" class="news-item">
+							<div class="news-item__meta">
 								<?php
-								$terms = wp_get_post_terms(get_the_ID(), 'case_category');
-								if (!empty($terms) && !is_wp_error($terms)) :
+								$client_name = get_field('client_name');
+								if ($client_name) :
 								?>
-									<div class="case-card__tags">
-										<span class="case-card__tag"><?php echo esc_html($terms[0]->name); ?></span>
-									</div>
+									<p class="news-item__date"><?php echo esc_html($client_name); ?></p>
+								<?php endif; ?>
+								<?php
+								$categories = get_the_terms(get_the_ID(), 'case_category');
+								if ($categories && !is_wp_error($categories)) :
+								?>
+									<p class="news-item__category"><?php echo esc_html($categories[0]->name); ?></p>
 								<?php endif; ?>
 							</div>
+							<h3 class="news-item__title"><?php the_title(); ?></h3>
 						</a>
 					</li>
 				<?php endwhile; ?>
 			</ul>
 
 			<!-- Pagination -->
-			<div class="pagination">
-				<?php
-				echo paginate_links(array(
-					'prev_text' => '<i class="material-icons">keyboard_arrow_left</i>',
-					'next_text' => '<i class="material-icons">keyboard_arrow_right</i>',
-					'type' => 'list',
-				));
-				?>
-			</div>
+			<?php
+			the_posts_pagination(array(
+				'mid_size'           => 2,
+				'prev_text'          => '<i class="material-icons">keyboard_arrow_left</i>',
+				'next_text'          => '<i class="material-icons">keyboard_arrow_right</i>',
+				'screen_reader_text' => 'ページナビゲーション',
+			));
+			?>
 		<?php else : ?>
-			<p class="archive-list__no-posts">現在、導入事例はありません。</p>
+			<p class="archive-list__no-posts">導入事例はまだありません。</p>
 		<?php endif; ?>
 	</div>
 </main>
