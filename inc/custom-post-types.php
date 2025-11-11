@@ -155,6 +155,77 @@ function onwords_register_case_category() {
 add_action( 'init', 'onwords_register_case_category' );
 
 /**
+ * Register Column custom post type
+ */
+function onwords_register_column_post_type() {
+	$labels = array(
+		'name'               => '記事',
+		'singular_name'      => '記事',
+		'menu_name'          => '記事',
+		'add_new'            => '新規追加',
+		'add_new_item'       => '新しい記事を追加',
+		'edit_item'          => '記事を編集',
+		'new_item'           => '新しい記事',
+		'view_item'          => '記事を表示',
+		'search_items'       => '記事を検索',
+		'not_found'          => '記事が見つかりません',
+		'not_found_in_trash' => 'ゴミ箱に記事はありません',
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'show_in_rest'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'knowledge/column' ),
+		'capability_type'    => 'post',
+		'has_archive'        => 'knowledge/column',
+		'hierarchical'       => false,
+		'menu_position'      => 5.8,
+		'menu_icon'          => 'dashicons-welcome-write-blog',
+		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+	);
+
+	register_post_type( 'column', $args );
+}
+add_action( 'init', 'onwords_register_column_post_type' );
+
+/**
+ * Register Column Category taxonomy
+ */
+function onwords_register_column_category() {
+	$labels = array(
+		'name'              => 'カテゴリー',
+		'singular_name'     => 'カテゴリー',
+		'search_items'      => 'カテゴリーを検索',
+		'all_items'         => 'すべてのカテゴリー',
+		'parent_item'       => '親カテゴリー',
+		'parent_item_colon' => '親カテゴリー:',
+		'edit_item'         => 'カテゴリーを編集',
+		'update_item'       => 'カテゴリーを更新',
+		'add_new_item'      => '新しいカテゴリーを追加',
+		'new_item_name'     => '新しいカテゴリー名',
+		'menu_name'         => 'カテゴリー',
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_rest'      => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'knowledge/column/category' ),
+	);
+
+	register_taxonomy( 'column_category', array( 'column' ), $args );
+}
+add_action( 'init', 'onwords_register_column_category' );
+
+/**
  * Register Webinar custom post type
  */
 function onwords_register_webinar_post_type() {
@@ -194,6 +265,66 @@ function onwords_register_webinar_post_type() {
 add_action( 'init', 'onwords_register_webinar_post_type' );
 
 /**
+ * Register Webinar Target taxonomy
+ */
+function onwords_register_webinar_target() {
+	$labels = array(
+		'name'              => '対象者',
+		'singular_name'     => '対象者',
+		'search_items'      => '対象者を検索',
+		'all_items'         => 'すべての対象者',
+		'edit_item'         => '対象者を編集',
+		'update_item'       => '対象者を更新',
+		'add_new_item'      => '新しい対象者を追加',
+		'new_item_name'     => '新しい対象者名',
+		'menu_name'         => '対象者',
+	);
+
+	$args = array(
+		'hierarchical'      => false,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_rest'      => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'knowledge/webinar/target' ),
+	);
+
+	register_taxonomy( 'webinar_target', array( 'webinar' ), $args );
+}
+add_action( 'init', 'onwords_register_webinar_target' );
+
+/**
+ * Register Webinar Status taxonomy
+ */
+function onwords_register_webinar_status() {
+	$labels = array(
+		'name'              => 'ステータス',
+		'singular_name'     => 'ステータス',
+		'search_items'      => 'ステータスを検索',
+		'all_items'         => 'すべてのステータス',
+		'edit_item'         => 'ステータスを編集',
+		'update_item'       => 'ステータスを更新',
+		'add_new_item'      => '新しいステータスを追加',
+		'new_item_name'     => '新しいステータス名',
+		'menu_name'         => 'ステータス',
+	);
+
+	$args = array(
+		'hierarchical'      => false,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_rest'      => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'knowledge/webinar/status' ),
+	);
+
+	register_taxonomy( 'webinar_status', array( 'webinar' ), $args );
+}
+add_action( 'init', 'onwords_register_webinar_status' );
+
+/**
  * Register Document custom post type
  */
 function onwords_register_document_post_type() {
@@ -231,3 +362,33 @@ function onwords_register_document_post_type() {
 	register_post_type( 'document', $args );
 }
 add_action( 'init', 'onwords_register_document_post_type' );
+
+/**
+ * Register Document Target taxonomy
+ */
+function onwords_register_document_target() {
+	$labels = array(
+		'name'              => '対象者',
+		'singular_name'     => '対象者',
+		'search_items'      => '対象者を検索',
+		'all_items'         => 'すべての対象者',
+		'edit_item'         => '対象者を編集',
+		'update_item'       => '対象者を更新',
+		'add_new_item'      => '新しい対象者を追加',
+		'new_item_name'     => '新しい対象者名',
+		'menu_name'         => '対象者',
+	);
+
+	$args = array(
+		'hierarchical'      => false,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_rest'      => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'knowledge/document/target' ),
+	);
+
+	register_taxonomy( 'document_target', array( 'document' ), $args );
+}
+add_action( 'init', 'onwords_register_document_target' );
