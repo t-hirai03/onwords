@@ -126,7 +126,7 @@ function onwords_enqueue_assets() {
 	}
 
 	// Case pages only
-	if ( is_post_type_archive( 'case' ) || is_tax( 'case_category' ) || is_singular( 'case' ) ) {
+	if ( is_post_type_archive( 'case' ) || is_tax( 'case_category' ) || is_singular( 'case' ) || is_page( 'case' ) ) {
 		wp_enqueue_style(
 			'onwords-case',
 			get_template_directory_uri() . '/assets/css/case.css',

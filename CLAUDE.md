@@ -35,6 +35,289 @@
 - 必要な情報だけを効率的に取得
 - 画像は事前にダウンロードしてローカルで管理
 
+### STUDIOサイトからのHTML/CSS抽出手順（必須）
+
+**🚨 CRITICAL: ページ実装前に必ずセクションごとのドキュメントを作成すること**
+
+新しいページを実装する際は、必ず以下の手順でドキュメントを作成してから実装を開始します。
+
+#### ステップ1: ドキュメントディレクトリの作成
+
+```bash
+mkdir -p .docs/{ページ名}/{セクション名}
+```
+
+**例:** 導入事例ページの場合
+```bash
+mkdir -p .docs/case/mv
+mkdir -p .docs/case/navigation
+mkdir -p .docs/case/cards
+```
+
+#### ステップ2: 各セクションのHTML/CSSを抽出
+
+**各セクションごとに以下の2つのファイルを作成:**
+
+1. **html.md** - セクションのHTML構造
+2. **css.md** - セクションのCSSスタイル（全ブレークポイント対応）
+
+**ファイル構造の例（`.docs/case/`）:**
+```
+.docs/case/
+├── README.md          # ページ全体の説明
+├── mv/                # MVセクション
+│   ├── html.md        # HTML構造
+│   └── css.md         # CSSスタイル（全ブレークポイント対応）
+├── navigation/        # ナビゲーションセクション
+│   ├── html.md        # HTML構造
+│   └── css.md         # CSSスタイル（全ブレークポイント対応）
+└── cards/             # カードセクション
+    ├── html.md        # HTML構造
+    └── css.md         # CSSスタイル（全ブレークポイント対応）
+```
+
+#### ステップ3: HTML構造の抽出
+
+**Playwright MCPまたはChrome DevTools MCPを使用してHTMLを取得:**
+
+```javascript
+// 本番サイトに移動
+mcp__playwright__browser_navigate
+URL: https://www.onwords.co.jp/[ページURL]
+
+// スナップショットを取得
+mcp__playwright__browser_snapshot
+
+// 特定セクションのHTMLを抽出
+mcp__playwright__browser_evaluate
+function: () => {
+  const section = document.querySelector('[data-s-xxxxx]'); // セクションのセレクタ
+  return section.outerHTML;
+}
+```
+
+**html.mdに記録する内容:**
+```markdown
+# [セクション名] HTML
+
+https://www.onwords.co.jp/[ページURL] より抽出
+
+\```html
+<!-- 抽出したHTML -->
+<div data-s-xxxxx class="...">
+  <!-- セクションの内容 -->
+</div>
+\```
+
+## 構造
+
+- 外側のdiv: コンテナ
+- 内側のdiv: 背景画像（:before疑似要素で設定）
+  - p要素: ラベル
+  - h1要素: タイトル
+  - 空のdiv: オーバーレイ
+```
+
+#### ステップ4: CSSスタイルの抽出
+
+**全ブレークポイントのスタイルを抽出:**
+
+```javascript
+// デスクトップスタイル（デフォルト）
+mcp__playwright__browser_evaluate
+function: () => {
+  const element = document.querySelector('[data-s-xxxxx]');
+  const styles = window.getComputedStyle(element);
+  // 必要なスタイルプロパティを抽出
+  return {
+    display: styles.display,
+    flexDirection: styles.flexDirection,
+    padding: styles.padding,
+    margin: styles.margin,
+    fontSize: styles.fontSize,
+    // ... その他のプロパティ
+  };
+}
+
+// タブレット表示に切り替え
+mcp__playwright__browser_resize
+width: 768
+height: 1024
+
+// タブレットスタイルを抽出（同じ処理）
+
+// モバイル表示に切り替え
+mcp__playwright__browser_resize
+width: 375
+height: 667
+
+// モバイルスタイルを抽出（同じ処理）
+```
+
+**css.mdに記録する内容:**
+```markdown
+# [セクション名] CSS
+
+https://www.onwords.co.jp/[ページURL] より抽出
+
+\```css
+/* デフォルトスタイル（デスクトップ） */
+.sd[data-s-xxxxx] {
+  place-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  flex-flow: column;
+  margin: 0px 0px 40px;
+  padding: 0px;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* タブレット */
+@media screen and (max-width: 840px) {
+  .sd[data-s-xxxxx] {
+    margin: 0px 0px 50px;
+  }
+}
+
+/* モバイル */
+@media screen and (max-width: 540px) {
+  .sd[data-s-xxxxx] {
+    padding: 0px 16px;
+  }
+}
+\```
+
+## ブレークポイント
+
+- **デスクトップ**: デフォルト
+- **タブレット**: max-width: 840px
+- **モバイル**: max-width: 540px
+```
+
+#### ステップ5: README.mdの作成
+
+**ページ全体の説明ドキュメントを作成:**
+
+```markdown
+# [ページ名] ドキュメント
+
+本番サイト（https://www.onwords.co.jp/[ページURL]）から抽出したHTML構造とCSSスタイルを記録したドキュメント群です。
+
+## 目的
+
+WordPressテーマで[ページ名]を実装する際に、本番サイト（STUDIO）と完全に同じ見た目を再現するための参考資料として使用します。
+
+## ディレクトリ構造
+
+\```
+.docs/[ページ名]/
+├── README.md          # このファイル
+├── [セクション1]/
+│   ├── html.md        # HTML構造
+│   └── css.md         # CSSスタイル
+├── [セクション2]/
+│   ├── html.md
+│   └── css.md
+└── [セクション3]/
+    ├── html.md
+    └── css.md
+\```
+
+## 各セクションの説明
+
+### 1. [セクション1]
+
+[セクションの説明]
+
+**主な要素:**
+- 要素1
+- 要素2
+- 要素3
+
+### 2. [セクション2]
+
+[セクションの説明]
+
+**主な要素:**
+- 要素1
+- 要素2
+
+## ブレークポイント
+
+全セクション共通で以下のブレークポイントに対応:
+
+| デバイス | ブレークポイント |
+|---------|----------------|
+| デスクトップ | デフォルト |
+| タブレット | max-width: 840px |
+| モバイル | max-width: 540px |
+
+## 使用方法
+
+1. **html.md** - HTML構造を確認し、WordPressテンプレートでPHP化する
+2. **css.md** - CSSスタイルをコピーして `assets/css/[ページ名].css` に実装
+3. **data-s-*属性** - STUDIOの自動生成属性なので、WordPressでは独自のBEMクラスに置き換える
+
+## 注意事項
+
+- **data-s-*属性**: STUDIO特有の自動生成属性のため、WordPress実装時は削除して独自のクラス名に置き換える
+- **CSS変数**: `var(--s-font-*)`, `var(--s-color-*)` などはSTUDIO固有のため、テーマのCSS変数に置き換える
+- **画像URL**: 本番環境のURLは、WordPress管理画面でアップロードした画像パスに変更する
+
+## 実装の流れ
+
+1. HTML構造を確認してWordPressテンプレートを作成
+2. CSSスタイルを `[ページ名].css` に実装（data-s-*属性 → BEMクラスに変換）
+3. レスポンシブ対応（全ブレークポイントで確認）
+4. `/review-code` コマンドで最終確認
+```
+
+#### ステップ6: 画像のダウンロード
+
+**ページ内のすべての画像をダウンロード:**
+
+```bash
+# 画像ディレクトリを作成
+mkdir -p assets/images/{ページ名}
+
+# 各画像をダウンロード
+curl -o "assets/images/{ページ名}/hero.webp" "[画像URL]"
+curl -o "assets/images/{ページ名}/thumbnail1.webp" "[画像URL]"
+```
+
+#### 実装時の注意事項
+
+**ドキュメントを参照しながら実装:**
+
+1. **html.md** を見ながらHTML構造をPHP化
+2. **css.md** を見ながらCSSを実装
+3. **data-s-*属性** を独自のBEMクラスに置き換え
+4. **CSS変数** をテーマのCSS変数に置き換え
+5. **画像URL** をローカルのパスに変更
+
+**例: MVセクションの実装**
+
+`.docs/case/mv/html.md` より:
+```html
+<div class="image sd">
+  <p class="text sd appear">Case</p>
+  <h1 class="text sd appear">導入事例</h1>
+</div>
+```
+
+↓ WordPressテンプレートに変換
+
+```html
+<section class="archive-hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/case/hero-case.webp');">
+  <div class="archive-hero__overlay"></div>
+  <div class="archive-hero__container">
+    <p class="archive-hero__label">Case</p>
+    <h1 class="archive-hero__title">導入事例</h1>
+  </div>
+</section>
+```
+
 ### カスタムコマンド
 
 詳細な実装手順は以下のカスタムコマンドを参照してください：

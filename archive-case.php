@@ -71,27 +71,40 @@ $is_category_archive = is_tax('case_category');
 	</div>
 
 	<!-- Case List -->
-	<div class="archive-list__container">
+	<div class="case-list__container">
 		<?php if (have_posts()) : ?>
-			<ul class="archive-list__items">
+			<ul class="case-list__items">
 				<?php while (have_posts()) : the_post(); ?>
-					<li>
-						<a href="<?php the_permalink(); ?>" class="news-item">
-							<div class="news-item__meta">
+					<li class="case-list__item">
+						<a href="<?php the_permalink(); ?>" class="case-card">
+							<div class="case-card__image">
 								<?php
-								$client_name = get_field('client_name');
-								if ($client_name) :
+								if (has_post_thumbnail()) {
+									the_post_thumbnail('large');
+								} else {
+									echo '<img src="' . get_template_directory_uri() . '/assets/images/common/placeholder.jpg" alt="">';
+								}
 								?>
-									<p class="news-item__date"><?php echo esc_html($client_name); ?></p>
-								<?php endif; ?>
-								<?php
-								$categories = get_the_terms(get_the_ID(), 'case_category');
-								if ($categories && !is_wp_error($categories)) :
-								?>
-									<p class="news-item__category"><?php echo esc_html($categories[0]->name); ?></p>
-								<?php endif; ?>
 							</div>
-							<h3 class="news-item__title"><?php the_title(); ?></h3>
+							<div class="case-card__content">
+								<div class="case-card__text">
+									<?php
+									$client_name = function_exists('get_field') ? get_field('client_name') : get_post_meta(get_the_ID(), 'client_name', true);
+									if ($client_name) :
+									?>
+										<p class="case-card__company"><?php echo esc_html($client_name); ?></p>
+									<?php endif; ?>
+									<p class="case-card__title"><?php the_title(); ?></p>
+								</div>
+								<div class="case-card__tags">
+									<?php
+									$categories = get_the_terms(get_the_ID(), 'case_category');
+									if ($categories && !is_wp_error($categories)) :
+									?>
+										<span class="case-card__tag"><?php echo esc_html($categories[0]->name); ?></span>
+									<?php endif; ?>
+								</div>
+							</div>
 						</a>
 					</li>
 				<?php endwhile; ?>
@@ -107,7 +120,7 @@ $is_category_archive = is_tax('case_category');
 			));
 			?>
 		<?php else : ?>
-			<p class="archive-list__no-posts">導入事例はまだありません。</p>
+			<p class="case-list__no-posts">導入事例はまだありません。</p>
 		<?php endif; ?>
 	</div>
 </main>
