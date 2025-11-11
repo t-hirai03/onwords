@@ -135,6 +135,16 @@ function onwords_enqueue_assets() {
 		);
 	}
 
+	// Knowledge pages only
+	if ( is_page( 'knowledge' ) || is_page_template( 'page-knowledge.php' ) || is_post_type_archive( array( 'column', 'webinar', 'document' ) ) || is_singular( array( 'column', 'webinar', 'document' ) ) || is_tax( array( 'column_category', 'webinar_target', 'webinar_status', 'document_target' ) ) ) {
+		wp_enqueue_style(
+			'onwords-knowledge',
+			get_template_directory_uri() . '/assets/css/knowledge.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
 	// Enqueue Responsive CSS (load last - depends on all other CSS)
 	wp_enqueue_style(
 		'onwords-responsive',

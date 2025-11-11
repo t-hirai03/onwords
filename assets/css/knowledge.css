@@ -1,78 +1,700 @@
 /**
- * Knowledge Pages Styles
+ * Knowledge Page Styles
  *
  * ナレッジページ専用のスタイル
  *
  * @package Onwords
  */
 
-/* ========================================
-   Knowledge Navigation (ページ内ナビゲーション)
-   ======================================== */
+/* ====================
+   Hero Section
+   ==================== */
 
-.knowledge-nav {
-	background-color: #fff;
-	border-bottom: 1px solid #e5e5e5;
-	position: sticky;
-	top: 80px;
-	z-index: 10;
-}
-
-.knowledge-nav__container {
-	max-width: 1312px;
-	margin: 0 auto;
-	padding: 0 16px;
+.knowledge-hero {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	gap: 48px;
+	align-items: center;
+	gap: 4px;
+	padding: 0;
+	margin: 20px 32px 30px;
+	max-width: calc(100% - 64px);
+	border-radius: 20px;
 }
 
-.knowledge-nav__link {
-	display: inline-block;
-	padding: 20px 0;
-	font-size: 16px;
+.knowledge-hero__label {
+	font-size: 20px;
 	font-weight: 500;
-	color: #333;
-	text-decoration: none;
-	border-bottom: 3px solid transparent;
-	transition: all 0.3s ease;
+	color: rgb(0, 0, 0);
+	line-height: 20px;
+	letter-spacing: 0.6px;
+	margin: 0;
+	text-align: center;
 }
 
-.knowledge-nav__link:hover {
-	color: var(--color-primary);
-	border-bottom-color: var(--color-primary);
+.knowledge-hero__title {
+	font-size: 40px;
+	font-weight: 700;
+	color: rgb(0, 0, 0);
+	line-height: 64px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
 }
 
-/* ========================================
-   Knowledge Section (セクション区切り)
-   ======================================== */
-
-.knowledge-section {
-	padding: 80px 0;
-	background-color: #fff;
+@media screen and (max-width: 1140px) {
+	.knowledge-hero {
+		margin: 20px 0 0;
+		max-width: 90%;
+	}
 }
 
-.knowledge-section--gray {
-	background-color: #f8f8f8;
-}
-
-.knowledge-section__container {
-	max-width: 1312px;
-	margin: 0 auto;
-	padding: 0 16px;
-}
-
-/* ========================================
-   Responsive (Mobile)
-   ======================================== */
-
-@media (max-width: 767px) {
-	.knowledge-nav__container {
-		gap: 24px;
+@media screen and (max-width: 840px) {
+	.knowledge-hero {
+		padding: 20px 0;
+		margin: 0;
+		max-width: 100%;
+		border-radius: 0;
 	}
 
-	.knowledge-nav__link {
+	.knowledge-hero__label {
+		font-size: 16px;
+		line-height: 16px;
+		letter-spacing: 0.48px;
+	}
+
+	.knowledge-hero__title {
+		font-size: 28px;
+		line-height: 44.8px;
+	}
+}
+
+/* ====================
+   Filter Section
+   ==================== */
+
+.filter-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 10px;
+	margin: 0 auto 50px;
+	max-width: 100%;
+	width: 1152px;
+	border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.filter-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: normal;
+	align-items: center;
+	gap: 10px;
+	padding: 0;
+	margin: 0;
+	max-width: calc(20% - 16px);
+	width: 210.398px;
+}
+
+.filter-text-link {
+	display: flex;
+	font-size: 20px;
+	font-weight: 500;
+	color: rgb(51, 51, 51);
+	line-height: 28px;
+	letter-spacing: normal;
+	text-decoration: none;
+	padding: 0;
+	background-color: transparent;
+	border-radius: 0;
+}
+
+.filter-icon-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	color: rgb(230, 1, 18);
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	border-radius: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.filter-container {
+		width: 677.695px;
+	}
+
+	.filter-text-link {
+		font-size: 18px;
+		line-height: 25.2px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.filter-container {
+		flex-direction: column;
+		width: 436.5px;
+	}
+
+	.filter-item {
+		flex-direction: row;
+		max-width: 100%;
+		width: fit-content;
+		border-bottom: 0.5px solid rgb(199, 199, 199);
+	}
+
+	.filter-text-link {
 		font-size: 14px;
-		padding: 16px 0;
+		line-height: 19.6px;
+	}
+
+	.filter-icon-link {
+		width: 14px;
+		height: 16px;
+		font-size: 16px;
+	}
+}
+
+/* ====================
+   Columns Section
+   ==================== */
+
+.columns-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 32px;
+	padding: 0 0 20px;
+	margin: 0 auto;
+	max-width: 100%;
+	width: 1200px;
+}
+
+.columns-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	padding: 0;
+	margin: 0;
+}
+
+.columns-label {
+	font-size: 16px;
+	font-weight: 600;
+	color: rgb(230, 1, 18);
+	line-height: 28px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.columns-title {
+	font-size: 36px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 57.6px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.columns-list {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 0 16px;
+	margin: 0 auto;
+	max-width: 100%;
+	width: 1280px;
+}
+
+.columns-list__items {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 32px;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.columns-card {
+	display: flex;
+	flex-direction: column;
+	width: 375.039px;
+	max-width: calc(32% - 21.76px);
+	padding: 0;
+	margin: 0;
+	background-color: rgb(255, 255, 255);
+	border-radius: 8px;
+	border: 1px solid rgb(235, 235, 235);
+	text-decoration: none;
+}
+
+.columns-card__image {
+	display: flex;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.columns-card__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.columns-card__content {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 20px 0 0;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.columns-card__header {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 0;
+}
+
+.columns-card__date {
+	font-size: 13px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 22.75px;
+	margin: 0;
+}
+
+.columns-card__title {
+	font-size: 18px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 28.8px;
+	margin: 0;
+}
+
+.columns-card__tag-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	padding: 10px 0;
+	border-top: 1px solid rgb(226, 226, 226);
+}
+
+.columns-card__tag-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 5px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.columns-card__tag-item {
+	display: flex;
+}
+
+.columns-card__tag-text {
+	font-size: 12px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 21px;
+	margin: 0;
+	padding: 0 6px;
+	background-color: rgb(246, 246, 246);
+	border-radius: 2px;
+	display: flex;
+	width: auto;
+}
+
+@media screen and (max-width: 768px) {
+	.columns-card {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.columns-label {
+		font-size: 15px;
+		line-height: 26.25px;
+	}
+
+	.columns-title {
+		font-size: 32px;
+		line-height: 51.2px;
+	}
+
+	.columns-card__header {
+		gap: 2px;
+	}
+}
+
+/* ====================
+   Webinar Section
+   ==================== */
+
+.webinar-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 32px;
+	padding: 100px 0 0;
+	margin: 0 0 20px;
+	max-width: 100%;
+	width: 1200px;
+	margin-inline: auto;
+}
+
+.webinar-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	padding: 0;
+	margin: 0;
+}
+
+.webinar-label {
+	font-size: 16px;
+	font-weight: 600;
+	color: rgb(230, 1, 18);
+	line-height: 28px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.webinar-title {
+	font-size: 36px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 57.6px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.webinar-list {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 0 16px;
+	margin: 0 auto;
+	max-width: 100%;
+	width: 1240px;
+}
+
+.webinar-list__items {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 32px;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.webinar-card {
+	display: flex;
+	flex-direction: column;
+	width: 375.039px;
+	max-width: calc(32% - 21.76px);
+	background-color: rgb(255, 255, 255);
+	border-radius: 8px;
+	border: 1px solid rgb(235, 235, 235);
+	text-decoration: none;
+}
+
+.webinar-card__image {
+	display: flex;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.webinar-card__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.webinar-card__content {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 20px 0 0;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.webinar-card__header {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 0;
+}
+
+.webinar-card__date {
+	font-size: 13px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 22.75px;
+	margin: 0;
+}
+
+.webinar-card__title {
+	font-size: 18px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 28.8px;
+	margin: 0;
+}
+
+.webinar-card__tag-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	padding: 10px 0;
+	border-top: 1px solid rgb(226, 226, 226);
+}
+
+.webinar-card__tag-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 5px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.webinar-card__tag-item {
+	display: flex;
+}
+
+.webinar-card__tag-text {
+	font-size: 12px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 21px;
+	margin: 0;
+	padding: 0 6px;
+	background-color: rgb(246, 246, 246);
+	border-radius: 2px;
+	display: flex;
+	width: auto;
+}
+
+@media screen and (max-width: 768px) {
+	.webinar-card {
+		width: 400px;
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.webinar-label {
+		font-size: 15px;
+		line-height: 26.25px;
+	}
+
+	.webinar-title {
+		font-size: 32px;
+		line-height: 51.2px;
+	}
+
+	.webinar-card__header {
+		gap: 2px;
+	}
+}
+
+/* ====================
+   Documents Section
+   ==================== */
+
+.documents-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 32px;
+	padding: 100px 0 0;
+	margin: 0 0 20px;
+	max-width: 100%;
+	width: 1200px;
+	margin-inline: auto;
+}
+
+.documents-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	padding: 0;
+	margin: 0;
+}
+
+.documents-label {
+	font-size: 16px;
+	font-weight: 600;
+	color: rgb(230, 1, 18);
+	line-height: 28px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.documents-title {
+	font-size: 36px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 57.6px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.documents-list {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 0 16px;
+	margin: 0 auto;
+	max-width: 100%;
+	width: 1280px;
+}
+
+.documents-list__items {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 32px;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.documents-card {
+	display: flex;
+	flex-direction: column;
+	width: 375.039px;
+	max-width: calc(32% - 21.76px);
+	background-color: rgb(255, 255, 255);
+	border-radius: 8px;
+	border: 1px solid rgb(235, 235, 235);
+	text-decoration: none;
+}
+
+.documents-card__image {
+	display: flex;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.documents-card__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.documents-card__content {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 20px 0 0;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.documents-card__header {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 0;
+}
+
+.documents-card__date {
+	font-size: 13px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 22.75px;
+	margin: 0;
+}
+
+.documents-card__title {
+	font-size: 18px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 28.8px;
+	margin: 0;
+}
+
+.documents-card__tag-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	padding: 10px 0;
+	border-top: 1px solid rgb(226, 226, 226);
+}
+
+.documents-card__tag-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 5px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.documents-card__tag-item {
+	display: flex;
+}
+
+.documents-card__tag-text {
+	font-size: 12px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 21px;
+	margin: 0;
+	padding: 0 6px;
+	background-color: rgb(246, 246, 246);
+	border-radius: 2px;
+	display: flex;
+	width: auto;
+}
+
+@media screen and (max-width: 768px) {
+	.documents-card {
+		width: 400px;
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.documents-label {
+		font-size: 15px;
+		line-height: 26.25px;
+	}
+
+	.documents-title {
+		font-size: 32px;
+		line-height: 51.2px;
+	}
+
+	.documents-card__header {
+		gap: 2px;
 	}
 }
