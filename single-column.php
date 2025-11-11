@@ -31,28 +31,38 @@ get_header();
 
 <main class="main">
 	<?php while (have_posts()) : the_post(); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class('single-post'); ?>>
-			<header class="single-post__header">
-				<div class="single-post__meta">
-					<time class="single-post__date"><?php echo get_the_date('Y/m/d'); ?></time>
-					<?php
-					$terms = get_the_terms(get_the_ID(), 'column_category');
-					if ($terms && !is_wp_error($terms)) :
-						foreach ($terms as $term) :
-					?>
-							<span class="single-post__category"><?php echo esc_html($term->name); ?></span>
-					<?php
-						endforeach;
-					endif;
-					?>
-				</div>
-				<h1 class="single-post__title"><?php the_title(); ?></h1>
-			</header>
+		<div class="single-post">
+			<div class="single-post__container">
+				<header class="single-post__header">
+					<h1 class="single-post__title"><?php the_title(); ?></h1>
 
-			<div class="single-post__content">
-				<?php the_content(); ?>
+					<div class="single-post__meta">
+						<time class="single-post__date"><?php echo get_the_date('Y/m/d'); ?></time>
+						<?php
+						$terms = get_the_terms(get_the_ID(), 'column_category');
+						if ($terms && !is_wp_error($terms)) :
+							foreach ($terms as $term) :
+						?>
+								<span class="single-post__category"><?php echo esc_html($term->name); ?></span>
+						<?php
+							endforeach;
+						endif;
+						?>
+					</div>
+				</header>
+
+				<!-- アイキャッチ画像 -->
+				<?php if ( has_post_thumbnail() ) : ?>
+				<div class="single-post__featured-image">
+					<?php the_post_thumbnail('full'); ?>
+				</div>
+				<?php endif; ?>
+
+				<article class="single-post__content">
+					<?php the_content(); ?>
+				</article>
 			</div>
-		</article>
+		</div>
 	<?php endwhile; ?>
 </main>
 

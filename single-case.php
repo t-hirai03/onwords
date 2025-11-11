@@ -29,37 +29,37 @@ get_header();
 
 <main class="main">
 	<!-- Article Content -->
-	<div class="case-single">
-		<div class="case-single__container">
+	<div class="single-post">
+		<div class="single-post__container">
 			<!-- Article Header -->
-			<header class="case-single__header">
-				<h2 class="case-single__title"><?php the_title(); ?></h2>
+			<header class="single-post__header">
+				<h1 class="single-post__title"><?php the_title(); ?></h1>
 
 				<!-- Client Name -->
 				<?php
 				$client_name = get_post_meta(get_the_ID(), 'client_name', true);
 				if ( $client_name ) :
 				?>
-				<div class="case-single__client">
+				<div class="single-post__client">
 					<?php if ( has_post_thumbnail() ) : ?>
-						<?php the_post_thumbnail('thumbnail', ['class' => 'case-single__client-icon', 'alt' => '']); ?>
+						<?php the_post_thumbnail('thumbnail', ['class' => 'single-post__client-icon', 'alt' => '']); ?>
 					<?php endif; ?>
-					<p class="case-single__client-name"><?php echo esc_html( $client_name ); ?></p>
+					<p class="single-post__client-name"><?php echo esc_html( $client_name ); ?></p>
 				</div>
 				<?php endif; ?>
 
 				<!-- Meta: Categories and Date -->
-				<div class="case-single__meta">
+				<div class="single-post__meta">
 					<!-- Categories -->
 					<?php
 					$categories = get_the_terms( get_the_ID(), 'case_category' );
 					if ( $categories && ! is_wp_error( $categories ) ) :
 					?>
-					<div class="case-single__categories">
-						<ul class="case-single__category-list">
+					<div class="single-post__categories">
+						<ul class="single-post__category-list">
 							<?php foreach ( $categories as $category ) : ?>
-							<li class="case-single__category-item">
-								<p class="case-single__category-text"><?php echo esc_html( $category->name ); ?></p>
+							<li class="single-post__category-item">
+								<p class="single-post__category-text"><?php echo esc_html( $category->name ); ?></p>
 							</li>
 							<?php endforeach; ?>
 						</ul>
@@ -67,19 +67,19 @@ get_header();
 					<?php endif; ?>
 
 					<!-- Date -->
-					<p class="case-single__date"><?php echo esc_html( get_the_date( 'Y/m/d' ) ); ?></p>
+					<p class="single-post__date"><?php echo esc_html( get_the_date( 'Y/m/d' ) ); ?></p>
 				</div>
 			</header>
 
 			<!-- Featured Image -->
 			<?php if ( has_post_thumbnail() ) : ?>
-			<div class="case-single__featured-image">
+			<div class="single-post__featured-image">
 				<?php the_post_thumbnail('full'); ?>
 			</div>
 			<?php endif; ?>
 
 			<!-- Article Content -->
-			<article class="case-single__content">
+			<article class="single-post__content">
 				<?php the_content(); ?>
 			</article>
 		</div>

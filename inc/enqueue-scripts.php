@@ -115,8 +115,8 @@ function onwords_enqueue_assets() {
 		);
 	}
 
-	// Article detail pages (news and case)
-	if ( is_singular( 'news' ) || is_singular( 'case' ) ) {
+	// Article detail pages (news, case, column, webinar, document)
+	if ( is_singular( array( 'news', 'case', 'column', 'webinar', 'document' ) ) ) {
 		wp_enqueue_style(
 			'onwords-article',
 			get_template_directory_uri() . '/assets/css/article.css',
