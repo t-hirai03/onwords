@@ -28,59 +28,60 @@ get_header();
 </div>
 
 <main class="main">
-	<!-- Hero Section -->
-	<div class="archive-hero-wrapper">
-		<section class="archive-hero" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/case/hero-case.webp');">
-			<div class="archive-hero__overlay"></div>
-			<div class="archive-hero__container">
-				<p class="archive-hero__label">Case</p>
-				<h1 class="archive-hero__title">導入事例</h1>
-			</div>
-		</section>
-	</div>
+	<!-- Article Content -->
+	<div class="case-single">
+		<div class="case-single__container">
+			<!-- Article Header -->
+			<header class="case-single__header">
+				<h2 class="case-single__title"><?php the_title(); ?></h2>
 
-	<div>
-		<!-- 記事コンテンツ -->
-		<div class="news-single">
-			<div class="news-single__container">
+				<!-- Client Name -->
+				<?php
+				$client_name = get_post_meta(get_the_ID(), 'client_name', true);
+				if ( $client_name ) :
+				?>
+				<div class="case-single__client">
+					<?php if ( has_post_thumbnail() ) : ?>
+						<?php the_post_thumbnail('thumbnail', ['class' => 'case-single__client-icon', 'alt' => '']); ?>
+					<?php endif; ?>
+					<p class="case-single__client-name"><?php echo esc_html( $client_name ); ?></p>
+				</div>
+				<?php endif; ?>
 
-				<!-- 記事ヘッダー -->
-				<header class="news-single__header">
-					<h2 class="news-single__title"><?php the_title(); ?></h2>
-
-					<div class="news-single__meta">
-						<?php
-						$client_name = get_field('client_name');
-						if ( $client_name ) :
-						?>
-							<p class="news-single__client"><?php echo esc_html( $client_name ); ?></p>
-						<?php endif; ?>
-
-						<?php
-						$categories = get_the_terms( get_the_ID(), 'case_category' );
-						if ( $categories && ! is_wp_error( $categories ) ) :
-							$category = $categories[0];
-						?>
-							<span class="news-single__category">
-								<?php echo esc_html( $category->name ); ?>
-							</span>
-						<?php endif; ?>
-
-						<p class="news-single__date"><?php echo esc_html( get_the_date( 'Y/m/d' ) ); ?></p>
+				<!-- Meta: Categories and Date -->
+				<div class="case-single__meta">
+					<!-- Categories -->
+					<?php
+					$categories = get_the_terms( get_the_ID(), 'case_category' );
+					if ( $categories && ! is_wp_error( $categories ) ) :
+					?>
+					<div class="case-single__categories">
+						<ul class="case-single__category-list">
+							<?php foreach ( $categories as $category ) : ?>
+							<li class="case-single__category-item">
+								<p class="case-single__category-text"><?php echo esc_html( $category->name ); ?></p>
+							</li>
+							<?php endforeach; ?>
+						</ul>
 					</div>
-				</header>
+					<?php endif; ?>
 
-				<!-- 記事本文 -->
-				<article class="news-single__content">
-					<?php the_content(); ?>
-				</article>
+					<!-- Date -->
+					<p class="case-single__date"><?php echo esc_html( get_the_date( 'Y/m/d' ) ); ?></p>
+				</div>
+			</header>
 
+			<!-- Featured Image -->
+			<?php if ( has_post_thumbnail() ) : ?>
+			<div class="case-single__featured-image">
+				<?php the_post_thumbnail('full'); ?>
 			</div>
+			<?php endif; ?>
 
-			<!-- 導入事例一覧へリンク -->
-			<div style="text-align: center; margin-top: 48px;">
-				<a href="<?php echo esc_url( get_post_type_archive_link( 'case' ) ); ?>" class="btn-primary">導入事例一覧へ</a>
-			</div>
+			<!-- Article Content -->
+			<article class="case-single__content">
+				<?php the_content(); ?>
+			</article>
 		</div>
 	</div>
 </main>
