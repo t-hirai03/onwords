@@ -908,10 +908,7 @@
 
 /* 記事本文内のol（順序付きリスト） */
 main ol {
-	border-top: 2px dashed rgb(255, 154, 154);
-	border-bottom: 2px dashed rgb(255, 154, 154);
-	border-left: 2px dashed rgb(255, 154, 154);
-	border-right: none;
+	border: 2px dashed rgb(255, 154, 154);
 	padding: 10px 40px;
 	margin: 20px 0;
 	background-color: transparent;
