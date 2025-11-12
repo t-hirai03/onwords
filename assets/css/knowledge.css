@@ -909,6 +909,15 @@
 	main ol li {
 		margin: 10px 0;
 	}
+
+	/* 記事本文内のul（順序なしリスト） */
+	main ul {
+		padding: 10px 40px 10px 40px;
+	}
+
+	main ul li {
+		margin: 10px 0;
+	}
 }
 
 /* ====================
@@ -928,17 +937,15 @@ main ol li {
 	padding: 0;
 }
 
-/* 記事本文内のul（順序なしリスト）でボーダー付き */
-main ul.bordered {
-	border-top: 0;
-	border-bottom: 0;
-	border-left: 0;
-	padding: 10px 40px;
+/* 記事本文内のul（順序なしリスト） */
+main ul {
+	border: 0px dashed rgb(231, 74, 74);
+	padding: 10px 40px 10px 40px;
 	margin: 20px 0;
 	background-color: rgb(255, 253, 253);
 }
 
-main ul.bordered li {
+main ul li {
 	margin: 10px 0;
 	padding: 0;
 }
