@@ -939,7 +939,7 @@ main ol li {
 
 /* 記事本文内のul（順序なしリスト） */
 main ul {
-	border: 0px dashed rgb(231, 74, 74);
+	border: 2px dashed rgb(231, 74, 74);
 	padding: 10px 40px 10px 40px;
 	margin: 20px 0;
 	background-color: rgb(255, 253, 253);
