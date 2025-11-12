@@ -901,3 +901,38 @@
 		margin: 0 0 12px !important;
 	}
 }
+
+/* ====================
+   記事内のリストスタイル
+   ==================== */
+
+/* 記事本文内のol（順序付きリスト） */
+main ol {
+	border-top: 2px dashed rgb(255, 154, 154);
+	border-bottom: 2px dashed rgb(255, 154, 154);
+	border-left: 2px dashed rgb(255, 154, 154);
+	border-right: none;
+	padding: 10px 40px;
+	margin: 20px 0;
+	background-color: transparent;
+}
+
+main ol li {
+	margin: 10px 0;
+	padding: 0;
+}
+
+/* 記事本文内のul（順序なしリスト）でボーダー付き */
+main ul.bordered {
+	border-top: 0;
+	border-bottom: 0;
+	border-left: 0;
+	padding: 10px 40px;
+	margin: 20px 0;
+	background-color: rgb(255, 253, 253);
+}
+
+main ul.bordered li {
+	margin: 10px 0;
+	padding: 0;
+}
