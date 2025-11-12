@@ -708,3 +708,151 @@
 		gap: 2px;
 	}
 }
+
+/* ====================
+   Table of Contents (目次)
+   ==================== */
+
+/* 目次全体のコンテナ */
+.toc {
+	padding: 24px 24px 8px;
+	background-color: rgb(245, 245, 245);
+	border-radius: 2px;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 15.4px;
+	color: rgb(97, 97, 97);
+	margin: 20px 0;
+}
+
+/* リスト */
+.toc_list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* 目次項目 */
+.toc_item {
+	margin: 0 0 16px;
+	padding: 0 0 0 32px;
+	list-style: none;
+}
+
+/* h2レベル項目 */
+.toc_item--2 {
+	padding: 0 0 0 32px;
+}
+
+/* h3レベル項目 */
+.toc_item--3 {
+	padding: 0 0 0 64px;
+}
+
+/* リンク */
+.toc_item a {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 15.4px;
+	color: rgb(97, 97, 97);
+	text-decoration: none;
+}
+
+/* ホバー時の色変更 */
+.toc_item a:hover {
+	color: rgb(34, 34, 34);
+}
+
+/* ====================
+   Easy Table of Contents Plugin対応
+   ==================== */
+
+/* 目次全体のコンテナ */
+#ez-toc-container {
+	background: rgb(245, 245, 245);
+	border: none;
+	box-shadow: none;
+	padding: 24px 24px 8px;
+	margin: 20px 0;
+	width: auto;
+	border-radius: 2px;
+}
+
+/* "Table of Contents" タイトルを非表示 */
+.ez-toc-title-container,
+.ez-toc-title {
+	display: none;
+}
+
+/* トグルボタンを非表示 */
+.ez-toc-toggle {
+	display: none;
+}
+
+/* 目次リスト全体 */
+.ez-toc-list,
+.ez-toc-list ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: none;
+	background: transparent;
+}
+
+/* 目次のリンク（共通設定） */
+.ez-toc-list a {
+	color: rgb(97, 97, 97) !important;
+	font-size: 14px !important;
+	line-height: 15.4px !important;
+	font-weight: 300 !important;
+	text-decoration: none !important;
+	display: block !important;
+	margin: 0 0 16px !important;
+}
+
+/* リスト項目の共通設定 */
+.ez-toc-list li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* h2レベルのリンク（トップレベル） - 32pxの左余白 */
+/* 記事内のh2に対応する目次項目 */
+.ez-toc-list .ez-toc-heading-1,
+.ez-toc-list .ez-toc-heading-5,
+.ez-toc-list .ez-toc-heading-9,
+.ez-toc-list .ez-toc-heading-12,
+.ez-toc-list .ez-toc-heading-15 {
+	padding: 0 0 0 32px !important;
+}
+
+/* h3レベルのリンク（2階層目） - 64pxの左余白 */
+/* 記事内のh3に対応する目次項目 */
+.ez-toc-list .ez-toc-heading-2,
+.ez-toc-list .ez-toc-heading-3,
+.ez-toc-list .ez-toc-heading-4,
+.ez-toc-list .ez-toc-heading-6,
+.ez-toc-list .ez-toc-heading-7,
+.ez-toc-list .ez-toc-heading-8,
+.ez-toc-list .ez-toc-heading-10,
+.ez-toc-list .ez-toc-heading-11,
+.ez-toc-list .ez-toc-heading-13,
+.ez-toc-list .ez-toc-heading-14,
+.ez-toc-list .ez-toc-heading-16,
+.ez-toc-list .ez-toc-heading-17,
+.ez-toc-list .ez-toc-heading-18 {
+	padding: 0 0 0 64px !important;
+}
+
+/* リストマーカー（箇条書き・番号）を完全に削除 */
+.ez-toc-list li::before,
+.ez-toc-list li::marker {
+	display: none !important;
+	content: none !important;
+}
+
+/* ホバー時の色変更（オプション） */
+.ez-toc-list a:hover {
+	color: rgb(34, 34, 34);
+}
