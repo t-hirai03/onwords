@@ -856,3 +856,48 @@
 .ez-toc-list a:hover {
 	color: rgb(34, 34, 34);
 }
+
+/* ====================
+   モバイル対応（767px以下）
+   ==================== */
+
+@media (max-width: 767px) {
+	/* コンテナの余白を調整 */
+	#ez-toc-container {
+		padding: 16px 16px 8px;
+		margin: 16px 0;
+	}
+
+	/* h2レベルの左余白を縮小 */
+	.ez-toc-list .ez-toc-heading-1,
+	.ez-toc-list .ez-toc-heading-5,
+	.ez-toc-list .ez-toc-heading-9,
+	.ez-toc-list .ez-toc-heading-12,
+	.ez-toc-list .ez-toc-heading-15 {
+		padding: 0 0 0 16px !important;
+	}
+
+	/* h3レベルの左余白を縮小 */
+	.ez-toc-list .ez-toc-heading-2,
+	.ez-toc-list .ez-toc-heading-3,
+	.ez-toc-list .ez-toc-heading-4,
+	.ez-toc-list .ez-toc-heading-6,
+	.ez-toc-list .ez-toc-heading-7,
+	.ez-toc-list .ez-toc-heading-8,
+	.ez-toc-list .ez-toc-heading-10,
+	.ez-toc-list .ez-toc-heading-11,
+	.ez-toc-list .ez-toc-heading-13,
+	.ez-toc-list .ez-toc-heading-14,
+	.ez-toc-list .ez-toc-heading-16,
+	.ez-toc-list .ez-toc-heading-17,
+	.ez-toc-list .ez-toc-heading-18 {
+		padding: 0 0 0 32px !important;
+	}
+
+	/* リンクのフォントサイズと余白を調整 */
+	.ez-toc-list a {
+		font-size: 13px !important;
+		line-height: 18px !important;
+		margin: 0 0 12px !important;
+	}
+}
