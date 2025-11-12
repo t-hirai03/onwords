@@ -341,11 +341,7 @@
 }
 
 /* リストスタイル */
-.single-post__content ul {
-  margin: 20px 0;
-  list-style-type: none;
-}
-
+.single-post__content ul,
 .single-post__content ol {
   margin: 20px 0;
   list-style-type: none;

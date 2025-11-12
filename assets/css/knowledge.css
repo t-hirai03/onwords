@@ -902,50 +902,50 @@
 	}
 
 	/* 記事本文内のol（順序付きリスト） */
-	main ol {
+	.single-post__content ol {
 		padding: 10px 40px 10px 40px;
 	}
 
-	main ol li {
+	.single-post__content ol li {
 		margin: 10px 0;
 	}
 
 	/* 記事本文内のul（順序なしリスト） */
-	main ul {
+	.single-post__content ul {
 		padding: 10px 40px 10px 40px;
 	}
 
-	main ul li {
+	.single-post__content ul li {
 		margin: 10px 0;
 	}
 }
 
 /* ====================
-   記事内のリストスタイル
+   記事内のリストスタイル（記事詳細ページのみ）
    ==================== */
 
 /* 記事本文内のol（順序付きリスト） */
-main ol {
+.single-post__content ol {
 	border: 2px dashed rgb(255, 154, 154);
 	padding: 10px 40px 10px 40px;
 	margin: 20px 0;
 	background-color: transparent;
 }
 
-main ol li {
+.single-post__content ol li {
 	margin: 10px 0;
 	padding: 0;
 }
 
 /* 記事本文内のul（順序なしリスト） */
-main ul {
+.single-post__content ul {
 	border: 2px dashed rgb(231, 74, 74);
 	padding: 10px 40px 10px 40px;
 	margin: 20px 0;
 	background-color: rgb(255, 253, 253);
 }
 
-main ul li {
+.single-post__content ul li {
 	margin: 10px 0;
 	padding: 0;
 }
