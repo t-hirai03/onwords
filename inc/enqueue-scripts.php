@@ -191,6 +191,16 @@ function onwords_enqueue_assets() {
 		);
 	}
 
+	// Privacy Policy page only
+	if ( is_page( 'privacypolicy' ) || is_page_template( 'page-privacypolicy.php' ) ) {
+		wp_enqueue_style(
+			'onwords-privacypolicy',
+			get_template_directory_uri() . '/assets/css/privacypolicy.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
 	// Enqueue Responsive CSS (load last - depends on all other CSS)
 	wp_enqueue_style(
 		'onwords-responsive',
