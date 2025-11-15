@@ -17,28 +17,7 @@
 	padding: 0 16px;
 }
 
-.board-member__header {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 2px;
-	margin-bottom: 40px;
-	text-align: center;
-}
-
-.board-member__label {
-	font-size: 15px;
-	font-weight: 600;
-	color: #E60112;
-	margin: 0;
-}
-
-.board-member__title {
-	font-size: 32px;
-	font-weight: 700;
-	color: #222222;
-	margin: 0;
-}
+/* ヘッダーは共通の.section-headerクラスを使用（components.css） */
 
 .board-member__cards {
 	display: flex;
@@ -184,40 +163,24 @@
 .mission {
 	max-width: 1312px;
 	margin: 0 auto 90px;
-	padding: 0 16px;
+	padding: 90px 16px 30px;
 	text-align: center;
+	border-top: 1px solid #EEEEEE;
 }
 
-.mission__header {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 2px;
-	margin-bottom: 40px;
-}
-
-.mission__label {
-	font-size: 16px;
-	font-weight: 600;
-	color: #E60112;
-	margin: 0;
-}
-
-.mission__title {
-	font-size: 36px;
-	font-weight: 700;
-	color: #222222;
-	margin: 0;
-}
+/* ヘッダーは共通の.section-headerクラスを使用（components.css） */
 
 .mission__content {
 	margin-bottom: 30px;
+	padding-top: 40px;
+	border-top: 1px solid #D9D9D9;
 }
 
 .mission__main-title {
 	font-size: 32px;
 	font-weight: 700;
 	color: #E60112;
+	line-height: 44.8px;
 	margin: 0 0 10px;
 }
 
@@ -239,32 +202,16 @@
 	margin: 0 0 20px;
 }
 
+/* ミッションボタンは共通のbtn-primaryクラスを使用 */
 .mission__button {
-	display: inline-block;
-	padding: 10px 16px;
-	background-color: transparent;
-	color: #333333;
-	font-size: 16px;
-	font-weight: 400;
-	border: 1px solid #333333;
-	border-radius: 24px;
-	text-decoration: none;
-	transition: all 0.3s;
-}
-
-.mission__button:hover {
-	background-color: #333333;
-	color: #FFFFFF;
-}
-
-.mission__button p {
-	margin: 0;
+	/* components.cssの.btn-primaryスタイルを使用 */
 }
 
 /* モバイル（767px以下） */
 @media (max-width: 767px) {
 	.mission {
 		margin-bottom: 60px;
+		padding: 60px 16px 30px;
 	}
 
 	.mission__main-title {
@@ -290,28 +237,7 @@
 	padding: 0 16px;
 }
 
-.company-info__header {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 2px;
-	margin-bottom: 40px;
-	text-align: center;
-}
-
-.company-info__label {
-	font-size: 16px;
-	font-weight: 600;
-	color: #E60112;
-	margin: 0;
-}
-
-.company-info__title {
-	font-size: 36px;
-	font-weight: 700;
-	color: #222222;
-	margin: 0;
-}
+/* ヘッダーは共通の.section-headerクラスを使用（components.css） */
 
 .company-info__content {
 	max-width: 900px;
@@ -380,28 +306,7 @@
 	padding: 0 16px;
 }
 
-.access__header {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 2px;
-	margin-bottom: 40px;
-	text-align: center;
-}
-
-.access__label {
-	font-size: 16px;
-	font-weight: 600;
-	color: #E60112;
-	margin: 0;
-}
-
-.access__title {
-	font-size: 36px;
-	font-weight: 700;
-	color: #222222;
-	margin: 0;
-}
+/* ヘッダーは共通の.section-headerクラスを使用（components.css） */
 
 .access__map {
 	width: 100%;

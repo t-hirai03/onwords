@@ -38,9 +38,9 @@ get_header();
 
 	<!-- Board Member Section -->
 	<section class="board-member">
-		<div class="board-member__header">
-			<p class="board-member__label">BOARD MEMBER</p>
-			<h2 class="board-member__title">経営陣紹介</h2>
+		<div class="section-header">
+			<p class="section-header__label">BOARD MEMBER</p>
+			<h2 class="section-header__title">経営陣紹介</h2>
 		</div>
 
 		<div class="board-member__cards">
@@ -110,9 +110,9 @@ get_header();
 
 	<!-- Mission Section -->
 	<section class="mission">
-		<div class="mission__header">
-			<p class="mission__label">MISSION</p>
-			<h2 class="mission__title">ミッション</h2>
+		<div class="section-header">
+			<p class="section-header__label">MISSION</p>
+			<h2 class="section-header__title">ミッション</h2>
 		</div>
 
 		<div class="mission__content">
@@ -131,16 +131,14 @@ get_header();
 			</p>
 		</div>
 
-		<a href="<?php echo esc_url(home_url('/company/philosophy')); ?>" class="mission__button">
-			<p>企業理念を見る</p>
-		</a>
+		<a href="<?php echo esc_url(home_url('/company/philosophy')); ?>" class="btn-primary">企業理念を見る</a>
 	</section>
 
 	<!-- Company Info Section -->
 	<section class="company-info">
-		<div class="company-info__header">
-			<p class="company-info__label">COMPANY</p>
-			<h2 class="company-info__title">会社概要</h2>
+		<div class="section-header">
+			<p class="section-header__label">COMPANY</p>
+			<h2 class="section-header__title">会社概要</h2>
 		</div>
 
 		<div class="company-info__content">
@@ -197,9 +195,9 @@ get_header();
 
 	<!-- Access Section -->
 	<section class="access">
-		<div class="access__header">
-			<p class="access__label">ACCESS</p>
-			<h2 class="access__title">アクセス</h2>
+		<div class="section-header">
+			<p class="section-header__label">ACCESS</p>
+			<h2 class="section-header__title">アクセス</h2>
 		</div>
 
 		<iframe

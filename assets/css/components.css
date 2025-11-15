@@ -391,3 +391,47 @@
     font-size: 28px;
   }
 }
+
+/* ===================================================================
+   Section Header Component
+   共通のセクションヘッダースタイル（ラベル + タイトル）
+   使用例: 経営陣紹介、ミッション、事業内容など
+   =================================================================== */
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.section-header__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #E60112;
+  line-height: 28px;
+  letter-spacing: normal;
+  margin: 0;
+}
+
+.section-header__title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #222222;
+  line-height: 57.6px;
+  margin: 0;
+}
+
+/* モバイル（767px以下） */
+@media (max-width: 767px) {
+  .section-header__label {
+    font-size: 15px;
+  }
+
+  .section-header__title {
+    font-size: 32px;
+    line-height: 51.2px;
+  }
+}
