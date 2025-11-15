@@ -2,489 +2,419 @@
  * Company Page Styles
  *
  * 会社概要ページ専用のスタイル
+ * 本番サイト（https://www.onwords.co.jp/company）から抽出したスタイルを適用
  *
  * @package Onwords
  */
 
 /* ========================================
-   Hero Section
-   ======================================== */
-
-.company-hero {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 0;
-	margin: 0 0 40px;
-	height: 320px;
-	max-width: 100%;
-	border-radius: 0;
-	position: relative;
-}
-
-/* 背景画像 - ::before疑似要素 */
-.company-hero::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: url("../images/company/hero-bg.jpg");
-	background-size: cover;
-	background-position: center;
-	z-index: -1;
-}
-
-.company-hero__label {
-	font-size: 20px;
-	font-weight: 500;
-	color: rgb(255, 255, 255);
-	line-height: 20px;
-	letter-spacing: 0.6px;
-	margin: 0;
-	text-align: center;
-}
-
-.company-hero__title {
-	font-size: 40px;
-	font-weight: 700;
-	color: rgb(255, 255, 255);
-	line-height: 64px;
-	letter-spacing: normal;
-	margin: 0;
-	text-align: center;
-}
-
-@media screen and (max-width: 840px) {
-	.company-hero {
-		margin: 0 0 50px;
-		height: 208.797px;
-		border-radius: 0;
-	}
-
-	.company-hero__label {
-		font-size: 16px;
-		line-height: 16px;
-		letter-spacing: 0.48px;
-	}
-
-	.company-hero__title {
-		font-size: 28px;
-		line-height: 44.8px;
-	}
-}
-
-/* ========================================
-   Board Member Section
+   Board Member Section（経営陣紹介）
    ======================================== */
 
 .board-member {
-	display: flex;
-	flex-direction: column;
-	padding: 0 50px;
-	margin: 0;
-	max-width: 100%;
-	background-color: transparent;
+	max-width: 1312px;
+	margin: 0 auto 90px;
+	padding: 0 16px;
 }
 
 .board-member__header {
 	display: flex;
 	flex-direction: column;
-	gap: 2px;
 	align-items: center;
-	margin-bottom: 20px;
+	gap: 2px;
+	margin-bottom: 40px;
+	text-align: center;
 }
 
 .board-member__label {
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 600;
-	color: rgb(230, 1, 18);
-	letter-spacing: normal;
+	color: #E60112;
 	margin: 0;
 }
 
 .board-member__title {
-	font-size: 36px;
+	font-size: 32px;
 	font-weight: 700;
-	color: rgb(34, 34, 34);
-	line-height: 57.6px;
+	color: #222222;
 	margin: 0;
 }
 
 .board-member__cards {
 	display: flex;
-	flex-direction: row;
-	gap: normal;
-	width: 1180px;
+	flex-direction: column;
+	gap: 0;
 }
 
 .board-member__card {
 	display: flex;
 	flex-direction: row;
-	gap: normal;
 	padding: 40px;
-	margin-bottom: 10px;
-	width: 1160px;
+	margin: 10px 0;
+	background-color: #FAFAFA;
+	border-radius: 6px;
+}
+
+.board-member__card-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	flex: none;
+	flex-wrap: nowrap;
+	width: 40%;
+	max-width: 40%;
+	padding: 0;
 }
 
 .board-member__card-image {
-	width: 432px;
-	height: 223px;
-	border-radius: 0;
-	overflow: visible;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-size: cover;
+	background-position: center;
+	flex-shrink: 0;
 }
 
-.board-member__card-content {
-	display: flex;
-	flex-direction: column;
+/* 経営陣の写真 - ::before疑似要素を使用 */
+.board-member__card-image--narisawa::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-image: url("../images/company/board-members/narisawa.webp");
+	background-size: cover;
+	background-position: center;
 }
 
-.board-member__card-header {
+.board-member__card-image--kato::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-image: url("../images/company/board-members/kato.webp");
+	background-size: cover;
+	background-position: center;
+}
+
+.board-member__card-image--takehara::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-image: url("../images/company/board-members/takehara.webp");
+	background-size: cover;
+	background-position: center;
+}
+
+.board-member__card-image--aoki::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-image: url("../images/company/board-members/aoki.webp");
+	background-size: cover;
+	background-position: center;
+}
+
+.board-member__card-text {
 	display: flex;
 	flex-direction: column;
+	margin-top: 25px;
+	text-align: center;
 }
 
 .board-member__card-name {
 	font-size: 20px;
 	font-weight: 700;
-	color: rgb(51, 51, 51);
+	color: #333333;
+	line-height: 20px;
 	margin: 0 0 10px;
 }
 
 .board-member__card-position {
 	font-size: 15px;
 	font-weight: 400;
-	color: rgb(51, 51, 51);
+	color: #333333;
+	line-height: 18px;
 	margin: 0;
 }
 
 .board-member__card-bio {
-	font-size: 20px;
-	line-height: 20px;
-	color: rgb(51, 51, 51);
-	white-space: normal;
-	margin: 0 0 10px;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 28px;
+	color: #333333;
+	margin: 0;
 }
 
-@media screen and (max-width: 840px) {
+/* モバイル（767px以下） */
+@media (max-width: 767px) {
 	.board-member {
-		padding: 0;
-	}
-
-	.board-member__label {
-		font-size: 15px;
-	}
-
-	.board-member__title {
-		font-size: 32px;
-		line-height: 51.2px;
-	}
-
-	.board-member__cards {
-		width: 742.5px;
-	}
-
-	.board-member__card {
-		flex-direction: row;
-		padding: 40px;
-		width: 722.5px;
-	}
-
-	.board-member__card-image {
-		width: 257px;
-		height: 223px;
-	}
-}
-
-@media screen and (max-width: 375px) {
-	.board-member {
-		padding: 0;
-	}
-
-	.board-member__cards {
-		width: 324px;
+		margin-bottom: 60px;
 	}
 
 	.board-member__card {
 		flex-direction: column;
 		padding: 30px;
-		width: 304px;
 	}
 
-	.board-member__card-image {
-		width: 146.398px;
-		height: 236.797px;
+	.board-member__card-inner {
+		flex-direction: column;
+		align-items: center;
+		margin-right: 0;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	.board-member__card-text {
+		align-items: center;
 	}
 }
 
 /* ========================================
-   Mission Section
+   Mission Section（ミッション）
    ======================================== */
 
 .mission {
-	display: flex;
-	flex-direction: column;
-	gap: normal;
-	padding: 90px 40px 30px;
-	margin: 0;
-	background-color: transparent;
-	border-radius: 0;
-	min-height: auto;
+	max-width: 1312px;
+	margin: 0 auto 90px;
+	padding: 0 16px;
+	text-align: center;
 }
 
 .mission__header {
 	display: flex;
 	flex-direction: column;
-	gap: 2px;
 	align-items: center;
-	margin-bottom: 20px;
+	gap: 2px;
+	margin-bottom: 40px;
 }
 
 .mission__label {
 	font-size: 16px;
 	font-weight: 600;
-	color: rgb(230, 1, 18);
-	letter-spacing: normal;
+	color: #E60112;
 	margin: 0;
 }
 
 .mission__title {
 	font-size: 36px;
 	font-weight: 700;
-	color: rgb(34, 34, 34);
-	line-height: 57.6px;
+	color: #222222;
 	margin: 0;
 }
 
 .mission__content {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	align-items: center;
-	margin-bottom: 0;
+	margin-bottom: 30px;
 }
 
 .mission__main-title {
 	font-size: 32px;
 	font-weight: 700;
-	color: rgba(0, 0, 0, 0);
-	line-height: 44.8px;
-	margin: 0;
+	color: #E60112;
+	margin: 0 0 10px;
 }
 
 .mission__sub-title {
 	font-size: 24px;
 	font-weight: 400;
-	color: rgb(51, 51, 51);
-	line-height: 33.6px;
+	color: #333333;
 	margin: 0;
 }
 
 .mission__description {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	margin-bottom: 40px;
 }
 
 .mission__desc-text {
 	font-size: 20px;
-	line-height: 28px;
-	color: rgb(51, 51, 51);
-	margin: 0;
-	text-align: center;
+	line-height: 1.4;
+	color: #333333;
+	margin: 0 0 20px;
 }
 
 .mission__button {
+	display: inline-block;
 	padding: 10px 16px;
 	background-color: transparent;
-	color: rgb(51, 51, 51);
+	color: #333333;
 	font-size: 16px;
 	font-weight: 400;
+	border: 1px solid #333333;
 	border-radius: 24px;
-	border: 0px none rgb(51, 51, 51);
 	text-decoration: none;
-	display: inline-block;
+	transition: all 0.3s;
+}
+
+.mission__button:hover {
+	background-color: #333333;
+	color: #FFFFFF;
 }
 
 .mission__button p {
 	margin: 0;
 }
 
-@media screen and (max-width: 375px) {
+/* モバイル（767px以下） */
+@media (max-width: 767px) {
 	.mission {
-		padding: 90px 40px 30px;
-	}
-
-	.mission__label {
-		font-size: 15px;
-	}
-
-	.mission__title {
-		font-size: 32px;
-		line-height: 51.2px;
+		margin-bottom: 60px;
 	}
 
 	.mission__main-title {
 		font-size: 24px;
-		line-height: 33.6px;
 	}
 
 	.mission__sub-title {
 		font-size: 18px;
-		line-height: 25.2px;
 	}
 
 	.mission__desc-text {
 		font-size: 16px;
-		line-height: 22.4px;
 	}
 }
 
 /* ========================================
-   Company Info Section
+   Company Info Section（会社概要）
    ======================================== */
 
 .company-info {
-	display: flex;
-	flex-direction: column;
-	gap: normal;
-	padding: 90px 0 0;
-	margin: 0;
-	max-width: 100%;
+	max-width: 1312px;
+	margin: 0 auto 90px;
+	padding: 0 16px;
 }
 
 .company-info__header {
 	display: flex;
 	flex-direction: column;
-	gap: 2px;
 	align-items: center;
-	margin-bottom: 20px;
+	gap: 2px;
+	margin-bottom: 40px;
+	text-align: center;
 }
 
 .company-info__label {
 	font-size: 16px;
 	font-weight: 600;
-	color: rgb(230, 1, 18);
+	color: #E60112;
 	margin: 0;
 }
 
 .company-info__title {
 	font-size: 36px;
 	font-weight: 700;
-	color: rgb(34, 34, 34);
-	line-height: 57.6px;
+	color: #222222;
 	margin: 0;
 }
 
 .company-info__content {
-	display: flex;
-	flex-direction: column;
-	gap: normal;
-	max-width: 90%;
+	max-width: 900px;
 	margin: 0 auto;
 }
 
 .company-info__row {
 	display: flex;
 	flex-direction: row;
-	gap: normal;
-	border-bottom: 1px solid rgb(238, 238, 238);
-	padding: 0;
+	border-bottom: 1px solid #EEEEEE;
+	padding: 20px 0;
+}
+
+.company-info__row:first-child {
+	padding-top: 0;
 }
 
 .company-info__row-label {
 	font-size: 16px;
 	font-weight: 400;
-	color: rgb(51, 51, 51);
-	width: 240px;
+	color: #333333;
+	min-width: 120px;
 	margin: 0;
 }
 
 .company-info__row-content {
+	font-size: 16px;
+	font-weight: 400;
+	color: #333333;
+	line-height: 1.6;
+	margin: 0;
+	flex: 1;
+}
+
+.company-info__row-content h3 {
 	font-size: 18.72px;
 	font-weight: 400;
-	color: rgb(51, 51, 51);
-	line-height: 26.208px;
+	color: #333333;
 	margin: 0;
 }
 
-@media screen and (max-width: 375px) {
-	.company-info__label {
-		font-size: 15px;
-	}
-
-	.company-info__title {
-		font-size: 32px;
-		line-height: 51.2px;
+/* モバイル（767px以下） */
+@media (max-width: 767px) {
+	.company-info {
+		margin-bottom: 60px;
 	}
 
 	.company-info__row {
 		flex-direction: column;
-		gap: normal;
+		gap: 8px;
 	}
 
 	.company-info__row-label {
-		width: auto;
+		min-width: auto;
+		font-weight: 600;
 	}
 }
 
 /* ========================================
-   Access Section
+   Access Section（アクセス）
    ======================================== */
 
 .access {
-	display: flex;
-	flex-direction: column;
-	gap: normal;
-	padding: 90px 0;
-	margin: 0;
-	max-width: 100%;
+	max-width: 1312px;
+	margin: 0 auto;
+	padding: 0 16px;
 }
 
 .access__header {
 	display: flex;
 	flex-direction: column;
-	gap: 2px;
 	align-items: center;
-	margin-bottom: 20px;
+	gap: 2px;
+	margin-bottom: 40px;
+	text-align: center;
 }
 
 .access__label {
 	font-size: 16px;
 	font-weight: 600;
-	color: rgb(230, 1, 18);
+	color: #E60112;
 	margin: 0;
 }
 
 .access__title {
 	font-size: 36px;
 	font-weight: 700;
-	color: rgb(34, 34, 34);
-	line-height: 57.6px;
+	color: #222222;
 	margin: 0;
 }
 
 .access__map {
-	width: 1280px;
-	height: 569.758px;
+	width: 100%;
+	max-width: 1280px;
+	height: 480px;
 	border: 0;
 	margin: 0 auto;
+	display: block;
 }
 
-@media screen and (max-width: 375px) {
-	.access__label {
-		font-size: 15px;
-	}
-
-	.access__title {
-		font-size: 32px;
-		line-height: 51.2px;
-	}
-
+/* モバイル（767px以下） */
+@media (max-width: 767px) {
 	.access__map {
-		width: 324px;
-		height: 450.406px;
+		height: 320px;
 	}
 }
