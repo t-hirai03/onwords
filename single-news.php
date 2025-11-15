@@ -39,37 +39,41 @@ get_header();
 		</section>
 	</div>
 
-	<div>
-		<!-- 記事コンテンツ -->
-		<div class="news-single">
-			<div class="news-single__container">
-
+	<?php while ( have_posts() ) : the_post(); ?>
+		<div class="single-post">
+			<div class="single-post__container">
 				<!-- 記事ヘッダー -->
-				<header class="news-single__header">
-					<h2 class="news-single__title"><?php the_title(); ?></h2>
+				<header class="single-post__header">
+					<h1 class="single-post__title"><?php the_title(); ?></h1>
 
-					<div class="news-single__meta">
+					<div class="single-post__meta">
+						<p class="single-post__date"><?php echo esc_html( get_the_date( 'Y/m/d' ) ); ?></p>
+
 						<?php
 						$categories = get_the_terms( get_the_ID(), 'news_category' );
 						if ( $categories && ! is_wp_error( $categories ) ) :
 							$category = $categories[0];
 						?>
-							<a href="<?php echo esc_url( get_term_link( $category ) ); ?>" class="news-single__category">
+							<a href="<?php echo esc_url( get_term_link( $category ) ); ?>" class="single-post__category">
 								<?php echo esc_html( $category->name ); ?>
 							</a>
 						<?php else : ?>
-							<span class="news-single__category">お知らせ</span>
+							<span class="single-post__category">お知らせ</span>
 						<?php endif; ?>
-
-						<p class="news-single__date"><?php echo esc_html( get_the_date( 'Y/m/d' ) ); ?></p>
 					</div>
 				</header>
 
+				<!-- アイキャッチ画像 -->
+				<?php if ( has_post_thumbnail() ) : ?>
+				<div class="single-post__featured-image">
+					<?php the_post_thumbnail('full'); ?>
+				</div>
+				<?php endif; ?>
+
 				<!-- 記事本文 -->
-				<article class="news-single__content">
+				<article class="single-post__content">
 					<?php the_content(); ?>
 				</article>
-
 			</div>
 
 			<!-- お知らせ一覧へリンク -->
@@ -77,11 +81,7 @@ get_header();
 				<a href="<?php echo esc_url( get_post_type_archive_link( 'news' ) ); ?>" class="btn-primary">お知らせ一覧へ</a>
 			</div>
 		</div>
-	</div>
+	<?php endwhile; ?>
 </main>
-
-<?php endwhile; else : ?>
-	<p>記事が見つかりませんでした。</p>
-<?php endif; ?>
 
 <?php get_footer(); ?>

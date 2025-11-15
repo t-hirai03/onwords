@@ -115,8 +115,8 @@ function onwords_enqueue_assets() {
 		);
 	}
 
-	// Article detail pages (news and case)
-	if ( is_singular( 'news' ) || is_singular( 'case' ) ) {
+	// Article pages (news archive and all article detail pages)
+	if ( is_post_type_archive( 'news' ) || is_singular( array( 'news', 'case', 'column', 'webinar', 'document' ) ) ) {
 		wp_enqueue_style(
 			'onwords-article',
 			get_template_directory_uri() . '/assets/css/article.css',
@@ -130,6 +130,26 @@ function onwords_enqueue_assets() {
 		wp_enqueue_style(
 			'onwords-case',
 			get_template_directory_uri() . '/assets/css/case.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
+	// Knowledge pages only
+	if ( is_page( 'knowledge' ) || is_page_template( 'page-knowledge.php' ) || is_post_type_archive( array( 'column', 'webinar', 'document' ) ) || is_singular( array( 'column', 'webinar', 'document' ) ) || is_tax( array( 'column_category', 'webinar_target', 'webinar_status', 'document_target' ) ) ) {
+		wp_enqueue_style(
+			'onwords-knowledge',
+			get_template_directory_uri() . '/assets/css/knowledge.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
+	// Company page only
+	if ( is_page( 'company' ) || is_page_template( 'page-company.php' ) ) {
+		wp_enqueue_style(
+			'onwords-company',
+			get_template_directory_uri() . '/assets/css/company.css',
 			array( 'onwords-variables' ),
 			null
 		);

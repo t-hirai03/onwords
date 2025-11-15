@@ -24,165 +24,188 @@ get_header();
 
 <main class="main">
 	<!-- Hero Section -->
-	<div class="archive-hero-wrapper">
-		<section class="archive-hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/company/hero-company.webp');">
-			<div class="archive-hero__overlay"></div>
-			<div class="archive-hero__container">
-				<p class="archive-hero__label">Company</p>
-				<h1 class="archive-hero__title">会社概要</h1>
-			</div>
-		</section>
-	</div>
+	<?php
+	get_template_part(
+		'template-parts/components/archive-hero',
+		null,
+		array(
+			'background_image' => get_template_directory_uri() . '/assets/images/common/company-hero-bg.jpg',
+			'label'            => 'Company',
+			'title'            => '会社概要',
+		)
+	);
+	?>
 
 	<!-- Board Member Section -->
-	<section class="company-board">
-		<div class="company-board__container">
-			<div class="section-header">
-				<p class="section-header__label">BOARD MEMBER</p>
-				<h2 class="section-header__title">経営陣</h2>
+	<section class="board-member">
+		<div class="section-header">
+			<p class="section-header__label">BOARD MEMBER</p>
+			<h2 class="section-header__title">経営陣紹介</h2>
+		</div>
+
+		<div class="board-member__cards">
+			<!-- Card 1: 成澤豪 -->
+			<div class="board-member__card">
+				<div class="board-member__card-inner">
+					<div class="board-member__card-image board-member__card-image--narisawa"></div>
+					<div class="board-member__card-text">
+						<p class="board-member__card-name">成澤豪</p>
+						<p class="board-member__card-position">代表取締役社長</p>
+					</div>
+				</div>
+				<p class="board-member__card-bio">
+					（株）リクルートスタッフィングに新卒入社し、営業や新規事業開発に従事。その後、オーストラリアのThe University of Western Australia MBA専攻修士課程卒業。日本に帰国後、チェンジHDへ入社し、新規事業開発や投資事業などに携わる。現在は、約260件の自治体公式観光サイトを制作・運用をしているトラベルジップやチェンジグループ全体の観光DX領域の責任者として、観光事業に携わる。<br>
+					・（株）チェンジホールディングス 執行役員<br>
+					・（株）トラベルジップ 取締役<br>
+					・東光コンピュータ・サービス（株） 社外取締役
+				</p>
 			</div>
 
-			<div class="company-board__grid">
-				<!-- 代表取締役 -->
-				<div class="company-board__member">
-					<div class="company-board__photo">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/company/board/member-1.webp" alt="代表取締役">
-					</div>
-					<div class="company-board__info">
-						<p class="company-board__role">代表取締役</p>
-						<h3 class="company-board__name">氏名</h3>
-						<p class="company-board__bio">プロフィール文がここに入ります。</p>
+			<!-- Card 2: 加藤史子 -->
+			<div class="board-member__card">
+				<div class="board-member__card-inner">
+					<div class="board-member__card-image board-member__card-image--kato"></div>
+					<div class="board-member__card-text">
+						<p class="board-member__card-name">加藤史子</p>
+						<p class="board-member__card-position">取締役副社長</p>
 					</div>
 				</div>
+				<p class="board-member__card-bio">
+					慶応義塾大学環境情報学部（SFC）卒業後、1998年に（株）リクルート入社。 「じゃらんnet」の立ち上げ、「ホットペッパーグルメ」の立ち上げなど、主にネットの新規事業開発を担当した後、観光による地域活性を行う「じゃらんリサーチセンター」に異動。 スノーレジャーの再興をめざし「雪マジ！19」を立ち上げ。 国・県の観光関連有識者委員や、執筆・講演・研究活動を行ってきたが、「もう１度、本気のスケーラブルな事業で、日本の地域と観光産業に貢献する！」を目的に、2016年7月、WAmazing株式会社を創業。2025年8月1日、株式会社Onwordsの取締役副社長に就任。
+				</p>
+			</div>
 
-				<!-- 取締役 -->
-				<div class="company-board__member">
-					<div class="company-board__photo">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/company/board/member-2.webp" alt="取締役">
-					</div>
-					<div class="company-board__info">
-						<p class="company-board__role">取締役</p>
-						<h3 class="company-board__name">氏名</h3>
-						<p class="company-board__bio">プロフィール文がここに入ります。</p>
+			<!-- Card 3: 竹原淳 -->
+			<div class="board-member__card">
+				<div class="board-member__card-inner">
+					<div class="board-member__card-image board-member__card-image--takehara"></div>
+					<div class="board-member__card-text">
+						<p class="board-member__card-name">竹原淳</p>
+						<p class="board-member__card-position">取締役</p>
 					</div>
 				</div>
+				<p class="board-member__card-bio">
+					法人向け動画配信企業（株）Jストリームに新卒入社し、エンジニア、制作、新規事業開発に従事。大手企業、エンタメ企業向けプラットフォームサービスのデリバリーやテクニカルサポートなどを行う。その後、不動産会社２社にて、オンライン小口不動産投資販売の新規事業立ち上げ、事業責任者、経営企画などを歴任。（株）シーラでは、親会社の広報を兼任し、NASDAQ上場を経験。<br>
+					2023年グロービス経営大学院大学を卒業し、MBAを取得。<br>
+					2024年5月よりチェンジHDにて、観光DX領域での新規事業開発や投資事業に携わる。<br>
+					2025年8月1日より当社取締役に就任。訪日マーケティングパートナー事業責任者
+				</p>
+			</div>
 
-				<!-- 取締役 -->
-				<div class="company-board__member">
-					<div class="company-board__photo">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/company/board/member-3.webp" alt="取締役">
-					</div>
-					<div class="company-board__info">
-						<p class="company-board__role">取締役</p>
-						<h3 class="company-board__name">氏名</h3>
-						<p class="company-board__bio">プロフィール文がここに入ります。</p>
+			<!-- Card 4: 青木理恵 -->
+			<div class="board-member__card">
+				<div class="board-member__card-inner">
+					<div class="board-member__card-image board-member__card-image--aoki"></div>
+					<div class="board-member__card-text">
+						<p class="board-member__card-name">青木理恵</p>
+						<p class="board-member__card-position">取締役</p>
 					</div>
 				</div>
-
-				<!-- 監査役 -->
-				<div class="company-board__member">
-					<div class="company-board__photo">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/company/board/member-4.webp" alt="監査役">
-					</div>
-					<div class="company-board__info">
-						<p class="company-board__role">監査役</p>
-						<h3 class="company-board__name">氏名</h3>
-						<p class="company-board__bio">プロフィール文がここに入ります。</p>
-					</div>
-				</div>
+				<p class="board-member__card-bio">
+					東京外国語大学卒業後、編集プロダクションにて旅行ガイドの編集・ライターを経験し、2006年に（株）リクルートに入社。「じゃらん」編集部に配属後、「関東東北じゃらん」等の編集デスク、アプリ「週刊じゃらん」の立ち上げなどを経験後、じゃらんリサーチセンターへ異動。観光庁の復興支援事業「東北観光博」の編集・制作等を担当した後、2016年7月、加藤らとWAmazing株式会社を共同創業。2020年4月に自治体・DMOとの連携により地方創生を目指す"地域連携部"の立ち上げ後は、プランナー兼ディレクターとして調査事業からプロモ、コンテンツ造成まで幅広く携わる。2022年4月に同部門の部長に就任し、現職。
+				</p>
 			</div>
 		</div>
 	</section>
 
 	<!-- Mission Section -->
-	<section class="company-mission">
-		<div class="company-mission__container">
-			<div class="section-header">
-				<p class="section-header__label">MISSION</p>
-				<h2 class="section-header__title">ミッション</h2>
-			</div>
-
-			<div class="company-mission__content">
-				<p class="company-mission__text">ミッション文がここに入ります。</p>
-				<a href="<?php echo esc_url(home_url('/company/philosophy/')); ?>" class="btn-primary">企業理念を詳しく見る</a>
-			</div>
+	<section class="mission">
+		<div class="section-header">
+			<p class="section-header__label">MISSION</p>
+			<h2 class="section-header__title">ミッション</h2>
 		</div>
+
+		<div class="mission__content">
+			<p class="mission__main-title">もっと楽しい日本に</p>
+			<p class="mission__sub-title">Bring out Japan's fun side</p>
+		</div>
+
+		<div class="mission__description">
+			<p class="mission__desc-text">
+				日本を訪れる人も、迎える人も、みんなが楽しめる場所へ。<br>
+				そして、地域の魅力を日本の活力に。
+			</p>
+			<p class="mission__desc-text">
+				Make Japan a more enjoyable place for visitors and locals alike.<br>
+				Harness regional charms to create a vibrant country
+			</p>
+		</div>
+
+		<a href="<?php echo esc_url(home_url('/company/philosophy')); ?>" class="btn-primary">企業理念を見る</a>
 	</section>
 
 	<!-- Company Info Section -->
 	<section class="company-info">
-		<div class="company-info__container">
-			<div class="section-header">
-				<p class="section-header__label">COMPANY</p>
-				<h2 class="section-header__title">会社情報</h2>
+		<div class="section-header">
+			<p class="section-header__label">COMPANY</p>
+			<h2 class="section-header__title">会社概要</h2>
+		</div>
+
+		<div class="company-info__content">
+			<div class="company-info__row">
+				<p class="company-info__row-label">会社名</p>
+				<h3 class="company-info__row-content">
+					株式会社Onwords<br>
+					（かぶしきがいしゃオンワーズ）
+				</h3>
 			</div>
 
-			<table class="company-info__table">
-				<tbody>
-					<tr>
-						<th>会社名</th>
-						<td>株式会社Onwords</td>
-					</tr>
-					<tr>
-						<th>代表者</th>
-						<td>代表取締役 氏名</td>
-					</tr>
-					<tr>
-						<th>設立日</th>
-						<td>2020年4月1日</td>
-					</tr>
-					<tr>
-						<th>所在地</th>
-						<td>〒000-0000 東京都渋谷区</td>
-					</tr>
-					<tr>
-						<th>資本金</th>
-						<td>10,000,000円</td>
-					</tr>
-					<tr>
-						<th>事業内容</th>
-						<td>地域観光DX事業<br>訪日マーケティングパートナー事業</td>
-					</tr>
-					<tr>
-						<th>取引銀行</th>
-						<td>銀行名</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="company-info__row">
+				<p class="company-info__row-label">設立日</p>
+				<p class="company-info__row-content">2025年8月1日</p>
+			</div>
+
+			<div class="company-info__row">
+				<p class="company-info__row-label">資本金</p>
+				<p class="company-info__row-content">1,000万円</p>
+			</div>
+
+			<div class="company-info__row">
+				<p class="company-info__row-label">経営陣</p>
+				<p class="company-info__row-content">
+					代表取締役社長　成澤豪<br>
+					取締役副社長　　加藤史子<br>
+					取締役　　　　　竹原淳<br>
+					取締役　　　　　青木理恵
+				</p>
+			</div>
+
+			<div class="company-info__row">
+				<p class="company-info__row-label">事業内容</p>
+				<p class="company-info__row-content">
+					・地域観光DX事業<br>
+					自治体、観光協会、DMOに向けたインバウンドに特化した観光コンサルティング事業を展開<br>
+					調査、商品開発、販売整備、情報発信などをワンストップで提供<br>
+					<br>
+					・訪日マーケティングパートナー事業<br>
+					国内企業向けにインバウンドの送客支援やコンサルティング事業を展開<br>
+					訪日OTAの利用者データや会員基盤を活用したマーケティング支援を行う
+				</p>
+			</div>
+
+			<div class="company-info__row">
+				<p class="company-info__row-label">所在地</p>
+				<p class="company-info__row-content">
+					〒105-0001<br>
+					東京都港区虎ノ門３丁目１７−１ Tokyu Reit 虎ノ門ビル ６Ｆ
+				</p>
+			</div>
 		</div>
 	</section>
 
 	<!-- Access Section -->
-	<section class="company-access">
-		<div class="company-access__container">
-			<div class="section-header">
-				<p class="section-header__label">ACCESS</p>
-				<h2 class="section-header__title">アクセス</h2>
-			</div>
-
-			<div class="company-access__content">
-				<div class="company-access__map">
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.747736789!2d139.7008!3d35.6586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDM5JzMxLjAiTiAxMznCsDQyJzAzLjAiRQ!5e0!3m2!1sja!2sjp!4v1234567890"
-						width="100%"
-						height="400"
-						style="border:0;"
-						allowfullscreen=""
-						loading="lazy"
-						referrerpolicy="no-referrer-when-downgrade">
-					</iframe>
-				</div>
-				<div class="company-access__info">
-					<p class="company-access__address">
-						〒000-0000<br>
-						東京都渋谷区<br>
-					</p>
-					<p class="company-access__route">
-						最寄り駅からのアクセス方法
-					</p>
-				</div>
-			</div>
+	<section class="access">
+		<div class="section-header">
+			<p class="section-header__label">ACCESS</p>
+			<h2 class="section-header__title">アクセス</h2>
 		</div>
+
+		<iframe
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.0249374845835!2d139.74395831525895!3d35.66418548019923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b7e3f0b0b0b%3A0xc5b0b0b0b0b0b0b!2z5p2x5Lqs6YO95riv5Yy66JmO44OO6ZaA77yT5LiB55uu77yR77yX4oiS77yR!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp"
+			class="access__map"
+			loading="lazy"
+			referrerpolicy="no-referrer-when-downgrade">
+		</iframe>
 	</section>
 </main>
 

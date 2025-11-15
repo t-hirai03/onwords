@@ -26,46 +26,51 @@ get_header();
 </div>
 
 <main class="main">
-	<!-- Hero Section -->
-	<div class="archive-hero-wrapper">
-		<section class="archive-hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/knowledge/hero-document.webp');">
-			<div class="archive-hero__overlay"></div>
-			<div class="archive-hero__container">
-				<p class="archive-hero__label">DOCUMENTS</p>
-				<h1 class="archive-hero__title">お役立ち資料</h1>
-			</div>
-		</section>
-	</div>
+	<!-- Documents Section -->
+	<section class="documents-section">
+		<div class="documents-header">
+			<p class="documents-label">DOCUMENTS</p>
+			<h1 class="documents-title">お役立ち資料</h1>
+		</div>
 
-	<!-- Document List -->
-	<div class="archive-list__container">
 		<?php if (have_posts()) : ?>
-			<ul class="archive-list__items">
-				<?php while (have_posts()) : the_post(); ?>
-					<li>
-						<a href="<?php the_permalink(); ?>" class="news-item">
-							<div class="news-item__meta">
-								<p class="news-item__date"><?php echo get_the_date('Y/m/d'); ?></p>
+			<div class="documents-list">
+				<div class="documents-list__items">
+					<?php while (have_posts()) : the_post(); ?>
+						<a href="<?php the_permalink(); ?>" class="documents-card">
+							<?php if (has_post_thumbnail()) : ?>
+								<div class="documents-card__image">
+									<?php the_post_thumbnail('large'); ?>
+								</div>
+							<?php endif; ?>
+							<div class="documents-card__content">
+								<div class="documents-card__header">
+									<p class="documents-card__date"><?php echo get_the_date('Y/n/j'); ?></p>
+									<p class="documents-card__title"><?php the_title(); ?></p>
+								</div>
 								<?php
 								$terms = get_the_terms(get_the_ID(), 'document_target');
 								if ($terms && !is_wp_error($terms)) :
-									foreach ($terms as $term) :
 								?>
-										<p class="news-item__category"><?php echo esc_html($term->name); ?></p>
-								<?php
-									endforeach;
-								endif;
-								?>
+									<div class="documents-card__tag-container">
+										<ul class="documents-card__tag-list">
+											<?php foreach ($terms as $term) : ?>
+												<li class="documents-card__tag-item">
+													<p class="documents-card__tag-text"><?php echo esc_html($term->name); ?></p>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								<?php endif; ?>
 							</div>
-							<h3 class="news-item__title"><?php the_title(); ?></h3>
 						</a>
-					</li>
-				<?php endwhile; ?>
-			</ul>
+					<?php endwhile; ?>
+				</div>
+			</div>
 		<?php else : ?>
 			<p class="archive-list__no-posts">現在、お役立ち資料はありません。</p>
 		<?php endif; ?>
-	</div>
+	</section>
 </main>
 
 <?php get_footer(); ?>

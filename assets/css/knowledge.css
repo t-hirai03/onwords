@@ -1,78 +1,951 @@
 /**
- * Knowledge Pages Styles
+ * Knowledge Page Styles
  *
  * ナレッジページ専用のスタイル
  *
  * @package Onwords
  */
 
-/* ========================================
-   Knowledge Navigation (ページ内ナビゲーション)
-   ======================================== */
+/* ====================
+   Hero Section
+   ==================== */
 
-.knowledge-nav {
-	background-color: #fff;
-	border-bottom: 1px solid #e5e5e5;
-	position: sticky;
-	top: 80px;
-	z-index: 10;
+.knowledge-hero {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	padding: 0;
+	margin: 20px 32px 30px;
+	max-width: calc(100% - 64px);
+	border-radius: 20px;
 }
 
-.knowledge-nav__container {
-	max-width: 1312px;
-	margin: 0 auto;
-	padding: 0 16px;
+.knowledge-hero__label {
+	font-size: 20px;
+	font-weight: 500;
+	color: rgb(0, 0, 0);
+	line-height: 20px;
+	letter-spacing: 0.6px;
+	margin: 0;
+	text-align: center;
+}
+
+.knowledge-hero__title {
+	font-size: 40px;
+	font-weight: 700;
+	color: rgb(0, 0, 0);
+	line-height: 64px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+@media screen and (max-width: 1140px) {
+	.knowledge-hero {
+		margin: 20px 0 0;
+		max-width: 90%;
+	}
+}
+
+@media screen and (max-width: 840px) {
+	.knowledge-hero {
+		padding: 20px 0;
+		margin: 0;
+		max-width: 100%;
+		border-radius: 0;
+	}
+
+	.knowledge-hero__label {
+		font-size: 16px;
+		line-height: 16px;
+		letter-spacing: 0.48px;
+	}
+
+	.knowledge-hero__title {
+		font-size: 28px;
+		line-height: 44.8px;
+	}
+}
+
+/* ====================
+   Filter Section
+   ==================== */
+
+.filter-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 10px;
+	margin: 0 auto 50px;
+	max-width: 100%;
+	width: 1152px;
+	border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.filter-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: normal;
+	align-items: center;
+	gap: 10px;
+	padding: 0;
+	margin: 0;
+	max-width: calc(20% - 16px);
+	width: 210.398px;
+}
+
+.filter-text-link {
+	display: flex;
+	font-size: 20px;
+	font-weight: 500;
+	color: rgb(51, 51, 51);
+	line-height: 28px;
+	letter-spacing: normal;
+	text-decoration: none;
+	padding: 0;
+	background-color: transparent;
+	border-radius: 0;
+}
+
+.filter-icon-link {
 	display: flex;
 	justify-content: center;
-	gap: 48px;
+	align-items: center;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	color: rgb(230, 1, 18);
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	border-radius: 0;
 }
 
-.knowledge-nav__link {
-	display: inline-block;
-	padding: 20px 0;
-	font-size: 16px;
-	font-weight: 500;
-	color: #333;
-	text-decoration: none;
-	border-bottom: 3px solid transparent;
-	transition: all 0.3s ease;
+@media screen and (max-width: 768px) {
+	.filter-container {
+		width: 677.695px;
+	}
+
+	.filter-text-link {
+		font-size: 18px;
+		line-height: 25.2px;
+	}
 }
 
-.knowledge-nav__link:hover {
-	color: var(--color-primary);
-	border-bottom-color: var(--color-primary);
+@media screen and (max-width: 500px) {
+	.filter-container {
+		flex-direction: column;
+		width: 436.5px;
+	}
+
+	.filter-item {
+		flex-direction: row;
+		max-width: 100%;
+		width: fit-content;
+		border-bottom: 0.5px solid rgb(199, 199, 199);
+	}
+
+	.filter-text-link {
+		font-size: 14px;
+		line-height: 19.6px;
+	}
+
+	.filter-icon-link {
+		width: 14px;
+		height: 16px;
+		font-size: 16px;
+	}
 }
 
-/* ========================================
-   Knowledge Section (セクション区切り)
-   ======================================== */
+/* ====================
+   Columns Section
+   ==================== */
 
-.knowledge-section {
-	padding: 80px 0;
-	background-color: #fff;
-}
-
-.knowledge-section--gray {
-	background-color: #f8f8f8;
-}
-
-.knowledge-section__container {
-	max-width: 1312px;
+.columns-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 32px;
+	padding: 0 0 20px;
 	margin: 0 auto;
-	padding: 0 16px;
+	max-width: 100%;
+	width: 1200px;
 }
 
-/* ========================================
-   Responsive (Mobile)
-   ======================================== */
+.columns-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	padding: 0;
+	margin: 0;
+}
+
+.columns-label {
+	font-size: 16px;
+	font-weight: 600;
+	color: rgb(230, 1, 18);
+	line-height: 28px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.columns-title {
+	font-size: 36px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 57.6px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.columns-list {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 0 16px;
+	margin: 0 auto;
+	max-width: 100%;
+	width: 1280px;
+}
+
+.columns-list__items {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 32px;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.columns-card {
+	display: flex;
+	flex-direction: column;
+	width: 375.039px;
+	max-width: calc(32% - 21.76px);
+	padding: 0;
+	margin: 0;
+	background-color: rgb(255, 255, 255);
+	border-radius: 8px;
+	border: 1px solid rgb(235, 235, 235);
+	text-decoration: none;
+}
+
+.columns-card__image {
+	display: flex;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.columns-card__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.columns-card__content {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 20px 0 0;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.columns-card__header {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 0;
+}
+
+.columns-card__date {
+	font-size: 13px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 22.75px;
+	margin: 0;
+}
+
+.columns-card__title {
+	font-size: 18px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 28.8px;
+	margin: 0;
+}
+
+.columns-card__tag-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	padding: 10px 0;
+	border-top: 1px solid rgb(226, 226, 226);
+}
+
+.columns-card__tag-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 5px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.columns-card__tag-item {
+	display: flex;
+}
+
+.columns-card__tag-text {
+	font-size: 12px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 21px;
+	margin: 0;
+	padding: 0 6px;
+	background-color: rgb(246, 246, 246);
+	border-radius: 2px;
+	display: flex;
+	width: auto;
+}
+
+@media screen and (max-width: 768px) {
+	.columns-card {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.columns-label {
+		font-size: 15px;
+		line-height: 26.25px;
+	}
+
+	.columns-title {
+		font-size: 32px;
+		line-height: 51.2px;
+	}
+
+	.columns-card__header {
+		gap: 2px;
+	}
+}
+
+/* ====================
+   Webinar Section
+   ==================== */
+
+.webinar-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 32px;
+	padding: 100px 0 0;
+	margin: 0 0 20px;
+	max-width: 100%;
+	width: 1200px;
+	margin-inline: auto;
+}
+
+.webinar-upcoming {
+	padding: 0 0 20px;
+	margin: 0 0 20px;
+}
+
+.webinar-past {
+	padding: 100px 0 0;
+	margin: 0 0 20px;
+}
+
+.webinar-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	padding: 0;
+	margin: 0;
+}
+
+.webinar-label {
+	font-size: 16px;
+	font-weight: 600;
+	color: rgb(230, 1, 18);
+	line-height: 28px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.webinar-title {
+	font-size: 36px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 57.6px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.webinar-list {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 0 16px;
+	margin: 0 auto;
+	max-width: 100%;
+	width: 1240px;
+}
+
+.webinar-list__items {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 32px;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.webinar-card {
+	display: flex;
+	flex-direction: column;
+	width: 375.039px;
+	max-width: calc(32% - 21.76px);
+	background-color: rgb(255, 255, 255);
+	border-radius: 8px;
+	border: 1px solid rgb(235, 235, 235);
+	text-decoration: none;
+}
+
+.webinar-card__image {
+	display: flex;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.webinar-card__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.webinar-card__content {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 20px 0 0;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.webinar-card__header {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 0;
+}
+
+.webinar-card__date {
+	font-size: 13px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 22.75px;
+	margin: 0;
+}
+
+.webinar-card__title {
+	font-size: 18px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 28.8px;
+	margin: 0;
+}
+
+.webinar-card__tag-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	padding: 10px 0;
+	border-top: 1px solid rgb(226, 226, 226);
+}
+
+.webinar-card__tag-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 5px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.webinar-card__tag-item {
+	display: flex;
+}
+
+.webinar-card__tag-text {
+	font-size: 12px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 21px;
+	margin: 0;
+	padding: 0 6px;
+	background-color: rgb(246, 246, 246);
+	border-radius: 2px;
+	display: flex;
+	width: auto;
+}
+
+@media screen and (max-width: 768px) {
+	.webinar-card {
+		width: 400px;
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.webinar-label {
+		font-size: 15px;
+		line-height: 26.25px;
+	}
+
+	.webinar-title {
+		font-size: 32px;
+		line-height: 51.2px;
+	}
+
+	.webinar-card__header {
+		gap: 2px;
+	}
+}
+
+/* ====================
+   Documents Section
+   ==================== */
+
+.documents-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 32px;
+	padding: 0 0 20px;
+	margin: 0 0 20px;
+	max-width: 100%;
+	width: 1200px;
+	margin-inline: auto;
+}
+
+.documents-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	padding: 0;
+	margin: 0;
+}
+
+.documents-label {
+	font-size: 16px;
+	font-weight: 600;
+	color: rgb(230, 1, 18);
+	line-height: 28px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.documents-title {
+	font-size: 36px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 57.6px;
+	letter-spacing: normal;
+	margin: 0;
+	text-align: center;
+}
+
+.documents-list {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 0 16px;
+	margin: 0 auto;
+	max-width: 100%;
+	width: 1280px;
+}
+
+.documents-list__items {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 32px;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.documents-card {
+	display: flex;
+	flex-direction: column;
+	width: 375.039px;
+	max-width: calc(32% - 21.76px);
+	background-color: rgb(255, 255, 255);
+	border-radius: 8px;
+	border: 1px solid rgb(235, 235, 235);
+	text-decoration: none;
+}
+
+.documents-card__image {
+	display: flex;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.documents-card__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.documents-card__content {
+	display: flex;
+	flex-direction: column;
+	gap: normal;
+	padding: 20px 0 0;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.documents-card__header {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 0;
+}
+
+.documents-card__date {
+	font-size: 13px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 22.75px;
+	margin: 0;
+}
+
+.documents-card__title {
+	font-size: 18px;
+	font-weight: 700;
+	color: rgb(34, 34, 34);
+	line-height: 28.8px;
+	margin: 0;
+}
+
+.documents-card__tag-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	padding: 10px 0;
+	border-top: 1px solid rgb(226, 226, 226);
+}
+
+.documents-card__tag-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 5px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.documents-card__tag-item {
+	display: flex;
+}
+
+.documents-card__tag-text {
+	font-size: 12px;
+	font-weight: 500;
+	color: rgb(34, 34, 34);
+	line-height: 21px;
+	margin: 0;
+	padding: 0 6px;
+	background-color: rgb(246, 246, 246);
+	border-radius: 2px;
+	display: flex;
+	width: auto;
+}
+
+@media screen and (max-width: 768px) {
+	.documents-card {
+		width: 400px;
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.documents-label {
+		font-size: 15px;
+		line-height: 26.25px;
+	}
+
+	.documents-title {
+		font-size: 32px;
+		line-height: 51.2px;
+	}
+
+	.documents-card__header {
+		gap: 2px;
+	}
+}
+
+/* ====================
+   Table of Contents (目次)
+   ==================== */
+
+/* 目次全体のコンテナ */
+.toc {
+	padding: 24px 24px 8px;
+	background-color: rgb(245, 245, 245);
+	border-radius: 2px;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 15.4px;
+	color: rgb(97, 97, 97);
+	margin: 20px 0;
+}
+
+/* リスト */
+.toc_list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* 目次項目 */
+.toc_item {
+	margin: 0 0 16px;
+	padding: 0 0 0 32px;
+	list-style: none;
+}
+
+/* h2レベル項目 */
+.toc_item--2 {
+	padding: 0 0 0 32px;
+}
+
+/* h3レベル項目 */
+.toc_item--3 {
+	padding: 0 0 0 64px;
+}
+
+/* リンク */
+.toc_item a {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 15.4px;
+	color: rgb(97, 97, 97);
+	text-decoration: none;
+}
+
+/* ホバー時の色変更 */
+.toc_item a:hover {
+	color: rgb(34, 34, 34);
+}
+
+/* ====================
+   Easy Table of Contents Plugin対応
+   ==================== */
+
+/* 目次全体のコンテナ */
+#ez-toc-container {
+	background: rgb(245, 245, 245);
+	border: none;
+	box-shadow: none;
+	padding: 24px 24px 8px;
+	margin: 20px 0;
+	width: auto;
+	border-radius: 2px;
+}
+
+/* "Table of Contents" タイトルを非表示 */
+.ez-toc-title-container,
+.ez-toc-title {
+	display: none;
+}
+
+/* トグルボタンを非表示 */
+.ez-toc-toggle {
+	display: none;
+}
+
+/* 目次リスト全体 */
+.ez-toc-list,
+.ez-toc-list ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: none;
+	background: transparent;
+}
+
+/* 目次のリンク（共通設定） */
+.ez-toc-list a {
+	color: rgb(97, 97, 97) !important;
+	font-size: 14px !important;
+	line-height: 15.4px !important;
+	font-weight: 300 !important;
+	text-decoration: none !important;
+	display: block !important;
+	margin: 0 0 16px !important;
+}
+
+/* リスト項目の共通設定 */
+.ez-toc-list li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* h2レベルのリンク（トップレベル） - 32pxの左余白 */
+/* 記事内のh2に対応する目次項目 */
+.ez-toc-list .ez-toc-heading-1,
+.ez-toc-list .ez-toc-heading-5,
+.ez-toc-list .ez-toc-heading-9,
+.ez-toc-list .ez-toc-heading-12,
+.ez-toc-list .ez-toc-heading-15 {
+	padding: 0 0 0 32px !important;
+}
+
+/* h3レベルのリンク（2階層目） - 64pxの左余白 */
+/* 記事内のh3に対応する目次項目 */
+.ez-toc-list .ez-toc-heading-2,
+.ez-toc-list .ez-toc-heading-3,
+.ez-toc-list .ez-toc-heading-4,
+.ez-toc-list .ez-toc-heading-6,
+.ez-toc-list .ez-toc-heading-7,
+.ez-toc-list .ez-toc-heading-8,
+.ez-toc-list .ez-toc-heading-10,
+.ez-toc-list .ez-toc-heading-11,
+.ez-toc-list .ez-toc-heading-13,
+.ez-toc-list .ez-toc-heading-14,
+.ez-toc-list .ez-toc-heading-16,
+.ez-toc-list .ez-toc-heading-17,
+.ez-toc-list .ez-toc-heading-18 {
+	padding: 0 0 0 64px !important;
+}
+
+/* リストマーカー（箇条書き・番号）を完全に削除 */
+.ez-toc-list li::before,
+.ez-toc-list li::marker {
+	display: none !important;
+	content: none !important;
+}
+
+/* ホバー時の色変更（オプション） */
+.ez-toc-list a:hover {
+	color: rgb(34, 34, 34);
+}
+
+/* ====================
+   モバイル対応（767px以下）
+   ==================== */
 
 @media (max-width: 767px) {
-	.knowledge-nav__container {
-		gap: 24px;
+	/* コンテナの余白を調整 */
+	#ez-toc-container {
+		padding: 16px 16px 8px;
+		margin: 16px 0;
 	}
 
-	.knowledge-nav__link {
-		font-size: 14px;
-		padding: 16px 0;
+	/* h2レベルの左余白を縮小 */
+	.ez-toc-list .ez-toc-heading-1,
+	.ez-toc-list .ez-toc-heading-5,
+	.ez-toc-list .ez-toc-heading-9,
+	.ez-toc-list .ez-toc-heading-12,
+	.ez-toc-list .ez-toc-heading-15 {
+		padding: 0 0 0 16px !important;
 	}
+
+	/* h3レベルの左余白を縮小 */
+	.ez-toc-list .ez-toc-heading-2,
+	.ez-toc-list .ez-toc-heading-3,
+	.ez-toc-list .ez-toc-heading-4,
+	.ez-toc-list .ez-toc-heading-6,
+	.ez-toc-list .ez-toc-heading-7,
+	.ez-toc-list .ez-toc-heading-8,
+	.ez-toc-list .ez-toc-heading-10,
+	.ez-toc-list .ez-toc-heading-11,
+	.ez-toc-list .ez-toc-heading-13,
+	.ez-toc-list .ez-toc-heading-14,
+	.ez-toc-list .ez-toc-heading-16,
+	.ez-toc-list .ez-toc-heading-17,
+	.ez-toc-list .ez-toc-heading-18 {
+		padding: 0 0 0 32px !important;
+	}
+
+	/* リンクのフォントサイズと余白を調整 */
+	.ez-toc-list a {
+		font-size: 13px !important;
+		line-height: 18px !important;
+		margin: 0 0 12px !important;
+	}
+
+	/* 記事本文内のol（順序付きリスト） */
+	.single-post__content ol {
+		padding: 10px 40px 10px 40px;
+	}
+
+	.single-post__content ol li {
+		margin: 10px 0;
+	}
+
+	/* 記事本文内のul（順序なしリスト） */
+	.single-post__content ul {
+		padding: 10px 40px 10px 40px;
+	}
+
+	.single-post__content ul li {
+		margin: 10px 0;
+	}
+}
+
+/* ====================
+   記事内のリストスタイル（記事詳細ページのみ）
+   ==================== */
+
+/* 記事本文内のol（順序付きリスト） */
+.single-post__content ol {
+	border: 2px dashed rgb(255, 154, 154);
+	padding: 10px 40px 10px 40px;
+	margin: 20px 0;
+	background-color: transparent;
+}
+
+.single-post__content ol li {
+	margin: 10px 0;
+	padding: 0;
+}
+
+/* 記事本文内のul（順序なしリスト） */
+.single-post__content ul {
+	border: 2px dashed rgb(231, 74, 74);
+	padding: 10px 40px 10px 40px;
+	margin: 20px 0;
+	background-color: rgb(255, 253, 253);
+}
+
+.single-post__content ul li {
+	margin: 10px 0;
+	padding: 0;
 }

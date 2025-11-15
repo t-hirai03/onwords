@@ -27,7 +27,15 @@ get_header();
 <main class="main">
 	<?php
 	// Hero Section
-	get_template_part('template-parts/sections/news-archive-hero');
+	get_template_part(
+		'template-parts/components/archive-hero',
+		null,
+		array(
+			'background_image' => get_template_directory_uri() . '/assets/images/news/hero-bg.jpg',
+			'label'            => 'News',
+			'title'            => 'お知らせ',
+		)
+	);
 	?>
 
 	<div>
