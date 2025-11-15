@@ -138,7 +138,7 @@
 }
 
 .case-list__item:hover {
-	border-color: var(--color-primary);
+	border-color: rgb(36, 60, 122);
 }
 
 .case-list__no-posts {

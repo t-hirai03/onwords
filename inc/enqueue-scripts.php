@@ -115,8 +115,8 @@ function onwords_enqueue_assets() {
 		);
 	}
 
-	// Article detail pages (news, case, column, webinar, document)
-	if ( is_singular( array( 'news', 'case', 'column', 'webinar', 'document' ) ) ) {
+	// Article pages (news archive and all article detail pages)
+	if ( is_post_type_archive( 'news' ) || is_singular( array( 'news', 'case', 'column', 'webinar', 'document' ) ) ) {
 		wp_enqueue_style(
 			'onwords-article',
 			get_template_directory_uri() . '/assets/css/article.css',
@@ -140,6 +140,16 @@ function onwords_enqueue_assets() {
 		wp_enqueue_style(
 			'onwords-knowledge',
 			get_template_directory_uri() . '/assets/css/knowledge.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
+	// Company page only
+	if ( is_page( 'company' ) || is_page_template( 'page-company.php' ) ) {
+		wp_enqueue_style(
+			'onwords-company',
+			get_template_directory_uri() . '/assets/css/company.css',
 			array( 'onwords-variables' ),
 			null
 		);
