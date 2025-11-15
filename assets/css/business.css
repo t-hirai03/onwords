@@ -701,6 +701,20 @@
 		font-size: 28px;
 	}
 
+	.inbound-case-study__label,
+	.inbound-business-record__label,
+	.inbound-webinar__label,
+	.inbound-documents__label {
+		font-size: 14px;
+	}
+
+	.inbound-case-study__title,
+	.inbound-business-record__title,
+	.inbound-webinar__title,
+	.inbound-documents__title {
+		font-size: 28px;
+	}
+
 	.business-cards__list {
 		gap: 40px;
 	}
@@ -1169,7 +1183,7 @@
 .inbound-webinar__label,
 .inbound-documents__label {
 	color: rgb(217, 30, 24);
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 700;
 	margin-block-end: 16px;
 }
@@ -1179,7 +1193,7 @@
 .inbound-webinar__title,
 .inbound-documents__title {
 	color: rgb(34, 34, 34);
-	font-size: 28px;
+	font-size: 36px;
 	font-weight: 700;
 	line-height: 1.5;
 	margin: 0;
@@ -1195,14 +1209,25 @@
 	padding: 0 0 50px;
 	display: flex;
 	gap: 60px 40px;
-	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.inbound-business-record__list-inner {
+	list-style: none;
+	margin: 0;
+	padding: 10px;
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
 }
 
 .inbound-business-record__item {
 	margin: 0;
 	display: flex;
-	align-items: flex-start;
-	justify-content: flex-start;
+	width: 99px;
+	height: 99px;
 	padding: 0;
 	background-color: transparent;
 	border: none;
@@ -1211,15 +1236,16 @@
 .inbound-business-record__logo-wrapper {
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: center;
 	width: 100%;
 	height: 100%;
 }
 
 .inbound-business-record__logo {
-	max-width: 100%;
-	height: auto;
-	object-fit: contain;
+	width: 99px;
+	height: 99px;
+	object-fit: fill;
+	border-radius: 8px;
 }
 
 /* Inbound Webinar Section */
@@ -1459,10 +1485,6 @@
 		grid-template-columns: 1fr;
 	}
 
-	.inbound-business-record__list {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
 	.inbound-webinar__list {
 		grid-template-columns: 1fr;
 	}
@@ -1510,7 +1532,14 @@
 		grid-template-columns: 1fr;
 	}
 
-	.inbound-business-record__list {
-		grid-template-columns: repeat(2, 1fr);
+	.inbound-business-record__item {
+		width: 52px;
+		height: 52px;
+	}
+
+	.inbound-business-record__logo {
+		width: 52px;
+		height: 52px;
+		border-radius: 6px;
 	}
 }

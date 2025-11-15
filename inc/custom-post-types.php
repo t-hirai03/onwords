@@ -432,3 +432,65 @@ function onwords_register_document_target() {
 	register_taxonomy( 'document_target', array( 'document' ), $args );
 }
 add_action( 'init', 'onwords_register_document_target' );
+
+/**
+ * Add custom meta box for Case post type
+ */
+function onwords_add_case_meta_box() {
+	add_meta_box(
+		'case_client_info',
+		'クライアント情報',
+		'onwords_case_meta_box_callback',
+		'case',
+		'normal',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'onwords_add_case_meta_box' );
+
+/**
+ * Meta box callback function
+ */
+function onwords_case_meta_box_callback( $post ) {
+	wp_nonce_field( 'onwords_save_case_meta', 'onwords_case_meta_nonce' );
+	$client_name = get_post_meta( $post->ID, 'client_name', true );
+	?>
+	<table class="form-table">
+		<tr>
+			<th>
+				<label for="client_name">クライアント名</label>
+			</th>
+			<td>
+				<input type="text" id="client_name" name="client_name" value="<?php echo esc_attr( $client_name ); ?>" class="regular-text" />
+				<p class="description">例: 特定エリアで事業展開するデベロッパー、全国展開するアパレルブランド</p>
+			</td>
+		</tr>
+	</table>
+	<?php
+}
+
+/**
+ * Save meta box data
+ */
+function onwords_save_case_meta( $post_id ) {
+	// Check nonce
+	if ( ! isset( $_POST['onwords_case_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_case_meta_nonce'], 'onwords_save_case_meta' ) ) {
+		return;
+	}
+
+	// Check autosave
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check permissions
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	// Save client_name
+	if ( isset( $_POST['client_name'] ) ) {
+		update_post_meta( $post_id, 'client_name', sanitize_text_field( $_POST['client_name'] ) );
+	}
+}
+add_action( 'save_post_case', 'onwords_save_case_meta' );
