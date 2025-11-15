@@ -29,24 +29,32 @@ $case_query = new WP_Query( $case_args );
 		</div>
 
 		<?php if ( $case_query->have_posts() ) : ?>
-			<ul class="inbound-case-study__list">
+			<ul class="case-list__items">
 				<?php while ( $case_query->have_posts() ) : $case_query->the_post(); ?>
-					<li class="inbound-case-study__item fade-in-up">
-						<a href="<?php echo esc_url( get_permalink() ); ?>" class="inbound-case-study__link">
-							<?php if ( has_post_thumbnail() ) : ?>
-								<div class="inbound-case-study__image">
-									<?php the_post_thumbnail( 'large', array( 'loading' => 'lazy' ) ); ?>
+					<li class="case-list__item">
+						<a href="<?php the_permalink(); ?>" class="case-card">
+							<div class="case-card__image">
+								<?php if ( has_post_thumbnail() ) : ?>
+									<?php the_post_thumbnail( 'medium' ); ?>
+								<?php endif; ?>
+							</div>
+							<div class="case-card__content">
+								<div class="case-card__text">
+									<?php
+									$client_name = get_post_meta( get_the_ID(), 'client_name', true );
+									if ( $client_name ) :
+										?>
+										<p class="case-card__company"><?php echo esc_html( $client_name ); ?></p>
+									<?php endif; ?>
+									<h3 class="case-card__title"><?php the_title(); ?></h3>
 								</div>
-							<?php endif; ?>
-							<div class="inbound-case-study__content">
-								<h3 class="inbound-case-study__item-title"><?php echo esc_html( get_the_title() ); ?></h3>
 								<?php
-								$terms = get_the_terms( get_the_ID(), 'case_category' );
-								if ( $terms && ! is_wp_error( $terms ) ) :
+								$categories = get_the_terms( get_the_ID(), 'case_category' );
+								if ( $categories && ! is_wp_error( $categories ) ) :
 									?>
-									<div class="inbound-case-study__tags">
-										<?php foreach ( $terms as $term ) : ?>
-											<span class="inbound-case-study__tag"><?php echo esc_html( $term->name ); ?></span>
+									<div class="case-card__tags">
+										<?php foreach ( $categories as $category ) : ?>
+											<span class="case-card__tag"><?php echo esc_html( $category->name ); ?></span>
 										<?php endforeach; ?>
 									</div>
 								<?php endif; ?>

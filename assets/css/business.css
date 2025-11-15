@@ -1186,67 +1186,7 @@
 }
 
 /* Inbound Case Study Section */
-.inbound-case-study__list {
-	list-style: none;
-	margin: 0 0 40px;
-	padding: 0;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 32px;
-}
-
-.inbound-case-study__item {
-	margin: 0;
-}
-
-.inbound-case-study__link {
-	display: block;
-	text-decoration: none;
-	color: inherit;
-	transition: transform 0.3s ease;
-}
-
-.inbound-case-study__link:hover {
-	transform: translateY(-4px);
-}
-
-.inbound-case-study__image {
-	margin-block-end: 20px;
-	border-radius: 8px;
-	overflow: hidden;
-}
-
-.inbound-case-study__image img {
-	width: 100%;
-	height: auto;
-	display: block;
-}
-
-.inbound-case-study__content {
-	padding: 16px 0;
-}
-
-.inbound-case-study__item-title {
-	font-size: 18px;
-	font-weight: 700;
-	margin-block-end: 12px;
-	color: rgb(34, 34, 34);
-}
-
-.inbound-case-study__tags {
-	display: flex;
-	gap: 8px;
-	flex-wrap: wrap;
-}
-
-.inbound-case-study__tag {
-	display: inline-block;
-	padding: 4px 12px;
-	font-size: 12px;
-	background-color: #f0f0f0;
-	border-radius: 4px;
-	color: rgb(85, 85, 85);
-}
+/* 導入事例セクションは共通の .case-card スタイルを使用 */
 
 /* Inbound Business Record Section */
 .inbound-business-record__list {
@@ -1297,10 +1237,12 @@
 }
 
 .inbound-webinar__link {
-	display: block;
-	padding: 24px;
-	background-color: #f9f9f9;
+	display: flex;
+	flex-direction: column;
+	background-color: rgb(255, 255, 255);
 	border-radius: 8px;
+	box-shadow: rgba(18, 18, 18, 0.04) 1px 3px 18px 0px;
+	overflow: hidden;
 	text-decoration: none;
 	color: inherit;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1308,19 +1250,39 @@
 
 .inbound-webinar__link:hover {
 	transform: translateY(-4px);
-	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+	box-shadow: rgba(18, 18, 18, 0.08) 1px 6px 24px 0px;
+}
+
+.inbound-webinar__image {
+	width: 100%;
+	overflow: hidden;
+}
+
+.inbound-webinar__image img {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+}
+
+.inbound-webinar__content {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .inbound-webinar__meta {
 	display: flex;
-	gap: 12px;
-	margin-block-end: 16px;
+	gap: 8px;
 	flex-wrap: wrap;
+	align-items: center;
 }
 
 .inbound-webinar__date {
 	font-size: 14px;
-	color: rgb(85, 85, 85);
+	font-weight: 500;
+	color: rgb(34, 34, 34);
 }
 
 .inbound-webinar__status {
@@ -1348,12 +1310,13 @@
 	background-color: #e0e0e0;
 	border-radius: 4px;
 	color: rgb(85, 85, 85);
+	font-weight: 500;
 }
 
 .inbound-webinar__item-title {
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 700;
-	line-height: 1.6;
+	line-height: 1.4;
 	color: rgb(34, 34, 34);
 	margin: 0;
 }
@@ -1363,17 +1326,23 @@
 	list-style: none;
 	margin: 0 0 40px;
 	padding: 0;
+	display: flex;
+	justify-content: center;
 }
 
 .inbound-documents__item {
 	margin: 0;
+	max-width: 640px;
+	width: 100%;
 }
 
 .inbound-documents__link {
-	display: block;
-	padding: 24px;
-	background-color: #f9f9f9;
+	display: flex;
+	flex-direction: column;
+	background-color: rgb(255, 255, 255);
 	border-radius: 8px;
+	box-shadow: rgba(18, 18, 18, 0.04) 1px 3px 18px 0px;
+	overflow: hidden;
 	text-decoration: none;
 	color: inherit;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1381,19 +1350,39 @@
 
 .inbound-documents__link:hover {
 	transform: translateY(-4px);
-	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+	box-shadow: rgba(18, 18, 18, 0.08) 1px 6px 24px 0px;
+}
+
+.inbound-documents__image {
+	width: 100%;
+	overflow: hidden;
+}
+
+.inbound-documents__image img {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+}
+
+.inbound-documents__content {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .inbound-documents__meta {
 	display: flex;
-	gap: 12px;
-	margin-block-end: 16px;
+	gap: 8px;
 	flex-wrap: wrap;
+	align-items: center;
 }
 
 .inbound-documents__date {
 	font-size: 14px;
-	color: rgb(85, 85, 85);
+	font-weight: 500;
+	color: rgb(34, 34, 34);
 }
 
 .inbound-documents__target {
@@ -1403,12 +1392,13 @@
 	background-color: #e0e0e0;
 	border-radius: 4px;
 	color: rgb(85, 85, 85);
+	font-weight: 500;
 }
 
 .inbound-documents__item-title {
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 700;
-	line-height: 1.6;
+	line-height: 1.4;
 	color: rgb(34, 34, 34);
 	margin: 0;
 }
@@ -1418,6 +1408,7 @@
 .inbound-webinar__button-wrapper,
 .inbound-documents__button-wrapper {
 	text-align: center;
+	margin-top: 40px;
 }
 
 /* Common No Posts Message */

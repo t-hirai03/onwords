@@ -113,6 +113,22 @@ function onwords_enqueue_assets() {
 			array( 'onwords-variables' ),
 			null
 		);
+
+		// page-business-inbound.phpで導入事例カード(.case-card)を使用するため
+		wp_enqueue_style(
+			'onwords-case',
+			get_template_directory_uri() . '/assets/css/case.css',
+			array( 'onwords-variables' ),
+			null
+		);
+
+		// page-business-inbound.phpでウェビナーカード(.webinar-card)と資料カード(.document-card)を使用するため
+		wp_enqueue_style(
+			'onwords-knowledge',
+			get_template_directory_uri() . '/assets/css/knowledge.css',
+			array( 'onwords-variables' ),
+			null
+		);
 	}
 
 	// Article pages (news archive and all article detail pages)
