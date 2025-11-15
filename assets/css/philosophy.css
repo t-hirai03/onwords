@@ -1,0 +1,469 @@
+/* ===================================================================
+   Philosophy Page CSS - Company Philosophy Page
+   Extracted from https://www.onwords.co.jp/company/philosophy (STUDIO site)
+   =================================================================== */
+
+/* ===================================================================
+   Purpose Section
+   =================================================================== */
+
+.philosophy-purpose {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.philosophy-purpose__inner {
+  display: flex;
+  width: 100%;
+  max-width: 1312px;
+  margin: 0 auto;
+  padding: 0 16px 90px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.philosophy-purpose__header {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 20px;
+  padding: 0;
+  gap: 2px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.philosophy-purpose__content {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 20px 0 0;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: normal;
+  border-top: 1px solid #d9d9d9;
+}
+
+.philosophy-purpose__text-en {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44.8px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy-purpose__text-ja {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgb(51, 51, 51);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 33.6px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================================================================
+   Mission Section
+   =================================================================== */
+
+.philosophy-mission {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.philosophy-mission__inner {
+  display: flex;
+  width: 100%;
+  max-width: 1312px;
+  margin: 0 auto;
+  padding: 90px 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.philosophy-mission__header {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 20px;
+  padding: 0;
+  gap: 2px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.philosophy-mission__main-text {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 20px 0 0;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: normal;
+  border-top: 1px solid #d9d9d9;
+}
+
+.philosophy-mission__text-ja-main {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44.8px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy-mission__text-en-main {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgb(51, 51, 51);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 33.6px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy-mission__description {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 30px 0 0;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: normal;
+}
+
+.philosophy-mission__text-ja-desc {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(90deg, rgb(0, 0, 0) 100%, rgb(231, 74, 74) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25.2px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy-mission__text-en-desc {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgb(51, 51, 51);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================================================================
+   Values Section
+   =================================================================== */
+
+.philosophy-values {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.philosophy-values__inner {
+  display: flex;
+  width: 100%;
+  max-width: 1312px;
+  margin: 0 auto;
+  padding: 90px 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.philosophy-values__header {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 20px;
+  padding: 0;
+  gap: 2px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.philosophy-values__content {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 10px 0 0;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: normal;
+  border-top: 1px solid #d9d9d9;
+}
+
+.philosophy-values__list {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 10px;
+  gap: 30px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: normal;
+  list-style: none;
+}
+
+.philosophy-values__item {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: normal;
+}
+
+.philosophy-values__value-ja {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(90deg, rgb(231, 74, 74), rgb(231, 74, 74));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44.8px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy-values__value-en {
+  display: flex;
+  max-width: 100%;
+  margin: 0 0 10px;
+  padding: 0;
+  background-image: linear-gradient(90deg, rgb(0, 0, 0) 100%, rgb(231, 74, 74) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33.6px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy-values__desc-ja {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgb(51, 51, 51);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy-values__desc-en {
+  display: flex;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgb(51, 51, 51);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================================================================
+   Tablet (768px以下)
+   =================================================================== */
+
+@media (max-width: 768px) {
+  .philosophy-purpose__text-en {
+    font-size: 32px;
+    line-height: 44.8px;
+  }
+
+  .philosophy-purpose__text-ja {
+    font-size: 24px;
+    line-height: 33.6px;
+  }
+
+  .philosophy-mission__text-ja-main {
+    font-size: 32px;
+    line-height: 44.8px;
+  }
+
+  .philosophy-mission__text-en-main {
+    font-size: 24px;
+    line-height: 33.6px;
+  }
+
+  .philosophy-mission__text-ja-desc {
+    font-size: 18px;
+    line-height: 25.2px;
+  }
+
+  .philosophy-mission__text-en-desc {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .philosophy-values__value-ja {
+    font-size: 32px;
+    line-height: 44.8px;
+  }
+
+  .philosophy-values__value-en {
+    font-size: 24px;
+    line-height: 33.6px;
+  }
+
+  .philosophy-values__desc-ja {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .philosophy-values__desc-en {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+/* ===================================================================
+   Mobile (500px以下)
+   =================================================================== */
+
+@media (max-width: 500px) {
+  .philosophy-purpose__text-en {
+    font-size: 24.6px;
+    line-height: 34.44px;
+  }
+
+  .philosophy-purpose__text-ja {
+    font-size: 18.45px;
+    line-height: 25.83px;
+  }
+
+  .philosophy-mission__text-ja-main {
+    font-size: 24.32px;
+    line-height: 34.05px;
+  }
+
+  .philosophy-mission__text-en-main {
+    font-size: 18.24px;
+    line-height: 25.54px;
+  }
+
+  .philosophy-mission__text-ja-desc {
+    font-size: 16.08px;
+    line-height: 22.51px;
+  }
+
+  .philosophy-mission__text-en-desc {
+    font-size: 16.16px;
+    line-height: 22.63px;
+  }
+
+  .philosophy-values__value-ja {
+    font-size: 20.96px;
+    line-height: 29.35px;
+  }
+
+  .philosophy-values__value-en {
+    font-size: 20.32px;
+    line-height: 28.45px;
+  }
+
+  .philosophy-values__desc-ja {
+    font-size: 16.32px;
+    line-height: 22.85px;
+  }
+
+  .philosophy-values__desc-en {
+    font-size: 16.32px;
+    line-height: 22.85px;
+  }
+}

@@ -155,6 +155,16 @@ function onwords_enqueue_assets() {
 		);
 	}
 
+	// Philosophy page only
+	if ( is_page( 'philosophy' ) || is_page_template( 'page-philosophy.php' ) ) {
+		wp_enqueue_style(
+			'onwords-philosophy',
+			get_template_directory_uri() . '/assets/css/philosophy.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
 	// Enqueue Responsive CSS (load last - depends on all other CSS)
 	wp_enqueue_style(
 		'onwords-responsive',
