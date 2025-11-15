@@ -464,3 +464,31 @@
 		line-height: 1.8;
 	}
 }
+
+/* ========================================
+   Contact Form Section
+   ======================================== */
+
+.case-form {
+	max-width: 768px;
+	margin: 40px auto 0;
+}
+
+.case-form .hs-form-frame {
+	width: 100%;
+	max-width: 100%;
+}
+
+@media (max-width: 840px) {
+	.case-form {
+		max-width: calc(100% - 64px);
+		margin-top: 32px;
+	}
+}
+
+@media (max-width: 540px) {
+	.case-form {
+		max-width: calc(100% - 32px);
+		margin-top: 24px;
+	}
+}
