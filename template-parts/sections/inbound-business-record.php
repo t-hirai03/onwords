@@ -14,56 +14,58 @@
 		</div>
 
 		<ul class="inbound-business-record__list">
-			<li class="inbound-business-record__item fade-in-up">
-				<div class="inbound-business-record__logo-wrapper">
-					<img
-						src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_01.webp' ); ?>"
-						alt="クライアント企業ロゴ"
-						class="inbound-business-record__logo"
-						loading="lazy"
-					>
-				</div>
-			</li>
-			<li class="inbound-business-record__item fade-in-up">
-				<div class="inbound-business-record__logo-wrapper">
-					<img
-						src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_02.webp' ); ?>"
-						alt="クライアント企業ロゴ"
-						class="inbound-business-record__logo"
-						loading="lazy"
-					>
-				</div>
-			</li>
-			<li class="inbound-business-record__item fade-in-up">
-				<div class="inbound-business-record__logo-wrapper">
-					<img
-						src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_03.webp' ); ?>"
-						alt="クライアント企業ロゴ"
-						class="inbound-business-record__logo"
-						loading="lazy"
-					>
-				</div>
-			</li>
-			<li class="inbound-business-record__item fade-in-up">
-				<div class="inbound-business-record__logo-wrapper">
-					<img
-						src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_04.webp' ); ?>"
-						alt="クライアント企業ロゴ"
-						class="inbound-business-record__logo"
-						loading="lazy"
-					>
-				</div>
-			</li>
-			<li class="inbound-business-record__item fade-in-up">
-				<div class="inbound-business-record__logo-wrapper">
-					<img
-						src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_05.webp' ); ?>"
-						alt="クライアント企業ロゴ"
-						class="inbound-business-record__logo"
-						loading="lazy"
-					>
-				</div>
-			</li>
+			<ul class="inbound-business-record__list-inner">
+				<li class="inbound-business-record__item fade-in-up">
+					<div class="inbound-business-record__logo-wrapper">
+						<img
+							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_01.webp' ); ?>"
+							alt="クライアント企業ロゴ"
+							class="inbound-business-record__logo"
+							loading="lazy"
+						>
+					</div>
+				</li>
+				<li class="inbound-business-record__item fade-in-up">
+					<div class="inbound-business-record__logo-wrapper">
+						<img
+							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_02.webp' ); ?>"
+							alt="クライアント企業ロゴ"
+							class="inbound-business-record__logo"
+							loading="lazy"
+						>
+					</div>
+				</li>
+				<li class="inbound-business-record__item fade-in-up">
+					<div class="inbound-business-record__logo-wrapper">
+						<img
+							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_03.webp' ); ?>"
+							alt="クライアント企業ロゴ"
+							class="inbound-business-record__logo"
+							loading="lazy"
+						>
+					</div>
+				</li>
+				<li class="inbound-business-record__item fade-in-up">
+					<div class="inbound-business-record__logo-wrapper">
+						<img
+							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_04.webp' ); ?>"
+							alt="クライアント企業ロゴ"
+							class="inbound-business-record__logo"
+							loading="lazy"
+						>
+					</div>
+				</li>
+				<li class="inbound-business-record__item fade-in-up">
+					<div class="inbound-business-record__logo-wrapper">
+						<img
+							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_05.webp' ); ?>"
+							alt="クライアント企業ロゴ"
+							class="inbound-business-record__logo"
+							loading="lazy"
+						>
+					</div>
+				</li>
+			</ul>
 		</ul>
 	</div>
 </section>

@@ -246,61 +246,8 @@ get_header();
 		</div>
 	</section>
 
-	<!-- Documents Section (Placeholder for future dynamic content) -->
-	<section class="business-section business-section--gray">
-		<div class="business-section__container">
-			<div class="section-header">
-				<p class="section-header__label">DOCUMENTS</p>
-				<h2 class="section-header__title">お役立ち資料</h2>
-			</div>
-
-			<div class="archive-list__container">
-				<!-- TODO: カスタム投稿タイプ実装後、WP_Queryで動的に取得 -->
-				<?php
-				/*
-				$documents_query = new WP_Query(array(
-					'post_type' => 'document',
-					'posts_per_page' => 3,
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'knowledge_tag',
-							'field' => 'slug',
-							'terms' => 'local-government',
-						),
-					),
-				));
-
-				if ($documents_query->have_posts()) :
-				?>
-					<ul class="archive-list__items">
-						<?php while ($documents_query->have_posts()) : $documents_query->the_post(); ?>
-							<li>
-								<a href="<?php the_permalink(); ?>" class="news-item">
-									<div class="news-item__meta">
-										<p class="news-item__date"><?php echo get_the_date('Y/m/d'); ?></p>
-									</div>
-									<h3 class="news-item__title"><?php the_title(); ?></h3>
-								</a>
-							</li>
-						<?php endwhile; ?>
-					</ul>
-				<?php
-					wp_reset_postdata();
-				else :
-				?>
-					<p class="archive-list__no-posts">現在、お役立ち資料はありません。</p>
-				<?php
-				endif;
-				*/
-				?>
-				<p class="archive-list__no-posts">お役立ち資料は準備中です。</p>
-			</div>
-
-			<div style="text-align: center; margin-top: 48px;">
-				<a href="<?php echo esc_url(home_url('/knowledge/document/')); ?>" class="btn-primary">すべての資料を見る</a>
-			</div>
-		</div>
-	</section>
+	<!-- DOCUMENTSセクション -->
+	<?php get_template_part( 'template-parts/sections/inbound-documents' ); ?>
 </main>
 
 <?php get_footer(); ?>
