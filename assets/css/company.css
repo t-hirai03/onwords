@@ -140,12 +140,14 @@
 
 	.board-member__card {
 		flex-direction: column;
+		align-items: center;
 		padding: 30px;
 	}
 
 	.board-member__card-inner {
 		flex-direction: column;
 		align-items: center;
+		width: 100%;
 		margin-right: 0;
 		margin-bottom: 20px;
 		text-align: center;
