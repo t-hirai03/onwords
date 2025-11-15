@@ -163,10 +163,10 @@ get_header();
 			<div class="company-info__row">
 				<p class="company-info__row-label">経営陣</p>
 				<p class="company-info__row-content">
-					代表取締役社長 成澤豪<br>
-					取締役副社長 加藤史子<br>
-					取締役 竹原淳<br>
-					取締役 青木理恵
+					代表取締役社長　成澤豪<br>
+					取締役副社長　　加藤史子<br>
+					取締役　　　　　竹原淳<br>
+					取締役　　　　　青木理恵
 				</p>
 			</div>
 

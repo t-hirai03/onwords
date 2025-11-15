@@ -240,42 +240,56 @@
 /* ヘッダーは共通の.section-headerクラスを使用（components.css） */
 
 .company-info__content {
-	max-width: 900px;
+	max-width: 90%;
 	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
 }
 
 .company-info__row {
 	display: flex;
 	flex-direction: row;
 	border-bottom: 1px solid #EEEEEE;
-	padding: 20px 0;
-}
-
-.company-info__row:first-child {
-	padding-top: 0;
 }
 
 .company-info__row-label {
+	width: 240px;
+	flex: 0 0 auto;
+	background-color: #EEEEEE;
+	display: flex;
+	align-items: center;
+	padding: 30px;
 	font-size: 16px;
 	font-weight: 400;
 	color: #333333;
-	min-width: 120px;
+	line-height: 22.4px;
 	margin: 0;
 }
 
 .company-info__row-content {
+	flex: 1 1 0%;
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	padding: 30px;
 	font-size: 16px;
 	font-weight: 400;
 	color: #333333;
-	line-height: 1.6;
+	line-height: 22.4px;
 	margin: 0;
-	flex: 1;
+}
+
+/* 会社名の行は特別なスタイル */
+.company-info__row:first-child .company-info__row-content {
+	padding: 30px;
+	align-items: flex-start;
 }
 
 .company-info__row-content h3 {
 	font-size: 18.72px;
 	font-weight: 400;
 	color: #333333;
+	line-height: 26.208px;
 	margin: 0;
 }
 
@@ -285,14 +299,27 @@
 		margin-bottom: 60px;
 	}
 
+	.company-info__content {
+		max-width: 100%;
+	}
+
 	.company-info__row {
 		flex-direction: column;
-		gap: 8px;
 	}
 
 	.company-info__row-label {
-		min-width: auto;
+		width: 100%;
+		padding: 20px 16px;
 		font-weight: 600;
+	}
+
+	.company-info__row-content {
+		padding: 20px 16px;
+	}
+
+	.company-info__row:first-child .company-info__row-content {
+		padding: 20px 16px;
+		align-items: flex-start;
 	}
 }
 
