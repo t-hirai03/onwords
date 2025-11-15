@@ -153,6 +153,24 @@
 
 	.board-member__card-text {
 		align-items: center;
+		text-align: center;
+	}
+
+	.board-member__card-name {
+		font-size: 18px;
+		line-height: 1.2;
+	}
+
+	.board-member__card-position {
+		font-size: 14px;
+		line-height: 1.2;
+	}
+
+	.board-member__card-bio {
+		font-size: 14px;
+		line-height: 1.8;
+		text-align: left;
+		margin-top: 20px;
 	}
 }
 
