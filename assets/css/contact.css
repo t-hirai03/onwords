@@ -1,0 +1,166 @@
+/* ============================================
+   お問い合わせページ専用スタイル
+   ============================================ */
+
+/* ============================================
+   MVセクション
+   ============================================ */
+
+/* 外側ラッパー */
+.contact-hero-wrapper {
+  max-width: 1312px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+}
+
+/* 画像コンテナ */
+.contact-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  height: 320px;
+  margin: 0 auto;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景画像（疑似要素） */
+.contact-hero::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/contact/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  z-index: -2;
+}
+
+/* ラベル（Contact） */
+.contact-hero__label {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 0 8px;
+  position: relative;
+  z-index: 1;
+}
+
+/* タイトル（お問い合わせ） */
+.contact-hero__title {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 64px;
+  letter-spacing: normal;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* オーバーレイ */
+.contact-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(73, 58, 44, 0.6);
+  border-radius: 20px;
+  z-index: 0;
+}
+
+/* ============================================
+   フォームセクション
+   ============================================ */
+
+/* フォームラッパー */
+.contact-form-wrapper {
+  max-width: 1312px;
+  margin: 0 auto 80px;
+  padding: 0 16px;
+}
+
+/* HubSpot iframe */
+.contact-form__iframe {
+  display: block;
+  width: 100%;
+  max-width: 768px;
+  height: 1200px;
+  margin: 0 auto;
+  border: 0;
+  overflow: hidden;
+}
+
+/* ============================================
+   レスポンシブ対応
+   ============================================ */
+
+/* タブレット（max-width: 1023px） */
+@media (max-width: 1023px) {
+  .contact-hero {
+    height: 280px;
+  }
+
+  .contact-hero__title {
+    font-size: 36px;
+    line-height: 57.6px;
+  }
+}
+
+/* スマホ（max-width: 767px） */
+@media (max-width: 767px) {
+  .contact-hero-wrapper {
+    margin-bottom: 32px;
+  }
+
+  .contact-hero {
+    height: 240px;
+    border-radius: 12px;
+  }
+
+  .contact-hero::before {
+    border-radius: 12px;
+  }
+
+  .contact-hero__label {
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.48px;
+    margin-bottom: 4px;
+  }
+
+  .contact-hero__title {
+    font-size: 28px;
+    line-height: 44.8px;
+  }
+
+  .contact-hero__overlay {
+    border-radius: 12px;
+  }
+
+  /* フォームセクション */
+  .contact-form-wrapper {
+    margin-bottom: 60px;
+  }
+
+  /* iframe高さ調整（スマホでは内容に応じて調整が必要な場合があります） */
+  .contact-form__iframe {
+    min-height: 1200px;
+  }
+}

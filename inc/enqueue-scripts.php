@@ -181,6 +181,16 @@ function onwords_enqueue_assets() {
 		);
 	}
 
+	// Contact page only
+	if ( is_page( 'contact' ) || is_page_template( 'page-contact.php' ) ) {
+		wp_enqueue_style(
+			'onwords-contact',
+			get_template_directory_uri() . '/assets/css/contact.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
 	// Enqueue Responsive CSS (load last - depends on all other CSS)
 	wp_enqueue_style(
 		'onwords-responsive',
