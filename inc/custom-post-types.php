@@ -556,3 +556,61 @@ function onwords_save_webinar_meta( $post_id ) {
 	}
 }
 add_action( 'save_post_webinar', 'onwords_save_webinar_meta' );
+
+/**
+ * Add custom meta box for Column post type (Pickup)
+ */
+function onwords_add_column_meta_box() {
+	add_meta_box(
+		'column_pickup',
+		'Pickup記事設定',
+		'onwords_column_meta_box_callback',
+		'column',
+		'side',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'onwords_add_column_meta_box' );
+
+/**
+ * Column meta box callback function
+ */
+function onwords_column_meta_box_callback( $post ) {
+	wp_nonce_field( 'onwords_save_column_meta', 'onwords_column_meta_nonce' );
+	$is_pickup = get_post_meta( $post->ID, 'is_pickup', true );
+	?>
+	<label for="is_pickup">
+		<input type="checkbox" id="is_pickup" name="is_pickup" value="1" <?php checked( $is_pickup, '1' ); ?> />
+		Pickup記事として表示する
+	</label>
+	<p class="description">チェックを入れると、記事詳細ページの最下部に「Pickup記事」として表示されます。</p>
+	<?php
+}
+
+/**
+ * Save column meta box data
+ */
+function onwords_save_column_meta( $post_id ) {
+	// Check nonce
+	if ( ! isset( $_POST['onwords_column_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_column_meta_nonce'], 'onwords_save_column_meta' ) ) {
+		return;
+	}
+
+	// Check autosave
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check permissions
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	// Save is_pickup
+	if ( isset( $_POST['is_pickup'] ) ) {
+		update_post_meta( $post_id, 'is_pickup', '1' );
+	} else {
+		delete_post_meta( $post_id, 'is_pickup' );
+	}
+}
+add_action( 'save_post_column', 'onwords_save_column_meta' );
