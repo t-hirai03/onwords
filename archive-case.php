@@ -29,16 +29,18 @@ $is_category_archive = is_tax('case_category');
 </div>
 
 <main class="main">
-	<!-- Hero Section -->
-	<div class="archive-hero-wrapper">
-		<section class="archive-hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/case/hero-case.webp');">
-			<div class="archive-hero__overlay"></div>
-			<div class="archive-hero__container">
-				<p class="archive-hero__label">Case</p>
-				<h1 class="archive-hero__title">導入事例</h1>
-			</div>
-		</section>
-	</div>
+	<?php
+	// Hero Section
+	get_template_part(
+		'template-parts/components/archive-hero',
+		null,
+		array(
+			'background_image' => get_template_directory_uri() . '/assets/images/case/hero-case.webp',
+			'label'            => 'Case',
+			'title'            => '導入事例',
+		)
+	);
+	?>
 
 	<!-- Filter Section -->
 	<div class="archive-filter">

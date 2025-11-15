@@ -24,10 +24,17 @@ get_header();
 
 <main class="main">
 	<!-- Hero Section -->
-	<div class="company-hero">
-		<p class="company-hero__label">Company</p>
-		<h1 class="company-hero__title">会社概要</h1>
-	</div>
+	<?php
+	get_template_part(
+		'template-parts/components/archive-hero',
+		null,
+		array(
+			'background_image' => get_template_directory_uri() . '/assets/images/common/company-hero-bg.jpg',
+			'label'            => 'Company',
+			'title'            => '会社概要',
+		)
+	);
+	?>
 
 	<!-- Board Member Section -->
 	<section class="board-member">
