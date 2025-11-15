@@ -28,16 +28,12 @@ $webinar_query = new WP_Query( $webinar_args );
 				<div class="webinar-list__items">
 					<?php while ( $webinar_query->have_posts() ) : $webinar_query->the_post(); ?>
 						<?php
-						// ACFが利用可能な場合は get_field()、そうでない場合は get_post_meta() を使用
-						if ( function_exists( 'get_field' ) ) {
-							$webinar_date   = get_field( 'webinar_date' );
-							$webinar_status = get_field( 'webinar_status' );
-							$webinar_target = get_field( 'webinar_target' );
-						} else {
-							$webinar_date   = get_post_meta( get_the_ID(), 'webinar_date', true );
-							$webinar_status = get_post_meta( get_the_ID(), 'webinar_status', true );
-							$webinar_target = get_post_meta( get_the_ID(), 'webinar_target', true );
-						}
+						// カスタムフィールドから日付を取得
+						$webinar_date = get_post_meta( get_the_ID(), 'webinar_date', true );
+
+						// タクソノミーから対象者とステータスを取得
+						$target_terms = get_the_terms( get_the_ID(), 'webinar_target' );
+						$status_terms = get_the_terms( get_the_ID(), 'webinar_status' );
 						?>
 						<a href="<?php echo esc_url( get_permalink() ); ?>" class="webinar-card">
 							<?php if ( has_post_thumbnail() ) : ?>
@@ -52,22 +48,22 @@ $webinar_query = new WP_Query( $webinar_args );
 									<?php endif; ?>
 									<p class="webinar-card__title"><?php echo esc_html( get_the_title() ); ?></p>
 								</div>
-								<?php if ( $webinar_target || $webinar_status ) : ?>
+								<?php if ( ( $target_terms && ! is_wp_error( $target_terms ) ) || ( $status_terms && ! is_wp_error( $status_terms ) ) ) : ?>
 									<div class="webinar-card__tag-container">
 										<ul class="webinar-card__tag-list">
-											<?php if ( $webinar_target ) : ?>
-												<li class="webinar-card__tag-item">
-													<p class="webinar-card__tag-text">
-														<?php echo $webinar_target === 'business' ? '民間企業様向け' : '自治体様向け'; ?>
-													</p>
-												</li>
+											<?php if ( $target_terms && ! is_wp_error( $target_terms ) ) : ?>
+												<?php foreach ( $target_terms as $term ) : ?>
+													<li class="webinar-card__tag-item">
+														<p class="webinar-card__tag-text"><?php echo esc_html( $term->name ); ?></p>
+													</li>
+												<?php endforeach; ?>
 											<?php endif; ?>
-											<?php if ( $webinar_status ) : ?>
-												<li class="webinar-card__tag-item">
-													<p class="webinar-card__tag-text">
-														<?php echo $webinar_status === 'upcoming' ? 'これから開催' : '終了'; ?>
-													</p>
-												</li>
+											<?php if ( $status_terms && ! is_wp_error( $status_terms ) ) : ?>
+												<?php foreach ( $status_terms as $term ) : ?>
+													<li class="webinar-card__tag-item">
+														<p class="webinar-card__tag-text"><?php echo esc_html( $term->name ); ?></p>
+													</li>
+												<?php endforeach; ?>
 											<?php endif; ?>
 										</ul>
 									</div>

@@ -494,3 +494,65 @@ function onwords_save_case_meta( $post_id ) {
 	}
 }
 add_action( 'save_post_case', 'onwords_save_case_meta' );
+
+/**
+ * Add custom meta box for Webinar post type
+ */
+function onwords_add_webinar_meta_box() {
+	add_meta_box(
+		'webinar_info',
+		'ウェビナー情報',
+		'onwords_webinar_meta_box_callback',
+		'webinar',
+		'normal',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'onwords_add_webinar_meta_box' );
+
+/**
+ * Webinar meta box callback function
+ */
+function onwords_webinar_meta_box_callback( $post ) {
+	wp_nonce_field( 'onwords_save_webinar_meta', 'onwords_webinar_meta_nonce' );
+	$webinar_date = get_post_meta( $post->ID, 'webinar_date', true );
+	?>
+	<table class="form-table">
+		<tr>
+			<th>
+				<label for="webinar_date">開催日</label>
+			</th>
+			<td>
+				<input type="text" id="webinar_date" name="webinar_date" value="<?php echo esc_attr( $webinar_date ); ?>" class="regular-text" />
+				<p class="description">例: 2025/11/11</p>
+			</td>
+		</tr>
+	</table>
+	<?php
+}
+
+/**
+ * Save webinar meta box data
+ */
+function onwords_save_webinar_meta( $post_id ) {
+	// Check nonce
+	if ( ! isset( $_POST['onwords_webinar_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_webinar_meta_nonce'], 'onwords_save_webinar_meta' ) ) {
+		return;
+	}
+
+	// Check autosave
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check permissions
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	// Save webinar_date
+	if ( isset( $_POST['webinar_date'] ) ) {
+		update_post_meta( $post_id, 'webinar_date', sanitize_text_field( $_POST['webinar_date'] ) );
+	}
+}
+add_action( 'save_post_webinar', 'onwords_save_webinar_meta' );
