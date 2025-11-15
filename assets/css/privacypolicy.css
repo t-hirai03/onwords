@@ -34,12 +34,17 @@
   transition: color 0.3s ease;
 }
 
+.privacypolicy-content__inner a:visited {
+  color: #007cff;
+}
+
 .privacypolicy-content__inner a:hover {
   color: #005fcc;
 }
 
-.privacypolicy-content__inner a strong {
-  font-weight: 700;
+.privacypolicy-content__inner a strong,
+.privacypolicy-content__inner a u {
+  color: inherit;
 }
 
 /* ===================================
@@ -77,16 +82,8 @@
   }
 
   .privacypolicy-content__inner p {
-    font-size: 14px;
-    line-height: 19.6px;
+    font-size: 16px;
+    line-height: 22.4px;
     margin-bottom: 8px;
-  }
-}
-
-/* スマホ小 */
-@media (max-width: 540px) {
-  .privacypolicy-content__inner p {
-    font-size: 13px;
-    line-height: 18.2px;
   }
 }
