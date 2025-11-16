@@ -41,7 +41,7 @@ jobs:
         protocol: ftp
         port: 21
         local-dir: ./
-        server-dir: /onwords.info/public_html/wp-content/themes/onwords
+        server-dir: /onwords.info/public_html/wp-content/themes/onwords/
         exclude: |
           **/.git*
           **/.git*/**
