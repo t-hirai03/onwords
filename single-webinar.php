@@ -60,6 +60,24 @@ get_header();
 					</div>
 				</header>
 
+				<?php
+				// ステータスを取得して判定
+				$statuses = get_the_terms(get_the_ID(), 'webinar_status');
+				$is_upcoming = false;
+				$is_finished = false;
+				if ($statuses && !is_wp_error($statuses)) {
+					foreach ($statuses as $status) {
+						if ($status->slug === 'upcoming' || $status->name === 'これから開催') {
+							$is_upcoming = true;
+							break;
+						} elseif ($status->slug === 'finished' || $status->name === '終了') {
+							$is_finished = true;
+							break;
+						}
+					}
+				}
+				?>
+
 				<!-- アイキャッチ画像 -->
 				<?php if ( has_post_thumbnail() ) : ?>
 				<div class="single-post__featured-image">
@@ -67,9 +85,35 @@ get_header();
 				</div>
 				<?php endif; ?>
 
+				<!-- 終了メッセージ（アイキャッチ画像の下） -->
+				<?php if ($is_finished) : ?>
+				<h2 class="webinar-finished-message">本ウェビナーは終了いたしました</h2>
+				<?php endif; ?>
+
+				<?php
+				// 「これから開催」の場合のみ、1つ目のフォームを表示
+				if ($is_upcoming) :
+				?>
+					<div class="webinar-form webinar-form--top">
+						<script src="https://js-na2.hsforms.net/forms/embed/243499482.js" defer></script>
+						<div class="hs-form-frame" data-region="na2" data-form-id="75cade19-eb3e-42d8-9ae8-92f6fc378078" data-portal-id="243499482"></div>
+					</div>
+				<?php endif; ?>
+
 				<article class="single-post__content">
 					<?php the_content(); ?>
 				</article>
+
+				<?php
+				// 「これから開催」の場合のみ、2つ目のフォームを表示
+				if ($is_upcoming) :
+				?>
+					<!-- 2つ目のフォーム（本文後） -->
+					<div class="webinar-form webinar-form--bottom">
+						<script src="https://js-na2.hsforms.net/forms/embed/243499482.js" defer></script>
+						<div class="hs-form-frame" data-region="na2" data-form-id="75cade19-eb3e-42d8-9ae8-92f6fc378078" data-portal-id="243499482"></div>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	<?php endwhile; ?>

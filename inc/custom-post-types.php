@@ -432,3 +432,185 @@ function onwords_register_document_target() {
 	register_taxonomy( 'document_target', array( 'document' ), $args );
 }
 add_action( 'init', 'onwords_register_document_target' );
+
+/**
+ * Add custom meta box for Case post type
+ */
+function onwords_add_case_meta_box() {
+	add_meta_box(
+		'case_client_info',
+		'クライアント情報',
+		'onwords_case_meta_box_callback',
+		'case',
+		'normal',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'onwords_add_case_meta_box' );
+
+/**
+ * Meta box callback function
+ */
+function onwords_case_meta_box_callback( $post ) {
+	wp_nonce_field( 'onwords_save_case_meta', 'onwords_case_meta_nonce' );
+	$client_name = get_post_meta( $post->ID, 'client_name', true );
+	?>
+	<table class="form-table">
+		<tr>
+			<th>
+				<label for="client_name">クライアント名</label>
+			</th>
+			<td>
+				<input type="text" id="client_name" name="client_name" value="<?php echo esc_attr( $client_name ); ?>" class="regular-text" />
+				<p class="description">例: 特定エリアで事業展開するデベロッパー、全国展開するアパレルブランド</p>
+			</td>
+		</tr>
+	</table>
+	<?php
+}
+
+/**
+ * Save meta box data
+ */
+function onwords_save_case_meta( $post_id ) {
+	// Check nonce
+	if ( ! isset( $_POST['onwords_case_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_case_meta_nonce'], 'onwords_save_case_meta' ) ) {
+		return;
+	}
+
+	// Check autosave
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check permissions
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	// Save client_name
+	if ( isset( $_POST['client_name'] ) ) {
+		update_post_meta( $post_id, 'client_name', sanitize_text_field( $_POST['client_name'] ) );
+	}
+}
+add_action( 'save_post_case', 'onwords_save_case_meta' );
+
+/**
+ * Add custom meta box for Webinar post type
+ */
+function onwords_add_webinar_meta_box() {
+	add_meta_box(
+		'webinar_info',
+		'ウェビナー情報',
+		'onwords_webinar_meta_box_callback',
+		'webinar',
+		'normal',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'onwords_add_webinar_meta_box' );
+
+/**
+ * Webinar meta box callback function
+ */
+function onwords_webinar_meta_box_callback( $post ) {
+	wp_nonce_field( 'onwords_save_webinar_meta', 'onwords_webinar_meta_nonce' );
+	$webinar_date = get_post_meta( $post->ID, 'webinar_date', true );
+	?>
+	<table class="form-table">
+		<tr>
+			<th>
+				<label for="webinar_date">開催日</label>
+			</th>
+			<td>
+				<input type="text" id="webinar_date" name="webinar_date" value="<?php echo esc_attr( $webinar_date ); ?>" class="regular-text" />
+				<p class="description">例: 2025/11/11</p>
+			</td>
+		</tr>
+	</table>
+	<?php
+}
+
+/**
+ * Save webinar meta box data
+ */
+function onwords_save_webinar_meta( $post_id ) {
+	// Check nonce
+	if ( ! isset( $_POST['onwords_webinar_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_webinar_meta_nonce'], 'onwords_save_webinar_meta' ) ) {
+		return;
+	}
+
+	// Check autosave
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check permissions
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	// Save webinar_date
+	if ( isset( $_POST['webinar_date'] ) ) {
+		update_post_meta( $post_id, 'webinar_date', sanitize_text_field( $_POST['webinar_date'] ) );
+	}
+}
+add_action( 'save_post_webinar', 'onwords_save_webinar_meta' );
+
+/**
+ * Add custom meta box for Column post type (Pickup)
+ */
+function onwords_add_column_meta_box() {
+	add_meta_box(
+		'column_pickup',
+		'Pickup記事設定',
+		'onwords_column_meta_box_callback',
+		'column',
+		'side',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'onwords_add_column_meta_box' );
+
+/**
+ * Column meta box callback function
+ */
+function onwords_column_meta_box_callback( $post ) {
+	wp_nonce_field( 'onwords_save_column_meta', 'onwords_column_meta_nonce' );
+	$is_pickup = get_post_meta( $post->ID, 'is_pickup', true );
+	?>
+	<label for="is_pickup">
+		<input type="checkbox" id="is_pickup" name="is_pickup" value="1" <?php checked( $is_pickup, '1' ); ?> />
+		Pickup記事として表示する
+	</label>
+	<p class="description">チェックを入れると、記事詳細ページの最下部に「Pickup記事」として表示されます。</p>
+	<?php
+}
+
+/**
+ * Save column meta box data
+ */
+function onwords_save_column_meta( $post_id ) {
+	// Check nonce
+	if ( ! isset( $_POST['onwords_column_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_column_meta_nonce'], 'onwords_save_column_meta' ) ) {
+		return;
+	}
+
+	// Check autosave
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check permissions
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	// Save is_pickup
+	if ( isset( $_POST['is_pickup'] ) ) {
+		update_post_meta( $post_id, 'is_pickup', '1' );
+	} else {
+		delete_post_meta( $post_id, 'is_pickup' );
+	}
+}
+add_action( 'save_post_column', 'onwords_save_column_meta' );

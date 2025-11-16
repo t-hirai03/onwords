@@ -113,6 +113,22 @@ function onwords_enqueue_assets() {
 			array( 'onwords-variables' ),
 			null
 		);
+
+		// page-business-inbound.phpで導入事例カード(.case-card)を使用するため
+		wp_enqueue_style(
+			'onwords-case',
+			get_template_directory_uri() . '/assets/css/case.css',
+			array( 'onwords-variables' ),
+			null
+		);
+
+		// page-business-inbound.phpでウェビナーカード(.webinar-card)と資料カード(.document-card)を使用するため
+		wp_enqueue_style(
+			'onwords-knowledge',
+			get_template_directory_uri() . '/assets/css/knowledge.css',
+			array( 'onwords-variables' ),
+			null
+		);
 	}
 
 	// Article pages (news archive and all article detail pages)
@@ -145,11 +161,51 @@ function onwords_enqueue_assets() {
 		);
 	}
 
+	// Webinar pages only
+	if ( is_singular( 'webinar' ) ) {
+		wp_enqueue_style(
+			'onwords-webinar',
+			get_template_directory_uri() . '/assets/css/webinar.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
 	// Company page only
 	if ( is_page( 'company' ) || is_page_template( 'page-company.php' ) ) {
 		wp_enqueue_style(
 			'onwords-company',
 			get_template_directory_uri() . '/assets/css/company.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
+	// Philosophy page only
+	if ( is_page( 'philosophy' ) || is_page_template( 'page-philosophy.php' ) ) {
+		wp_enqueue_style(
+			'onwords-philosophy',
+			get_template_directory_uri() . '/assets/css/philosophy.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
+	// Contact page only
+	if ( is_page( 'contact' ) || is_page_template( 'page-contact.php' ) ) {
+		wp_enqueue_style(
+			'onwords-contact',
+			get_template_directory_uri() . '/assets/css/contact.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
+	// Privacy Policy page only
+	if ( is_page( 'privacypolicy' ) || is_page_template( 'page-privacypolicy.php' ) ) {
+		wp_enqueue_style(
+			'onwords-privacypolicy',
+			get_template_directory_uri() . '/assets/css/privacypolicy.css',
 			array( 'onwords-variables' ),
 			null
 		);

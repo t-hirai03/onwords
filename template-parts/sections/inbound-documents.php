@@ -8,7 +8,7 @@
 // Query documents
 $document_args = array(
 	'post_type'      => 'document',
-	'posts_per_page' => 1,
+	'posts_per_page' => 3,
 	'orderby'        => 'date',
 	'order'          => 'DESC',
 );
@@ -24,30 +24,39 @@ $document_query = new WP_Query( $document_args );
 		</div>
 
 		<?php if ( $document_query->have_posts() ) : ?>
-			<ul class="inbound-documents__list">
-				<?php while ( $document_query->have_posts() ) : $document_query->the_post(); ?>
-					<?php
-					$document_date   = get_field( 'document_date' );
-					$document_target = get_field( 'document_target' );
-					?>
-					<li class="inbound-documents__item fade-in-up">
-						<a href="<?php echo esc_url( get_permalink() ); ?>" class="inbound-documents__link">
-							<div class="inbound-documents__meta">
-								<?php if ( $document_date ) : ?>
-									<time class="inbound-documents__date"><?php echo esc_html( $document_date ); ?></time>
-								<?php endif; ?>
-
-								<?php if ( $document_target ) : ?>
-									<span class="inbound-documents__target">
-										<?php echo $document_target === 'business' ? '民間企業様向け' : '自治体様向け'; ?>
-									</span>
+			<div class="documents-list">
+				<div class="documents-list__items">
+					<?php while ( $document_query->have_posts() ) : $document_query->the_post(); ?>
+						<a href="<?php echo esc_url( get_permalink() ); ?>" class="documents-card">
+							<?php if ( has_post_thumbnail() ) : ?>
+								<div class="documents-card__image">
+									<?php the_post_thumbnail( 'large' ); ?>
+								</div>
+							<?php endif; ?>
+							<div class="documents-card__content">
+								<div class="documents-card__header">
+									<p class="documents-card__date"><?php echo get_the_date( 'Y/n/j' ); ?></p>
+									<p class="documents-card__title"><?php the_title(); ?></p>
+								</div>
+								<?php
+								$terms = get_the_terms( get_the_ID(), 'document_target' );
+								if ( $terms && ! is_wp_error( $terms ) ) :
+									?>
+									<div class="documents-card__tag-container">
+										<ul class="documents-card__tag-list">
+											<?php foreach ( $terms as $term ) : ?>
+												<li class="documents-card__tag-item">
+													<p class="documents-card__tag-text"><?php echo esc_html( $term->name ); ?></p>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
 								<?php endif; ?>
 							</div>
-							<h3 class="inbound-documents__item-title"><?php echo esc_html( get_the_title() ); ?></h3>
 						</a>
-					</li>
-				<?php endwhile; ?>
-			</ul>
+					<?php endwhile; ?>
+				</div>
+			</div>
 
 			<div class="inbound-documents__button-wrapper">
 				<a href="<?php echo esc_url( home_url( '/knowledge/document' ) ); ?>" class="btn-primary">

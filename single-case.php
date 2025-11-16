@@ -82,6 +82,12 @@ get_header();
 			<article class="single-post__content">
 				<?php the_content(); ?>
 			</article>
+
+			<!-- Contact Form Section -->
+			<div class="case-form">
+				<script src="https://js-na2.hsforms.net/forms/embed/243499482.js" defer></script>
+				<div class="hs-form-frame" data-region="na2" data-form-id="82446fd5-02de-45fe-a61d-3450d0ba9ce1" data-portal-id="243499482"></div>
+			</div>
 		</div>
 	</div>
 </main>
