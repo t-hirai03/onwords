@@ -1,0 +1,62 @@
+name: Deploy WordPress Theme
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v39
+      with:
+        files: |
+          **/*.php
+          **/*.css
+          **/*.js
+          **/*.html
+          **/*.png
+          **/*.jpg
+          **/*.jpeg
+          **/*.gif
+          **/*.svg
+          **/*.ico
+          **/*.txt
+
+    - name: Deploy changed files via FTP
+      if: steps.changed-files.outputs.any_changed == 'true' || steps.changed-files.outputs.any_deleted == 'true'
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftp
+        port: 21
+        local-dir: ./
+        server-dir: /onwords.info/public_html/wp-content/themes/onwords
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.github/**
+          **/.docs/**
+          **/.claude/**
+          **/*.md
+          **/.DS_Store
+        log-level: verbose
+
+    - name: List changed files
+      if: steps.changed-files.outputs.any_changed == 'true' || steps.changed-files.outputs.any_deleted == 'true'
+      run: |
+        echo "Changed files:"
+        echo "${{ steps.changed-files.outputs.all_changed_files }}"
+        echo ""
+        echo "Deleted files:"
+        echo "${{ steps.changed-files.outputs.deleted_files }}"

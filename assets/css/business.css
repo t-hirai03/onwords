@@ -18,7 +18,7 @@
 
 .section-header__label {
 	font-size: 16px;
-	font-weight: 700;
+	font-weight: 600;
 	color: var(--color-primary);
 	letter-spacing: 0.1em;
 	margin-bottom: 16px;
@@ -76,7 +76,7 @@
 .business-hero__label {
 	color: #FFFFFF;
 	font-size: 20px;
-	font-weight: 500;
+	font-weight: 600;
 	letter-spacing: 0.03em;
 	line-height: 1;
 	text-align: center;
@@ -944,7 +944,7 @@
 .inbound-strengths__label {
 	color: rgb(217, 30, 24);
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 600;
 	margin-block-end: 16px;
 }
 
@@ -1101,7 +1101,7 @@
 .inbound-services__label {
 	color: rgb(217, 30, 24);
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 600;
 	margin-block-end: 16px;
 }
 
@@ -1184,7 +1184,7 @@
 .inbound-documents__label {
 	color: rgb(217, 30, 24);
 	font-size: 16px;
-	font-weight: 700;
+	font-weight: 600;
 	margin-block-end: 16px;
 }
 
