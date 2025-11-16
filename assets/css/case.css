@@ -470,8 +470,10 @@
    ======================================== */
 
 .case-form {
-	max-width: 768px;
-	margin: 40px auto 0;
+	max-width: 1188px;
+	margin-block-start: 40px;
+	margin-block-end: 0;
+	padding: 0 16px;
 }
 
 .case-form .hs-form-frame {
@@ -481,14 +483,12 @@
 
 @media (max-width: 840px) {
 	.case-form {
-		max-width: calc(100% - 64px);
-		margin-top: 32px;
+		margin-block-start: 32px;
 	}
 }
 
 @media (max-width: 540px) {
 	.case-form {
-		max-width: calc(100% - 32px);
-		margin-top: 24px;
+		margin-block-start: 24px;
 	}
 }

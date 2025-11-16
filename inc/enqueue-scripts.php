@@ -161,6 +161,16 @@ function onwords_enqueue_assets() {
 		);
 	}
 
+	// Webinar pages only
+	if ( is_singular( 'webinar' ) ) {
+		wp_enqueue_style(
+			'onwords-webinar',
+			get_template_directory_uri() . '/assets/css/webinar.css',
+			array( 'onwords-variables' ),
+			null
+		);
+	}
+
 	// Company page only
 	if ( is_page( 'company' ) || is_page_template( 'page-company.php' ) ) {
 		wp_enqueue_style(
