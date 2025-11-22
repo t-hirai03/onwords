@@ -1,0 +1,47 @@
+/*
+ * Scroll Animation Styles
+ * IntersectionObserverを使用したフェードインアニメーション
+ */
+
+/* アニメーション対象要素の初期状態 */
+.fade-in-item {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all 0.6s ease-out;
+}
+
+/* 画面に表示されたときのスタイル */
+.fade-in-wrapper.is-visible .fade-in-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* アニメーション速度のバリエーション */
+.fade-in-item--fast {
+  transition-duration: 0.3s;
+}
+
+.fade-in-item--normal {
+  transition-duration: 0.6s;
+}
+
+.fade-in-item--slow {
+  transition-duration: 0.8s;
+}
+
+.fade-in-item--slower {
+  transition-duration: 1s;
+}
+
+/* アニメーション遅延のバリエーション */
+.fade-in-item--delay-sm {
+  transition-delay: 0.1s;
+}
+
+.fade-in-item--delay-md {
+  transition-delay: 0.3s;
+}
+
+.fade-in-item--delay-lg {
+  transition-delay: 0.5s;
+}

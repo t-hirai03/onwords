@@ -1,13 +1,15 @@
 <!-- Message Section -->
 <section class="message">
   <div class="message__container">
-    <p class="message__label fade-in-up fade-in-up--slower fade-in-up--delay-md">MESSAGE</p>
-    <h2 class="message__heading fade-in-up fade-in-up--slower fade-in-up--delay-md">代表メッセージ</h2>
+    <div class="fade-in-wrapper">
+      <p class="message__label fade-in-item">MESSAGE</p>
+      <h2 class="message__heading fade-in-item">代表メッセージ</h2>
+    </div>
 
-    <!-- メッセージブロック -->
-    <div class="message__block fade-in-up fade-in-up--slow">
-      <div class="message__image message__image--narisawa"></div>
-      <div class="message__text-container">
+    <!-- メッセージブロック1 -->
+    <div class="message__block fade-in-wrapper">
+      <div class="message__image message__image--narisawa fade-in-item"></div>
+      <div class="message__text-container fade-in-item">
         <p class="message__text">
           「もっと楽しい日本に。」これが私たちOnwordsのミッションです。<br>
           近代を振り返ると、明治維新後の日本は、富国強兵や殖産興業を軸に「強い日本」を目指しました。戦後は、より一層の経済成長のもと、「豊かな日本」を目指し、その礎を築いてきました。そして、現代は、少子高齢化などの社会課題や、グローバル化、先端テクノロジーの急激な発展などの新たな機会があり、混沌とした転換期であると感じています。そのような環境の中、次は「楽しい日本」が道標になると思います。<br>
@@ -18,9 +20,10 @@
       </div>
     </div>
 
-    <div class="message__block fade-in-up fade-in-up--slow">
-      <div class="message__image message__image--kato"></div>
-      <div class="message__text-container">
+    <!-- メッセージブロック2 -->
+    <div class="message__block fade-in-wrapper">
+      <div class="message__image message__image--kato fade-in-item"></div>
+      <div class="message__text-container fade-in-item">
         <p class="message__text">
           WAmazingは2017年2月に成田国際空港で無料のSIMカードの配布からOTA事業を開始しました。<br>
           その後、2020年4月に地域観光DX事業、2022年11月に訪日マーケティングパートナー事業を開始しています。<br>

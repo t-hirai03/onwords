@@ -1,10 +1,12 @@
 <!-- News Section -->
 <section class="news">
-  <div class="news__container">
-    <p class="news__label">NEWS</p>
-    <h2 class="news__heading">お知らせ</h2>
+  <div class="news__container fade-in-wrapper">
+    <div class="fade-in-item">
+      <p class="news__label">NEWS</p>
+      <h2 class="news__heading">お知らせ</h2>
+    </div>
 
-    <ul class="news__list">
+    <ul class="news__list fade-in-item">
       <?php
       $news_query = new WP_Query(array(
         'post_type' => 'news',
@@ -36,6 +38,6 @@
       <?php endif; ?>
     </ul>
 
-    <a href="/news" class="btn-primary">すべてのお知らせを見る</a>
+    <a href="/news" class="btn-primary fade-in-item">すべてのお知らせを見る</a>
   </div>
 </section>

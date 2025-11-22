@@ -1,10 +1,12 @@
 <!-- Business Section -->
 <section class="business">
-  <div class="business__container">
-    <p class="business__label">BUSINESS</p>
-    <h2 class="business__heading">事業内容</h2>
+  <div class="business__container fade-in-wrapper">
+    <div class="fade-in-item">
+      <p class="business__label">BUSINESS</p>
+      <h2 class="business__heading">事業内容</h2>
+    </div>
 
-    <div class="business__cards">
+    <div class="business__cards fade-in-item">
       <!-- 地域観光DX事業 -->
       <a href="/business/local-cooperation" class="card card--business">
         <div class="card__image card__image--local-dx"></div>
