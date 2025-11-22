@@ -13,6 +13,43 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Customize admin menu order
+ */
+function onwords_customize_admin_menu_order() {
+	global $menu;
+	global $submenu;
+
+	// 投稿: 5 (デフォルト)
+	// 固定ページ: 6
+	// メディア: 7
+	// お知らせ: 8
+	// ウェビナー情報: 9
+	// お役立ち資料: 10
+	// ウェビナー記事: 11
+	// 導入事例: 12
+	// コメント: 13
+
+	// 固定ページの位置を変更 (20 → 6)
+	if ( isset( $menu[20] ) ) {
+		$menu[6] = $menu[20];
+		unset( $menu[20] );
+	}
+
+	// メディアの位置を変更 (10 → 7)
+	if ( isset( $menu[10] ) ) {
+		$menu[7] = $menu[10];
+		unset( $menu[10] );
+	}
+
+	// コメントの位置を変更 (25 → 13)
+	if ( isset( $menu[25] ) ) {
+		$menu[13] = $menu[25];
+		unset( $menu[25] );
+	}
+}
+add_action( 'admin_menu', 'onwords_customize_admin_menu_order', 999 );
+
+/**
  * Register News custom post type
  */
 function onwords_register_news_post_type() {
@@ -42,7 +79,7 @@ function onwords_register_news_post_type() {
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,
-		'menu_position'      => 5,
+		'menu_position'      => 8,
 		'menu_icon'          => 'dashicons-megaphone',
 		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
 	);
@@ -113,7 +150,7 @@ function onwords_register_case_post_type() {
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,
-		'menu_position'      => 5.5,
+		'menu_position'      => 12,
 		'menu_icon'          => 'dashicons-portfolio',
 		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
 	);
@@ -159,17 +196,17 @@ add_action( 'init', 'onwords_register_case_category' );
  */
 function onwords_register_column_post_type() {
 	$labels = array(
-		'name'               => '記事',
-		'singular_name'      => '記事',
-		'menu_name'          => '記事',
+		'name'               => 'ウェビナー記事',
+		'singular_name'      => 'ウェビナー記事',
+		'menu_name'          => 'ウェビナー記事',
 		'add_new'            => '新規追加',
-		'add_new_item'       => '新しい記事を追加',
-		'edit_item'          => '記事を編集',
-		'new_item'           => '新しい記事',
-		'view_item'          => '記事を表示',
-		'search_items'       => '記事を検索',
-		'not_found'          => '記事が見つかりません',
-		'not_found_in_trash' => 'ゴミ箱に記事はありません',
+		'add_new_item'       => '新しいウェビナー記事を追加',
+		'edit_item'          => 'ウェビナー記事を編集',
+		'new_item'           => '新しいウェビナー記事',
+		'view_item'          => 'ウェビナー記事を表示',
+		'search_items'       => 'ウェビナー記事を検索',
+		'not_found'          => 'ウェビナー記事が見つかりません',
+		'not_found_in_trash' => 'ゴミ箱にウェビナー記事はありません',
 	);
 
 	$args = array(
@@ -184,7 +221,7 @@ function onwords_register_column_post_type() {
 		'capability_type'    => 'post',
 		'has_archive'        => 'knowledge/column',
 		'hierarchical'       => false,
-		'menu_position'      => 5.8,
+		'menu_position'      => 11,
 		'menu_icon'          => 'dashicons-welcome-write-blog',
 		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
 	);
@@ -230,17 +267,17 @@ add_action( 'init', 'onwords_register_column_category' );
  */
 function onwords_register_webinar_post_type() {
 	$labels = array(
-		'name'               => 'ウェビナー',
-		'singular_name'      => 'ウェビナー',
-		'menu_name'          => 'ウェビナー',
+		'name'               => 'ウェビナー情報',
+		'singular_name'      => 'ウェビナー情報',
+		'menu_name'          => 'ウェビナー情報',
 		'add_new'            => '新規追加',
-		'add_new_item'       => '新しいウェビナーを追加',
-		'edit_item'          => 'ウェビナーを編集',
-		'new_item'           => '新しいウェビナー',
-		'view_item'          => 'ウェビナーを表示',
-		'search_items'       => 'ウェビナーを検索',
-		'not_found'          => 'ウェビナーが見つかりません',
-		'not_found_in_trash' => 'ゴミ箱にウェビナーはありません',
+		'add_new_item'       => '新しいウェビナー情報を追加',
+		'edit_item'          => 'ウェビナー情報を編集',
+		'new_item'           => '新しいウェビナー情報',
+		'view_item'          => 'ウェビナー情報を表示',
+		'search_items'       => 'ウェビナー情報を検索',
+		'not_found'          => 'ウェビナー情報が見つかりません',
+		'not_found_in_trash' => 'ゴミ箱にウェビナー情報はありません',
 	);
 
 	$args = array(
@@ -255,7 +292,7 @@ function onwords_register_webinar_post_type() {
 		'capability_type'    => 'post',
 		'has_archive'        => 'knowledge/webinar',
 		'hierarchical'       => false,
-		'menu_position'      => 6,
+		'menu_position'      => 9,
 		'menu_icon'          => 'dashicons-video-alt3',
 		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
 		'taxonomies'         => array( 'webinar_category', 'webinar_target', 'webinar_status' ),
@@ -366,17 +403,17 @@ add_action( 'init', 'onwords_register_webinar_category' );
  */
 function onwords_register_document_post_type() {
 	$labels = array(
-		'name'               => '資料',
-		'singular_name'      => '資料',
-		'menu_name'          => '資料',
+		'name'               => 'お役立ち資料',
+		'singular_name'      => 'お役立ち資料',
+		'menu_name'          => 'お役立ち資料',
 		'add_new'            => '新規追加',
-		'add_new_item'       => '新しい資料を追加',
-		'edit_item'          => '資料を編集',
-		'new_item'           => '新しい資料',
-		'view_item'          => '資料を表示',
-		'search_items'       => '資料を検索',
-		'not_found'          => '資料が見つかりません',
-		'not_found_in_trash' => 'ゴミ箱に資料はありません',
+		'add_new_item'       => '新しいお役立ち資料を追加',
+		'edit_item'          => 'お役立ち資料を編集',
+		'new_item'           => '新しいお役立ち資料',
+		'view_item'          => 'お役立ち資料を表示',
+		'search_items'       => 'お役立ち資料を検索',
+		'not_found'          => 'お役立ち資料が見つかりません',
+		'not_found_in_trash' => 'ゴミ箱にお役立ち資料はありません',
 	);
 
 	$args = array(
@@ -394,7 +431,7 @@ function onwords_register_document_post_type() {
 		'capability_type'    => 'post',
 		'has_archive'        => 'knowledge/document',
 		'hierarchical'       => false,
-		'menu_position'      => 7,
+		'menu_position'      => 10,
 		'menu_icon'          => 'dashicons-media-document',
 		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
 		'taxonomies'         => array( 'document_target' ),
