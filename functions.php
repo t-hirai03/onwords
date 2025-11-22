@@ -88,6 +88,18 @@ function onwords_document_archive_query( $query ) {
 add_action( 'pre_get_posts', 'onwords_document_archive_query' );
 
 /**
+ * Modify main query for column archive
+ */
+function onwords_column_archive_query( $query ) {
+	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'column' ) ) {
+		$query->set( 'posts_per_page', 9 );
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'DESC' );
+	}
+}
+add_action( 'pre_get_posts', 'onwords_column_archive_query' );
+
+/**
  * Flush rewrite rules on theme activation (one-time)
  * This ensures the news archive URL works properly
  */
