@@ -317,22 +317,82 @@ if ( is_post_type_archive( 'news' ) || is_singular( 'news' ) ) {
 
 ### 共通アニメーション
 
+**🚨 CRITICAL: スクロール連動フェードインアニメーションの実装仕様**
+
+トップページ全体にIntersectionObserverを使用したフェードインアニメーションを実装しています。
+
+**ファイル構成:**
+- `assets/css/animation.css` - アニメーションスタイル定義
+- `assets/js/scroll-animation.js` - IntersectionObserver実装
+
+**HTML構造:**
+```html
+<div class="fade-in-wrapper">
+  <div class="fade-in-item">アニメーション対象要素1</div>
+  <div class="fade-in-item">アニメーション対象要素2</div>
+</div>
+```
+
+**CSSクラス:**
 ```css
-/* スクロールインアニメーション */
-.fade-in-up                 /* 初期状態（非表示） */
-.fade-in-up.appear          /* 表示状態 */
+/* ラッパー要素 - IntersectionObserverが監視 */
+.fade-in-wrapper              /* アニメーショングループのコンテナ */
+.fade-in-wrapper.is-visible   /* 画面に表示された状態（JSが自動付与） */
+
+/* アニメーション対象要素 */
+.fade-in-item                 /* 初期状態（opacity: 0, translateY: 2rem） */
+.fade-in-wrapper.is-visible .fade-in-item  /* 表示状態（opacity: 1, transform: none） */
 
 /* 速度バリエーション */
-.fade-in-up--fast           /* 0.3s */
-.fade-in-up--normal         /* 0.6s */
-.fade-in-up--slow           /* 0.8s */
-.fade-in-up--slower         /* 1.0s */
+.fade-in-item--fast           /* 0.3s */
+.fade-in-item--normal         /* 0.6s（デフォルト） */
+.fade-in-item--slow           /* 0.8s */
+.fade-in-item--slower         /* 1.0s */
 
 /* ディレイバリエーション */
-.fade-in-up--delay-sm       /* 0.1s */
-.fade-in-up--delay-md       /* 0.3s */
-.fade-in-up--delay-lg       /* 0.5s */
+.fade-in-item--delay-sm       /* 0.1s */
+.fade-in-item--delay-md       /* 0.3s */
+.fade-in-item--delay-lg       /* 0.5s */
 ```
+
+**JavaScript動作:**
+```javascript
+// IntersectionObserver設定
+{
+  threshold: 0,      // 1pxでも画面に入ったら発火
+  rootMargin: '0px'  // マージンなし
+}
+
+// .fade-in-wrapper を監視
+// 画面に入ったら .is-visible クラスを追加
+// 画面から出たら .is-visible クラスを削除（再アニメーション対応）
+```
+
+**実装例（トップページ）:**
+```php
+<!-- About Section -->
+<div class="about__container fade-in-wrapper">
+  <div class="about__text fade-in-item">...</div>
+  <div class="about__image-container fade-in-item">...</div>
+</div>
+
+<!-- Message Section -->
+<div class="fade-in-wrapper">
+  <p class="message__label fade-in-item">MESSAGE</p>
+  <h2 class="message__heading fade-in-item">代表メッセージ</h2>
+</div>
+
+<div class="message__block fade-in-wrapper">
+  <div class="message__image fade-in-item"></div>
+  <div class="message__text-container fade-in-item">...</div>
+</div>
+```
+
+**重要な仕様:**
+- 要素が1pxでも画面に入った瞬間にアニメーション発火
+- 画面外に出ると初期状態に戻り、再度入ると再アニメーション
+- `.fade-in-wrapper`を直接監視（`.sentinel`要素は不要）
+- トランジション: `all 0.6s ease-out`（カスタマイズ可能）
 
 ### クラス命名の重要ルール
 

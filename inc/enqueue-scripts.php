@@ -94,6 +94,14 @@ function onwords_enqueue_assets() {
 		null
 	);
 
+	// Enqueue Animation CSS (depends on variables.css)
+	wp_enqueue_style(
+		'onwords-animation',
+		get_template_directory_uri() . '/assets/css/animation.css',
+		array( 'onwords-variables' ),
+		null
+	);
+
 	// Conditional Page-Specific CSS
 	// Top page only
 	if ( is_front_page() ) {
@@ -241,6 +249,15 @@ function onwords_enqueue_assets() {
 	wp_enqueue_script(
 		'onwords-animations',
 		get_template_directory_uri() . '/assets/js/animations.js',
+		array(),
+		null,
+		true
+	);
+
+	// Enqueue Scroll Animation JavaScript (load in footer)
+	wp_enqueue_script(
+		'onwords-scroll-animation',
+		get_template_directory_uri() . '/assets/js/scroll-animation.js',
 		array(),
 		null,
 		true

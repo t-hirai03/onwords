@@ -27,25 +27,30 @@ get_header();
 </div>
 
 <main class="main">
-	<!-- Hero Section -->
-	<div class="business-hero-wrapper">
-		<section class="business-hero">
-			<p class="business-hero__label">Local cooperation</p>
-			<h1 class="business-hero__title">地域観光DX事業</h1>
-		</section>
-	</div>
+	<?php
+	// Hero Section
+	get_template_part(
+		'template-parts/components/archive-hero',
+		null,
+		array(
+			'background_image' => get_template_directory_uri() . '/assets/images/business/hero/hero-local.jpg',
+			'label'            => 'Local cooperation',
+			'title'            => '地域観光DX事業',
+		)
+	);
+	?>
 
 	<!-- Support Records Section -->
 	<section class="business-section">
-		<div class="business-section__container">
-			<div class="section-header">
+		<div class="business-section__container fade-in-wrapper">
+			<div class="section-header fade-in-item">
 				<p class="section-header__label">CASE STUDY</p>
 				<h2 class="section-header__title">支援実績</h2>
 			</div>
-			<p class="business-section__description">
+			<p class="business-section__description fade-in-item">
 				自治体様、DMO様、観光協会様など広く訪日インバウンドに関する、観光関連事業の支援実績があります。調査から販売整備まで、ワンストップでご支援可能です。（以下一部抜粋）
 			</p>
-			<ul class="business-logos">
+			<ul class="business-logos fade-in-item">
 				<li class="business-logos__item">
 					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/business/logos/logo-1.webp" alt="自治体ロゴ1">
 				</li>
@@ -82,15 +87,15 @@ get_header();
 
 	<!-- Strengths Section -->
 	<section class="business-section">
-		<div class="business-section__container">
-			<div class="section-header">
+		<div class="business-section__container fade-in-wrapper">
+			<div class="section-header fade-in-item">
 				<p class="section-header__label">OUR STRENGTHS</p>
 				<h2 class="section-header__title">私たちの強み</h2>
 			</div>
-			<p class="business-section__description">
+			<p class="business-section__description fade-in-item">
 				地域の課題は多種多様。私たちはこれまで「調査・戦略策定」～「販売整備・PR」まで、地域の課題に沿ったご提案・納品を行ってきました。2020年の部署立ち上げからのべ300以上の納品を通して様々な事業に携わらせて頂いたからこそ、客観視点を持って課題解決提案ができます。
 			</p>
-			<div class="business-strengths">
+			<div class="business-strengths fade-in-item">
 				<!-- Navigation Links -->
 				<ul class="business-strengths__nav">
 					<li class="business-strengths__nav-item">
@@ -173,15 +178,15 @@ get_header();
 
 	<!-- Services Section -->
 	<section class="business-section">
-		<div class="business-section__container">
-			<div class="section-header">
+		<div class="business-section__container fade-in-wrapper">
+			<div class="section-header fade-in-item">
 				<p class="section-header__label">SERVICES</p>
 				<h2 class="section-header__title">サービス一覧</h2>
 			</div>
-			<p class="business-section__description">
+			<p class="business-section__description fade-in-item">
 				Onwordsでは、調査・分析から戦略設計、受入環境整備、観光商品の造成や磨き込み、販売整備やプロモーション、WAmazingと連携したメディアやSNSなどでの情報発信まで一括してご支援可能です。
 			</p>
-			<div class="business-services">
+			<div class="business-services fade-in-item">
 				<div class="business-services__item">
 					<div class="business-services__header">
 						<div class="business-services__icon" data-icon="service-1"></div>

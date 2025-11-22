@@ -8,7 +8,7 @@
 // Query case studies filtered by taxonomy
 $case_args = array(
 	'post_type'      => 'case',
-	'posts_per_page' => 2,
+	'posts_per_page' => 3,
 	'tax_query'      => array(
 		array(
 			'taxonomy' => 'case_category',
@@ -21,15 +21,15 @@ $case_args = array(
 $case_query = new WP_Query( $case_args );
 ?>
 
-<section class="inbound-case-study fade-in-up">
-	<div class="inbound-case-study__container">
-		<div class="inbound-case-study__header fade-in-up">
+<section class="inbound-case-study">
+	<div class="inbound-case-study__container fade-in-wrapper">
+		<div class="inbound-case-study__header fade-in-item">
 			<p class="inbound-case-study__label">CASE STUDY</p>
 			<h2 class="inbound-case-study__title">導入事例</h2>
 		</div>
 
 		<?php if ( $case_query->have_posts() ) : ?>
-			<ul class="case-list__items">
+			<ul class="case-list__items fade-in-item">
 				<?php while ( $case_query->have_posts() ) : $case_query->the_post(); ?>
 					<li class="case-list__item">
 						<a href="<?php the_permalink(); ?>" class="case-card">
@@ -64,7 +64,7 @@ $case_query = new WP_Query( $case_args );
 				<?php endwhile; ?>
 			</ul>
 
-			<div class="inbound-case-study__button-wrapper">
+			<div class="inbound-case-study__button-wrapper fade-in-item">
 				<a href="<?php echo esc_url( home_url( '/case/tag/inbound-marketing-partner' ) ); ?>" class="btn-primary">
 					すべての導入事例を見る
 				</a>

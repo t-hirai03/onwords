@@ -251,6 +251,14 @@
   }
 }
 
+/* Mobile and below (< 767px) */
+@media screen and (max-width: 767px) {
+  .footer {
+    margin-top: 20px;
+    padding: 40px 0 20px;
+  }
+}
+
 /* Mobile and below (< 540px) */
 @media screen and (max-width: 540px) {
   .footer {

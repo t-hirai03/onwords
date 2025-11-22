@@ -37,13 +37,13 @@ get_header();
 	?>
 
 	<!-- Board Member Section -->
-	<section class="board-member">
-		<div class="section-header">
+	<section class="board-member fade-in-wrapper">
+		<div class="section-header fade-in-item">
 			<p class="section-header__label">BOARD MEMBER</p>
 			<h2 class="section-header__title">経営陣紹介</h2>
 		</div>
 
-		<div class="board-member__cards">
+		<div class="board-member__cards fade-in-item">
 			<!-- Card 1: 成澤豪 -->
 			<div class="board-member__card">
 				<div class="board-member__card-inner">
@@ -109,18 +109,18 @@ get_header();
 	</section>
 
 	<!-- Mission Section -->
-	<section class="mission">
-		<div class="section-header">
+	<section class="mission fade-in-wrapper">
+		<div class="section-header fade-in-item">
 			<p class="section-header__label">MISSION</p>
 			<h2 class="section-header__title">ミッション</h2>
 		</div>
 
-		<div class="mission__content">
+		<div class="mission__content fade-in-item">
 			<p class="mission__main-title">もっと楽しい日本に</p>
 			<p class="mission__sub-title">Bring out Japan's fun side</p>
 		</div>
 
-		<div class="mission__description">
+		<div class="mission__description fade-in-item">
 			<p class="mission__desc-text">
 				日本を訪れる人も、迎える人も、みんなが楽しめる場所へ。<br>
 				そして、地域の魅力を日本の活力に。
@@ -131,17 +131,17 @@ get_header();
 			</p>
 		</div>
 
-		<a href="<?php echo esc_url(home_url('/company/philosophy')); ?>" class="btn-primary">企業理念を見る</a>
+		<a href="<?php echo esc_url(home_url('/company/philosophy')); ?>" class="btn-primary fade-in-item">企業理念を見る</a>
 	</section>
 
 	<!-- Company Info Section -->
-	<section class="company-info">
-		<div class="section-header">
+	<section class="company-info fade-in-wrapper">
+		<div class="section-header fade-in-item">
 			<p class="section-header__label">COMPANY</p>
 			<h2 class="section-header__title">会社概要</h2>
 		</div>
 
-		<div class="company-info__content">
+		<div class="company-info__content fade-in-item">
 			<div class="company-info__row">
 				<p class="company-info__row-label">会社名</p>
 				<h3 class="company-info__row-content">
@@ -194,15 +194,15 @@ get_header();
 	</section>
 
 	<!-- Access Section -->
-	<section class="access">
-		<div class="section-header">
+	<section class="access fade-in-wrapper">
+		<div class="section-header fade-in-item">
 			<p class="section-header__label">ACCESS</p>
 			<h2 class="section-header__title">アクセス</h2>
 		</div>
 
 		<iframe
+			class="access__map fade-in-item"
 			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.0249374845835!2d139.74395831525895!3d35.66418548019923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b7e3f0b0b0b%3A0xc5b0b0b0b0b0b0b!2z5p2x5Lqs6YO95riv5Yy66JmO44OO6ZaA77yT5LiB55uu77yR77yX4oiS77yR!5e0!3m2!1sja!2sjp!4v1234567890123!5m2!1sja!2sjp"
-			class="access__map"
 			loading="lazy"
 			referrerpolicy="no-referrer-when-downgrade">
 		</iframe>

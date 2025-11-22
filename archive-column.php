@@ -33,43 +33,66 @@ get_header();
 			<h1 class="columns-title">記事一覧</h1>
 		</div>
 
-		<?php if (have_posts()) : ?>
-			<div class="columns-list">
-				<div class="columns-list__items">
-					<?php while (have_posts()) : the_post(); ?>
-						<a href="<?php the_permalink(); ?>" class="columns-card">
-							<?php if (has_post_thumbnail()) : ?>
-								<div class="columns-card__image">
-									<?php the_post_thumbnail('large'); ?>
-								</div>
-							<?php endif; ?>
-							<div class="columns-card__content">
-								<div class="columns-card__header">
-									<p class="columns-card__date"><?php echo get_the_date('Y/n/j'); ?></p>
-									<p class="columns-card__title"><?php the_title(); ?></p>
-								</div>
-								<?php
-								$terms = get_the_terms(get_the_ID(), 'column_category');
-								if ($terms && !is_wp_error($terms)) :
-								?>
-									<div class="columns-card__tag-container">
-										<ul class="columns-card__tag-list">
-											<?php foreach ($terms as $term) : ?>
-												<li class="columns-card__tag-item">
-													<p class="columns-card__tag-text"><?php echo esc_html($term->name); ?></p>
-												</li>
-											<?php endforeach; ?>
-										</ul>
+		<div class="columns-list__container">
+			<?php if (have_posts()) : ?>
+				<div class="columns-list">
+					<div class="columns-list__items">
+						<?php while (have_posts()) : the_post(); ?>
+							<a href="<?php the_permalink(); ?>" class="columns-card">
+								<?php if (has_post_thumbnail()) : ?>
+									<div class="columns-card__image">
+										<?php the_post_thumbnail('large'); ?>
 									</div>
 								<?php endif; ?>
-							</div>
-						</a>
-					<?php endwhile; ?>
+								<div class="columns-card__content">
+									<div class="columns-card__header">
+										<p class="columns-card__date"><?php echo get_the_date('Y/n/j'); ?></p>
+										<p class="columns-card__title"><?php the_title(); ?></p>
+									</div>
+									<?php
+									$terms = get_the_terms(get_the_ID(), 'column_category');
+									if ($terms && !is_wp_error($terms)) :
+									?>
+										<div class="columns-card__tag-container">
+											<ul class="columns-card__tag-list">
+												<?php foreach ($terms as $term) : ?>
+													<li class="columns-card__tag-item">
+														<p class="columns-card__tag-text"><?php echo esc_html($term->name); ?></p>
+													</li>
+												<?php endforeach; ?>
+											</ul>
+										</div>
+									<?php endif; ?>
+								</div>
+							</a>
+						<?php endwhile; ?>
+					</div>
 				</div>
-			</div>
-		<?php else : ?>
-			<p class="archive-list__no-posts">現在、記事はありません。</p>
-		<?php endif; ?>
+
+				<?php
+				// ページネーション
+				$pagination = paginate_links(array(
+					'prev_text' => '前へ',
+					'next_text' => '次へ',
+					'type' => 'array',
+				));
+
+				if ($pagination) :
+				?>
+					<nav class="pagination-wrapper">
+						<ul class="pagination">
+							<?php foreach ($pagination as $page) : ?>
+								<li class="pagination__item"><?php echo $page; ?></li>
+							<?php endforeach; ?>
+						</ul>
+					</nav>
+				<?php
+				endif;
+			else :
+			?>
+				<p class="archive-list__no-posts">現在、記事はありません。</p>
+			<?php endif; ?>
+		</div>
 	</section>
 </main>
 

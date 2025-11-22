@@ -84,17 +84,15 @@ section {
 }
 
 .hero__content {
-  /* From production site: width 1120px, left-bottom aligned */
-  width: 1120px;
   max-width: 1120px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Left align - CRITICAL */
-  justify-content: flex-end; /* Bottom align - CRITICAL */
+  align-items: flex-start;
+  justify-content: flex-end;
   color: rgb(255, 255, 255);
-  z-index: 2; /* Above overlay */
-  padding: 0 0 88px 0; /* CRITICAL: 88px from bottom (from production site) */
+  z-index: 2;
+  padding: 0 0 88px 0;
   height: 100%;
 }
 
@@ -387,7 +385,6 @@ section {
    =================================================================== */
 
 .inquiry {
-  margin: 70px 0 0;
   background-color: transparent;
 }
 
@@ -434,6 +431,26 @@ section {
 
 /* Mobile (767px以下) */
 @media (max-width: 767px) {
+  .about__container {
+    padding: 40px 0;
+  }
+
+  .message {
+    padding: 40px 0;
+  }
+
+  .message__block {
+    margin: 0 40px 40px;
+  }
+
+  .news {
+    padding: 40px 0;
+  }
+
+  .inquiry__form {
+    padding: 0;
+  }
+
   .business__container {
     padding: 0 16px; /* Mobile padding */
   }

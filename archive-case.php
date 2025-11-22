@@ -9,10 +9,6 @@
  */
 
 get_header();
-
-// カテゴリー情報を取得
-$current_category = get_queried_object();
-$is_category_archive = is_tax('case_category');
 ?>
 
 <!-- Breadcrumb Navigation -->
@@ -46,10 +42,18 @@ $is_category_archive = is_tax('case_category');
 	<div class="archive-filter">
 		<div class="archive-filter__container">
 			<nav class="archive-filter__nav">
-				<a href="<?php echo get_post_type_archive_link('case'); ?>"
-				   class="archive-filter__button <?php echo !$is_category_archive ? 'archive-filter__button--active' : ''; ?>">
+				<?php
+				// 現在のカテゴリーを取得
+				$current_category = isset($_GET['case_category']) ? sanitize_text_field($_GET['case_category']) : '';
+
+				// 「すべて」ボタン
+				$all_active = empty($current_category) ? 'archive-filter__button--active' : '';
+				?>
+				<a href="<?php echo esc_url(home_url('/case/')); ?>"
+				   class="archive-filter__button <?php echo esc_attr($all_active); ?>">
 					すべて
 				</a>
+
 				<?php
 				$categories = get_terms(array(
 					'taxonomy' => 'case_category',
@@ -58,10 +62,10 @@ $is_category_archive = is_tax('case_category');
 
 				if (!empty($categories) && !is_wp_error($categories)) :
 					foreach ($categories as $category) :
-						$is_active = $is_category_archive && $current_category->term_id === $category->term_id;
+						$is_active = ($current_category === $category->slug) ? 'archive-filter__button--active' : '';
 				?>
-					<a href="<?php echo get_term_link($category); ?>"
-					   class="archive-filter__button <?php echo $is_active ? 'archive-filter__button--active' : ''; ?>">
+					<a href="<?php echo esc_url(home_url('/case/?case_category=' . $category->slug)); ?>"
+					   class="archive-filter__button <?php echo esc_attr($is_active); ?>">
 						<?php echo esc_html($category->name); ?>
 					</a>
 				<?php
@@ -110,16 +114,33 @@ $is_category_archive = is_tax('case_category');
 				<?php endwhile; ?>
 			</ul>
 
-			<!-- Pagination -->
 			<?php
-			the_posts_pagination(array(
-				'mid_size'           => 2,
-				'prev_text'          => '<i class="material-icons">keyboard_arrow_left</i>',
-				'next_text'          => '<i class="material-icons">keyboard_arrow_right</i>',
-				'screen_reader_text' => 'ページナビゲーション',
+			// ページネーション
+			$add_args = array();
+			if (isset($_GET['case_category'])) {
+				$add_args['case_category'] = sanitize_text_field($_GET['case_category']);
+			}
+
+			$pagination = paginate_links(array(
+				'prev_text' => '前へ',
+				'next_text' => '次へ',
+				'type' => 'array',
+				'add_args' => $add_args,
 			));
+
+			if ($pagination) :
 			?>
-		<?php else : ?>
+				<nav class="pagination-wrapper">
+					<ul class="pagination">
+						<?php foreach ($pagination as $page) : ?>
+							<li class="pagination__item"><?php echo $page; ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</nav>
+			<?php
+			endif;
+		else :
+		?>
 			<p class="case-list__no-posts">導入事例はまだありません。</p>
 		<?php endif; ?>
 	</div>

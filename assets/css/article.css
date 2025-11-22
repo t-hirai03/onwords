@@ -129,7 +129,8 @@
 }
 
 .single-post__category,
-.single-post__tag {
+.single-post__tag,
+.single-post__status {
   font-size: 12px;
   font-weight: 500;
   line-height: 21px;
@@ -166,7 +167,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-top: 16px;
 }
 
 .single-post__client-icon {
@@ -305,6 +306,22 @@
   color: rgb(34, 34, 34);
 }
 
+/* Easy Table of Contents - 赤い点線を非表示 */
+#ez-toc-container,
+#ez-toc-container li,
+#ez-toc-container ul,
+#ez-toc-container ul li,
+div.ez-toc-widget-container,
+div.ez-toc-widget-container li {
+  border: none !important;
+}
+
+#ez-toc-container .ez-toc-list a {
+  border: none !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
 /* 引用スタイル */
 .single-post__content blockquote {
   font-size: 16px;
@@ -354,10 +371,20 @@
 
 /* モバイル（767px以下） */
 @media (max-width: 767px) {
+  /* ヘッダーの上余白を削除 */
+  .single-post__header {
+    margin-top: 0;
+  }
+
   /* メタ情報の幅調整 */
   .single-post__meta {
     width: 324px;
     margin-top: 14px;
+  }
+
+  /* クライアント名のフォントサイズ調整 */
+  .single-post__client-name {
+    font-size: 16px;
   }
 
   /* 段落フォントサイズ調整 */
@@ -388,8 +415,8 @@
 /* モバイル（540px以下） */
 @media (max-width: 540px) {
   .single-post__title {
-    font-size: 24px;
-    line-height: 38.4px;
+    font-size: 20px;
+    line-height: 32px;
   }
 
   .single-post__content h1 {
@@ -400,5 +427,10 @@
   .single-post__content h2 {
     font-size: 18px;
     line-height: 28.8px;
+  }
+
+  .single-post__content h3 {
+    font-size: 16px;
+    line-height: 28px;
   }
 }

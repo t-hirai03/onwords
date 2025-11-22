@@ -16,15 +16,15 @@ $document_args = array(
 $document_query = new WP_Query( $document_args );
 ?>
 
-<section class="inbound-documents fade-in-up">
-	<div class="inbound-documents__container">
-		<div class="inbound-documents__header fade-in-up">
+<section class="inbound-documents">
+	<div class="inbound-documents__container fade-in-wrapper">
+		<div class="inbound-documents__header fade-in-item">
 			<p class="inbound-documents__label">DOCUMENTS</p>
 			<h2 class="inbound-documents__title">お役立ち資料</h2>
 		</div>
 
 		<?php if ( $document_query->have_posts() ) : ?>
-			<div class="documents-list">
+			<div class="documents-list fade-in-item">
 				<div class="documents-list__items">
 					<?php while ( $document_query->have_posts() ) : $document_query->the_post(); ?>
 						<a href="<?php echo esc_url( get_permalink() ); ?>" class="documents-card">
@@ -58,7 +58,7 @@ $document_query = new WP_Query( $document_args );
 				</div>
 			</div>
 
-			<div class="inbound-documents__button-wrapper">
+			<div class="inbound-documents__button-wrapper fade-in-item">
 				<a href="<?php echo esc_url( home_url( '/knowledge/document' ) ); ?>" class="btn-primary">
 					すべての資料を見る
 				</a>

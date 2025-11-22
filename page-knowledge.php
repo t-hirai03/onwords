@@ -55,7 +55,7 @@ get_header();
 		<?php
 		$column_query = new WP_Query(array(
 			'post_type' => 'column',
-			'posts_per_page' => 2,
+			'posts_per_page' => 3,
 			'orderby' => 'date',
 			'order' => 'DESC',
 		));
@@ -113,7 +113,7 @@ get_header();
 		<?php
 		$webinar_query = new WP_Query(array(
 			'post_type' => 'webinar',
-			'posts_per_page' => 2,
+			'posts_per_page' => 3,
 			'orderby' => 'date',
 			'order' => 'DESC',
 		));

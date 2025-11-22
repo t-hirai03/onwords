@@ -7,12 +7,12 @@
 ?>
 
 <section class="business-section">
-	<div class="business-section__container">
-		<div class="section-header">
+	<div class="business-section__container fade-in-wrapper">
+		<div class="section-header fade-in-item">
 			<p class="section-header__label">SERVICES</p>
 			<h2 class="section-header__title">サービス一覧</h2>
 		</div>
-		<div class="business-services">
+		<div class="business-services fade-in-item">
 			<div class="business-services__item">
 				<div class="business-services__header">
 					<div class="business-services__icon" data-icon="inbound-service-1"></div>

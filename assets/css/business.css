@@ -521,8 +521,9 @@
 }
 
 .business-services__icon {
-	width: 100px;
-	height: 100px;
+	width: 100%;
+	max-width: 100px;
+	aspect-ratio: 1;
 	background-size: cover;
 	background-position: 50% 0%;
 	background-repeat: no-repeat;
@@ -621,12 +622,10 @@
    ======================================== */
 
 .business-logos {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 60px 40px;
-	justify-content: center;
-	align-items: flex-start;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 50px;
+	justify-items: center;
 	list-style: none;
 	padding: 0 0 50px;
 	margin: 0;
@@ -636,11 +635,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 146px;
 	height: 206px;
-	flex-grow: 0;
-	flex-shrink: 0;
 	list-style: none;
+}
+
+.business-logos__item:nth-child(8) {
+	grid-column: 3;
 }
 
 .business-logos__item img {
@@ -680,13 +680,46 @@
 	}
 }
 
+.inbound-case-study__label,
+.inbound-business-record__label,
+.inbound-webinar__label,
+.inbound-documents__label {
+	color: rgb(217, 30, 24);
+	font-size: 16px;
+	font-weight: 700;
+	margin-block-end: 16px;
+}
+
+.inbound-case-study__title,
+.inbound-business-record__title,
+.inbound-webinar__title,
+.inbound-documents__title {
+	color: rgb(34, 34, 34);
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 1.5;
+	margin: 0;
+}
+
 @media (max-width: 767px) {
 	.business-hero-wrapper {
-		margin-bottom: 60px;
+		margin-bottom: 40px;
 	}
 
 	.business-list {
-		padding: 60px 0 0;
+		padding: 40px 0 0;
+	}
+
+	.business-section {
+		padding: 0 0 40px;
+	}
+
+	.section-header {
+		margin-bottom: 32px;
+	}
+
+	.business-list__header {
+		margin-bottom: 32px;
 	}
 
 	.business-list__subtitle {
@@ -706,6 +739,7 @@
 	.inbound-webinar__label,
 	.inbound-documents__label {
 		font-size: 14px;
+		margin-block-end: 8px;
 	}
 
 	.inbound-case-study__title,
@@ -713,6 +747,15 @@
 	.inbound-webinar__title,
 	.inbound-documents__title {
 		font-size: 28px;
+	}
+
+	.inbound-strengths__header,
+	.inbound-services__header,
+	.inbound-case-study__header,
+	.inbound-business-record__header,
+	.inbound-webinar__header,
+	.inbound-documents__header {
+		margin-block-end: 32px;
 	}
 
 	.business-cards__list {
@@ -743,18 +786,31 @@
 		text-align: left;
 	}
 
-	.business-logos--10 {
+	.business-logos {
+		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 16px;
+		gap: 40px 16px;
+		padding: 0;
+	}
+
+	.business-logos__item {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 146 / 206;
+	}
+
+	.business-logos__item:nth-child(8) {
+		grid-column: auto;
 	}
 
 	.business-strengths {
 		flex-direction: column;
-		gap: 60px;
+		gap: 0;
 	}
 
 	.business-strengths__nav {
 		width: 100%;
+		position: static;
 	}
 
 	.business-strengths__content-list {
@@ -787,15 +843,13 @@
 		gap: 24px;
 	}
 
-	.business-logos {
-		gap: 40px 24px;
-		padding: 0 0 32px;
+	.business-services__header {
+		gap: 16px;
+		justify-content: center;
 	}
 
-	.business-logos__item {
-		width: calc(50% - 12px);
-		height: auto;
-		aspect-ratio: 146 / 206;
+	.business-services__icon {
+		max-width: 80px;
 	}
 }
 
@@ -1170,6 +1224,15 @@
 	padding: 0 16px;
 }
 
+@media (min-width: 1141px) {
+	.inbound-case-study__header,
+	.inbound-business-record__header,
+	.inbound-webinar__header,
+	.inbound-documents__header {
+		margin-block-end: 60px;
+	}
+}
+
 .inbound-case-study__header,
 .inbound-business-record__header,
 .inbound-webinar__header,
@@ -1490,11 +1553,25 @@
 	}
 }
 
-@media screen and (max-width: 540px) {
-	.inbound-hero {
-		padding: 30px 16px 100px;
+@media screen and (max-width: 767px) {
+	.inbound-strengths,
+	.inbound-services {
+		margin: 40px auto;
 	}
 
+	.inbound-case-study,
+	.inbound-business-record,
+	.inbound-webinar,
+	.inbound-documents {
+		margin: 40px 0;
+	}
+
+	.inbound-documents {
+		margin: 40px 0 0;
+	}
+}
+
+@media screen and (max-width: 540px) {
 	.inbound-hero__container {
 		gap: 40px;
 	}
@@ -1513,6 +1590,11 @@
 
 	.inbound-hero__image {
 		border-radius: 6px;
+	}
+
+	.inbound-partners-carousel__slide {
+		width: 100px;
+		height: 100px;
 	}
 
 	.inbound-strengths__detail {

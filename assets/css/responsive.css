@@ -47,7 +47,9 @@
      =================================================================== */
 
   .hero__content {
-    padding: 0 80px 88px; /* 左右80px、下88px（本番サイトと同じ） */
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
   }
 }
 
@@ -384,10 +386,6 @@
 
 /* Mobile (540px and below) */
 @media screen and (max-width: 540px) {
-  .inbound-hero {
-    padding: 30px 0 100px;
-  }
-
   .inbound-hero__container {
     margin: 0 20px;
     max-width: calc(100% - 40px);

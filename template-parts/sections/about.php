@@ -1,9 +1,9 @@
 <!-- About Section -->
 <section class="about">
   <!-- Flexコンテナ（横並びレイアウト） -->
-  <div class="about__container">
+  <div class="about__container fade-in-wrapper">
     <!-- テキストエリア（左側） -->
-    <div class="about__text">
+    <div class="about__text fade-in-item">
       <p class="about__label">ABOUT</p>
       <h2 class="about__heading">Onwordsとは？</h2>
       <p class="about__body">
@@ -16,7 +16,7 @@
     </div>
 
     <!-- 画像エリア（右側） -->
-    <div class="about__image-container">
+    <div class="about__image-container fade-in-item">
       <img src="<?php echo get_template_directory_uri(); ?>/assets/images/top/about/s-1224x800_v-fms_webp_01071bf2-7516-42f6-8153-f7e7b68cf9f2_middle.webp" alt="Onwords" class="about__image">
     </div>
   </div>
