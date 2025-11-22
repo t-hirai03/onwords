@@ -305,6 +305,22 @@
   color: rgb(34, 34, 34);
 }
 
+/* Easy Table of Contents - 赤い点線を非表示 */
+#ez-toc-container,
+#ez-toc-container li,
+#ez-toc-container ul,
+#ez-toc-container ul li,
+div.ez-toc-widget-container,
+div.ez-toc-widget-container li {
+  border: none !important;
+}
+
+#ez-toc-container .ez-toc-list a {
+  border: none !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
 /* 引用スタイル */
 .single-post__content blockquote {
   font-size: 16px;
