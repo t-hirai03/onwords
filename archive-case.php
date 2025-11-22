@@ -9,10 +9,6 @@
  */
 
 get_header();
-
-// カテゴリー情報を取得
-$current_category = get_queried_object();
-$is_category_archive = is_tax('case_category');
 ?>
 
 <!-- Breadcrumb Navigation -->
@@ -46,10 +42,18 @@ $is_category_archive = is_tax('case_category');
 	<div class="archive-filter">
 		<div class="archive-filter__container">
 			<nav class="archive-filter__nav">
-				<a href="<?php echo get_post_type_archive_link('case'); ?>"
-				   class="archive-filter__button <?php echo !$is_category_archive ? 'archive-filter__button--active' : ''; ?>">
+				<?php
+				// 現在のカテゴリーを取得
+				$current_category = isset($_GET['case_category']) ? sanitize_text_field($_GET['case_category']) : '';
+
+				// 「すべて」ボタン
+				$all_active = empty($current_category) ? 'archive-filter__button--active' : '';
+				?>
+				<a href="<?php echo esc_url(home_url('/case/')); ?>"
+				   class="archive-filter__button <?php echo esc_attr($all_active); ?>">
 					すべて
 				</a>
+
 				<?php
 				$categories = get_terms(array(
 					'taxonomy' => 'case_category',
@@ -58,10 +62,10 @@ $is_category_archive = is_tax('case_category');
 
 				if (!empty($categories) && !is_wp_error($categories)) :
 					foreach ($categories as $category) :
-						$is_active = $is_category_archive && $current_category->term_id === $category->term_id;
+						$is_active = ($current_category === $category->slug) ? 'archive-filter__button--active' : '';
 				?>
-					<a href="<?php echo get_term_link($category); ?>"
-					   class="archive-filter__button <?php echo $is_active ? 'archive-filter__button--active' : ''; ?>">
+					<a href="<?php echo esc_url(home_url('/case/?case_category=' . $category->slug)); ?>"
+					   class="archive-filter__button <?php echo esc_attr($is_active); ?>">
 						<?php echo esc_html($category->name); ?>
 					</a>
 				<?php
@@ -74,9 +78,37 @@ $is_category_archive = is_tax('case_category');
 
 	<!-- Case List -->
 	<div class="case-list__container">
-		<?php if (have_posts()) : ?>
+		<?php
+		// ページ番号を取得
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+		// クエリを設定
+		$args = array(
+			'post_type' => 'case',
+			'posts_per_page' => 9,
+			'orderby' => 'date',
+			'order' => 'DESC',
+			'paged' => $paged,
+		);
+
+		// カテゴリーでフィルタリング（URLパラメータから）
+		$category_slug = isset($_GET['case_category']) ? sanitize_text_field($_GET['case_category']) : '';
+		if (!empty($category_slug)) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => 'case_category',
+					'field' => 'slug',
+					'terms' => $category_slug,
+				),
+			);
+		}
+
+		$case_query = new WP_Query($args);
+
+		if ($case_query->have_posts()) :
+		?>
 			<ul class="case-list__items">
-				<?php while (have_posts()) : the_post(); ?>
+				<?php while ($case_query->have_posts()) : $case_query->the_post(); ?>
 					<li class="case-list__item">
 						<a href="<?php the_permalink(); ?>" class="case-card">
 							<div class="case-card__image">
@@ -113,6 +145,8 @@ $is_category_archive = is_tax('case_category');
 			<?php
 			// ページネーション
 			$pagination = paginate_links(array(
+				'total' => $case_query->max_num_pages,
+				'current' => $paged,
 				'prev_text' => '前へ',
 				'next_text' => '次へ',
 				'type' => 'array',
@@ -129,6 +163,8 @@ $is_category_archive = is_tax('case_category');
 				</nav>
 			<?php
 			endif;
+
+			wp_reset_postdata();
 		else :
 		?>
 			<p class="case-list__no-posts">導入事例はまだありません。</p>
