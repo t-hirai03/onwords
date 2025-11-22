@@ -4,6 +4,25 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="<?php bloginfo( 'description' ); ?>">
+
+	<!-- OGP -->
+	<meta property="og:title" content="<?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?>">
+	<meta property="og:description" content="<?php bloginfo( 'description' ); ?>">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="<?php echo esc_url( get_permalink() ); ?>">
+	<meta property="og:image" content="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/ogp.png' ); ?>">
+	<meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="<?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?>">
+	<meta name="twitter:description" content="<?php bloginfo( 'description' ); ?>">
+	<meta name="twitter:image" content="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/ogp.png' ); ?>">
+
+	<!-- Favicon -->
+	<link rel="icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/favicon.svg' ); ?>">
+	<link rel="apple-touch-icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/favicon.svg' ); ?>">
+
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
