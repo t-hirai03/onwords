@@ -111,7 +111,7 @@ add_action( 'pre_get_posts', 'onwords_document_archive_query' );
  */
 function onwords_news_archive_query( $query ) {
 	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'news' ) ) {
-		$query->set( 'posts_per_page', 1 );
+		$query->set( 'posts_per_page', 9 );
 		$query->set( 'orderby', 'date' );
 		$query->set( 'order', 'DESC' );
 
