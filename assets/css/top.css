@@ -85,17 +85,15 @@ section {
 }
 
 .hero__content {
-  /* From production site: width 1120px, left-bottom aligned */
-  width: 1120px;
   max-width: 1120px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Left align - CRITICAL */
-  justify-content: flex-end; /* Bottom align - CRITICAL */
+  align-items: flex-start;
+  justify-content: flex-end;
   color: rgb(255, 255, 255);
-  z-index: 2; /* Above overlay */
-  padding: 0 0 88px 0; /* CRITICAL: 88px from bottom (from production site) */
+  z-index: 2;
+  padding: 0 0 88px 0;
   height: 100%;
 }
 

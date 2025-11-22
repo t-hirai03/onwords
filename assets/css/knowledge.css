@@ -80,9 +80,8 @@
 	align-items: center;
 	gap: 20px;
 	padding: 10px;
-	margin: 0 auto 50px;
-	max-width: 100%;
-	width: 1152px;
+	margin: 0 auto;
+	max-width: 1152px;
 	border-bottom: 1px solid rgb(219, 219, 219);
 }
 
@@ -170,7 +169,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 32px;
-	padding: 100px 16px 20px;
+	padding: 60px 0 0;
 	margin: 0 auto 20px;
 	width: 100%;
 	max-width: 1200px;
@@ -215,24 +214,18 @@
 	gap: normal;
 	padding: 0 16px;
 	margin: 0 auto;
-	max-width: 100%;
-	width: 1280px;
+	max-width: 1280px;
 }
 
 .columns-list__items {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	gap: 32px;
-	justify-content: center;
-	align-items: stretch;
 }
 
 .columns-card {
 	display: flex;
 	flex-direction: column;
-	width: 375.039px;
-	max-width: calc(32% - 21.76px);
 	padding: 0;
 	margin: 0;
 	background-color: rgb(255, 255, 255);
@@ -244,7 +237,7 @@
 .columns-card__image {
 	display: flex;
 	width: 100%;
-	height: 200px;
+	max-height: 200px;
 	overflow: hidden;
 	border-radius: 8px;
 }
@@ -323,13 +316,16 @@
 }
 
 @media screen and (max-width: 768px) {
-	.columns-card {
-		width: 100%;
-		max-width: 100%;
+	.columns-list__items {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media screen and (max-width: 500px) {
+	.columns-list__items {
+		grid-template-columns: 1fr;
+	}
+
 	.columns-label {
 		font-size: 15px;
 		line-height: 26.25px;
@@ -354,10 +350,9 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 32px;
-	padding: 100px 0 0;
+	padding: 60px 0 0;
 	margin: 0 0 20px;
-	max-width: 100%;
-	width: 1200px;
+	max-width: 1200px;
 	margin-inline: auto;
 }
 
@@ -367,7 +362,7 @@
 }
 
 .webinar-past {
-	padding: 100px 0 0;
+	padding: 60px 0 0;
 	margin: 0 0 20px;
 }
 
@@ -410,24 +405,18 @@
 	gap: normal;
 	padding: 0 16px;
 	margin: 0 auto;
-	max-width: 100%;
-	width: 1240px;
+	max-width: 1240px;
 }
 
 .webinar-list__items {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	gap: 32px;
-	justify-content: center;
-	align-items: stretch;
 }
 
 .webinar-card {
 	display: flex;
 	flex-direction: column;
-	width: 375.039px;
-	max-width: calc(32% - 21.76px);
 	background-color: rgb(255, 255, 255);
 	border-radius: 8px;
 	border: 1px solid rgb(235, 235, 235);
@@ -437,7 +426,7 @@
 .webinar-card__image {
 	display: flex;
 	width: 100%;
-	height: 200px;
+	max-height: 200px;
 	overflow: hidden;
 	border-radius: 8px;
 }
@@ -516,13 +505,16 @@
 }
 
 @media screen and (max-width: 768px) {
-	.webinar-card {
-		width: 400px;
-		max-width: 100%;
+	.webinar-list__items {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media screen and (max-width: 500px) {
+	.webinar-list__items {
+		grid-template-columns: 1fr;
+	}
+
 	.webinar-label {
 		font-size: 15px;
 		line-height: 26.25px;
@@ -547,7 +539,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 32px;
-	padding: 100px 16px 20px;
+	padding: 60px 0 0;
 	margin: 0 auto 20px;
 	width: 100%;
 	max-width: 1200px;
@@ -596,19 +588,14 @@
 }
 
 .documents-list__items {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	gap: 32px;
-	justify-content: center;
-	align-items: stretch;
 }
 
 .documents-card {
 	display: flex;
 	flex-direction: column;
-	width: 375.039px;
-	max-width: calc(32% - 21.76px);
 	background-color: rgb(255, 255, 255);
 	border-radius: 8px;
 	border: 1px solid rgb(235, 235, 235);
@@ -618,7 +605,7 @@
 .documents-card__image {
 	display: flex;
 	width: 100%;
-	height: 200px;
+	max-height: 200px;
 	overflow: hidden;
 	border-radius: 8px;
 }
@@ -696,13 +683,16 @@
 }
 
 @media screen and (max-width: 768px) {
-	.documents-card {
-		width: 400px;
-		max-width: 100%;
+	.documents-list__items {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media screen and (max-width: 500px) {
+	.documents-list__items {
+		grid-template-columns: 1fr;
+	}
+
 	.documents-label {
 		font-size: 15px;
 		line-height: 26.25px;

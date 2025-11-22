@@ -15,7 +15,7 @@
   width: 100%;
   max-width: 100%;
   background: var(--header-bg-color);
-  padding: var(--header-padding-desktop);
+  padding: 16px;
   z-index: var(--header-z-index);
 
   display: flex;
@@ -23,9 +23,7 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-
-  border-bottom: 1px solid #dbdbdb;
+  gap: 12px;
 
   /* Fade-in animation on page load */
   opacity: 0;
@@ -54,9 +52,9 @@
 }
 
 .header__logo {
-  width: var(--logo-width-desktop);
+  width: 100%;
+  max-width: var(--logo-width-desktop);
   height: auto;
-  max-width: 100%;
   display: block;
   flex-shrink: 0;
 }
@@ -71,7 +69,7 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 25px;
+  gap: 16px;
   flex-shrink: 1;
 }
 
@@ -83,7 +81,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  gap: 25px;
+  gap: 16px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -101,7 +99,7 @@
   align-items: center;
   gap: 4px;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: clamp(14px, calc(0.875rem + 0.125vw), 16px);
   font-weight: 500;
   line-height: 28px;
 }
@@ -114,7 +112,7 @@
 .header__nav-link {
   color: var(--nav-link-color);
   text-decoration: none;
-  font-size: 16px;
+  font-size: clamp(14px, calc(0.875rem + 0.125vw), 16px);
   font-weight: 500;
   line-height: 16px;
   white-space: nowrap;
@@ -145,8 +143,8 @@
   color: rgb(51, 51, 51); /* Dark gray text in normal state */
   background: rgb(231, 74, 74); /* Solid red in normal state */
   border-radius: 4px;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 700;
   line-height: 16px;
   display: flex;
   align-items: center;
@@ -574,22 +572,10 @@
    ======================================== */
 
 /* Tablet and below (< 1140px) */
-@media screen and (max-width: 1140px) {
-  .header__logo {
-    width: var(--logo-width-tablet);
-  }
-}
+/* ロゴのレスポンシブ対応は max-width で自動調整 */
 
-/* Mobile and below (< 540px) */
-@media screen and (max-width: 540px) {
-  .header {
-    padding: var(--header-padding-mobile-lg);
-  }
-
-  .header__logo {
-    width: var(--logo-width-tablet);
-  }
-
+/* Mobile and below (< 831px) */
+@media screen and (max-width: 831px) {
   /* Hide desktop navigation */
   .header__nav--desktop {
     display: none;
@@ -602,8 +588,4 @@
 }
 
 /* Small mobile (< 320px) */
-@media screen and (max-width: 320px) {
-  .header {
-    padding: var(--header-padding-mobile-sm);
-  }
-}
+/* padding は 16px で統一 */
