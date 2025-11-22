@@ -621,10 +621,10 @@
    ======================================== */
 
 .business-logos {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
 	gap: 50px;
-	justify-content: center;
-	align-items: flex-start;
+	justify-items: center;
 	list-style: none;
 	padding: 0 0 50px;
 	margin: 0;
@@ -636,9 +636,11 @@
 	justify-content: center;
 	width: 146px;
 	height: 206px;
-	flex-grow: 0;
-	flex-shrink: 0;
 	list-style: none;
+}
+
+.business-logos__item:nth-child(8) {
+	grid-column: 3;
 }
 
 .business-logos__item img {
