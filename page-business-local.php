@@ -27,13 +27,18 @@ get_header();
 </div>
 
 <main class="main">
-	<!-- Hero Section -->
-	<div class="business-hero-wrapper">
-		<section class="business-hero">
-			<p class="business-hero__label">Local cooperation</p>
-			<h1 class="business-hero__title">地域観光DX事業</h1>
-		</section>
-	</div>
+	<?php
+	// Hero Section
+	get_template_part(
+		'template-parts/components/archive-hero',
+		null,
+		array(
+			'background_image' => get_template_directory_uri() . '/assets/images/business/hero/hero-local.jpg',
+			'label'            => 'Local cooperation',
+			'title'            => '地域観光DX事業',
+		)
+	);
+	?>
 
 	<!-- Support Records Section -->
 	<section class="business-section">

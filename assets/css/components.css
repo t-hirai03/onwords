@@ -307,16 +307,15 @@
 
 /* Wrapper - Manages spacing and max-width */
 .archive-hero-wrapper {
-  max-width: 1312px;
   margin: 0 auto 40px;
-  padding: 0 16px;
+  padding: 0;
 }
 
 /* Hero section - Background image container */
 .archive-hero {
   width: 100%;
   height: 320px;
-  border-radius: 20px;
+  border-radius: 0;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -374,13 +373,11 @@
 /* Mobile (840px以下) */
 @media (max-width: 840px) {
   .archive-hero-wrapper {
-    padding: 0;
     margin-bottom: 32px;
   }
 
   .archive-hero {
     height: 208px;
-    border-radius: 0;
   }
 
   .archive-hero__label {
