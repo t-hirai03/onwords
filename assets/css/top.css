@@ -450,6 +450,10 @@ section {
     padding: 40px 0;
   }
 
+  .inquiry__form {
+    padding: 0;
+  }
+
   .business__container {
     padding: 0 16px; /* Mobile padding */
   }

@@ -680,6 +680,27 @@
 	}
 }
 
+.inbound-case-study__label,
+.inbound-business-record__label,
+.inbound-webinar__label,
+.inbound-documents__label {
+	color: rgb(217, 30, 24);
+	font-size: 16px;
+	font-weight: 700;
+	margin-block-end: 16px;
+}
+
+.inbound-case-study__title,
+.inbound-business-record__title,
+.inbound-webinar__title,
+.inbound-documents__title {
+	color: rgb(34, 34, 34);
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 1.5;
+	margin: 0;
+}
+
 @media (max-width: 767px) {
 	.business-hero-wrapper {
 		margin-bottom: 40px;
@@ -718,13 +739,14 @@
 	.inbound-webinar__label,
 	.inbound-documents__label {
 		font-size: 14px;
+		margin-block-end: 8px;
 	}
 
 	.inbound-case-study__title,
 	.inbound-business-record__title,
 	.inbound-webinar__title,
 	.inbound-documents__title {
-		font-size: 32px;
+		font-size: 28px;
 	}
 
 	.inbound-strengths__header,
@@ -1218,27 +1240,6 @@
 	text-align: center;
 }
 
-.inbound-case-study__label,
-.inbound-business-record__label,
-.inbound-webinar__label,
-.inbound-documents__label {
-	color: rgb(217, 30, 24);
-	font-size: 16px;
-	font-weight: 700;
-	margin-block-end: 16px;
-}
-
-.inbound-case-study__title,
-.inbound-business-record__title,
-.inbound-webinar__title,
-.inbound-documents__title {
-	color: rgb(34, 34, 34);
-	font-size: 36px;
-	font-weight: 700;
-	line-height: 1.5;
-	margin: 0;
-}
-
 /* Inbound Case Study Section */
 /* 導入事例セクションは共通の .case-card スタイルを使用 */
 
@@ -1549,10 +1550,6 @@
 }
 
 @media screen and (max-width: 540px) {
-	.inbound-hero {
-		padding: 30px 16px 100px;
-	}
-
 	.inbound-hero__container {
 		gap: 40px;
 	}
@@ -1571,6 +1568,11 @@
 
 	.inbound-hero__image {
 		border-radius: 6px;
+	}
+
+	.inbound-partners-carousel__slide {
+		width: 100px;
+		height: 100px;
 	}
 
 	.inbound-strengths__detail {
