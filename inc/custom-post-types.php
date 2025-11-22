@@ -387,7 +387,10 @@ function onwords_register_document_post_type() {
 		'show_in_menu'       => true,
 		'show_in_rest'       => true,
 		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'knowledge/document' ),
+		'rewrite'            => array(
+			'slug'       => 'knowledge/document',
+			'with_front' => false,
+		),
 		'capability_type'    => 'post',
 		'has_archive'        => 'knowledge/document',
 		'hierarchical'       => false,

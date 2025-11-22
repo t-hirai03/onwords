@@ -48,13 +48,53 @@ require_once get_template_directory() . '/inc/menus.php';
 require_once get_template_directory() . '/inc/enqueue-scripts.php';
 
 /**
+ * Add custom rewrite rules for document archive pagination
+ */
+function onwords_document_rewrite_rules() {
+	// ページ2以降のURL
+	add_rewrite_rule(
+		'knowledge/document/page/?([0-9]{1,})/?$',
+		'index.php?post_type=document&paged=$matches[1]',
+		'top'
+	);
+	// ページ1のURL
+	add_rewrite_rule(
+		'knowledge/document/?$',
+		'index.php?post_type=document',
+		'top'
+	);
+}
+add_action( 'init', 'onwords_document_rewrite_rules', 1 );
+
+/**
+ * Add query vars for document archive
+ */
+function onwords_document_query_vars( $query_vars ) {
+	$query_vars[] = 'paged';
+	return $query_vars;
+}
+add_filter( 'query_vars', 'onwords_document_query_vars' );
+
+/**
+ * Modify main query for document archive
+ */
+function onwords_document_archive_query( $query ) {
+	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'document' ) ) {
+		$query->set( 'posts_per_page', 9 );
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'DESC' );
+	}
+}
+add_action( 'pre_get_posts', 'onwords_document_archive_query' );
+
+/**
  * Flush rewrite rules on theme activation (one-time)
  * This ensures the news archive URL works properly
  */
 function onwords_flush_rewrite_rules() {
-	if ( ! get_transient( 'onwords_flush_rewrite_rules' ) ) {
-		flush_rewrite_rules();
-		set_transient( 'onwords_flush_rewrite_rules', 1, DAY_IN_SECONDS );
-	}
+	// 一時的に強制フラッシュ（404エラー解決のため）
+	delete_transient( 'onwords_flush_rewrite_rules' );
+	flush_rewrite_rules();
+	set_transient( 'onwords_flush_rewrite_rules', 1, DAY_IN_SECONDS );
 }
 add_action( 'init', 'onwords_flush_rewrite_rules' );
