@@ -41,9 +41,6 @@ get_header();
 				if ( $client_name ) :
 				?>
 				<div class="single-post__client">
-					<?php if ( has_post_thumbnail() ) : ?>
-						<?php the_post_thumbnail('thumbnail', ['class' => 'single-post__client-icon', 'alt' => '']); ?>
-					<?php endif; ?>
 					<p class="single-post__client-name"><?php echo esc_html( $client_name ); ?></p>
 				</div>
 				<?php endif; ?>
