@@ -8,7 +8,7 @@
 // Query case studies filtered by taxonomy
 $case_args = array(
 	'post_type'      => 'case',
-	'posts_per_page' => 2,
+	'posts_per_page' => 3,
 	'tax_query'      => array(
 		array(
 			'taxonomy' => 'case_category',

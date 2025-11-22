@@ -8,7 +8,7 @@
 // Query webinars
 $webinar_args = array(
 	'post_type'      => 'webinar',
-	'posts_per_page' => 2,
+	'posts_per_page' => 3,
 	'orderby'        => 'date',
 	'order'          => 'DESC',
 );
