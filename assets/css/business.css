@@ -622,9 +622,7 @@
 
 .business-logos {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 60px 40px;
+	gap: 50px;
 	justify-content: center;
 	align-items: flex-start;
 	list-style: none;
@@ -743,9 +741,17 @@
 		text-align: left;
 	}
 
-	.business-logos--10 {
+	.business-logos {
+		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 16px;
+		gap: 40px 16px;
+		padding: 0 0 32px;
+	}
+
+	.business-logos__item {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 146 / 206;
 	}
 
 	.business-strengths {
@@ -785,17 +791,6 @@
 
 	.business-services__item {
 		gap: 24px;
-	}
-
-	.business-logos {
-		gap: 40px 24px;
-		padding: 0 0 32px;
-	}
-
-	.business-logos__item {
-		width: calc(50% - 12px);
-		height: auto;
-		aspect-ratio: 146 / 206;
 	}
 }
 
