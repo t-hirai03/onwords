@@ -634,7 +634,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 146px;
 	height: 206px;
 	list-style: none;
 }
@@ -754,6 +753,10 @@
 		width: 100%;
 		height: auto;
 		aspect-ratio: 146 / 206;
+	}
+
+	.business-logos__item:nth-child(8) {
+		grid-column: auto;
 	}
 
 	.business-strengths {
