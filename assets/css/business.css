@@ -793,6 +793,11 @@
 	.business-services__item {
 		gap: 24px;
 	}
+
+	.business-services__header {
+		gap: 16px;
+		justify-content: center;
+	}
 }
 
 /* ==========================================================================
