@@ -78,37 +78,9 @@ get_header();
 
 	<!-- Case List -->
 	<div class="case-list__container">
-		<?php
-		// ページ番号を取得
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-		// クエリを設定
-		$args = array(
-			'post_type' => 'case',
-			'posts_per_page' => 9,
-			'orderby' => 'date',
-			'order' => 'DESC',
-			'paged' => $paged,
-		);
-
-		// カテゴリーでフィルタリング（URLパラメータから）
-		$category_slug = isset($_GET['case_category']) ? sanitize_text_field($_GET['case_category']) : '';
-		if (!empty($category_slug)) {
-			$args['tax_query'] = array(
-				array(
-					'taxonomy' => 'case_category',
-					'field' => 'slug',
-					'terms' => $category_slug,
-				),
-			);
-		}
-
-		$case_query = new WP_Query($args);
-
-		if ($case_query->have_posts()) :
-		?>
+		<?php if (have_posts()) : ?>
 			<ul class="case-list__items">
-				<?php while ($case_query->have_posts()) : $case_query->the_post(); ?>
+				<?php while (have_posts()) : the_post(); ?>
 					<li class="case-list__item">
 						<a href="<?php the_permalink(); ?>" class="case-card">
 							<div class="case-card__image">
@@ -144,12 +116,16 @@ get_header();
 
 			<?php
 			// ページネーション
+			$add_args = array();
+			if (isset($_GET['case_category'])) {
+				$add_args['case_category'] = sanitize_text_field($_GET['case_category']);
+			}
+
 			$pagination = paginate_links(array(
-				'total' => $case_query->max_num_pages,
-				'current' => $paged,
 				'prev_text' => '前へ',
 				'next_text' => '次へ',
 				'type' => 'array',
+				'add_args' => $add_args,
 			));
 
 			if ($pagination) :
@@ -163,8 +139,6 @@ get_header();
 				</nav>
 			<?php
 			endif;
-
-			wp_reset_postdata();
 		else :
 		?>
 			<p class="case-list__no-posts">導入事例はまだありません。</p>

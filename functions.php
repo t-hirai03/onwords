@@ -67,6 +67,25 @@ function onwords_document_rewrite_rules() {
 add_action( 'init', 'onwords_document_rewrite_rules', 1 );
 
 /**
+ * Add custom rewrite rules for news archive pagination
+ */
+function onwords_news_rewrite_rules() {
+	// ページ2以降のURL
+	add_rewrite_rule(
+		'news/page/?([0-9]{1,})/?$',
+		'index.php?post_type=news&paged=$matches[1]',
+		'top'
+	);
+	// ページ1のURL
+	add_rewrite_rule(
+		'news/?$',
+		'index.php?post_type=news',
+		'top'
+	);
+}
+add_action( 'init', 'onwords_news_rewrite_rules', 1 );
+
+/**
  * Add query vars for document archive
  */
 function onwords_document_query_vars( $query_vars ) {
@@ -88,6 +107,54 @@ function onwords_document_archive_query( $query ) {
 add_action( 'pre_get_posts', 'onwords_document_archive_query' );
 
 /**
+ * Modify main query for news archive
+ */
+function onwords_news_archive_query( $query ) {
+	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'news' ) ) {
+		$query->set( 'posts_per_page', 9 );
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'DESC' );
+
+		// カテゴリーでフィルタリング（URLパラメータから）
+		$category_slug = isset( $_GET['news_category'] ) ? sanitize_text_field( $_GET['news_category'] ) : '';
+		if ( ! empty( $category_slug ) ) {
+			$query->set( 'tax_query', array(
+				array(
+					'taxonomy' => 'news_category',
+					'field'    => 'slug',
+					'terms'    => $category_slug,
+				),
+			) );
+		}
+	}
+}
+add_action( 'pre_get_posts', 'onwords_news_archive_query' );
+
+/**
+ * Modify main query for case archive
+ */
+function onwords_case_archive_query( $query ) {
+	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'case' ) ) {
+		$query->set( 'posts_per_page', 9 );
+		$query->set( 'orderby', 'date' );
+		$query->set( 'order', 'DESC' );
+
+		// カテゴリーでフィルタリング（URLパラメータから）
+		$category_slug = isset( $_GET['case_category'] ) ? sanitize_text_field( $_GET['case_category'] ) : '';
+		if ( ! empty( $category_slug ) ) {
+			$query->set( 'tax_query', array(
+				array(
+					'taxonomy' => 'case_category',
+					'field'    => 'slug',
+					'terms'    => $category_slug,
+				),
+			) );
+		}
+	}
+}
+add_action( 'pre_get_posts', 'onwords_case_archive_query' );
+
+/**
  * Modify main query for column archive
  */
 function onwords_column_archive_query( $query ) {
@@ -104,7 +171,7 @@ add_action( 'pre_get_posts', 'onwords_column_archive_query' );
  * This ensures the news archive URL works properly
  */
 function onwords_flush_rewrite_rules() {
-	// 一時的に強制フラッシュ（404エラー解決のため）
+	// 一時的に強制フラッシュ（次回削除する）
 	delete_transient( 'onwords_flush_rewrite_rules' );
 	flush_rewrite_rules();
 	set_transient( 'onwords_flush_rewrite_rules', 1, DAY_IN_SECONDS );
