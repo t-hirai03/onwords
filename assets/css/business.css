@@ -711,7 +711,14 @@
 	.inbound-business-record__title,
 	.inbound-webinar__title,
 	.inbound-documents__title {
-		font-size: 28px;
+		font-size: 32px;
+	}
+
+	.inbound-case-study__header,
+	.inbound-business-record__header,
+	.inbound-webinar__header,
+	.inbound-documents__header {
+		margin-block-end: 40px;
 	}
 
 	.business-cards__list {
@@ -1176,12 +1183,20 @@
 	padding: 0 16px;
 }
 
+@media (min-width: 1141px) {
+	.inbound-case-study__header,
+	.inbound-business-record__header,
+	.inbound-webinar__header,
+	.inbound-documents__header {
+		margin-block-end: 60px;
+	}
+}
+
 .inbound-case-study__header,
 .inbound-business-record__header,
 .inbound-webinar__header,
 .inbound-documents__header {
 	text-align: center;
-	margin-block-end: 60px;
 }
 
 .inbound-case-study__label,
