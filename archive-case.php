@@ -110,16 +110,27 @@ $is_category_archive = is_tax('case_category');
 				<?php endwhile; ?>
 			</ul>
 
-			<!-- Pagination -->
 			<?php
-			the_posts_pagination(array(
-				'mid_size'           => 2,
-				'prev_text'          => '<i class="material-icons">keyboard_arrow_left</i>',
-				'next_text'          => '<i class="material-icons">keyboard_arrow_right</i>',
-				'screen_reader_text' => 'ページナビゲーション',
+			// ページネーション
+			$pagination = paginate_links(array(
+				'prev_text' => '前へ',
+				'next_text' => '次へ',
+				'type' => 'array',
 			));
+
+			if ($pagination) :
 			?>
-		<?php else : ?>
+				<nav class="pagination-wrapper">
+					<ul class="pagination">
+						<?php foreach ($pagination as $page) : ?>
+							<li class="pagination__item"><?php echo $page; ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</nav>
+			<?php
+			endif;
+		else :
+		?>
 			<p class="case-list__no-posts">導入事例はまだありません。</p>
 		<?php endif; ?>
 	</div>

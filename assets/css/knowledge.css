@@ -400,6 +400,10 @@
 	text-align: center;
 }
 
+.webinar-list__container {
+	width: 100%;
+}
+
 .webinar-list {
 	display: flex;
 	flex-direction: column;
