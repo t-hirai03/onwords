@@ -521,8 +521,9 @@
 }
 
 .business-services__icon {
-	width: 100px;
-	height: 100px;
+	width: 100%;
+	max-width: 100px;
+	aspect-ratio: 1;
 	background-size: cover;
 	background-position: 50% 0%;
 	background-repeat: no-repeat;
@@ -681,11 +682,23 @@
 
 @media (max-width: 767px) {
 	.business-hero-wrapper {
-		margin-bottom: 60px;
+		margin-bottom: 40px;
 	}
 
 	.business-list {
-		padding: 60px 0 0;
+		padding: 40px 0 0;
+	}
+
+	.business-section {
+		padding: 0 0 40px;
+	}
+
+	.section-header {
+		margin-bottom: 32px;
+	}
+
+	.business-list__header {
+		margin-bottom: 32px;
 	}
 
 	.business-list__subtitle {
@@ -714,11 +727,13 @@
 		font-size: 32px;
 	}
 
+	.inbound-strengths__header,
+	.inbound-services__header,
 	.inbound-case-study__header,
 	.inbound-business-record__header,
 	.inbound-webinar__header,
 	.inbound-documents__header {
-		margin-block-end: 40px;
+		margin-block-end: 32px;
 	}
 
 	.business-cards__list {
@@ -753,7 +768,7 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 40px 16px;
-		padding: 0 0 32px;
+		padding: 0;
 	}
 
 	.business-logos__item {
@@ -809,6 +824,10 @@
 	.business-services__header {
 		gap: 16px;
 		justify-content: center;
+	}
+
+	.business-services__icon {
+		max-width: 80px;
 	}
 }
 
@@ -1508,6 +1527,24 @@
 
 	.inbound-webinar__list {
 		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.inbound-strengths,
+	.inbound-services {
+		margin: 40px auto;
+	}
+
+	.inbound-case-study,
+	.inbound-business-record,
+	.inbound-webinar,
+	.inbound-documents {
+		margin: 40px 0;
+	}
+
+	.inbound-documents {
+		margin: 40px 0 0;
 	}
 }
 

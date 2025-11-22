@@ -171,6 +171,12 @@
    Responsive (Tablet)
    ======================================== */
 
+@media (max-width: 767px) {
+	.case-list__container {
+		margin-bottom: 40px;
+	}
+}
+
 @media (max-width: 840px) {
 	.archive-filter {
 		margin-bottom: 32px;

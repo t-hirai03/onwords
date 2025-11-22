@@ -435,6 +435,22 @@ section {
 
 /* Mobile (767px以下) */
 @media (max-width: 767px) {
+  .about__container {
+    padding: 40px 0;
+  }
+
+  .message {
+    padding: 40px 0;
+  }
+
+  .message__block {
+    margin: 0 40px 40px;
+  }
+
+  .news {
+    padding: 40px 0;
+  }
+
   .business__container {
     padding: 0 16px; /* Mobile padding */
   }
