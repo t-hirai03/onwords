@@ -18,7 +18,7 @@
 
 .section-header__label {
 	font-size: 16px;
-	font-weight: 700;
+	font-weight: 600;
 	color: var(--color-primary);
 	letter-spacing: 0.1em;
 	margin-bottom: 16px;
@@ -76,7 +76,7 @@
 .business-hero__label {
 	color: #FFFFFF;
 	font-size: 20px;
-	font-weight: 500;
+	font-weight: 600;
 	letter-spacing: 0.03em;
 	line-height: 1;
 	text-align: center;
@@ -998,7 +998,7 @@
 .inbound-strengths__label {
 	color: rgb(217, 30, 24);
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 600;
 	margin-block-end: 16px;
 }
 
@@ -1155,7 +1155,7 @@
 .inbound-services__label {
 	color: rgb(217, 30, 24);
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 600;
 	margin-block-end: 16px;
 }
 
@@ -1238,6 +1238,28 @@
 .inbound-webinar__header,
 .inbound-documents__header {
 	text-align: center;
+	margin-block-end: 60px;
+}
+
+.inbound-case-study__label,
+.inbound-business-record__label,
+.inbound-webinar__label,
+.inbound-documents__label {
+	color: rgb(217, 30, 24);
+	font-size: 16px;
+	font-weight: 600;
+	margin-block-end: 16px;
+}
+
+.inbound-case-study__title,
+.inbound-business-record__title,
+.inbound-webinar__title,
+.inbound-documents__title {
+	color: rgb(34, 34, 34);
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 1.5;
+	margin: 0;
 }
 
 /* Inbound Case Study Section */
