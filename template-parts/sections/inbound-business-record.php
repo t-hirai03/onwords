@@ -6,16 +6,16 @@
  */
 ?>
 
-<section class="inbound-business-record fade-in-up">
-	<div class="inbound-business-record__container">
-		<div class="inbound-business-record__header fade-in-up">
+<section class="inbound-business-record">
+	<div class="inbound-business-record__container fade-in-wrapper">
+		<div class="inbound-business-record__header fade-in-item">
 			<p class="inbound-business-record__label">OUR BUSINESS RECORD</p>
 			<h2 class="inbound-business-record__title">取引実績</h2>
 		</div>
 
-		<ul class="inbound-business-record__list">
+		<ul class="inbound-business-record__list fade-in-item">
 			<ul class="inbound-business-record__list-inner">
-				<li class="inbound-business-record__item fade-in-up">
+				<li class="inbound-business-record__item">
 					<div class="inbound-business-record__logo-wrapper">
 						<img
 							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_01.webp' ); ?>"
@@ -25,7 +25,7 @@
 						>
 					</div>
 				</li>
-				<li class="inbound-business-record__item fade-in-up">
+				<li class="inbound-business-record__item">
 					<div class="inbound-business-record__logo-wrapper">
 						<img
 							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_02.webp' ); ?>"
@@ -35,7 +35,7 @@
 						>
 					</div>
 				</li>
-				<li class="inbound-business-record__item fade-in-up">
+				<li class="inbound-business-record__item">
 					<div class="inbound-business-record__logo-wrapper">
 						<img
 							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_03.webp' ); ?>"
@@ -45,7 +45,7 @@
 						>
 					</div>
 				</li>
-				<li class="inbound-business-record__item fade-in-up">
+				<li class="inbound-business-record__item">
 					<div class="inbound-business-record__logo-wrapper">
 						<img
 							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_04.webp' ); ?>"
@@ -55,7 +55,7 @@
 						>
 					</div>
 				</li>
-				<li class="inbound-business-record__item fade-in-up">
+				<li class="inbound-business-record__item">
 					<div class="inbound-business-record__logo-wrapper">
 						<img
 							src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/business/inboundmarketing/client_logo_05.webp' ); ?>"

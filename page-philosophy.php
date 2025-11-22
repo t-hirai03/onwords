@@ -42,12 +42,12 @@ get_header();
 
 	<!-- Purpose Section -->
 	<section class="philosophy-purpose">
-		<div class="philosophy-purpose__inner">
-			<div class="philosophy-purpose__header">
+		<div class="philosophy-purpose__inner fade-in-wrapper">
+			<div class="philosophy-purpose__header fade-in-item">
 				<p class="section-header__label">PURPOSE</p>
 				<h2 class="section-header__title">パーパス</h2>
 			</div>
-			<div class="philosophy-purpose__content">
+			<div class="philosophy-purpose__content fade-in-item">
 				<p class="philosophy-purpose__text-en">Create growth and success for employees, customers, and communities</p>
 				<p class="philosophy-purpose__text-ja">従業員、顧客、地域の成長と成功の追求</p>
 			</div>
@@ -56,16 +56,16 @@ get_header();
 
 	<!-- Mission Section -->
 	<section class="philosophy-mission">
-		<div class="philosophy-mission__inner">
-			<div class="philosophy-mission__header">
+		<div class="philosophy-mission__inner fade-in-wrapper">
+			<div class="philosophy-mission__header fade-in-item">
 				<p class="section-header__label">MISSION</p>
 				<h2 class="section-header__title">ミッション</h2>
 			</div>
-			<div class="philosophy-mission__main-text">
+			<div class="philosophy-mission__main-text fade-in-item">
 				<p class="philosophy-mission__text-ja-main">もっと楽しい日本に</p>
 				<p class="philosophy-mission__text-en-main">Bring out Japan's fun side</p>
 			</div>
-			<div class="philosophy-mission__description">
+			<div class="philosophy-mission__description fade-in-item">
 				<p class="philosophy-mission__text-ja-desc">
 					日本を訪れる人も、迎える人も、みんなが楽しめる場所へ。<br>
 					そして、地域の魅力を日本の活力に。
@@ -80,12 +80,12 @@ get_header();
 
 	<!-- Values Section -->
 	<section class="philosophy-values">
-		<div class="philosophy-values__inner">
-			<div class="philosophy-values__header">
+		<div class="philosophy-values__inner fade-in-wrapper">
+			<div class="philosophy-values__header fade-in-item">
 				<p class="section-header__label">VALUES</p>
 				<h2 class="section-header__title">バリュー</h2>
 			</div>
-			<div class="philosophy-values__content">
+			<div class="philosophy-values__content fade-in-item">
 				<ul class="philosophy-values__list">
 					<li class="philosophy-values__item">
 						<p class="philosophy-values__value-ja">正しく</p>

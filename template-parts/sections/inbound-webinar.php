@@ -16,15 +16,15 @@ $webinar_args = array(
 $webinar_query = new WP_Query( $webinar_args );
 ?>
 
-<section class="inbound-webinar fade-in-up">
-	<div class="inbound-webinar__container">
-		<div class="inbound-webinar__header fade-in-up">
+<section class="inbound-webinar">
+	<div class="inbound-webinar__container fade-in-wrapper">
+		<div class="inbound-webinar__header fade-in-item">
 			<p class="inbound-webinar__label">WEBINAR</p>
 			<h2 class="inbound-webinar__title">ウェビナー情報</h2>
 		</div>
 
 		<?php if ( $webinar_query->have_posts() ) : ?>
-			<div class="webinar-list">
+			<div class="webinar-list fade-in-item">
 				<div class="webinar-list__items">
 					<?php while ( $webinar_query->have_posts() ) : $webinar_query->the_post(); ?>
 						<?php
@@ -74,7 +74,7 @@ $webinar_query = new WP_Query( $webinar_args );
 				</div>
 			</div>
 
-			<div class="inbound-webinar__button-wrapper">
+			<div class="inbound-webinar__button-wrapper fade-in-item">
 				<a href="<?php echo esc_url( home_url( '/knowledge/webinar' ) ); ?>" class="btn-primary">
 					すべてのウェビナーを見る
 				</a>

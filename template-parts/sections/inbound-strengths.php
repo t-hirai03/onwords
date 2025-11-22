@@ -7,15 +7,15 @@
 ?>
 
 <section class="business-section">
-	<div class="business-section__container">
-		<div class="section-header">
+	<div class="business-section__container fade-in-wrapper">
+		<div class="section-header fade-in-item">
 			<p class="section-header__label">OUR STRENGTHS</p>
 			<h2 class="section-header__title">インバウンドの集客支援になぜOnwordsが選ばれるのか</h2>
 		</div>
-		<p class="business-section__description">
+		<p class="business-section__description fade-in-item">
 			訪日インバウンド市場は独自のノウハウが求められる特殊な領域です。数多くの実績と知見を持つ私たちは、貴社のビジネスに最適な戦略を立案から実行までワンストップで支援。一般的なマーケティング会社では解決が難しいインバウンド特有の課題にも、専門家として的確にお応えします。
 		</p>
-		<div class="business-strengths">
+		<div class="business-strengths fade-in-item">
 			<!-- Navigation Links -->
 			<ul class="business-strengths__nav">
 				<li class="business-strengths__nav-item">
