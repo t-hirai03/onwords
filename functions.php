@@ -32,6 +32,17 @@ function onwords_theme_setup() {
 add_action( 'after_setup_theme', 'onwords_theme_setup' );
 
 /**
+ * Add noindex meta tag to all pages (pre-launch)
+ *
+ * IMPORTANT: Remove this function before going live in production
+ * This prevents search engines from indexing the site during development
+ */
+function onwords_add_noindex() {
+	echo '<meta name="robots" content="noindex, nofollow">' . "\n";
+}
+add_action( 'wp_head', 'onwords_add_noindex', 1 );
+
+/**
  * Load theme modules
  */
 
