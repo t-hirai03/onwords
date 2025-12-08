@@ -522,7 +522,7 @@
 
 .business-services__icon {
 	width: 100%;
-	max-width: 100px;
+	max-width: 80px;
 	aspect-ratio: 1;
 	background-size: cover;
 	background-position: 50% 0%;
@@ -787,21 +787,26 @@
 	}
 
 	.business-logos {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 40px 16px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 20px;
 		padding: 0;
 	}
 
 	.business-logos__item {
-		width: 100%;
+		width: 77px;
 		height: auto;
-		aspect-ratio: 146 / 206;
+		aspect-ratio: auto;
 	}
 
-	.business-logos__item:nth-child(8) {
-		grid-column: auto;
+	.business-logos__item img {
+		width: 77px;
+		height: auto;
+		max-height: 110px;
 	}
+
 
 	.business-strengths {
 		flex-direction: column;
@@ -849,7 +854,7 @@
 	}
 
 	.business-services__icon {
-		max-width: 80px;
+		max-width: 60px;
 	}
 }
 
