@@ -27,10 +27,6 @@
 	<meta name="twitter:description" content="<?php bloginfo( 'description' ); ?>">
 	<meta name="twitter:image" content="<?php echo esc_url( $ogp_image_url ); ?>">
 
-	<!-- Favicon -->
-	<link rel="icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/favicon.svg' ); ?>">
-	<link rel="apple-touch-icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/favicon.svg' ); ?>">
-
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
