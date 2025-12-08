@@ -5,19 +5,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="<?php bloginfo( 'description' ); ?>">
 
+	<?php
+	// OGP画像の決定: アイキャッチ画像があればそれを、なければデフォルト画像を使用
+	$ogp_image_url = get_template_directory_uri() . '/assets/images/common/ogp.png';
+	if ( is_singular() && has_post_thumbnail() ) {
+		$ogp_image_url = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+	}
+	?>
+
 	<!-- OGP -->
 	<meta property="og:title" content="<?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?>">
 	<meta property="og:description" content="<?php bloginfo( 'description' ); ?>">
-	<meta property="og:type" content="website">
+	<meta property="og:type" content="<?php echo is_singular() ? 'article' : 'website'; ?>">
 	<meta property="og:url" content="<?php echo esc_url( get_permalink() ); ?>">
-	<meta property="og:image" content="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/ogp.png' ); ?>">
+	<meta property="og:image" content="<?php echo esc_url( $ogp_image_url ); ?>">
 	<meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="<?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?>">
 	<meta name="twitter:description" content="<?php bloginfo( 'description' ); ?>">
-	<meta name="twitter:image" content="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/ogp.png' ); ?>">
+	<meta name="twitter:image" content="<?php echo esc_url( $ogp_image_url ); ?>">
 
 	<!-- Favicon -->
 	<link rel="icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/images/common/favicon.svg' ); ?>">
