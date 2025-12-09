@@ -479,21 +479,37 @@ function onwords_case_meta_box_callback( $post ) {
 }
 
 /**
- * Save meta box data
+ * Common function to verify meta box save conditions
+ *
+ * @param int    $post_id      Post ID.
+ * @param string $nonce_name   Nonce field name.
+ * @param string $nonce_action Nonce action name.
+ * @return bool True if all checks pass, false otherwise.
  */
-function onwords_save_case_meta( $post_id ) {
+function onwords_verify_meta_save( $post_id, $nonce_name, $nonce_action ) {
 	// Check nonce
-	if ( ! isset( $_POST['onwords_case_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_case_meta_nonce'], 'onwords_save_case_meta' ) ) {
-		return;
+	if ( ! isset( $_POST[ $nonce_name ] ) || ! wp_verify_nonce( $_POST[ $nonce_name ], $nonce_action ) ) {
+		return false;
 	}
 
 	// Check autosave
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
+		return false;
 	}
 
 	// Check permissions
 	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Save meta box data
+ */
+function onwords_save_case_meta( $post_id ) {
+	if ( ! onwords_verify_meta_save( $post_id, 'onwords_case_meta_nonce', 'onwords_save_case_meta' ) ) {
 		return;
 	}
 
@@ -538,18 +554,7 @@ function onwords_column_meta_box_callback( $post ) {
  * Save column meta box data
  */
 function onwords_save_column_meta( $post_id ) {
-	// Check nonce
-	if ( ! isset( $_POST['onwords_column_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_column_meta_nonce'], 'onwords_save_column_meta' ) ) {
-		return;
-	}
-
-	// Check autosave
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-
-	// Check permissions
-	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+	if ( ! onwords_verify_meta_save( $post_id, 'onwords_column_meta_nonce', 'onwords_save_column_meta' ) ) {
 		return;
 	}
 
@@ -601,18 +606,7 @@ function onwords_webinar_meta_box_callback( $post ) {
  * Save webinar meta box data
  */
 function onwords_save_webinar_meta( $post_id ) {
-	// Check nonce
-	if ( ! isset( $_POST['onwords_webinar_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_webinar_meta_nonce'], 'onwords_save_webinar_meta' ) ) {
-		return;
-	}
-
-	// Check autosave
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-
-	// Check permissions
-	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+	if ( ! onwords_verify_meta_save( $post_id, 'onwords_webinar_meta_nonce', 'onwords_save_webinar_meta' ) ) {
 		return;
 	}
 
