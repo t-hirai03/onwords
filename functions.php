@@ -188,3 +188,51 @@ function onwords_flush_rewrite_rules() {
 	set_transient( 'onwords_flush_rewrite_rules', 1, DAY_IN_SECONDS );
 }
 add_action( 'init', 'onwords_flush_rewrite_rules' );
+
+/**
+ * Check if webinar is upcoming or ended based on date and time
+ *
+ * @param int $post_id Post ID (optional, defaults to current post)
+ * @return bool True if upcoming, false if ended
+ */
+function onwords_is_webinar_upcoming( $post_id = null ) {
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$webinar_date = get_post_meta( $post_id, 'webinar_date', true );
+	$webinar_time = get_post_meta( $post_id, 'webinar_time', true );
+
+	if ( ! $webinar_date ) {
+		return false;
+	}
+
+	// 時刻が設定されていなければ23:59として扱う（その日の終わりまで「これから開催」）
+	$time_str = $webinar_time ? $webinar_time : '23:59';
+	$datetime_str = $webinar_date . ' ' . $time_str;
+
+	$webinar_timestamp = strtotime( $datetime_str );
+	$current_timestamp = current_time( 'timestamp' );
+
+	return $webinar_timestamp > $current_timestamp;
+}
+
+/**
+ * Get webinar status label
+ *
+ * @param int $post_id Post ID (optional, defaults to current post)
+ * @return string Status label ('これから開催' or '終了')
+ */
+function onwords_get_webinar_status_label( $post_id = null ) {
+	return onwords_is_webinar_upcoming( $post_id ) ? 'これから開催' : '終了';
+}
+
+/**
+ * Get webinar status slug
+ *
+ * @param int $post_id Post ID (optional, defaults to current post)
+ * @return string Status slug ('upcoming' or 'ended')
+ */
+function onwords_get_webinar_status_slug( $post_id = null ) {
+	return onwords_is_webinar_upcoming( $post_id ) ? 'upcoming' : 'ended';
+}

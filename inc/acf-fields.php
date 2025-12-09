@@ -24,29 +24,28 @@ function onwords_register_acf_fields() {
 	// Webinar ACF Fields
 	acf_add_local_field_group(
 		array(
-			'key'      => 'group_webinar',
-			'title'    => 'ウェビナー情報',
-			'fields'   => array(
+			'key'                   => 'group_webinar_info',
+			'title'                 => 'ウェビナー情報',
+			'fields'                => array(
 				array(
-					'key'           => 'field_webinar_date',
-					'label'         => '開催日',
-					'name'          => 'webinar_date',
-					'type'          => 'date_picker',
-					'required'      => 1,
+					'key'            => 'field_webinar_date',
+					'label'          => '開催日',
+					'name'           => 'webinar_date',
+					'type'           => 'date_picker',
+					'required'       => 1,
 					'display_format' => 'Y/m/d',
-					'return_format' => 'Y/m/d',
+					'return_format'  => 'Y-m-d',
+					'first_day'      => 1,
+					'instructions'   => '開催日を設定してください。',
 				),
 				array(
-					'key'           => 'field_webinar_status',
-					'label'         => 'ステータス',
-					'name'          => 'webinar_status',
-					'type'          => 'select',
-					'required'      => 1,
-					'choices'       => array(
-						'upcoming' => 'これから開催',
-						'ended'    => '終了',
-					),
-					'default_value' => 'upcoming',
+					'key'          => 'field_webinar_time',
+					'label'        => '開催時刻',
+					'name'         => 'webinar_time',
+					'type'         => 'text',
+					'required'     => 0,
+					'placeholder'  => '例: 14:00',
+					'instructions' => '開催時刻を入力してください（任意）。この日時を過ぎると自動的に「終了」として表示されます。',
 				),
 				array(
 					'key'           => 'field_webinar_target',
@@ -55,13 +54,13 @@ function onwords_register_acf_fields() {
 					'type'          => 'select',
 					'required'      => 1,
 					'choices'       => array(
-						'business'    => '民間企業様向け',
-						'government'  => '自治体様向け',
+						'business'   => '民間企業様向け',
+						'government' => '自治体様向け',
 					),
 					'default_value' => 'business',
 				),
 			),
-			'location' => array(
+			'location'              => array(
 				array(
 					array(
 						'param'    => 'post_type',
@@ -70,6 +69,14 @@ function onwords_register_acf_fields() {
 					),
 				),
 			),
+			'menu_order'            => 0,
+			'position'              => 'side',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen'        => '',
+			'active'                => true,
+			'show_in_rest'          => true,
 		)
 	);
 

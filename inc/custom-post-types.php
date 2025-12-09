@@ -295,7 +295,7 @@ function onwords_register_webinar_post_type() {
 		'menu_position'      => 9,
 		'menu_icon'          => 'dashicons-video-alt3',
 		'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
-		'taxonomies'         => array( 'webinar_category', 'webinar_target', 'webinar_status' ),
+		'taxonomies'         => array( 'webinar_category', 'webinar_target' ),
 	);
 
 	register_post_type( 'webinar', $args );
@@ -334,37 +334,6 @@ function onwords_register_webinar_target() {
 }
 add_action( 'init', 'onwords_register_webinar_target' );
 
-/**
- * Register Webinar Status taxonomy
- */
-function onwords_register_webinar_status() {
-	$labels = array(
-		'name'              => 'ステータス',
-		'singular_name'     => 'ステータス',
-		'search_items'      => 'ステータスを検索',
-		'all_items'         => 'すべてのステータス',
-		'parent_item'       => '親ステータス',
-		'parent_item_colon' => '親ステータス:',
-		'edit_item'         => 'ステータスを編集',
-		'update_item'       => 'ステータスを更新',
-		'add_new_item'      => '新しいステータスを追加',
-		'new_item_name'     => '新しいステータス名',
-		'menu_name'         => 'ステータス',
-	);
-
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'show_in_rest'      => true,
-		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'knowledge/webinar/status' ),
-	);
-
-	register_taxonomy( 'webinar_status', array( 'webinar' ), $args );
-}
-add_action( 'init', 'onwords_register_webinar_status' );
 
 /**
  * Register Webinar Category taxonomy
@@ -536,68 +505,6 @@ function onwords_save_case_meta( $post_id ) {
 add_action( 'save_post_case', 'onwords_save_case_meta' );
 
 /**
- * Add custom meta box for Webinar post type
- */
-function onwords_add_webinar_meta_box() {
-	add_meta_box(
-		'webinar_info',
-		'ウェビナー情報',
-		'onwords_webinar_meta_box_callback',
-		'webinar',
-		'normal',
-		'high'
-	);
-}
-add_action( 'add_meta_boxes', 'onwords_add_webinar_meta_box' );
-
-/**
- * Webinar meta box callback function
- */
-function onwords_webinar_meta_box_callback( $post ) {
-	wp_nonce_field( 'onwords_save_webinar_meta', 'onwords_webinar_meta_nonce' );
-	$webinar_date = get_post_meta( $post->ID, 'webinar_date', true );
-	?>
-	<table class="form-table">
-		<tr>
-			<th>
-				<label for="webinar_date">開催日</label>
-			</th>
-			<td>
-				<input type="text" id="webinar_date" name="webinar_date" value="<?php echo esc_attr( $webinar_date ); ?>" class="regular-text" />
-				<p class="description">例: 2025/11/11</p>
-			</td>
-		</tr>
-	</table>
-	<?php
-}
-
-/**
- * Save webinar meta box data
- */
-function onwords_save_webinar_meta( $post_id ) {
-	// Check nonce
-	if ( ! isset( $_POST['onwords_webinar_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_webinar_meta_nonce'], 'onwords_save_webinar_meta' ) ) {
-		return;
-	}
-
-	// Check autosave
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-
-	// Check permissions
-	if ( ! current_user_can( 'edit_post', $post_id ) ) {
-		return;
-	}
-
-	// Save webinar_date
-	if ( isset( $_POST['webinar_date'] ) ) {
-		update_post_meta( $post_id, 'webinar_date', sanitize_text_field( $_POST['webinar_date'] ) );
-	}
-}
-add_action( 'save_post_webinar', 'onwords_save_webinar_meta' );
-
-/**
  * Add custom meta box for Column post type (Pickup)
  */
 function onwords_add_column_meta_box() {
@@ -654,3 +561,166 @@ function onwords_save_column_meta( $post_id ) {
 	}
 }
 add_action( 'save_post_column', 'onwords_save_column_meta' );
+
+/**
+ * Add custom meta box for Webinar post type
+ */
+function onwords_add_webinar_meta_box() {
+	add_meta_box(
+		'webinar_schedule',
+		'ウェビナー終了日時',
+		'onwords_webinar_meta_box_callback',
+		'webinar',
+		'side',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'onwords_add_webinar_meta_box' );
+
+/**
+ * Webinar meta box callback function
+ */
+function onwords_webinar_meta_box_callback( $post ) {
+	wp_nonce_field( 'onwords_save_webinar_meta', 'onwords_webinar_meta_nonce' );
+	$webinar_date = get_post_meta( $post->ID, 'webinar_date', true );
+	$webinar_time = get_post_meta( $post->ID, 'webinar_time', true );
+	?>
+	<p>
+		<label for="webinar_date"><strong>終了日 <span style="color: #cc0000;">*</span></strong></label><br>
+		<input type="date" id="webinar_date" name="webinar_date" value="<?php echo esc_attr( $webinar_date ); ?>" style="width: 100%;" required />
+	</p>
+	<p>
+		<label for="webinar_time"><strong>終了時刻 <span style="color: #cc0000;">*</span></strong></label><br>
+		<input type="time" id="webinar_time" name="webinar_time" value="<?php echo esc_attr( $webinar_time ); ?>" style="width: 100%;" required />
+		<span class="description">この日時を過ぎると「過去のウェビナー」として表示されます。</span>
+	</p>
+	<?php
+}
+
+/**
+ * Save webinar meta box data
+ */
+function onwords_save_webinar_meta( $post_id ) {
+	// Check nonce
+	if ( ! isset( $_POST['onwords_webinar_meta_nonce'] ) || ! wp_verify_nonce( $_POST['onwords_webinar_meta_nonce'], 'onwords_save_webinar_meta' ) ) {
+		return;
+	}
+
+	// Check autosave
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check permissions
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	// Save webinar_date
+	if ( isset( $_POST['webinar_date'] ) ) {
+		update_post_meta( $post_id, 'webinar_date', sanitize_text_field( $_POST['webinar_date'] ) );
+	}
+
+	// Save webinar_time
+	if ( isset( $_POST['webinar_time'] ) ) {
+		update_post_meta( $post_id, 'webinar_time', sanitize_text_field( $_POST['webinar_time'] ) );
+	}
+}
+add_action( 'save_post_webinar', 'onwords_save_webinar_meta' );
+
+/**
+ * Add JavaScript validation for webinar required fields (Block Editor)
+ */
+function onwords_webinar_validation_script() {
+	global $post_type;
+
+	if ( $post_type !== 'webinar' ) {
+		return;
+	}
+	?>
+	<script>
+	(function() {
+		// ブロックエディターの公開ボタン監視
+		var checkInterval = setInterval(function() {
+			// 公開ボタンを探す
+			var publishButton = document.querySelector('.editor-post-publish-button, .editor-post-publish-panel__toggle');
+			if (!publishButton) return;
+
+			clearInterval(checkInterval);
+
+			// クリックイベントを監視
+			publishButton.addEventListener('click', function(e) {
+				var dateField = document.querySelector('input[name="webinar_date"]');
+				var timeField = document.querySelector('input[name="webinar_time"]');
+				var errors = [];
+
+				if (!dateField || !dateField.value) {
+					errors.push('終了日');
+				}
+				if (!timeField || !timeField.value) {
+					errors.push('終了時刻');
+				}
+
+				if (errors.length > 0) {
+					e.preventDefault();
+					e.stopPropagation();
+					alert('以下の項目を入力してください：\n\n・' + errors.join('\n・'));
+					return false;
+				}
+			}, true);
+
+			// 公開パネル内の公開ボタンも監視
+			document.addEventListener('click', function(e) {
+				if (e.target && (e.target.classList.contains('editor-post-publish-button') ||
+					e.target.closest('.editor-post-publish-button'))) {
+
+					var dateField = document.querySelector('input[name="webinar_date"]');
+					var timeField = document.querySelector('input[name="webinar_time"]');
+					var errors = [];
+
+					if (!dateField || !dateField.value) {
+						errors.push('終了日');
+					}
+					if (!timeField || !timeField.value) {
+						errors.push('終了時刻');
+					}
+
+					if (errors.length > 0) {
+						e.preventDefault();
+						e.stopPropagation();
+						alert('以下の項目を入力してください：\n\n・' + errors.join('\n・'));
+						return false;
+					}
+				}
+			}, true);
+		}, 500);
+
+		// クラシックエディターのフォームsubmit対応
+		document.addEventListener('DOMContentLoaded', function() {
+			var form = document.getElementById('post');
+			if (!form) return;
+
+			form.addEventListener('submit', function(e) {
+				var dateField = document.getElementById('webinar_date');
+				var timeField = document.getElementById('webinar_time');
+				var errors = [];
+
+				if (!dateField || !dateField.value) {
+					errors.push('終了日');
+				}
+				if (!timeField || !timeField.value) {
+					errors.push('終了時刻');
+				}
+
+				if (errors.length > 0) {
+					e.preventDefault();
+					alert('以下の項目を入力してください：\n\n・' + errors.join('\n・'));
+					return false;
+				}
+			});
+		});
+	})();
+	</script>
+	<?php
+}
+add_action( 'admin_footer', 'onwords_webinar_validation_script' );
