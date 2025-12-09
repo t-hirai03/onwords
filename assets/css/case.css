@@ -33,10 +33,10 @@
 	padding: 6px 14px;
 	font-size: 13px;
 	font-weight: 500;
-	border: 1px solid #e2e2e2;
+	border: 1px solid var(--color-border-light);
 	border-radius: 2px;
-	background-color: #fff;
-	color: #333;
+	background-color: var(--color-bg-white);
+	color: var(--color-text-secondary);
 	text-decoration: none;
 	transition: all 0.3s ease;
 	white-space: nowrap;
@@ -44,13 +44,13 @@
 }
 
 .archive-filter__button:hover {
-	background-color: #f8f8f8;
+	background-color: var(--color-bg-gray);
 }
 
 .archive-filter__button--active {
-	background-color: var(--color-primary);
-	color: #fff;
-	border-color: var(--color-primary);
+	background-color: var(--color-brand-red);
+	color: var(--color-bg-white);
+	border-color: var(--color-brand-red);
 }
 
 /* ========================================
@@ -75,19 +75,19 @@
 
 .case-list__item {
 	width: calc(33.33% - 22px);
-	border: 1px solid #ebebeb;
+	border: 1px solid var(--color-border-card);
 	border-radius: 8px;
 	box-shadow: 1px 3px 18px 0px rgba(18, 18, 18, 0.04);
 	transition: border-color 0.4s ease;
 }
 
 .case-list__item:hover {
-	border-color: rgb(36, 60, 122);
+	border-color: var(--color-accent-blue);
 }
 
 .case-list__no-posts {
 	text-align: center;
-	color: #666;
+	color: var(--color-text-light);
 	padding: 40px 0;
 }
 
@@ -136,7 +136,7 @@
 .case-card__company {
 	font-size: 14px;
 	font-weight: 500;
-	color: #222;
+	color: var(--color-text-primary);
 	line-height: 1.75;
 	margin: 0;
 }
@@ -144,7 +144,7 @@
 .case-card__title {
 	font-size: 20px;
 	font-weight: 700;
-	color: #222;
+	color: var(--color-text-primary);
 	line-height: 1.6;
 	margin: 0;
 }
@@ -153,16 +153,16 @@
 	display: flex;
 	gap: 3px;
 	padding-top: 12px;
-	border-top: 1px solid #e2e2e2;
+	border-top: 1px solid var(--color-border-light);
 }
 
 .case-card__tag {
 	font-size: 12px;
 	font-weight: 500;
-	color: #222;
+	color: var(--color-text-primary);
 	line-height: 1.75;
 	padding: 0 6px;
-	background-color: #e3e3e3;
+	background-color: var(--color-bg-gray-light);
 	border-radius: 2px;
 	display: inline-block;
 }
@@ -247,7 +247,7 @@
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 1.6;
-	color: rgb(34, 34, 34);
+	color: var(--color-text-primary);
 	margin: 0 0 24px;
 	text-align: left;
 }
@@ -278,7 +278,7 @@
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 1.75;
-	color: rgb(34, 34, 34);
+	color: var(--color-text-primary);
 	margin: 0;
 	padding: 0;
 }
@@ -306,9 +306,9 @@
 	font-size: 12px;
 	font-weight: 500;
 	line-height: 1.75;
-	color: rgb(34, 34, 34);
+	color: var(--color-text-primary);
 	padding: 2px 6px;
-	background-color: rgb(246, 246, 246);
+	background-color: var(--color-bg-gray);
 	border-radius: 2px;
 	margin: 0;
 }
@@ -318,7 +318,7 @@
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 1.75;
-	color: rgb(66, 66, 66);
+	color: var(--color-text-tertiary);
 	margin: 0;
 }
 
@@ -345,17 +345,17 @@
 	font-size: 24px;
 	font-weight: 700;
 	line-height: 1.6;
-	color: rgb(34, 34, 34);
+	color: var(--color-text-primary);
 	margin: 40px 0 24px;
 	padding: 0 0 4px;
-	border-bottom: 2px solid rgb(231, 74, 74);
+	border-bottom: 2px solid var(--color-brand-red);
 }
 
 .case-single__content h3 {
 	font-size: 20px;
 	font-weight: 700;
 	line-height: 1.5;
-	color: rgb(231, 74, 74);
+	color: var(--color-brand-red);
 	margin: 10px 0;
 	padding: 0;
 }
@@ -364,7 +364,7 @@
 	font-size: 18px;
 	font-weight: 700;
 	line-height: 1.5;
-	color: rgb(255, 154, 154);
+	color: var(--color-brand-red-light);
 	margin: 10px 0;
 	padding: 0;
 }
@@ -373,7 +373,7 @@
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.8;
-	color: rgb(34, 34, 34);
+	color: var(--color-text-primary);
 	margin: 20px 0;
 }
 
@@ -393,7 +393,7 @@
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.6;
-	color: rgb(34, 34, 34);
+	color: var(--color-text-primary);
 	margin: 10px 0;
 	padding-left: 0;
 	position: relative;
@@ -405,7 +405,7 @@
 	display: inline-block;
 	width: 6px;
 	height: 6px;
-	background-color: rgb(231, 74, 74);
+	background-color: var(--color-brand-red);
 	border-radius: 50%;
 	margin-right: 10px;
 	vertical-align: middle;
