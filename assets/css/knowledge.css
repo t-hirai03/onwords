@@ -79,9 +79,9 @@
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
-	padding: 10px;
-	margin: 0 auto;
-	max-width: 1152px;
+	padding: 10px 16px;
+	margin-inline: auto;
+	max-width: 1312px;
 	border-bottom: 1px solid rgb(219, 219, 219);
 }
 
@@ -125,10 +125,6 @@
 }
 
 @media screen and (max-width: 768px) {
-	.filter-container {
-		width: 677.695px;
-	}
-
 	.filter-text-link {
 		font-size: 18px;
 		line-height: 25.2px;
@@ -138,7 +134,6 @@
 @media screen and (max-width: 500px) {
 	.filter-container {
 		flex-direction: column;
-		width: 436.5px;
 	}
 
 	.filter-item {
@@ -218,9 +213,14 @@
 }
 
 .columns-list__items {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	gap: 32px;
+}
+
+.columns-list__items .columns-card {
+	width: calc((100% - 64px) / 3);
 }
 
 .columns-card {
@@ -316,14 +316,14 @@
 }
 
 @media screen and (max-width: 768px) {
-	.columns-list__items {
-		grid-template-columns: repeat(2, 1fr);
+	.columns-list__items .columns-card {
+		width: calc((100% - 32px) / 2);
 	}
 }
 
 @media screen and (max-width: 500px) {
-	.columns-list__items {
-		grid-template-columns: 1fr;
+	.columns-list__items .columns-card {
+		width: 100%;
 	}
 
 	.columns-label {
@@ -364,6 +364,15 @@
 .webinar-past {
 	padding: 60px 0 0;
 	margin: 0 0 20px;
+}
+
+.webinar-upcoming .archive-list__no-posts,
+.webinar-past .archive-list__no-posts {
+	width: 100%;
+	text-align: center;
+	padding: 40px 0;
+	font-size: 16px;
+	color: rgb(102, 102, 102);
 }
 
 .webinar-header {
@@ -409,9 +418,14 @@
 }
 
 .webinar-list__items {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	gap: 32px;
+}
+
+.webinar-list__items .webinar-card {
+	width: calc((100% - 64px) / 3);
 }
 
 .webinar-card {
@@ -505,14 +519,14 @@
 }
 
 @media screen and (max-width: 768px) {
-	.webinar-list__items {
-		grid-template-columns: repeat(2, 1fr);
+	.webinar-list__items .webinar-card {
+		width: calc((100% - 32px) / 2);
 	}
 }
 
 @media screen and (max-width: 500px) {
-	.webinar-list__items {
-		grid-template-columns: 1fr;
+	.webinar-list__items .webinar-card {
+		width: 100%;
 	}
 
 	.webinar-label {

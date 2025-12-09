@@ -30,18 +30,42 @@ get_header();
 	// ページ番号を取得（過去のウェビナー用）
 	$past_paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-	// 開催予定のウェビナーを取得（「終了」以外のもの）
+	// 現在の日時
+	$current_date = current_time('Y-m-d');
+	$current_time = current_time('H:i');
+
+	// 全ウェビナーを取得して、PHPで振り分け
+	$all_webinars = new WP_Query(array(
+		'post_type' => 'webinar',
+		'posts_per_page' => -1,
+		'post_status' => 'publish',
+	));
+
+	$upcoming_posts = array();
+	$past_posts = array();
+
+	if ($all_webinars->have_posts()) {
+		while ($all_webinars->have_posts()) {
+			$all_webinars->the_post();
+			$post_id = get_the_ID();
+
+			// onwords_is_webinar_upcoming関数を使用して判定
+			if (onwords_is_webinar_upcoming($post_id)) {
+				$upcoming_posts[] = $post_id;
+			} else {
+				$past_posts[] = $post_id;
+			}
+		}
+		wp_reset_postdata();
+	}
+
+	// 開催予定のウェビナーを取得
 	$upcoming_query = new WP_Query(array(
 		'post_type' => 'webinar',
 		'posts_per_page' => -1,
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'webinar_status',
-				'field' => 'slug',
-				'terms' => 'closed', // 「終了」のスラッグ
-				'operator' => 'NOT IN', // 「終了」以外
-			),
-		),
+		'post__in' => !empty($upcoming_posts) ? $upcoming_posts : array(0),
+		'orderby' => 'date',
+		'order' => 'ASC',
 	));
 
 	// 1ページ目のみ開催予定セクションを表示
@@ -116,18 +140,14 @@ get_header();
 
 		<div class="webinar-list__container">
 			<?php
-			// 過去のウェビナーを取得（「終了」が設定されているもの）
+			// 過去のウェビナーを取得（上で振り分けた$past_postsを使用）
 			$past_query = new WP_Query(array(
 				'post_type' => 'webinar',
 				'posts_per_page' => 9,
 				'paged' => $past_paged,
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'webinar_status',
-						'field' => 'slug',
-						'terms' => 'closed', // 「終了」のスラッグ
-					),
-				),
+				'post__in' => !empty($past_posts) ? $past_posts : array(0),
+				'orderby' => 'date',
+				'order' => 'DESC',
 			));
 
 			if ($past_query->have_posts()) :

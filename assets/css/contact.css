@@ -91,8 +91,8 @@
 
 /* フォームラッパー */
 .contact-form-wrapper {
-  max-width: 1312px;
-  margin: 0 auto 80px;
+  max-width: 768px;
+  margin: 0 auto;
   padding: 0 16px;
 }
 
@@ -129,9 +129,6 @@
     margin-bottom: 32px;
   }
 
-  .contact-form-wrapper {
-    margin-bottom: 40px;
-  }
 
   .contact-hero {
     height: 240px;
@@ -158,10 +155,6 @@
     border-radius: 12px;
   }
 
-  /* フォームセクション */
-  .contact-form-wrapper {
-    margin-bottom: 60px;
-  }
 
   /* iframe高さ調整（スマホでは内容に応じて調整が必要な場合があります） */
   .contact-form__iframe {

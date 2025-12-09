@@ -13,6 +13,26 @@
   /* Primary Brand Color (Onwords Red) */
   --color-primary: #E53935;
   --color-primary-hover: #D32F2F;
+  --color-brand-red: rgb(231, 74, 74);        /* E74A4A - Primary brand red */
+  --color-brand-red-dark: rgb(230, 1, 18);    /* E60112 - Dark brand red */
+  --color-brand-red-light: rgb(255, 154, 154); /* FF9A9A - Light brand red */
+  --color-brand-red-hover: rgb(255, 241, 239); /* FFF1EF - Hover background */
+
+  /* Text Colors */
+  --color-text-primary: rgb(34, 34, 34);      /* 222222 - Primary text */
+  --color-text-secondary: rgb(51, 51, 51);    /* 333333 - Secondary text */
+  --color-text-tertiary: rgb(66, 66, 66);     /* 424242 - Tertiary text */
+  --color-text-light: rgb(102, 102, 102);     /* 666666 - Light text */
+
+  /* Background Colors */
+  --color-bg-white: rgb(255, 255, 255);       /* FFFFFF - White background */
+  --color-bg-gray: rgb(246, 246, 246);        /* F6F6F6 - Gray background */
+  --color-bg-gray-light: rgb(238, 238, 238);  /* EEEEEE - Light gray background */
+
+  /* Border Colors */
+  --color-border-light: rgb(226, 226, 226);   /* E2E2E2 - Light border */
+  --color-border-card: #ebebeb;               /* EBEBEB - Card border */
+  --color-accent-blue: rgb(36, 60, 122);      /* 243C7A - Accent blue for hover */
 
   /* ========================================
      Typography Variables

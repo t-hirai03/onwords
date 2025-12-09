@@ -106,14 +106,43 @@ function onwords_document_query_vars( $query_vars ) {
 add_filter( 'query_vars', 'onwords_document_query_vars' );
 
 /**
+ * Common function to set archive query parameters
+ *
+ * @param WP_Query $query         The WP_Query instance.
+ * @param string   $post_type     Post type to check.
+ * @param string   $taxonomy      Optional taxonomy for filtering.
+ * @param string   $query_param   Optional GET parameter name for taxonomy filter.
+ * @param int      $posts_per_page Number of posts per page. Default 9.
+ */
+function onwords_set_archive_query( $query, $post_type, $taxonomy = '', $query_param = '', $posts_per_page = 9 ) {
+	if ( is_admin() || ! $query->is_main_query() || ! is_post_type_archive( $post_type ) ) {
+		return;
+	}
+
+	$query->set( 'posts_per_page', $posts_per_page );
+	$query->set( 'orderby', 'date' );
+	$query->set( 'order', 'DESC' );
+
+	// タクソノミーフィルタリング
+	if ( ! empty( $taxonomy ) && ! empty( $query_param ) ) {
+		$category_slug = isset( $_GET[ $query_param ] ) ? sanitize_text_field( $_GET[ $query_param ] ) : '';
+		if ( ! empty( $category_slug ) ) {
+			$query->set( 'tax_query', array(
+				array(
+					'taxonomy' => $taxonomy,
+					'field'    => 'slug',
+					'terms'    => $category_slug,
+				),
+			) );
+		}
+	}
+}
+
+/**
  * Modify main query for document archive
  */
 function onwords_document_archive_query( $query ) {
-	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'document' ) ) {
-		$query->set( 'posts_per_page', 9 );
-		$query->set( 'orderby', 'date' );
-		$query->set( 'order', 'DESC' );
-	}
+	onwords_set_archive_query( $query, 'document' );
 }
 add_action( 'pre_get_posts', 'onwords_document_archive_query' );
 
@@ -121,23 +150,7 @@ add_action( 'pre_get_posts', 'onwords_document_archive_query' );
  * Modify main query for news archive
  */
 function onwords_news_archive_query( $query ) {
-	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'news' ) ) {
-		$query->set( 'posts_per_page', 9 );
-		$query->set( 'orderby', 'date' );
-		$query->set( 'order', 'DESC' );
-
-		// カテゴリーでフィルタリング（URLパラメータから）
-		$category_slug = isset( $_GET['news_category'] ) ? sanitize_text_field( $_GET['news_category'] ) : '';
-		if ( ! empty( $category_slug ) ) {
-			$query->set( 'tax_query', array(
-				array(
-					'taxonomy' => 'news_category',
-					'field'    => 'slug',
-					'terms'    => $category_slug,
-				),
-			) );
-		}
-	}
+	onwords_set_archive_query( $query, 'news', 'news_category', 'news_category' );
 }
 add_action( 'pre_get_posts', 'onwords_news_archive_query' );
 
@@ -145,23 +158,7 @@ add_action( 'pre_get_posts', 'onwords_news_archive_query' );
  * Modify main query for case archive
  */
 function onwords_case_archive_query( $query ) {
-	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'case' ) ) {
-		$query->set( 'posts_per_page', 9 );
-		$query->set( 'orderby', 'date' );
-		$query->set( 'order', 'DESC' );
-
-		// カテゴリーでフィルタリング（URLパラメータから）
-		$category_slug = isset( $_GET['case_category'] ) ? sanitize_text_field( $_GET['case_category'] ) : '';
-		if ( ! empty( $category_slug ) ) {
-			$query->set( 'tax_query', array(
-				array(
-					'taxonomy' => 'case_category',
-					'field'    => 'slug',
-					'terms'    => $category_slug,
-				),
-			) );
-		}
-	}
+	onwords_set_archive_query( $query, 'case', 'case_category', 'case_category' );
 }
 add_action( 'pre_get_posts', 'onwords_case_archive_query' );
 
@@ -169,11 +166,7 @@ add_action( 'pre_get_posts', 'onwords_case_archive_query' );
  * Modify main query for column archive
  */
 function onwords_column_archive_query( $query ) {
-	if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'column' ) ) {
-		$query->set( 'posts_per_page', 9 );
-		$query->set( 'orderby', 'date' );
-		$query->set( 'order', 'DESC' );
-	}
+	onwords_set_archive_query( $query, 'column' );
 }
 add_action( 'pre_get_posts', 'onwords_column_archive_query' );
 
@@ -188,3 +181,51 @@ function onwords_flush_rewrite_rules() {
 	set_transient( 'onwords_flush_rewrite_rules', 1, DAY_IN_SECONDS );
 }
 add_action( 'init', 'onwords_flush_rewrite_rules' );
+
+/**
+ * Check if webinar is upcoming or ended based on date and time
+ *
+ * @param int $post_id Post ID (optional, defaults to current post)
+ * @return bool True if upcoming, false if ended
+ */
+function onwords_is_webinar_upcoming( $post_id = null ) {
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$webinar_date = get_post_meta( $post_id, 'webinar_date', true );
+	$webinar_time = get_post_meta( $post_id, 'webinar_time', true );
+
+	if ( ! $webinar_date ) {
+		return false;
+	}
+
+	// 時刻が設定されていなければ23:59として扱う（その日の終わりまで「これから開催」）
+	$time_str = $webinar_time ? $webinar_time : '23:59';
+	$datetime_str = $webinar_date . ' ' . $time_str;
+
+	$webinar_timestamp = strtotime( $datetime_str );
+	$current_timestamp = current_time( 'timestamp' );
+
+	return $webinar_timestamp > $current_timestamp;
+}
+
+/**
+ * Get webinar status label
+ *
+ * @param int $post_id Post ID (optional, defaults to current post)
+ * @return string Status label ('これから開催' or '終了')
+ */
+function onwords_get_webinar_status_label( $post_id = null ) {
+	return onwords_is_webinar_upcoming( $post_id ) ? 'これから開催' : '終了';
+}
+
+/**
+ * Get webinar status slug
+ *
+ * @param int $post_id Post ID (optional, defaults to current post)
+ * @return string Status slug ('upcoming' or 'ended')
+ */
+function onwords_get_webinar_status_slug( $post_id = null ) {
+	return onwords_is_webinar_upcoming( $post_id ) ? 'upcoming' : 'ended';
+}
