@@ -213,9 +213,14 @@
 }
 
 .columns-list__items {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	gap: 32px;
+}
+
+.columns-list__items .columns-card {
+	width: calc((100% - 64px) / 3);
 }
 
 .columns-card {
@@ -311,14 +316,14 @@
 }
 
 @media screen and (max-width: 768px) {
-	.columns-list__items {
-		grid-template-columns: repeat(2, 1fr);
+	.columns-list__items .columns-card {
+		width: calc((100% - 32px) / 2);
 	}
 }
 
 @media screen and (max-width: 500px) {
-	.columns-list__items {
-		grid-template-columns: 1fr;
+	.columns-list__items .columns-card {
+		width: 100%;
 	}
 
 	.columns-label {
