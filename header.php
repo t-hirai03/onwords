@@ -3,28 +3,89 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="<?php bloginfo( 'description' ); ?>">
 
 	<?php
-	// OGP画像の決定: アイキャッチ画像があればそれを、なければデフォルト画像を使用
-	$ogp_image_url = get_template_directory_uri() . '/assets/images/common/ogp.png';
+	// OGP用の値を設定
+	$site_name       = get_bloginfo( 'name' );
+	$site_description = get_bloginfo( 'description' );
+	$default_ogp_image = get_template_directory_uri() . '/assets/images/common/ogp.png';
+
+	// OGP画像の決定
+	$ogp_image_url    = $default_ogp_image;
+	$ogp_image_width  = 1200;
+	$ogp_image_height = 630;
+
 	if ( is_singular() && has_post_thumbnail() ) {
 		$ogp_image_url = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+		$thumbnail_id  = get_post_thumbnail_id( get_the_ID() );
+		$image_meta    = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+		if ( $image_meta ) {
+			$ogp_image_width  = $image_meta[1];
+			$ogp_image_height = $image_meta[2];
+		}
 	}
+
+	// OGPタイトルの決定
+	if ( is_front_page() ) {
+		$ogp_title = $site_name;
+	} elseif ( is_singular() ) {
+		$ogp_title = get_the_title() . ' | ' . $site_name;
+	} elseif ( is_post_type_archive() ) {
+		$ogp_title = post_type_archive_title( '', false ) . ' | ' . $site_name;
+	} elseif ( is_tax() || is_category() || is_tag() ) {
+		$ogp_title = single_term_title( '', false ) . ' | ' . $site_name;
+	} else {
+		$ogp_title = wp_title( '|', false, 'right' ) . $site_name;
+	}
+
+	// OGP説明の決定
+	if ( is_singular() ) {
+		$post_obj = get_post();
+		if ( has_excerpt( $post_obj ) ) {
+			$ogp_description = get_the_excerpt( $post_obj );
+		} elseif ( ! empty( $post_obj->post_content ) ) {
+			$ogp_description = wp_trim_words( wp_strip_all_tags( $post_obj->post_content ), 120, '...' );
+		} else {
+			$ogp_description = $site_description;
+		}
+	} else {
+		$ogp_description = $site_description;
+	}
+
+	// OGP URLの決定
+	if ( is_front_page() ) {
+		$ogp_url = home_url( '/' );
+	} elseif ( is_singular() ) {
+		$ogp_url = get_permalink();
+	} elseif ( is_post_type_archive() ) {
+		$ogp_url = get_post_type_archive_link( get_post_type() );
+	} elseif ( is_tax() || is_category() || is_tag() ) {
+		$ogp_url = get_term_link( get_queried_object() );
+	} else {
+		$ogp_url = home_url( $_SERVER['REQUEST_URI'] );
+	}
+
+	// OGP typeの決定
+	$ogp_type = is_singular() ? 'article' : 'website';
 	?>
 
+	<meta name="description" content="<?php echo esc_attr( $ogp_description ); ?>">
+
 	<!-- OGP -->
-	<meta property="og:title" content="<?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?>">
-	<meta property="og:description" content="<?php bloginfo( 'description' ); ?>">
-	<meta property="og:type" content="<?php echo is_singular() ? 'article' : 'website'; ?>">
-	<meta property="og:url" content="<?php echo esc_url( get_permalink() ); ?>">
+	<meta property="og:title" content="<?php echo esc_attr( $ogp_title ); ?>">
+	<meta property="og:description" content="<?php echo esc_attr( $ogp_description ); ?>">
+	<meta property="og:type" content="<?php echo esc_attr( $ogp_type ); ?>">
+	<meta property="og:url" content="<?php echo esc_url( $ogp_url ); ?>">
 	<meta property="og:image" content="<?php echo esc_url( $ogp_image_url ); ?>">
-	<meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
+	<meta property="og:image:width" content="<?php echo esc_attr( $ogp_image_width ); ?>">
+	<meta property="og:image:height" content="<?php echo esc_attr( $ogp_image_height ); ?>">
+	<meta property="og:site_name" content="<?php echo esc_attr( $site_name ); ?>">
+	<meta property="og:locale" content="ja_JP">
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="<?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?>">
-	<meta name="twitter:description" content="<?php bloginfo( 'description' ); ?>">
+	<meta name="twitter:title" content="<?php echo esc_attr( $ogp_title ); ?>">
+	<meta name="twitter:description" content="<?php echo esc_attr( $ogp_description ); ?>">
 	<meta name="twitter:image" content="<?php echo esc_url( $ogp_image_url ); ?>">
 
 	<?php wp_head(); ?>
