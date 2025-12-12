@@ -229,3 +229,13 @@ function onwords_get_webinar_status_label( $post_id = null ) {
 function onwords_get_webinar_status_slug( $post_id = null ) {
 	return onwords_is_webinar_upcoming( $post_id ) ? 'upcoming' : 'ended';
 }
+
+/**
+ * Disable All in One SEO OGP/Social/Description output
+ * テーマ側でOGPとmeta descriptionを管理するため、プラグインの出力を無効化
+ */
+add_filter( 'aioseo_disable_social_meta', '__return_true' );
+add_filter( 'aioseo_facebook_tags', '__return_empty_array' );
+add_filter( 'aioseo_twitter_tags', '__return_empty_array' );
+add_filter( 'aioseo_opengraph_tags', '__return_empty_array' );
+add_filter( 'aioseo_description', '__return_empty_string' );
