@@ -239,3 +239,24 @@ add_filter( 'aioseo_facebook_tags', '__return_empty_array' );
 add_filter( 'aioseo_twitter_tags', '__return_empty_array' );
 add_filter( 'aioseo_opengraph_tags', '__return_empty_array' );
 add_filter( 'aioseo_description', '__return_empty_string' );
+
+/**
+ * Sanitize uploaded file names with non-ASCII characters
+ * FacebookのOGPクローラーが日本語ファイル名を処理できない問題を回避
+ *
+ * @param string $filename Original filename.
+ * @return string Sanitized filename.
+ */
+function onwords_sanitize_filename( $filename ) {
+	$info = pathinfo( $filename );
+	$ext  = isset( $info['extension'] ) ? '.' . $info['extension'] : '';
+	$name = $info['filename'];
+
+	// 日本語（非ASCII文字）が含まれている場合は、タイムスタンプ + ランダム文字列に変換
+	if ( preg_match( '/[^\x00-\x7F]/', $name ) ) {
+		$name = 'img-' . gmdate( 'YmdHis' ) . '-' . wp_generate_password( 6, false, false );
+	}
+
+	return $name . $ext;
+}
+add_filter( 'sanitize_file_name', 'onwords_sanitize_filename', 10 );
