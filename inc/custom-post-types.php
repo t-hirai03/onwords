@@ -282,15 +282,15 @@ function onwords_register_webinar_post_type() {
 
 	$args = array(
 		'labels'             => $labels,
-		'public'             => true,
-		'publicly_queryable' => true,
+		'public'             => false,
+		'publicly_queryable' => false,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
 		'show_in_rest'       => true,
 		'query_var'          => true,
 		'rewrite'            => array( 'slug' => 'knowledge/webinar' ),
 		'capability_type'    => 'post',
-		'has_archive'        => 'knowledge/webinar',
+		'has_archive'        => false,
 		'hierarchical'       => false,
 		'menu_position'      => 9,
 		'menu_icon'          => 'dashicons-video-alt3',
@@ -387,8 +387,8 @@ function onwords_register_document_post_type() {
 
 	$args = array(
 		'labels'             => $labels,
-		'public'             => true,
-		'publicly_queryable' => true,
+		'public'             => false,
+		'publicly_queryable' => false,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
 		'show_in_rest'       => true,
@@ -398,7 +398,7 @@ function onwords_register_document_post_type() {
 			'with_front' => false,
 		),
 		'capability_type'    => 'post',
-		'has_archive'        => 'knowledge/document',
+		'has_archive'        => false,
 		'hierarchical'       => false,
 		'menu_position'      => 10,
 		'menu_icon'          => 'dashicons-media-document',

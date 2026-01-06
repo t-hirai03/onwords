@@ -47,11 +47,11 @@ get_header();
 	// OUR BUSINESS RECORDセクション
 	get_template_part( 'template-parts/sections/inbound-business-record' );
 
-	// WEBINARセクション
-	get_template_part( 'template-parts/sections/inbound-webinar' );
+	// WEBINARセクション（非公開のため削除）
+	// get_template_part( 'template-parts/sections/inbound-webinar' );
 
-	// DOCUMENTSセクション
-	get_template_part( 'template-parts/sections/inbound-documents' );
+	// DOCUMENTSセクション（非公開のため削除）
+	// get_template_part( 'template-parts/sections/inbound-documents' );
 	?>
 
 </main>

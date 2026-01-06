@@ -140,7 +140,7 @@ function onwords_enqueue_assets() {
 	}
 
 	// Article pages (news archive and all article detail pages)
-	if ( is_post_type_archive( 'news' ) || is_singular( array( 'news', 'case', 'column', 'webinar', 'document' ) ) ) {
+	if ( is_post_type_archive( 'news' ) || is_singular( array( 'post', 'news', 'case', 'column', 'webinar', 'document' ) ) ) {
 		wp_enqueue_style(
 			'onwords-article',
 			get_template_directory_uri() . '/assets/css/article.css',
@@ -159,8 +159,8 @@ function onwords_enqueue_assets() {
 		);
 	}
 
-	// Knowledge pages only
-	if ( is_page( 'knowledge' ) || is_page_template( 'page-knowledge.php' ) || is_post_type_archive( array( 'column', 'webinar', 'document' ) ) || is_singular( array( 'column', 'webinar', 'document' ) ) || is_tax( array( 'column_category', 'webinar_target', 'webinar_status', 'document_target' ) ) ) {
+	// Knowledge pages only (including default posts for コラム)
+	if ( is_home() || is_category() || is_singular( 'post' ) || is_page( 'knowledge' ) || is_page_template( 'page-knowledge.php' ) || is_post_type_archive( array( 'column', 'webinar', 'document' ) ) || is_singular( array( 'column', 'webinar', 'document' ) ) || is_tax( array( 'column_category', 'webinar_target', 'webinar_status', 'document_target' ) ) ) {
 		wp_enqueue_style(
 			'onwords-knowledge',
 			get_template_directory_uri() . '/assets/css/knowledge.css',
