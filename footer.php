@@ -24,7 +24,7 @@
 						<i class="fa-solid fa-arrow-up-right-from-square"></i>
 					</a>
 					<a href="<?php echo esc_url( home_url( '/case' ) ); ?>">導入事例</a>
-					<a href="<?php echo esc_url( home_url( '/knowledge' ) ); ?>">ナレッジ</a>
+					<a href="<?php echo esc_url( home_url( '/column' ) ); ?>">コラム</a>
 				</ul>
 
 				<!-- Right Navigation Column (Policy Links) -->
